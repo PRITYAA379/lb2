@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>digitalconfvisions</title>
     <style>
         * {
@@ -111,7 +111,7 @@
             text-shadow: 0 0 10px rgba(11, 240, 252, 0.3);
             pointer-events: none;
             animation: pulse 3s infinite alternate;
-            padding: 0 20px;
+            padding: 0 5vw;
             word-wrap: break-word;
         }
         
@@ -125,7 +125,7 @@
             position: fixed;
             top: 0;
             right: -100%;
-            width: 100%;
+            width: 85%;
             height: 100vh;
             background: rgba(10, 10, 26, 0.98);
             backdrop-filter: blur(10px);
@@ -160,7 +160,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border-radius: 5px;
-            flex: 1 0 auto;
+            flex: 1 0 45%;
             text-align: center;
             min-width: 80px;
         }
@@ -195,14 +195,14 @@
         
         .tab-content p {
             margin-bottom: 10px;
-            line-height: 1.5;
-            font-size: 0.95rem;
+            line-height: 1.6;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
         }
         
         /* Mobile Contact Icons */
         .contact-icons {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
             margin-top: 20px;
         }
@@ -248,10 +248,11 @@
             display: none;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
-            padding: 20px;
-            margin-top: 15px;
+            padding: 15px;
+            margin: 10px auto;
             border: 1px solid rgba(11, 240, 252, 0.2);
             animation: fadeIn 0.3s ease;
+            max-width: 100%;
         }
         
         @keyframes fadeIn {
@@ -329,6 +330,17 @@
             margin-top: 15px;
         }
         
+        /* Tablet Styles */
+        @media (min-width: 576px) {
+            .contact-icons {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .tab-button {
+                flex: 1 0 auto;
+            }
+        }
+        
         /* Desktop Styles */
         @media (min-width: 768px) {
             .menu-toggle {
@@ -357,14 +369,11 @@
             .tab-button {
                 padding: 12px 15px;
                 font-size: 1rem;
+                flex: 1 0 auto;
             }
             
             .tab-content h3 {
                 font-size: 1.5rem;
-            }
-            
-            .tab-content p {
-                font-size: 1rem;
             }
             
             .contact-icons {
@@ -388,6 +397,18 @@
             .contact-link {
                 padding: 10px 20px;
                 font-size: 0.9rem;
+            }
+            
+            .contact-card {
+                max-width: 80%;
+                padding: 20px;
+            }
+        }
+        
+        /* Large Desktop Styles */
+        @media (min-width: 992px) {
+            .headline {
+                font-size: 3.5rem;
             }
         }
         
@@ -414,8 +435,16 @@
         
         /* Landscape Orientation */
         @media (max-height: 500px) and (orientation: landscape) {
+            #visualizer-section {
+                height: 150vh;
+            }
+            
+            .headline {
+                top: 40%;
+            }
+            
             #sidebar {
-                padding-top: 60px;
+                padding-top: 40px;
             }
             
             .contact-icons {
@@ -436,6 +465,9 @@
             }
         }
     </style>
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js" as="script">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -657,6 +689,19 @@
             }, 1500);
         });
         
+        // Detect device capability
+        function getDevicePerformanceTier() {
+            if (/Mobi|Android/i.test(navigator.userAgent)) {
+                if (navigator.hardwareConcurrency <= 2 || navigator.deviceMemory <= 2) {
+                    return 'low';
+                }
+                return 'medium';
+            }
+            return 'high';
+        }
+        
+        const performanceTier = getDevicePerformanceTier();
+        
         // Atomic Visualizer Scene
         const scene = new THREE.Scene();
         scene.background = new THREE.Color(0x0a0a1a);
@@ -665,12 +710,14 @@
         camera.position.z = 15;
         
         const renderer = new THREE.WebGLRenderer({ 
-            antialias: true,
+            antialias: performanceTier !== 'low',
             alpha: false
         });
+        
+        // Set pixel ratio based on device capability
+        renderer.setPixelRatio(performanceTier === 'low' ? 1 : Math.min(window.devicePixelRatio, 2));
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio for performance
-        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.enabled = performanceTier !== 'low';
         document.getElementById('atom-container').appendChild(renderer.domElement);
         
         // Atomic Lighting
@@ -679,7 +726,7 @@
         
         const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
         directionalLight.position.set(5, 5, 5);
-        directionalLight.castShadow = true;
+        directionalLight.castShadow = performanceTier !== 'low';
         scene.add(directionalLight);
         
         const neonBlueLight = new THREE.PointLight(0x0ff0fc, 3, 30);
@@ -691,7 +738,7 @@
         scene.add(neonPinkLight);
         
         // Create atomic nucleus
-        const nucleusGeometry = new THREE.IcosahedronGeometry(1.5, 2); // Reduced detail for mobile
+        const nucleusGeometry = new THREE.IcosahedronGeometry(1.5, performanceTier === 'low' ? 1 : 2);
         const nucleusMaterial = new THREE.MeshPhongMaterial({ 
             color: 0x0ff0fc,
             emissive: 0x0ff0fc,
@@ -704,8 +751,8 @@
         
         // Create electron orbitals
         const orbitals = [];
-        const electronCount = 6; // Reduced for mobile performance
-        const orbitalRadius = [4, 6, 8];
+        const electronCount = performanceTier === 'low' ? 4 : 6;
+        const orbitalRadius = performanceTier === 'low' ? [4, 6] : [4, 6, 8];
         const orbitalSpeeds = [0.01, -0.015, 0.02];
         
         orbitalRadius.forEach((radius, i) => {
@@ -713,7 +760,7 @@
             
             for (let j = 0; j < electronCount; j++) {
                 const angle = (j / electronCount) * Math.PI * 2;
-                const electronGeometry = new THREE.SphereGeometry(0.3, 12, 12); // Reduced detail
+                const electronGeometry = new THREE.SphereGeometry(0.3, performanceTier === 'low' ? 8 : 12);
                 const electronMaterial = new THREE.MeshPhongMaterial({
                     color: i === 0 ? 0x0ff0fc : i === 1 ? 0xff00ff : 0xbc13fe,
                     emissive: i === 0 ? 0x0ff0fc : i === 1 ? 0xff00ff : 0xbc13fe,
@@ -743,7 +790,7 @@
             });
             
             // Create orbital path
-            const orbitGeometry = new THREE.TorusGeometry(radius, 0.02, 8, 50); // Reduced detail
+            const orbitGeometry = new THREE.TorusGeometry(radius, 0.02, performanceTier === 'low' ? 6 : 8, 50);
             const orbitMaterial = new THREE.MeshBasicMaterial({
                 color: i === 0 ? 0x0ff0fc : i === 1 ? 0xff00ff : 0xbc13fe,
                 transparent: true,
@@ -784,17 +831,21 @@
             isDragging = false;
         };
         
-        // Touch events
+        // Enhanced touch events for better mobile experience
         document.getElementById('visualizer-section').addEventListener('touchstart', (e) => {
             e.preventDefault();
-            const touch = e.touches[0];
-            handleStart(touch.clientX, touch.clientY);
+            if (e.touches.length === 1) {
+                const touch = e.touches[0];
+                handleStart(touch.clientX, touch.clientY);
+            }
         });
         
         document.getElementById('visualizer-section').addEventListener('touchmove', (e) => {
             e.preventDefault();
-            const touch = e.touches[0];
-            handleMove(touch.clientX, touch.clientY);
+            if (e.touches.length === 1) {
+                const touch = e.touches[0];
+                handleMove(touch.clientX, touch.clientY);
+            }
         });
         
         document.getElementById('visualizer-section').addEventListener('touchend', () => {
