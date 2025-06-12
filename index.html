@@ -44,6 +44,11 @@
       animation: float 6s ease-in-out infinite;
     }
 
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateZ(20px); }
+      50% { transform: translateY(-10px) translateZ(20px); }
+    }
+
     h1 {
       text-align: center;
       margin: 10px 0;
@@ -105,6 +110,7 @@
       align-items: center;
       justify-content: center;
       background: rgba(255,255,255,0.1);
+      transition: transform 0.3s ease, background 0.3s ease;
     }
 
     .social-link:hover {
@@ -198,8 +204,8 @@
     <div class="social-links">
       <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
       <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-      <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/PRITYAA379" class="social-link"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/PRITYAA379" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
     </div>
 
     <!-- Contact Form -->
