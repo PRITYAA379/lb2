@@ -89,10 +89,6 @@
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     }
 
-    .link i {
-      margin-right: 10px;
-    }
-
     .social-links {
       display: flex;
       justify-content: center;
@@ -118,7 +114,6 @@
       transform: scale(1.1);
     }
 
-    /* WhatsApp Floating Button */
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
@@ -135,7 +130,6 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     }
 
-    /* Contact Form */
     .contact-form {
       background: rgba(255, 255, 255, 0.05);
       padding: 25px;
@@ -163,11 +157,6 @@
       font-size: 15px;
     }
 
-    .contact-form input::placeholder,
-    .contact-form textarea::placeholder {
-      color: #ccc;
-    }
-
     .contact-form button {
       width: 100%;
       padding: 12px;
@@ -178,19 +167,53 @@
       color: white;
       cursor: pointer;
       font-size: 16px;
-      transition: background 0.3s ease;
     }
 
     .contact-form button:hover {
       background: var(--accent);
     }
+
+    /* Thank You Overlay */
+    .thank-you-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(135deg, #1a1a2e, #0f3460);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 1000;
+      color: white;
+      font-size: 30px;
+      display: none;
+      overflow: hidden;
+    }
+
+    .rose {
+      position: absolute;
+      font-size: 24px;
+      animation: floatRose 10s linear infinite;
+    }
+
+    @keyframes floatRose {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
   </style>
-  <!-- Font Awesome (updated to latest version to support X icon) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
-  <div class="container">
+  <div class="container" id="main-container">
     <img src="https://i.ibb.co/6RxCcJ9F/Screenshot-2025-06-12-23-22-47-38-1c337646f29875672b5a61192b9010f9-1.jpg" class="profile-img" alt="Pritam">
     <h1>Pritam Jagtap</h1>
     <p>Digital Creator | Developer | Visionary</p>
@@ -203,30 +226,55 @@
 
     <div class="social-links">
       <a href="https://www.instagram.com/" class="social-link"><i class="fab fa-instagram"></i></a>
-      <a href="https://x.com/Prityaa379?t=1wZ0UV_K_9DzXa_-y3_qSw&s=09" class="social-link" title="Follow me on X"><i class="fab fa-x-twitter"></i></a>
-      <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link"><i class="fab fa-linkedin"></i></a>
+      <a href="https://x.com/Prityaa379?t=1wZ0UV_K_9DzXa_-y3_qSw&s=09" class="social-link"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" class="social-link"><i class="fab fa-linkedin"></i></a>
       <a href="https://github.com/PRITYAA379" class="social-link"><i class="fab fa-github"></i></a>
     </div>
 
-    <!-- Contact Form -->
     <div class="contact-form">
       <h2>Contact Me</h2>
-      <form action="#" method="POST">
+      <form id="contactForm">
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
         <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
         <button type="submit">Send Message</button>
       </form>
     </div>
-
   </div>
 
-  <!-- Floating WhatsApp Button -->
   <a href="https://wa.me/919372035409?text=Hi%20Pritam%2C%20I%20saw%20your%204D%20Webpage%20and%20I'm%20interested%20in%20your%20services!" 
-     class="whatsapp-float" 
-     target="_blank">
+     class="whatsapp-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
+
+  <!-- Thank You Overlay -->
+  <div class="thank-you-overlay" id="thankYouOverlay">
+    <div>🌹 Thank You for Reaching Out 🌹</div>
+    <div id="roses"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById("contactForm");
+    const overlay = document.getElementById("thankYouOverlay");
+    const roseContainer = document.getElementById("roses");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      document.getElementById("main-container").style.display = "none";
+      overlay.style.display = "flex";
+
+      // Add roses dynamically
+      for (let i = 0; i < 20; i++) {
+        let rose = document.createElement("div");
+        rose.className = "rose";
+        rose.style.left = Math.random() * 100 + "vw";
+        rose.style.animationDuration = (5 + Math.random() * 5) + "s";
+        rose.innerText = "🌹";
+        roseContainer.appendChild(rose);
+      }
+    });
+  </script>
 
 </body>
 </html>
