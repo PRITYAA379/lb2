@@ -279,6 +279,130 @@
       transform: translateX(100%);
     }
 
+    /* Services Section */
+    .services-section {
+      margin: 30px 0;
+    }
+
+    .services-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      background: linear-gradient(to right, 
+        #ff7e5f, #feb47b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .services-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .service-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 20px;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right, 
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0) 45%,
+        rgba(255,255,255,0.1) 50%,
+        rgba(255,255,255,0) 55%,
+        rgba(255,255,255,0) 100%
+      );
+      transform: rotate(30deg);
+      animation: shine 6s infinite;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3),
+                  0 0 15px rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .service-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .service-icon {
+      font-size: 24px;
+      background: linear-gradient(45deg, #6e45e2, #88d3ce);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .service-description {
+      color: rgba(255,255,255,0.8);
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .service-features {
+      list-style-type: none;
+      padding-left: 0;
+      margin-bottom: 15px;
+    }
+
+    .service-features li {
+      padding: 5px 0;
+      color: rgba(255,255,255,0.7);
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .service-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #88d3ce;
+      font-weight: bold;
+    }
+
+    .service-button {
+      display: inline-block;
+      background: linear-gradient(45deg, #ff7e5f, #feb47b);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .service-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 126, 95, 0.4);
+    }
+
     /* Thank You Overlay */
     .thank-you-overlay {
       position: fixed;
@@ -446,6 +570,54 @@
       <i class="fas fa-calendar-alt"></i> Schedule 15-Min Free Career Guide
     </button>
 
+    <!-- Services Section -->
+    <div class="services-section">
+      <h2 class="services-title">My Services</h2>
+      <div class="services-container">
+        <!-- Digital Marketing Service -->
+        <div class="service-card">
+          <h3 class="service-title">
+            <i class="fas fa-bullhorn service-icon"></i>
+            Digital Marketing
+          </h3>
+          <p class="service-description">
+            Boost your online presence with comprehensive digital marketing strategies tailored to your business needs.
+          </p>
+          <ul class="service-features">
+            <li>Social Media Marketing</li>
+            <li>Search Engine Optimization (SEO)</li>
+            <li>Pay-Per-Click Advertising (PPC)</li>
+            <li>Content Marketing</li>
+            <li>Email Marketing Campaigns</li>
+          </ul>
+          <button class="service-button" onclick="window.open('https://calendly.com/jagtappritam73/book-your-slot', '_blank')">
+            Get Started
+          </button>
+        </div>
+
+        <!-- Web Development Service -->
+        <div class="service-card">
+          <h3 class="service-title">
+            <i class="fas fa-code service-icon"></i>
+            Web Development
+          </h3>
+          <p class="service-description">
+            Custom, responsive websites that look great on any device and deliver exceptional user experiences.
+          </p>
+          <ul class="service-features">
+            <li>Responsive Web Design</li>
+            <li>Frontend & Backend Development</li>
+            <li>E-commerce Solutions</li>
+            <li>Website Maintenance</li>
+            <li>Performance Optimization</li>
+          </ul>
+          <button class="service-button" onclick="window.open('https://calendly.com/jagtappritam73/book-your-slot', '_blank')">
+            Get Started
+          </button>
+        </div>
+      </div>
+    </div>
+
     <div class="social-links">
       <a href="https://www.instagram.com/" class="social-link" style="--i: 0"><i class="fab fa-instagram"></i></a>
       <a href="https://x.com/Prityaa379?t=1wZ0UV_K_9DzXa_-y3_qSw&s=09" class="social-link" style="--i: 1"><i class="fab fa-x-twitter"></i></a>
@@ -485,11 +657,12 @@
       particlesContainer.appendChild(particle);
     }
 
-    // Add roses dynamically when clicking the career button
-    document.querySelector('.career-button').addEventListener('click', function() {
+    // Function to show thank you overlay
+    function showThankYou() {
       document.getElementById("main-container").style.display = "none";
       overlay.style.display = "flex";
 
+      // Add roses dynamically
       for (let i = 0; i < 20; i++) {
         let rose = document.createElement("div");
         rose.className = "rose";
@@ -506,6 +679,11 @@
         overlay.style.display = "none";
         document.getElementById("main-container").style.display = "block";
       }, 5000);
+    }
+
+    // Add event listeners to service buttons and career button
+    document.querySelectorAll('.service-button, .career-button').forEach(button => {
+      button.addEventListener('click', showThankYou);
     });
   </script>
 
