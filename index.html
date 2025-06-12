@@ -26,54 +26,36 @@
             padding: 0 15px;
         }
 
-        /* Neon Broken Strip Headline - Top Right */
-        .headline.neon-strip {
+        /* STIP Logo - Top Left Corner */
+        .stip-logo {
             position: absolute;
-            top: 40px;
-            right: 40px;
-            left: auto;
-            transform: none;
-            width: auto;
-            min-width: 220px;
-            padding: 0.5em 2em;
-            text-align: right;
-            font-size: clamp(1.2rem, 4vw, 2.5rem);
-            background: repeating-linear-gradient(
-                90deg,
-                #fff 0 20px,
-                transparent 20px 40px
-            );
-            border-radius: 30px;
-            box-shadow:
-                0 0 10px #fff,
-                0 0 30px #0ff0fc,
-                0 0 60px #fff;
-            color: #0a0a1a;
+            top: 20px;
+            left: 20px;
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            color: #0ff0fc;
             letter-spacing: 0.1em;
             text-shadow:
                 0 0 7px #fff,
                 0 0 12px #0ff0fc,
                 0 0 22px #fff;
             z-index: 200;
-            animation: neonPulse 2s infinite alternate;
             pointer-events: none;
             text-transform: uppercase;
             font-weight: 800;
+            padding: 0.5em 1em;
+            background: rgba(10, 10, 26, 0.5);
+            border-radius: 30px;
+            border: 1px solid rgba(11, 240, 252, 0.3);
+            animation: neonPulse 2s infinite alternate;
         }
 
         @media (max-width: 600px) {
-            .headline.neon-strip {
-                top: 18px;
-                right: 10px;
-                font-size: 1.1rem;
-                padding: 0.4em 1em;
-                min-width: 120px;
+            .stip-logo {
+                top: 15px;
+                left: 10px;
+                font-size: 1rem;
+                padding: 0.4em 0.8em;
             }
-        }
-
-        @keyframes neonPulse {
-            0% { box-shadow: 0 0 10px #fff, 0 0 30px #0ff0fc, 0 0 60px #fff; }
-            100% { box-shadow: 0 0 20px #fff, 0 0 40px #0ff0fc, 0 0 80px #fff; }
         }
 
         /* Hamburger Menu */
@@ -121,6 +103,11 @@
             transform: translateY(-6px) rotate(-45deg);
         }
         
+        @keyframes neonPulse {
+            0% { box-shadow: 0 0 10px #fff, 0 0 30px #0ff0fc, 0 0 60px #fff; }
+            100% { box-shadow: 0 0 20px #fff, 0 0 40px #0ff0fc, 0 0 80px #fff; }
+        }
+
         /* 3D Visualizer Section */
         #visualizer-section {
             position: relative;
@@ -364,6 +351,13 @@
         
         /* Desktop Styles */
         @media (min-width: 768px) {
+            .stip-logo {
+                top: 25px;
+                left: 25px;
+                font-size: 1.5rem;
+                padding: 0.6em 1.2em;
+            }
+            
             .menu-toggle {
                 top: 30px;
                 right: 30px;
@@ -428,8 +422,8 @@
         
         /* Large Desktop Styles */
         @media (min-width: 992px) {
-            .headline {
-                font-size: 3.5rem;
+            .stip-logo {
+                font-size: 2rem;
             }
         }
         
@@ -491,6 +485,9 @@
         <div class="loading-text">Loading Digital Experience...</div>
     </div>
     
+    <!-- STIP Logo - Top Left -->
+    <div class="stip-logo">STIP</div>
+    
     <!-- Hamburger Menu -->
     <div class="menu-toggle" id="menuToggle">
         <span></span>
@@ -501,7 +498,6 @@
     <!-- 3D Visualizer Section -->
     <section id="visualizer-section">
         <div id="atom-container"></div>
-        <div class="headline neon-strip">digitalconfvisions</div>
     </section>
     
     <!-- Mobile Sidebar with Tabs -->
@@ -649,356 +645,4 @@
             </div>
             
             <div class="contact-card" id="youtube2-card">
-                <h4 class="platform-name">YouTube</h4>
-                <p class="account-name">AI Case Study</p>
-                <a href="https://youtube.com/@preetjagtap?si=jMSN64JYU-92jX7H" class="contact-link" target="_blank">Subscribe</a>
-            </div>
-            
-            <div class="contact-card" id="linkedin-card">
-                <h4 class="platform-name">LinkedIn</h4>
-                <p class="account-name">Pritam Jagtap</p>
-                <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="contact-link" target="_blank">Connect</a>
-            </div>
-            
-            <div class="contact-card" id="facebook-card">
-                <h4 class="platform-name">Facebook</h4>
-                <p class="account-name">Profile</p>
-                <a href="https://www.facebook.com/share/16fmTVSfFx/?mibextid=wwXIfr" class="contact-link" target="_blank">Visit</a>
-            </div>
-            
-            <div class="contact-card" id="spotify-card">
-                <h4 class="platform-name">Spotify</h4>
-                <p class="account-name">Artist Profile</p>
-                <a href="https://open.spotify.com/artist/09ivobvbWFoOs0J7aUDK7n?si=Rjq7LswURAu6-Ilt5LfPnA" class="contact-link" target="_blank">Follow</a>
-            </div>
-            
-            <div class="contact-card" id="email-card">
-                <h4 class="platform-name">Email</h4>
-                <p class="account-name">jagtappreet73@gmail.com</p>
-                <a href="mailto:jagtappreet73@gmail.com" class="contact-link">Send Email</a>
-            </div>
-            
-            <div class="contact-card" id="phone-card">
-                <h4 class="platform-name">Phone</h4>
-                <p class="account-name">+91 9372035409</p>
-                <a href="tel:+919372035409" class="contact-link">Call Now</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Three.js Atomic Visualizer -->
-    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
-    <script>
-        // Loading screen
-        const loadingScreen = document.getElementById('loadingScreen');
-        
-        // Hide loading screen after everything is loaded
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                loadingScreen.style.opacity = '0';
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                }, 500);
-            }, 1500);
-        });
-        
-        // Detect device capability
-        function getDevicePerformanceTier() {
-            if (/Mobi|Android/i.test(navigator.userAgent)) {
-                if (navigator.hardwareConcurrency <= 2 || navigator.deviceMemory <= 2) {
-                    return 'low';
-                }
-                return 'medium';
-            }
-            return 'high';
-        }
-        
-        const performanceTier = getDevicePerformanceTier();
-        
-        // Atomic Visualizer Scene
-        const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x0a0a1a);
-        
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.z = 15;
-        
-        const renderer = new THREE.WebGLRenderer({ 
-            antialias: performanceTier !== 'low',
-            alpha: false
-        });
-        
-        // Set pixel ratio based on device capability
-        renderer.setPixelRatio(performanceTier === 'low' ? 1 : Math.min(window.devicePixelRatio, 2));
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.shadowMap.enabled = performanceTier !== 'low';
-        document.getElementById('atom-container').appendChild(renderer.domElement);
-        
-        // Atomic Lighting
-        const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
-        scene.add(ambientLight);
-        
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.set(5, 5, 5);
-        directionalLight.castShadow = performanceTier !== 'low';
-        scene.add(directionalLight);
-        
-        const neonBlueLight = new THREE.PointLight(0x0ff0fc, 3, 30);
-        neonBlueLight.position.set(5, 5, 5);
-        scene.add(neonBlueLight);
-        
-        const neonPinkLight = new THREE.PointLight(0xff00ff, 3, 30);
-        neonPinkLight.position.set(-5, -5, 5);
-        scene.add(neonPinkLight);
-        
-        // Create atomic nucleus
-        const nucleusGeometry = new THREE.IcosahedronGeometry(1.5, performanceTier === 'low' ? 1 : 2);
-        const nucleusMaterial = new THREE.MeshPhongMaterial({ 
-            color: 0x0ff0fc,
-            emissive: 0x0ff0fc,
-            emissiveIntensity: 0.3,
-            shininess: 100,
-            wireframe: true
-        });
-        const nucleus = new THREE.Mesh(nucleusGeometry, nucleusMaterial);
-        scene.add(nucleus);
-        
-        // Create electron orbitals
-        const orbitals = [];
-        const electronCount = performanceTier === 'low' ? 4 : 6;
-        const orbitalRadius = performanceTier === 'low' ? [4, 6] : [4, 6, 8];
-        const orbitalSpeeds = [0.01, -0.015, 0.02];
-        
-        orbitalRadius.forEach((radius, i) => {
-            const electrons = [];
-            
-            for (let j = 0; j < electronCount; j++) {
-                const angle = (j / electronCount) * Math.PI * 2;
-                const electronGeometry = new THREE.SphereGeometry(0.3, performanceTier === 'low' ? 8 : 12);
-                const electronMaterial = new THREE.MeshPhongMaterial({
-                    color: i === 0 ? 0x0ff0fc : i === 1 ? 0xff00ff : 0xbc13fe,
-                    emissive: i === 0 ? 0x0ff0fc : i === 1 ? 0xff00ff : 0xbc13fe,
-                    emissiveIntensity: 0.5,
-                    shininess: 50
-                });
-                
-                const electron = new THREE.Mesh(electronGeometry, electronMaterial);
-                electron.position.x = radius * Math.cos(angle);
-                electron.position.y = radius * Math.sin(angle);
-                electron.position.z = (Math.random() - 0.5) * 2;
-                electron.userData = {
-                    angle: angle,
-                    radius: radius,
-                    speed: orbitalSpeeds[i],
-                    height: (Math.random() - 0.5) * 4
-                };
-                
-                scene.add(electron);
-                electrons.push(electron);
-            }
-            
-            orbitals.push({
-                radius: radius,
-                electrons: electrons,
-                speed: orbitalSpeeds[i]
-            });
-            
-            // Create orbital path
-            const orbitGeometry = new THREE.TorusGeometry(radius, 0.02, performanceTier === 'low' ? 6 : 8, 50);
-            const orbitMaterial = new THREE.MeshBasicMaterial({
-                color: i === 0 ? 0x0ff0fc : i === 1 ? 0xff00ff : 0xbc13fe,
-                transparent: true,
-                opacity: 0.2,
-                wireframe: true
-            });
-            const orbit = new THREE.Mesh(orbitGeometry, orbitMaterial);
-            orbit.rotation.x = Math.PI / 2;
-            scene.add(orbit);
-        });
-        
-        // Auto-rotation controls
-        let targetRotationX = 0;
-        let targetRotationY = 0;
-        
-        // Handle touch/mouse events for interactive rotation
-        let isDragging = false;
-        let previousTouch = { x: 0, y: 0 };
-        
-        const handleStart = (clientX, clientY) => {
-            isDragging = true;
-            previousTouch = { x: clientX, y: clientY };
-        };
-        
-        const handleMove = (clientX, clientY) => {
-            if (!isDragging) return;
-            
-            const deltaX = clientX - previousTouch.x;
-            const deltaY = clientY - previousTouch.y;
-            
-            targetRotationY += deltaX * 0.01;
-            targetRotationX += deltaY * 0.01;
-            
-            previousTouch = { x: clientX, y: clientY };
-        };
-        
-        const handleEnd = () => {
-            isDragging = false;
-        };
-        
-        // Enhanced touch events for better mobile experience
-        document.getElementById('visualizer-section').addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            if (e.touches.length === 1) {
-                const touch = e.touches[0];
-                handleStart(touch.clientX, touch.clientY);
-            }
-        });
-        
-        document.getElementById('visualizer-section').addEventListener('touchmove', (e) => {
-            e.preventDefault();
-            if (e.touches.length === 1) {
-                const touch = e.touches[0];
-                handleMove(touch.clientX, touch.clientY);
-            }
-        });
-        
-        document.getElementById('visualizer-section').addEventListener('touchend', () => {
-            handleEnd();
-        });
-        
-        // Mouse events
-        document.getElementById('visualizer-section').addEventListener('mousedown', (e) => {
-            e.preventDefault();
-            handleStart(e.clientX, e.clientY);
-        });
-        
-        document.getElementById('visualizer-section').addEventListener('mousemove', (e) => {
-            e.preventDefault();
-            handleMove(e.clientX, e.clientY);
-        });
-        
-        document.getElementById('visualizer-section').addEventListener('mouseup', () => {
-            handleEnd();
-        });
-        
-        document.getElementById('visualizer-section').addEventListener('mouseleave', () => {
-            handleEnd();
-        });
-        
-        // Animation loop
-        const clock = new THREE.Clock();
-        
-        function animate() {
-            requestAnimationFrame(animate);
-            
-            const time = clock.getElapsedTime();
-            
-            // Smooth camera rotation
-            camera.rotation.x += (targetRotationX - camera.rotation.x) * 0.05;
-            camera.rotation.y += (targetRotationY - camera.rotation.y) * 0.05;
-            
-            // Rotate nucleus
-            nucleus.rotation.x += 0.005;
-            nucleus.rotation.y += 0.01;
-            
-            // Animate orbitals
-            orbitals.forEach(orbital => {
-                orbital.electrons.forEach(electron => {
-                    electron.userData.angle += orbital.speed;
-                    electron.position.x = orbital.radius * Math.cos(electron.userData.angle);
-                    electron.position.y = orbital.radius * Math.sin(electron.userData.angle);
-                    electron.position.z = Math.sin(time * 2 + electron.userData.angle) * 2;
-                });
-            });
-            
-            // Pulse lights to the beat
-            const beat = Math.sin(time * 2) > 0.9 ? 1 : 0.5;
-            neonBlueLight.intensity = 3 * beat;
-            neonPinkLight.intensity = 3 * beat;
-            
-            renderer.render(scene, camera);
-        }
-        
-        // Handle window resize
-        function handleResize() {
-            const visualizerSection = document.getElementById('visualizer-section');
-            camera.aspect = visualizerSection.clientWidth / visualizerSection.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(visualizerSection.clientWidth, visualizerSection.clientHeight);
-        }
-        
-        window.addEventListener('resize', handleResize);
-        
-        // Menu toggle functionality
-        const menuToggle = document.getElementById('menuToggle');
-        const sidebar = document.getElementById('sidebar');
-        
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            sidebar.classList.toggle('active');
-            
-            // Disable scrolling when menu is open
-            if (sidebar.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
-        });
-        
-        // Close sidebar when clicking outside
-        document.addEventListener('click', (e) => {
-            if (sidebar.classList.contains('active') && 
-                !sidebar.contains(e.target) && 
-                !menuToggle.contains(e.target)) {
-                menuToggle.classList.remove('active');
-                sidebar.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-        
-        // Tab functionality
-        const tabButtons = document.querySelectorAll('.tab-button');
-        const tabContents = document.querySelectorAll('.tab-content');
-        
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons and contents
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-                
-                // Add active class to clicked button and corresponding content
-                button.classList.add('active');
-                const tabId = button.getAttribute('data-tab');
-                document.getElementById(tabId).classList.add('active');
-            });
-        });
-        
-        // Contact icon functionality
-        const contactIcons = document.querySelectorAll('.contact-icon');
-        const contactCards = document.querySelectorAll('.contact-card');
-        
-        contactIcons.forEach(icon => {
-            icon.addEventListener('click', () => {
-                const contactId = icon.getAttribute('data-contact');
-                
-                // Hide all contact cards first
-                contactCards.forEach(card => {
-                    card.classList.remove('active');
-                });
-                
-                // Show the selected contact card
-                const selectedCard = document.getElementById(`${contactId}-card`);
-                if (selectedCard) {
-                    selectedCard.classList.add('active');
-                    
-                    // Scroll to the card
-                    selectedCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }
-            });
-        });
-        
-        // Start animation
-        handleResize();
-        animate();
-    </script>
-</body>
-</html>
+                <h4 clas
