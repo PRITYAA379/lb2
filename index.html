@@ -218,68 +218,65 @@
                   0 0 20px rgba(37, 211, 102, 0.8);
     }
 
-    .contact-form {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 25px;
+    /* 3D Career Guide Button */
+    .career-button {
+      display: block;
+      background: linear-gradient(135deg, #6e45e2, #88d3ce);
+      color: white;
+      padding: 18px 20px;
+      margin: 25px auto;
       border-radius: 12px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3),
-                  inset 0 0 10px rgba(255,255,255,0.1);
-      margin-top: 40px;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .contact-form h2 {
+      text-decoration: none;
       text-align: center;
-      margin-bottom: 20px;
-      font-size: 22px;
-      background: linear-gradient(to right, 
-        #ff0000, #ff7700, #ffdd00, #00ff00, 
-        #0088ff, #0000ff, #9900ff, #ff00ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: rainbowText 8s ease infinite;
-      background-size: 800% 800%;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: none;
-      border-radius: 8px;
-      background: rgba(255,255,255,0.1);
-      color: white;
-      font-size: 15px;
-      border: 1px solid rgba(255,255,255,0.1);
-      transition: all 0.3s ease;
-    }
-
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      outline: none;
-      background: rgba(255,255,255,0.15);
-      box-shadow: 0 0 10px rgba(255,255,255,0.2);
-    }
-
-    .contact-form button {
-      width: 100%;
-      padding: 12px;
-      background: linear-gradient(45deg, #6e45e2, #88d3ce);
-      border: none;
-      border-radius: 8px;
       font-weight: bold;
-      color: white;
-      cursor: pointer;
-      font-size: 16px;
+      font-size: 18px;
       transition: all 0.3s ease;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3),
+                  0 5px 0 0 rgba(110, 69, 226, 0.5),
+                  inset 0 0 10px rgba(255,255,255,0.2);
+      transform-style: preserve-3d;
       position: relative;
+      width: 90%;
+      border: none;
+      cursor: pointer;
       overflow: hidden;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .contact-form button:hover {
-      background: linear-gradient(45deg, #ff7e5f, #feb47b);
-      box-shadow: 0 0 15px rgba(255,126,95,0.6);
+    .career-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4),
+                  0 7px 0 0 rgba(110, 69, 226, 0.5),
+                  inset 0 0 15px rgba(255,255,255,0.3);
+    }
+
+    .career-button:active {
+      transform: translateY(2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                  0 2px 0 0 rgba(110, 69, 226, 0.5),
+                  inset 0 0 10px rgba(255,255,255,0.2);
+    }
+
+    .career-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.3) 50%,
+        rgba(255,255,255,0) 100%
+      );
+      transform: translateX(-100%);
+      transition: all 0.6s ease;
+    }
+
+    .career-button:hover::before {
+      transform: translateX(100%);
     }
 
     /* Thank You Overlay */
@@ -444,21 +441,16 @@
       <div class="mirror-reflection"></div>
     </div>
 
+    <!-- 3D Career Guide Button -->
+    <button class="career-button" onclick="window.open('https://calendly.com/jagtappritam73/book-your-slot', '_blank')">
+      <i class="fas fa-calendar-alt"></i> Schedule 15-Min Free Career Guide
+    </button>
+
     <div class="social-links">
       <a href="https://www.instagram.com/" class="social-link" style="--i: 0"><i class="fab fa-instagram"></i></a>
       <a href="https://x.com/Prityaa379?t=1wZ0UV_K_9DzXa_-y3_qSw&s=09" class="social-link" style="--i: 1"><i class="fab fa-x-twitter"></i></a>
       <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" class="social-link" style="--i: 2"><i class="fab fa-linkedin"></i></a>
       <a href="https://github.com/PRITYAA379" class="social-link" style="--i: 3"><i class="fab fa-github"></i></a>
-    </div>
-
-    <div class="contact-form">
-      <h2>Contact Me</h2>
-      <form id="contactForm">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
     </div>
   </div>
 
@@ -474,7 +466,6 @@
   </div>
 
   <script>
-    const form = document.getElementById("contactForm");
     const overlay = document.getElementById("thankYouOverlay");
     const roseContainer = document.getElementById("roses");
     const particlesContainer = document.getElementById("particles");
@@ -494,13 +485,11 @@
       particlesContainer.appendChild(particle);
     }
 
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
-
+    // Add roses dynamically when clicking the career button
+    document.querySelector('.career-button').addEventListener('click', function() {
       document.getElementById("main-container").style.display = "none";
       overlay.style.display = "flex";
 
-      // Add roses dynamically
       for (let i = 0; i < 20; i++) {
         let rose = document.createElement("div");
         rose.className = "rose";
@@ -511,6 +500,12 @@
         rose.innerText = "🌹";
         roseContainer.appendChild(rose);
       }
+      
+      // Hide overlay after 5 seconds
+      setTimeout(() => {
+        overlay.style.display = "none";
+        document.getElementById("main-container").style.display = "block";
+      }, 5000);
     });
   </script>
 
