@@ -1,257 +1,226 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Pritam's 4D Portal</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        :root {
-            --primary: #6e45e2;
-            --secondary: #88d3ce;
-            --accent: #ff7e5f;
-            --dark: #1a1a2e;
-            --light: #f9f9f9;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pritam's 4D Portal</title>
+  <style>
+    :root {
+      --primary: #6e45e2;
+      --secondary: #88d3ce;
+      --accent: #ff7e5f;
+      --dark: #1a1a2e;
+      --light: #f9f9f9;
+    }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, var(--dark), #16213e);
-            color: var(--light);
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            perspective: 1000px;
-            overflow-x: hidden;
-        }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, var(--dark), #16213e);
+      color: var(--light);
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      perspective: 1000px;
+      overflow-x: hidden;
+    }
 
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            transform-style: preserve-3d;
-            transition: transform 0.5s ease;
-            position: relative;
-        }
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+      position: relative;
+    }
 
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 30px auto 15px;
-            border: 3px solid var(--secondary);
-            box-shadow: 0 0 20px rgba(136, 211, 206, 0.5);
-            transform: translateZ(20px);
-            animation: float 6s ease-in-out infinite;
-            transition: all 0.3s ease;
-        }
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 30px auto 15px;
+      border: 3px solid var(--secondary);
+      box-shadow: 0 0 20px rgba(136, 211, 206, 0.5);
+      transform: translateZ(20px);
+      animation: float 6s ease-in-out infinite;
+    }
 
-        .profile-img:hover {
-            transform: translateZ(30px) scale(1.05);
-            box-shadow: 0 0 30px rgba(136, 211, 206, 0.8);
-        }
+    h1 {
+      text-align: center;
+      margin: 10px 0;
+      font-size: 28px;
+      background: linear-gradient(to right, var(--secondary), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
 
-        h1 {
-            text-align: center;
-            margin: 10px 0;
-            font-size: 28px;
-            background: linear-gradient(to right, var(--secondary), var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transform: translateZ(30px);
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
+    p {
+      text-align: center;
+      opacity: 0.9;
+      font-size: 16px;
+    }
 
-        p {
-            text-align: center;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            transform: translateZ(20px);
-            font-size: 16px;
-        }
+    .link {
+      display: block;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      color: white;
+      padding: 15px 20px;
+      margin: 15px auto;
+      border-radius: 12px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      transition: all 0.4s ease;
+      transform: translateZ(0);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+      width: 90%;
+    }
 
-        .link {
-            display: block;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            color: white;
-            padding: 15px 20px;
-            margin: 15px auto;
-            border-radius: 12px;
-            text-decoration: none;
-            text-align: center;
-            font-weight: bold;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.4s ease;
-            transform-style: preserve-3d;
-            transform: translateZ(0);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
+    .link:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
 
-        .link:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateZ(15px) translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            border-color: var(--secondary);
-        }
+    .link i {
+      margin-right: 10px;
+    }
 
-        .link::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: 0.5s;
-        }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 25px 0;
+    }
 
-        .link:hover::after {
-            left: 100%;
-        }
+    .social-link {
+      color: white;
+      font-size: 24px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.1);
+    }
 
-        .link i {
-            margin-right: 10px;
-            transform: translateZ(5px);
-        }
+    .social-link:hover {
+      color: var(--secondary);
+      background: rgba(255,255,255,0.2);
+      transform: scale(1.1);
+    }
 
-        .website-link {
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            border: none;
-        }
+    /* WhatsApp Floating Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      color: white;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      font-size: 26px;
+      text-align: center;
+      line-height: 55px;
+      z-index: 999;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
 
-        .gumroad-link {
-            background: linear-gradient(45deg, #00a0f0, #00f0a0);
-            border: none;
-        }
+    /* Contact Form */
+    .contact-form {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      margin-top: 40px;
+    }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 25px 0;
-            transform: translateZ(20px);
-        }
+    .contact-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 22px;
+      color: var(--secondary);
+    }
 
-        .social-link {
-            color: white;
-            font-size: 24px;
-            transition: all 0.3s ease;
-            transform: translateZ(0);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(5px);
-        }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 15px;
+    }
 
-        .social-link:hover {
-            color: var(--secondary);
-            transform: translateZ(15px) scale(1.2);
-            background: rgba(255,255,255,0.2);
-        }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: #ccc;
+    }
 
-        @keyframes float {
-            0% { transform: translateY(0px) translateZ(20px); }
-            50% { transform: translateY(-10px) translateZ(20px); }
-            100% { transform: translateY(0px) translateZ(20px); }
-        }
+    .contact-form button {
+      width: 100%;
+      padding: 12px;
+      background: var(--primary);
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
 
-        .tilt {
-            transition: transform 0.2s ease;
-        }
-
-        .tilt:hover {
-            transform: rotateY(10deg) rotateX(5deg) translateZ(15px);
-        }
-
-        .particle {
-            position: absolute;
-            background: rgba(255,255,255,0.5);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    .contact-form button:hover {
+      background: var(--accent);
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 <body>
-    <div class="container">
-        <img src="https://i.ibb.co/6RxCcJ9F/Screenshot-2025-06-12-23-22-47-38-1c337646f29875672b5a61192b9010f9-1.jpg" alt="Pritam" class="profile-img tilt">
-        <h1>Pritam Jagtap</h1>
-        <p>Digital Creator | Developer | Visionary</p>
 
-        <a href="https://yourwebsite.com" class="link website-link tilt" target="_blank">
-            <i class="fas fa-globe"></i> Visit My Website
-        </a>
+  <div class="container">
+    <img src="https://i.ibb.co/6RxCcJ9F/Screenshot-2025-06-12-23-22-47-38-1c337646f29875672b5a61192b9010f9-1.jpg" class="profile-img" alt="Pritam">
+    <h1>Pritam Jagtap</h1>
+    <p>Digital Creator | Developer | Visionary</p>
 
-        <a href="https://jagtappritam7.gumroad.com/l/pvoryz" class="link gumroad-link tilt" target="_blank">
-            <i class="fas fa-store"></i> Gumroad Products
-        </a>
+    <a href="https://yourwebsite.com" class="link"><i class="fas fa-globe"></i> Visit My Website</a>
+    <a href="https://jagtappritam7.gumroad.com/l/pvoryz" class="link"><i class="fas fa-store"></i> Gumroad Products</a>
+    <a href="mailto:jagtappritam73@gmail.com" class="link"><i class="fas fa-envelope"></i> Email Me</a>
+    <a href="tel:+919372035409" class="link"><i class="fas fa-phone"></i> Call Me</a>
+    <a href="https://wa.me/919372035409?text=Hi%20Pritam%2C%20I%20saw%20your%204D%20Webpage%20and%20I'm%20interested%20in%20your%20services!" class="link"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
 
-        <a href="mailto:jagtappritam73@gmail.com" class="link tilt">
-            <i class="fas fa-envelope"></i> Email Me
-        </a>
-
-        <a href="tel:+919372035409" class="link tilt">
-            <i class="fas fa-phone"></i> Call Me
-        </a>
-
-        <a href="https://wa.me/919372035409" class="link tilt">
-            <i class="fab fa-whatsapp"></i> WhatsApp
-        </a>
-
-        <div class="social-links">
-            <a href="#" class="social-link tilt"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-link tilt"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-link tilt"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/PRITYAA379" class="social-link tilt" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
+    <div class="social-links">
+      <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/PRITYAA379" class="social-link"><i class="fab fa-github"></i></a>
     </div>
 
-    <script>
-        // 3D Parallax Effect
-        document.addEventListener('mousemove', function(e) {
-            const container = document.querySelector('.container');
-            const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-            const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
-            container.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-        });
+    <!-- Contact Form -->
+    <div class="contact-form">
+      <h2>Contact Me</h2>
+      <form action="#" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
 
-        document.querySelector('.container').addEventListener('mouseleave', function() {
-            this.style.transform = 'rotateY(0deg) rotateX(0deg)';
-        });
+  </div>
 
-        function createParticles() {
-            const colors = ['#6e45e2', '#88d3ce', '#ff7e5f', '#ffffff'];
-            const container = document.querySelector('.container');
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/919372035409?text=Hi%20Pritam%2C%20I%20saw%20your%204D%20Webpage%20and%20I'm%20interested%20in%20your%20services!" 
+     class="whatsapp-float" 
+     target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
-            for (let i = 0; i < 20; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-
-                const size = Math.random() * 5 + 2;
-                const posX = Math.random() * 100;
-                const posY = Math.random() * 100;
-                const delay = Math.random() * 5;
-                const duration = Math.random() * 10 + 10;
-                const color = colors[Math.floor(Math.random() * colors.length)];
-
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${posX}%`;
-                particle.style.top = `${posY}%`;
-                particle.style.background = color;
-                particle.style.opacity = Math.random() * 0.5 + 0.1;
-                particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
-
-                container.appendChild(particle);
-            }
-        }
-
-        createParticles();
-    </script>
 </body>
 </html>
