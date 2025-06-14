@@ -547,5 +547,150 @@
     
     <div class="mirror-container">
       <a href="https://jagtappritam7.gumroad.com/l/pvoryz" class="link"><i class="fas fa-store"></i> Gumroad Products</a>
-      <div class="mirror-reflection"></di
-...
+      <div class="mirror-reflection"></div>
+    </div>
+    
+    <div class="mirror-container">
+      <a href="mailto:jagtappritam73@gmail.com" class="link"><i class="fas fa-envelope"></i> Email Me</a>
+      <div class="mirror-reflection"></div>
+    </div>
+    
+    <div class="mirror-container">
+      <a href="tel:+919372035409" class="link"><i class="fas fa-phone"></i> Call Me</a>
+      <div class="mirror-reflection"></div>
+    </div>
+    
+    <div class="mirror-container">
+      <a href="https://wa.me/919372035409?text=Hi%20Pritam%2C%20I%20saw%20your%204D%20Webpage%20and%20I'm%20interested%20in%20your%20services!" class="link"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+      <div class="mirror-reflection"></div>
+    </div>
+
+    <div class="mirror-container">
+      <a href="upcoming-books.html" class="link"><i class="fas fa-book"></i> Upcoming Books</a>
+      <div class="mirror-reflection"></div>
+    </div>
+
+    <!-- 3D Career Guide Button -->
+    <button class="career-button" onclick="window.open('https://calendly.com/jagtappritam73/book-your-slot', '_blank')">
+      <i class="fas fa-calendar-alt"></i> Schedule 15-Min Free Career Guide
+    </button>
+
+    <!-- Services Section -->
+    <div class="services-section">
+      <h2 class="services-title">My Services</h2>
+      <div class="services-container">
+        <!-- Digital Marketing Service -->
+        <div class="service-card">
+          <h3 class="service-title">
+            <i class="fas fa-bullhorn service-icon"></i>
+            Digital Marketing
+          </h3>
+          <p class="service-description">
+            Boost your online presence with comprehensive digital marketing strategies tailored to your business needs.
+          </p>
+          <ul class="service-features">
+            <li>Social Media Marketing</li>
+            <li>Search Engine Optimization (SEO)</li>
+            <li>Pay-Per-Click Advertising (PPC)</li>
+            <li>Content Marketing</li>
+            <li>Email Marketing Campaigns</li>
+          </ul>
+          <button class="service-button" onclick="window.open('https://calendly.com/jagtappritam73/book-your-slot', '_blank')">
+            Get Started
+          </button>
+        </div>
+
+        <!-- Web Development Service -->
+        <div class="service-card">
+          <h3 class="service-title">
+            <i class="fas fa-code service-icon"></i>
+            Web Development
+          </h3>
+          <p class="service-description">
+            Custom, responsive websites that look great on any device and deliver exceptional user experiences.
+          </p>
+          <ul class="service-features">
+            <li>Responsive Web Design</li>
+            <li>Frontend & Backend Development</li>
+            <li>E-commerce Solutions</li>
+            <li>Website Maintenance</li>
+            <li>Performance Optimization</li>
+          </ul>
+          <button class="service-button" onclick="window.open('https://calendly.com/jagtappritam73/book-your-slot', '_blank')">
+            Get Started
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="social-links">
+      <a href="https://www.instagram.com/" class="social-link" style="--i: 0"><i class="fab fa-instagram"></i></a>
+      <a href="https://x.com/Prityaa379?t=1wZ0UV_K_9DzXa_-y3_qSw&s=09" class="social-link" style="--i: 1"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" class="social-link" style="--i: 2"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/PRITYAA379" class="social-link" style="--i: 3"><i class="fab fa-github"></i></a>
+    </div>
+  </div>
+
+  <a href="https://wa.me/919372035409?text=Hi%20Pritam%2C%20I%20saw%20your%204D%20Webpage%20and%20I'm%20interested%20in%20your%20services!" 
+     class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Thank You Overlay -->
+  <div class="thank-you-overlay" id="thankYouOverlay">
+    <div>🌹 Thank You for Reaching Out 🌹</div>
+    <div id="roses"></div>
+  </div>
+
+  <script>
+    const overlay = document.getElementById("thankYouOverlay");
+    const roseContainer = document.getElementById("roses");
+    const particlesContainer = document.getElementById("particles");
+
+    // Create colorful particles
+    const colors = ['#ff0000', '#ff7700', '#ffdd00', '#00ff00', '#0088ff', '#0000ff', '#9900ff', '#ff00ff'];
+    for (let i = 0; i < 50; i++) {
+      let particle = document.createElement("div");
+      particle.className = "particle";
+      particle.style.left = Math.random() * 100 + "vw";
+      particle.style.top = Math.random() * 100 + "vh";
+      particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      particle.style.animationDuration = (10 + Math.random() * 10) + "s";
+      particle.style.animationDelay = Math.random() * 5 + "s";
+      particle.style.width = (3 + Math.random() * 5) + "px";
+      particle.style.height = particle.style.width;
+      particlesContainer.appendChild(particle);
+    }
+
+    // Function to show thank you overlay
+    function showThankYou() {
+      document.getElementById("main-container").style.display = "none";
+      overlay.style.display = "flex";
+
+      // Add roses dynamically
+      for (let i = 0; i < 20; i++) {
+        let rose = document.createElement("div");
+        rose.className = "rose";
+        rose.style.left = Math.random() * 100 + "vw";
+        rose.style.animationDuration = (5 + Math.random() * 5) + "s";
+        rose.style.color = colors[Math.floor(Math.random() * colors.length)];
+        rose.style.animationDelay = Math.random() * 2 + "s";
+        rose.innerText = "🌹";
+        roseContainer.appendChild(rose);
+      }
+      
+      // Hide overlay after 5 seconds
+      setTimeout(() => {
+        overlay.style.display = "none";
+        document.getElementById("main-container").style.display = "block";
+      }, 5000);
+    }
+
+    // Add event listeners to service buttons and career button
+    document.querySelectorAll('.service-button, .career-button').forEach(button => {
+      button.addEventListener('click', showThankYou);
+    });
+  </script>
+
+</body>
+</html>
