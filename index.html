@@ -525,7 +525,7 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
 <body>
 
@@ -546,7 +546,7 @@
     </div>
     
     <div class="mirror-container">
-      <a href="https://jagtappritam7.gumroad.com/l/pvoryz" class="link"><i class="fas fa-store"></i> Gumroad Products</a>
+      <a href="https://jagtappritam7.gumroad.com/l/pvoryz" class="link" target="_blank"><i class="fas fa-store"></i> Gumroad Products</a>
       <div class="mirror-reflection"></div>
     </div>
     
@@ -561,12 +561,12 @@
     </div>
     
     <div class="mirror-container">
-      <a href="https://wa.me/919372035409?text=Hi%20Pritam%2C%20I%20saw%20your%204D%20Webpage%20and%20I'm%20interested%20in%20your%20services!" class="link"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+      <a href="https://wa.me/919372035409?text=Hi%20Pritam%2C%20I%20saw%20your%204D%20Webpage%20and%20I'm%20interested%20in%20your%20services!" class="link" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
       <div class="mirror-reflection"></div>
     </div>
 
     <div class="mirror-container">
-      <a href="https://prityaa379.github.io/Upcomingebook/" class="link" target="_blank"><i class="fas fa-book"></i> Upcoming Books</a>
+      <a href="https://prityaa379.github.io/theethicalglitchcontent/" class="link upcoming-books-link" target="_blank"><i class="fas fa-book"></i> Upcoming Books</a>
       <div class="mirror-reflection"></div>
     </div>
 
@@ -663,7 +663,8 @@
     }
 
     // Function to show thank you overlay
-    function showThankYou() {
+    function showThankYou(event, url) {
+      if (event) event.preventDefault(); // Prevent default link behavior
       document.getElementById("main-container").style.display = "none";
       overlay.style.display = "flex";
 
@@ -679,16 +680,22 @@
         roseContainer.appendChild(rose);
       }
       
-      // Hide overlay after 5 seconds
+      // Hide overlay after 5 seconds and redirect if URL provided
       setTimeout(() => {
         overlay.style.display = "none";
         document.getElementById("main-container").style.display = "block";
+        if (url) window.open(url, '_blank'); // Redirect to URL
       }, 5000);
     }
 
     // Add event listeners to service buttons and career button
     document.querySelectorAll('.service-button, .career-button').forEach(button => {
       button.addEventListener('click', showThankYou);
+    });
+
+    // Add event listener to Upcoming Books link
+    document.querySelector('.upcoming-books-link').addEventListener('click', (event) => {
+      showThankYou(event, 'https://prityaa379.github.io/theethicalglitchcontent/');
     });
   </script>
 
