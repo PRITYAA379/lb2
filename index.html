@@ -525,6 +525,95 @@
       }  
     }  
 
+    /* Portfolio Dropdown Styles */  
+    .portfolio-dropdown {  
+      position: relative;  
+      display: inline-block;  
+      width: 90%;  
+      margin: 15px auto;  
+    }  
+
+    .portfolio-dropbtn {  
+      display: block;  
+      background: rgba(255, 255, 255, 0.15);  
+      backdrop-filter: blur(10px);  
+      color: white;  
+      padding: 15px 20px;  
+      border-radius: 12px;  
+      text-decoration: none;  
+      text-align: center;  
+      font-weight: bold;  
+      transition: all 0.4s ease;  
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);  
+      position: relative;  
+      width: 100%;  
+      overflow: hidden;  
+      border: 1px solid rgba(255,255,255,0.2);  
+      cursor: pointer;  
+    }  
+
+    .portfolio-dropbtn::before {  
+      content: '';  
+      position: absolute;  
+      top: -50%;  
+      left: -50%;  
+      width: 200%;  
+      height: 200%;  
+      background: linear-gradient(  
+        to bottom right,  
+        rgba(255,255,255,0) 0%,  
+        rgba(255,255,255,0) 45%,  
+        rgba(255,255,255,0.5) 50%,  
+        rgba(255,255,255,0) 55%,  
+        rgba(255,255,255,0) 100%  
+      );  
+      transform: rotate(30deg);  
+      animation: shine 3s infinite;  
+    }  
+
+    .portfolio-dropbtn:hover {  
+      background: rgba(255, 255, 255, 0.25);  
+      transform: translateY(-5px);  
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5),  
+                  0 0 15px rgba(255,255,255,0.4);  
+    }  
+
+    .portfolio-dropdown-content {  
+      display: none;  
+      position: relative;  
+      background: rgba(255, 255, 255, 0.1);  
+      backdrop-filter: blur(10px);  
+      border-radius: 0 0 12px 12px;  
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);  
+      z-index: 1;  
+      width: 100%;  
+      margin-top: -15px;  
+      padding-top: 15px;  
+      border: 1px solid rgba(255,255,255,0.2);  
+      border-top: none;  
+    }  
+
+    .portfolio-dropdown-content a {  
+      color: white;  
+      padding: 12px 16px;  
+      text-decoration: none;  
+      display: block;  
+      transition: all 0.3s ease;  
+    }  
+
+    .portfolio-dropdown-content a:hover {  
+      background-color: rgba(255,255,255,0.2);  
+      transform: translateX(5px);  
+    }  
+
+    .portfolio-dropdown:hover .portfolio-dropdown-content {  
+      display: block;  
+    }  
+
+    .portfolio-dropdown:hover .portfolio-dropbtn {  
+      border-radius: 12px 12px 0 0;  
+    }  
+
     /* GitHub Dropdown Styles */  
     .github-dropdown {  
       position: relative;  
@@ -676,6 +765,26 @@
       <a href="https://yourwebsite.com" class="link"><i class="fas fa-globe"></i> Visit My Website</a>  
       <div class="mirror-reflection"></div>  
     </div>  
+
+    <!-- Portfolio Dropdown -->
+    <div class="mirror-container">
+      <div class="portfolio-dropdown">
+        <button class="portfolio-dropbtn"><i class="fas fa-briefcase"></i> Portfolio</button>
+        <div class="portfolio-dropdown-content">
+          <a href="https://prityaa379.github.io/rahulfc/" target="_blank"><i class="fas fa-dumbbell"></i> Fitness Coach Landing Page 1</a>
+          <a href="https://prityaa379.github.io/rahulfc1/" target="_blank"><i class="fas fa-dumbbell"></i> Fitness Coach Landing Page 2</a>
+          <a href="https://prityaa379.github.io/rahulfc2/" target="_blank"><i class="fas fa-dumbbell"></i> Fitness Coach Landing Page 3</a>
+          <a href="https://prityaa379.github.io/rahulfc3/" target="_blank"><i class="fas fa-dumbbell"></i> Fitness Coach Landing Page 4</a>
+          <a href="https://prityaa379.github.io/rahulfc4/" target="_blank"><i class="fas fa-dumbbell"></i> Fitness Coach Landing Page 5</a>
+          <a href="https://prityaa379.github.io/rahulfc5/" target="_blank"><i class="fas fa-dumbbell"></i> Fitness Coach Landing Page 6</a>
+          <a href="https://prityaa379.github.io/rahulfc6/" target="_blank"><i class="fas fa-dumbbell"></i> Fitness Coach Landing Page 7</a>
+          <a href="https://prityaa379.github.io/rahulfc7/" target="_blank"><i class="fas fa-dumbbell"></i> Fitness Coach Landing Page 8</a>
+          <a href="https://prityaa379.github.io/rahulfc8/" target="_blank"><i class="fas fa-dumbbell"></i> Fitness Coach Landing Page 9</a>
+          <a href="https://prityaa379.github.io/rahulfc9/" target="_blank"><i class="fas fa-dumbbell"></i> Fitness Coach Landing Page 10</a>
+        </div>
+        <div class="mirror-reflection"></div>
+      </div>
+    </div>
 
     <!-- GitHub Dropdown -->
     <div class="mirror-container">
