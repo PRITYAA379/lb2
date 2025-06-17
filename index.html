@@ -53,27 +53,14 @@
     }
 
     @keyframes neonGlow {
-      0% {
-        background-position: 0% 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
-
-      100% {
-        background-position: 0% 50%;
-      }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-10px);
-      }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
     h1 {
@@ -89,17 +76,9 @@
     }
 
     @keyframes neonGlowText {
-      0% {
-        background-position: 0% 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
-
-      100% {
-        background-position: 0% 50%;
-      }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     p {
@@ -147,13 +126,8 @@
     }
 
     @keyframes shine {
-      0% {
-        transform: translateX(-100%) rotate(30deg);
-      }
-
-      100% {
-        transform: translateX(100%) rotate(30deg);
-      }
+      0% { transform: translateX(-100%) rotate(30deg); }
+      100% { transform: translateX(100%) rotate(30deg); }
     }
 
     .link:hover {
@@ -236,7 +210,6 @@
         0 0 20px var(--glow-color);
     }
 
-    /* 3D Career Guide Button */
     .career-button {
       display: block;
       background: linear-gradient(135deg, var(--neon-pink), var(--glow-pink));
@@ -295,7 +268,6 @@
       transform: translateX(100%);
     }
 
-    /* Services Section */
     .services-section {
       margin: 30px 0;
     }
@@ -416,7 +388,6 @@
       box-shadow: 0 5px 15px var(--glow-color);
     }
 
-    /* Thank You Overlay */
     .thank-you-overlay {
       position: fixed;
       top: 0;
@@ -443,18 +414,10 @@
     }
 
     @keyframes floatRose {
-      0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 1;
-      }
-
-      100% {
-        transform: translateY(-10vh) rotate(360deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
     }
 
-    /* Mirror Effect */
     .mirror-container {
       position: relative;
       margin-bottom: 30px;
@@ -502,7 +465,6 @@
       filter: blur(1px);
     }
 
-    /* Colorful floating particles */
     .particles {
       position: fixed;
       top: 0;
@@ -523,26 +485,12 @@
     }
 
     @keyframes floatParticle {
-      0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-      }
-
-      10% {
-        opacity: 0.6;
-      }
-
-      90% {
-        opacity: 0.6;
-      }
-
-      100% {
-        transform: translateY(-100vh) translateX(100px);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) translateX(0); opacity: 0; }
+      10% { opacity: 0.6; }
+      90% { opacity: 0.6; }
+      100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
     }
 
-    /* Portfolio Dropdown Styles */
     .portfolio-dropdown {
       position: relative;
       display: inline-block;
@@ -629,7 +577,6 @@
       border-radius: 12px 12px 0 0;
     }
 
-    /* Portfolio Submenu Styles */
     .portfolio-submenu {
       position: relative;
     }
@@ -675,7 +622,178 @@
       text-align: center;
     }
 
-    /* GitHub Dropdown Styles */
+    .instagram-dropdown {
+      position: relative;
+      display: inline-block;
+      width: 90%;
+      margin: 15px auto;
+    }
+
+    .instagram-dropbtn {
+      display: block;
+      background: rgba(255, 42, 141, 0.15);
+      backdrop-filter: blur(10px);
+      color: var(--cosmic-white);
+      padding: 15px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      transition: all 0.4s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid var(--glow-color);
+      cursor: pointer;
+    }
+
+    .instagram-dropbtn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right,
+          rgba(255, 42, 141, 0) 0%,
+          rgba(255, 42, 141, 0) 45%,
+          rgba(255, 42, 141, 0.5) 50%,
+          rgba(255, 42, 141, 0) 55%,
+          rgba(255, 42, 141, 0) 100%);
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+
+    .instagram-dropbtn:hover {
+      background: rgba(255, 42, 141, 0.25);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5),
+        0 0 15px var(--glow-color);
+    }
+
+    .instagram-dropdown-content {
+      display: none;
+      position: relative;
+      background: rgba(255, 46, 141, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      width: 100%;
+      margin-top: -15px;
+      padding-top: 15px;
+      border: 1px solid var(--glow-color);
+      border-top: none;
+    }
+
+    .instagram-dropdown-content a {
+      color: var(--cosmic-white);
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    .instagram-dropdown-content a:hover {
+      background-color: rgba(255, 42, 141, 0.2);
+      transform: translateX(5px);
+    }
+
+    .instagram-dropdown:hover .instagram-dropdown-content {
+      display: block;
+    }
+
+    .instagram-dropdown:hover .instagram-dropbtn {
+      border-radius: 12px 12px 0 0;
+    }
+
+    .youtube-dropdown {
+      position: relative;
+      display: inline-block;
+      width: 90%;
+      margin: 15px auto;
+    }
+
+    .youtube-dropbtn {
+      display: block;
+      background: rgba(255, 42, 141, 0.15);
+      backdrop-filter: blur(10px);
+      color: var(--cosmic-white);
+      padding: 15px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      transition: all 0.4s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid var(--glow-color);
+      cursor: pointer;
+    }
+
+    .youtube-dropbtn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right,
+          rgba(255, 42, 141, 0) 0%,
+          rgba(255, 42, 141, 0) 45%,
+          rgba(255, 42, 141, 0.5) 50%,
+          rgba(255, 42, 141, 0) 55%,
+          rgba(255, 42, 141, 0) 100%);
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+
+    .youtube-dropbtn:hover {
+      background: rgba(255, 42, 141, 0.25);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5),
+        0 0 15px var(--glow-color);
+    }
+
+    .youtube-dropdown-content {
+      display: none;
+      position: relative;
+      background: rgba(255, 42, 141, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      width: 100%;
+      margin-top: -15px;
+      padding-top: 15px;
+      border: 1px solid var(--glow-color);
+      border-top: none;
+    }
+
+    .youtube-dropdown-content a {
+      color: var(--cosmic-white);
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    .youtube-dropdown-content a:hover {
+      background-color: rgba(255, 42, 141, 0.2);
+      transform: translateX(5px);
+    }
+
+    .youtube-dropdown:hover .youtube-dropdown-content {
+      display: block;
+    }
+
+    .youtube-dropdown:hover .youtube-dropbtn {
+      border-radius: 12px 12px 0 0;
+    }
+
     .github-dropdown {
       position: relative;
       display: inline-block;
@@ -762,7 +880,6 @@
       border-radius: 12px 12px 0 0;
     }
 
-    /* Gumroad Submenu Styles */
     .gumroad-submenu {
       position: relative;
     }
@@ -807,6 +924,10 @@
       width: 18px;
       text-align: center;
     }
+
+    .social-channels-section, .ebooks-section {
+      margin: 30px 0;
+    }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
@@ -820,6 +941,64 @@
     </div>
     <h1>Pritam Jagtap</h1>
     <p>Digital Creator | Developer | Visionary</p>
+
+    <!-- My Social Channels Section -->
+    <div class="social-channels-section">
+      <h2 class="services-title">My Social Channels</h2>
+      <div class="mirror-container">
+        <div class="instagram-dropdown">
+          <button class="instagram-dropbtn"><i class="fab fa-instagram"></i> Instagram</button>
+          <div class="instagram-dropdown-content">
+            <a href="https://www.instagram.com/prityaa379?igsh=c3B6b2ptejUwMjF4&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i> prityaa379</a>
+            <a href="https://www.instagram.com/digitalconfvisions?igsh=MXF6Y2xxeDluMm1wZA%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i> digitalconfvisions</a>
+            <a href="https://www.instagram.com/slumforlife/profilecard/?igsh=MWF1M2QwOGU3cG5oMA==" target="_blank"><i class="fab fa-instagram"></i> slumforlife</a>
+            <a href="https://www.instagram.com/tri_ptoworld?igsh=MTQ5dTRjMTdqcnA3cA%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i> triptoworld</a>
+            <a href="https://www.instagram.com/stolen.stuff9?igsh=MTQzd2k3bmdtdmZncQ%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i> stolenstuff9</a>
+          </div>
+        </div>
+        <div class="mirror-reflection"></div>
+      </div>
+      <div class="mirror-container">
+        <div class="youtube-dropdown">
+          <button class="youtube-dropbtn"><i class="fab fa-youtube"></i> YouTube</button>
+          <div class="youtube-dropdown-content">
+            <a href="https://youtube.com/@prityaa379?si=nXQegrscXMJ9nlO-" target="_blank"><i class="fab fa-youtube"></i> prityaa379</a>
+            <a href="https://youtube.com/@preetjagtap?si=jMSN64JYU-92jX7H" target="_blank"><i class="fab fa-youtube"></i> AI Case Study</a>
+            <a href="https://youtube.com/@dgvjns?si=kr3DO1VkNswNM_yT" target="_blank"><i class="fab fa-youtube"></i> digitalconfvisions</a>
+          </div>
+        </div>
+        <div class="mirror-reflection"></div>
+      </div>
+      <div class="mirror-container">
+        <a href="https://www.facebook.com/share/16fmTVSfFx/?mibextid=wwXIfr" class="link" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+        <div class="mirror-reflection"></div>
+      </div>
+      <div class="mirror-container">
+        <a href="https://x.com/Prityaa379?t=_oyA6dOBxrm5O7wtdcbZpQ&s=09" class="link" target="_blank"><i class="fab fa-x-twitter"></i> X</a>
+        <div class="mirror-reflection"></div>
+      </div>
+      <div class="mirror-container">
+        <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="link" target="_blank"><i class="fab fa-linkedin"></i> Pritam Jagtap</a>
+        <div class="mirror-reflection"></div>
+      </div>
+      <div class="mirror-container">
+        <a href="https://github.com/PRITYAA379" class="link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <div class="mirror-reflection"></div>
+      </div>
+    </div>
+
+    <!-- Your Free E-Books Section -->
+    <div class="ebooks-section">
+      <h2 class="services-title">Your Free E-Books</h2>
+      <div class="mirror-container">
+        <a href="#" class="link" target="_blank"><i class="fas fa-book-open"></i> E-Book 1: Digital Marketing Guide</a>
+        <div class="mirror-reflection"></div>
+      </div>
+      <div class="mirror-container">
+        <a href="#" class="link" target="_blank"><i class="fas fa-book-open"></i> E-Book 2: Web Development Basics</a>
+        <div class="mirror-reflection"></div>
+      </div>
+    </div>
 
     <div class="mirror-container">
       <a href="https://yourwebsite.com" class="link"><i class="fas fa-globe"></i> Visit My Website</a>
@@ -970,10 +1149,10 @@
     </div>
 
     <div class="social-links">
-      <a href="https://www.instagram.com/" class="social-link" style="--i: 0"><i class="fab fa-instagram"></i></a>
-      <a href="https://x.com/Prityaa379?t=1wZ0UV_K_9DzXa_-y3_qSw&s=09" class="social-link" style="--i: 1"><i class="fab fa-x-twitter"></i></a>
-      <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" class="social-link" style="--i: 2"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/PRITYAA379" class="social-link" style="--i: 3"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/" class="social-link" style="--i: 0" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://x.com/Prityaa379?t=1wZ0UV_K_9DzXa_-y3_qSw&s=09" class="social-link" style="--i: 1" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" class="social-link" style="--i: 2" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/PRITYAA379" class="social-link" style="--i: 3" target="_blank"><i class="fab fa-github"></i></a>
     </div>
   </div>
 
@@ -991,7 +1170,8 @@
     const overlay = document.getElementById("thankYouOverlay");
     const roseContainer = document.getElementById("roses");
     const particlesContainer = document.getElementById("particles");
-    // Create colorful particles  
+
+    // Create colorful particles
     const colors = ['#ff2a8d', '#ff8cc6', '#ff0066', '#ff99cc'];
     for (let i = 0; i < 50; i++) {
       let particle = document.createElement("div");
@@ -1005,7 +1185,8 @@
       particle.style.height = particle.style.width;
       particlesContainer.appendChild(particle);
     }
-    // Create roses for thank you overlay  
+
+    // Create roses for thank you overlay
     function createRoses() {
       const emojis = ['🌹', '🌸', '🌺', '🌻', '🌷', '💐', '🏵️'];
       for (let i = 0; i < 20; i++) {
@@ -1019,10 +1200,11 @@
         roseContainer.appendChild(rose);
       }
     }
-    // Show thank you overlay when links are clicked  
-    document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"], .link, .social-link').forEach(link => {
+
+    // Show thank you overlay when links are clicked
+    document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"], .link:not([target="_blank"]), .social-link:not([target="_blank"])').forEach(link => {
       link.addEventListener('click', function(e) {
-        if (this.getAttribute('target') !== '_blank') {
+        if (!this.getAttribute('target')) {
           e.preventDefault();
           createRoses();
           overlay.style.display = 'flex';
@@ -1036,5 +1218,4 @@
     });
   </script>
 </body>
-
 </html>
