@@ -7,14 +7,14 @@
   <title>Pritam's Cosmic Portal</title>
   <style>
     :root {
-      --neon-pink: #ff007a;
-      --glow-pink: #ff66b2;
+      --neon-pink: #ff2a8d;
+      --glow-pink: #ff8cc6;
       --dark-cosmos: #0a0015;
-      --cosmic-white: #fff0f5;
+      --cosmic-white: #fff5f8;
       --starlight: #ffffff;
       --void-black: #000010;
-      --plasma-purple: #b300ff;
-      --glow-color: rgba(255, 0, 122, 0.8);
+      --plasma-purple: #cc33ff;
+      --glow-color: rgba(255, 42, 141, 0.6);
     }
 
     * {
@@ -31,12 +31,13 @@
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
-      perspective: 1500px;
+      perspective: 1000px;
       overflow-y: auto;
       font-size: 16px;
+      will-change: transform;
     }
 
-    /* Mobile-first Starfield with 5D Zoom */
+    /* Optimized Starfield with Softer Zoom */
     body::before {
       content: '';
       position: fixed;
@@ -44,16 +45,14 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: 
-        radial-gradient(circle at 50% 50%, rgba(255, 0, 122, 0.15) 0%, transparent 70%),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.4"/></svg>');
+      background: radial-gradient(circle at 50% 50%, rgba(255, 42, 141, 0.1) 0%, transparent 70%);
       z-index: -2;
-      animation: zoomStarfield 50s linear infinite;
+      animation: zoomStarfield 60s linear infinite;
     }
 
     @keyframes zoomStarfield {
       0% { transform: scale(1) translateZ(0); }
-      100% { transform: scale(1.8) translateZ(-150px); }
+      100% { transform: scale(1.4) translateZ(-80px); }
     }
 
     .starfield {
@@ -73,35 +72,35 @@
       background: transparent;
     }
 
-    .star-layer-1 { animation: floatStars 40s linear infinite; transform: translateZ(-20px); }
-    .star-layer-2 { animation: floatStars 70s linear infinite; transform: translateZ(-60px); }
-    .star-layer-3 { animation: floatStars 100s linear infinite; transform: translateZ(-120px); }
+    .star-layer-1 { animation: floatStars 50s linear infinite; transform: translateZ(-10px); }
+    .star-layer-2 { animation: floatStars 80s linear infinite; transform: translateZ(-30px); }
+    .star-layer-3 { animation: floatStars 110s linear infinite; transform: translateZ(-50px); }
 
     @keyframes floatStars {
       0% { transform: translateZ(0) translateY(0); }
-      100% { transform: translateZ(0) translateY(-1200px); }
+      100% { transform: translateZ(0) translateY(-800px); }
     }
 
     @keyframes pulseGlow {
-      0%, 100% { transform: translateY(0) rotate(0deg) rotateX(0deg); opacity: 0.9; }
-      50% { transform: translateY(-15px) rotate(6deg) rotateX(25deg); opacity: 1; }
+      0%, 100% { transform: translateY(0); opacity: 0.8; }
+      50% { transform: translateY(-10px); opacity: 1; }
     }
 
     @keyframes cosmicSway {
-      0%, 100% { transform: rotate(-5deg) rotateY(25deg); }
-      50% { transform: rotate(5deg) rotateY(-25deg); }
+      0%, 100% { transform: rotate(-3deg); }
+      50% { transform: rotate(3deg); }
     }
 
     @keyframes floatParticle {
-      0% { transform: translateY(0) translateX(0) rotateY(0deg); opacity: 0; }
-      10% { opacity: 0.9; }
-      90% { opacity: 0.9; }
-      100% { transform: translateY(-150vh) translateX(120px) rotateY(1440deg); opacity: 0; }
+      0% { transform: translateY(0); opacity: 0; }
+      10% { opacity: 0.7; }
+      90% { opacity: 0.7; }
+      100% { transform: translateY(-100vh); opacity: 0; }
     }
 
     @keyframes floatStar {
-      0% { transform: translateY(100vh) rotate(0deg) rotateX(0deg); opacity: 1; }
-      100% { transform: translateY(-30vh) rotate(1080deg) rotateX(1080deg); opacity: 0; }
+      0% { transform: translateY(100vh); opacity: 0.8; }
+      100% { transform: translateY(-20vh); opacity: 0; }
     }
 
     .container {
@@ -110,30 +109,26 @@
       position: relative;
       transform-style: preserve-3d;
       z-index: 1;
-      padding-bottom: 80px;
+      padding-bottom: 70px;
     }
 
     .profile-img-container {
       position: relative;
-      width: 100px;
-      height: 100px;
+      width: 90px;
+      height: 90px;
       margin: 20px auto 10px;
       border-radius: 50%;
-      background: linear-gradient(45deg, var(--neon-pink), var(--glow-pink), var(--plasma-purple));
+      background: linear-gradient(45deg, var(--neon-pink), var(--glow-pink));
       padding: 3px;
-      border: 3px solid var(--neon-pink);
-      box-shadow: 0 0 50px var(--glow-color),
-                  inset 0 0 20px rgba(255, 255, 255, 0.6),
-                  0 0 40px var(--glow-color);
-      transform: translateZ(40px) rotateX(15deg);
-      transition: transform 0.6s ease, box-shadow 0.6s ease;
+      border: 2px solid var(--neon-pink);
+      box-shadow: 0 0 30px var(--glow-color);
+      transform: translateZ(20px);
+      transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
     }
 
     .profile-img-container:hover {
-      transform: translateZ(60px) rotateX(20deg);
-      box-shadow: 0 0 70px var(--glow-color),
-                  inset 0 0 30px rgba(255, 255, 255, 0.7),
-                  0 0 50px var(--glow-color);
+      transform: translateZ(30px);
+      box-shadow: 0 0 40px var(--glow-color);
     }
 
     .profile-img {
@@ -143,305 +138,251 @@
       object-fit: cover;
       border: 2px solid var(--starlight);
       box-sizing: border-box;
-      filter: brightness(1.4) contrast(1.3);
+      filter: brightness(1.2);
     }
 
     h1 {
       text-align: center;
-      margin: 10px 0;
-      font-size: 24px;
-      background: linear-gradient(to right, var(--neon-pink), var(--glow-pink), var(--plasma-purple));
-      -webkit-background-clip: text Bous;
+      margin: 8px 0;
+      font-size: 22px;
+      background: linear-gradient(to right, var(--neon-pink), var(--glow-pink));
+      -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 3px 20px rgba(0, 0, 0, 0.8),
-                   0 0 30px var(--glow-color);
-      position: relative;
-      transform: translateZ(30px);
-      transition: transform 0.6s ease, text-shadow 0.6s ease;
+      text-shadow: 0 0 15px var(--glow-color);
+      transform: translateZ(15px);
+      transition: transform 0.4s ease-out, text-shadow 0.4s ease-out;
     }
 
     h1:hover {
-      transform: translateZ(50px);
-      text-shadow: 0 3px 25px rgba(0, 0, 0, 0.9),
-                   0 0 40px var(--glow-color);
+      transform: translateZ(25px);
+      text-shadow: 0 0 20px var(--glow-color);
     }
 
     h1::after {
       content: '';
       position: absolute;
-      bottom: -10px;
-      left: 15%;
-      width: 70%;
-      height: 3px;
+      bottom: -8px;
+      left: 20%;
+      width: 60%;
+      height: 2px;
       background: linear-gradient(to right, transparent, var(--neon-pink), transparent);
-      box-shadow: 0 0 20px var(--glow-color);
+      box-shadow: 0 0 10px var(--glow-color);
     }
 
     p {
       text-align: center;
-      opacity: 0.95;
-      font-size: 14px;
+      opacity: 0.9;
+      font-size: 13px;
       color: var(--cosmic-white);
-      text-shadow: 0 0 15px var(--glow-color);
-      transform: translateZ(20px);
-      margin-bottom: 15px;
+      text-shadow: 0 0 8px var(--glow-color);
+      transform: translateZ(10px);
+      margin-bottom: 12px;
     }
 
     .link {
       display: block;
-      background: rgba(255, 0, 122, 0.3);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 42, 141, 0.2);
+      backdrop-filter: blur(8px);
       color: var(--starlight);
-      padding: 14px 20px;
-      margin: 12px auto;
-      border-radius: 12px;
+      padding: 12px 18px;
+      margin: 10px auto;
+      border-radius: 10px;
       text-decoration: none;
       text-align: center;
       font-weight: bold;
-      font-size: 15px;
-      transition: all 0.5s ease;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6),
-                  inset 0 0 10px rgba(255, 255, 255, 0.4),
-                  0 0 35px var(--glow-color);
+      font-size: 14px;
+      transition: all 0.3s ease-out;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5),
+                  0 0 25px var(--glow-color);
       position: relative;
       width: 100%;
-      max-width: 400px;
-      overflow: hidden;
-      border: 2px solid rgba(255, 0, 122, 0.7);
-      transform: translateZ(20px) rotateX(10deg);
-      transform-style: preserve-3d;
-    }
-
-    .link::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-      transition: 0.7s;
-    }
-
-    .link:hover::before {
-      left: 100%;
+      max-width: 350px;
+      border: 1px solid rgba(255, 42, 141, 0.5);
+      transform: translateZ(10px);
     }
 
     .link:hover {
-      background: rgba(255, 0, 122, 0.5);
-      transform: translateZ(40px) rotateX(0deg);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7),
-                  0 0 50px var(--glow-color);
+      background: rgba(255, 42, 141, 0.4);
+      transform: translateZ(20px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6),
+                  0 0 30px var(--glow-color);
     }
 
     .social-links {
       display: flex;
       justify-content: center;
-      gap: 15px;
-      margin: 20px 0;
-      transform: translateZ(20px);
+      gap: 12px;
+      margin: 15px 0;
+      transform: translateZ(10px);
       flex-wrap: wrap;
     }
 
     .social-link {
       color: var(--starlight);
-      font-size: 24px;
-      width: 45px;
-      height: 45px;
+      font-size: 22px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255, 0, 122, 0.4);
-      transition: all 0.5s ease;
-      position: relative;
-      overflow: hidden;
-      border: 2px solid rgba(255, 0, 122, 0.7);
-      box-shadow: 0 0 30px var(--glow-color);
-      transform: translateZ(20px) rotateY(20deg);
+      background: rgba(255, 42, 141, 0.3);
+      transition: all 0.3s ease-out;
+      border: 1px solid rgba(255, 42, 141, 0.5);
+      box-shadow: 0 0 20px var(--glow-color);
+      transform: translateZ(10px);
     }
 
     .social-link:hover {
-      color: var(--starlight);
       background: linear-gradient(45deg, var(--neon-pink), var(--glow-pink));
-      transform: scale(1.25) translateZ(40px) rotateY(0deg);
-      box-shadow: 0 0 40px var(--glow-color);
+      transform: scale(1.2) translateZ(20px);
+      box-shadow: 0 0 25px var(--glow-color);
     }
 
     .whatsapp-float {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      bottom: 15px;
+      right: 15px;
       background: var(--neon-pink);
       color: var(--starlight);
       border-radius: 50%;
-      width: 55px;
-      height: 55px;
-      font-size: 26px;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
       text-align: center;
-      line-height: 55px;
+      line-height: 50px;
       z-index: 999;
-      box-shadow: 0 8px 35px rgba(0, 0, 0, 0.7),
-                  0 0 40px var(--glow-color);
-      transition: all 0.5s ease;
-      transform: translateZ(30px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6),
+                  0 0 25px var(--glow-color);
+      transition: all 0.3s ease-out;
+      transform: translateZ(15px);
     }
 
     .whatsapp-float:hover {
-      transform: scale(1.3) translateZ(50px) rotate(20deg);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8),
-                  0 0 50px var(--glow-color);
+      transform: scale(1.2) translateZ(25px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7),
+                  0 0 30px var(--glow-color);
     }
 
     .career-button {
       display: block;
       background: linear-gradient(135deg, var(--neon-pink), var(--glow-pink));
       color: var(--starlight);
-      padding: 16px 20px;
-      margin: 20px auto;
-      border-radius: 12px;
+      padding: 14px 18px;
+      margin: 15px auto;
+      border-radius: 10px;
       text-decoration: none;
       text-align: center;
       font-weight: bold;
-      font-size: 16px;
-      transition: all 0.5s ease;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6),
-                  0 5px 0 0 rgba(255, 0, 122, 0.7),
-                  inset 0 0 15px rgba(255, 255, 255, 0.5),
-                  0 0 45px var(--glow-color);
-      position: relative;
+      font-size: 15px;
+      transition: all 0.3s ease-out;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5),
+                  0 0 25px var(--glow-color);
       width: 100%;
-      max-width: 400px;
+      max-width: 350px;
       border: none;
       cursor: pointer;
-      overflow: hidden;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      transform: translateZ(30px) rotateX(10deg);
+      letter-spacing: 1px;
+      transform: translateZ(15px);
     }
 
     .career-button:hover {
-      transform: translateZ(50px) translateY(-5px) rotateX(0deg);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7),
-                  0 7px 0 0 rgba(255, 0, 122, 0.7),
-                  inset 0 0 20px rgba(255, 255, 255, 0.6),
-                  0 0 60px var(--glow-color);
+      transform: translateZ(25px) translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6),
+                  0 0 30px var(--glow-color);
     }
 
     .career-button:active {
-      transform: translateZ(25px) translateY(2px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6),
-                  0 3px 0 0 rgba(255, 0, 122, 0.7),
-                  inset 0 0 15px rgba(255, 255, 255, 0.5),
-                  0 0 40px var(--glow-color);
-    }
-
-    .career-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to right,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 0.6) 50%,
-          rgba(255, 255, 255, 0) 100%);
-      transform: translateX(-100%) skewY(15deg);
-      transition: all 0.8s ease;
-    }
-
-    .career-button:hover::before {
-      transform: translateX(100%) skewY(15deg);
+      transform: translateZ(10px) translateY(1px);
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.5),
+                  0 0 20px var(--glow-color);
     }
 
     .services-section {
-      margin: 25px 0;
+      margin: 20px 0;
       position: relative;
-      transform: translateZ(20px);
+      transform: translateZ(10px);
     }
 
     .services-title {
       text-align: center;
-      margin-bottom: 15px;
-      font-size: 22px;
+      margin-bottom: 12px;
+      font-size: 20px;
       background: linear-gradient(to right, var(--neon-pink), var(--glow-pink));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 3px 20px rgba(0, 0, 0, 0.5),
-                   0 0 30px var(--glow-color);
-      transform: translateZ(30px);
+      text-shadow: 0 0 15px var(--glow-color);
+      transform: translateZ(15px);
     }
 
     .services-container {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 12px;
     }
 
     .service-card {
-      background: rgba(255, 0, 122, 0.3);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 18px;
-      transition: all 0.5s ease;
-      border: 2px solid rgba(255, 0, 122, 0.5);
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5),
-                  0 0 40px var(--glow-color);
+      background: rgba(255, 42, 141, 0.2);
+      backdrop-filter: blur(8px);
+      border-radius: 10px;
+      padding: 15px;
+      transition: all 0.3s ease-out;
+      border: 1px solid rgba(255, 42, 141, 0.5);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5),
+                  0 0 25px var(--glow-color);
       position: relative;
-      overflow: hidden;
-      transform: translateZ(20px) rotateX(10deg);
-      transform-style: preserve-3d;
+      transform: translateZ(10px);
     }
 
     .service-card:hover {
-      transform: translateZ(40px) translateY(-5px) rotateX(0deg);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6),
-                  0 0 50px var(--glow-color);
-      background: rgba(255, 0, 122, 0.5);
+      transform: translateZ(20px) translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6),
+                  0 0 30px var(--glow-color);
+      background: rgba(255, 42, 141, 0.4);
     }
 
     .service-title {
-      font-size: 20px;
-      margin-bottom: 10px;
+      font-size: 18px;
+      margin-bottom: 8px;
       color: var(--starlight);
       display: flex;
       align-items: center;
-      gap: 10px;
-      text-shadow: 0 0 20px var(--glow-color);
-      transform: translateZ(20px);
+      gap: 8px;
+      text-shadow: 0 0 10px var(--glow-color);
+      transform: translateZ(10px);
     }
 
     .service-icon {
-      font-size: 24px;
+      font-size: 22px;
       background: linear-gradient(45deg, var(--neon-pink), var(--glow-pink));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 10px var(--glow-color));
+      filter: drop-shadow(0 0 5px var(--glow-color));
     }
 
     .service-description {
-      color: rgba(255, 255, 255, 0.95);
-      font-size: 14px;
-      line-height: 1.5;
-      margin-bottom: 12px;
-      text-shadow: 0 0 10px var(--glow-color);
-      transform: translateZ(15px);
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 13px;
+      line-height: 1.4;
+      margin-bottom: 10px;
+      text-shadow: 0 0 5px var(--glow-color);
+      transform: translateZ(5px);
     }
 
     .service-features {
       list-style-type: none;
       padding-left: 0;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .service-features li {
-      padding: 5px 0;
-      color: rgba(255, 255, 255, 0.9);
+      padding: 4px 0;
+      color: rgba(255, 255, 255, 0.85);
       position: relative;
-      padding-left: 25px;
-      font-size: 13px;
-      text-shadow: 0 0 10px var(--glow-color);
+      padding-left: 20px;
+      font-size: 12px;
+      text-shadow: 0 0 5px var(--glow-color);
     }
 
     .service-features li::before {
@@ -449,30 +390,29 @@
       position: absolute;
       left: 0;
       color: var(--glow-pink);
-      font-weight: bold;
-      filter: drop-shadow(0 0 6px var(--glow-color));
+      filter: drop-shadow(0 0 3px var(--glow-color));
     }
 
     .service-button {
       display: inline-block;
       background: linear-gradient(45deg, var(--neon-pink), var(--glow-pink));
       color: var(--starlight);
-      padding: 10px 20px;
-      border-radius: 10px;
+      padding: 8px 18px;
+      border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 14px;
-      transition: all 0.5s ease;
+      font-size: 13px;
+      transition: all 0.3s ease-out;
       border: none;
       cursor: pointer;
-      margin-top: 10px;
-      box-shadow: 0 0 30px var(--glow-color);
-      transform: translateZ(20px);
+      margin-top: 8px;
+      box-shadow: 0 0 20px var(--glow-color);
+      transform: translateZ(10px);
     }
 
     .service-button:hover {
-      transform: translateZ(30px) translateY(-3px);
-      box-shadow: 0 5px 25px var(--glow-color);
+      transform: translateZ(15px) translateY(-2px);
+      box-shadow: 0 0 25px var(--glow-color);
     }
 
     .thank-you-overlay {
@@ -488,19 +428,17 @@
       flex-direction: column;
       z-index: 1000;
       color: var(--starlight);
-      font-size: 24px;
+      font-size: 22px;
       display: none;
-      overflow: hidden;
-      text-shadow: 0 0 30px var(--glow-color);
-      transform: translateZ(40px);
+      text-shadow: 0 0 20px var(--glow-color);
+      transform: translateZ(20px);
     }
 
     .star {
       position: absolute;
-      font-size: 24px;
-      animation: floatStar 10s linear infinite;
-      filter: drop-shadow(0 0 15px var(--glow-color));
-      transform-style: preserve-3d;
+      font-size: 20px;
+      animation: floatStar 8s linear infinite;
+      filter: drop-shadow(0 0 8px var(--glow-color));
     }
 
     .particles {
@@ -515,121 +453,115 @@
 
     .particle {
       position: absolute;
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
-      animation: floatParticle 15s linear infinite;
-      opacity: 0.9;
+      animation: floatParticle 12s linear infinite;
+      opacity: 0.7;
       background-color: var(--glow-pink);
-      box-shadow: 0 0 20px var(--glow-color);
-      transform-style: preserve-3d;
+      box-shadow: 0 0 10px var(--glow-color);
     }
 
     .cosmic-decoration {
       position: absolute;
-      width: 100px;
-      height: 200px;
+      width: 80px;
+      height: 160px;
       background: linear-gradient(to bottom, transparent 0%, var(--neon-pink) 10%, var(--glow-pink) 90%, transparent 100%);
-      transform: rotate(15deg) translateZ(-40px);
+      transform: rotate(10deg) translateZ(-20px);
       z-index: -1;
-      animation: cosmicSway 5s ease-in-out infinite;
+      animation: cosmicSway 6s ease-in-out infinite;
       border-radius: 50% 50% 0 0;
-      box-shadow: 0 0 30px var(--glow-color);
+      box-shadow: 0 0 20px var(--glow-color);
     }
 
     .cosmic-decoration.left {
-      top: -30px;
-      left: -30px;
+      top: -20px;
+      left: -20px;
     }
 
     .cosmic-decoration.right {
-      top: -20px;
-      right: -40px;
-      transform: rotate(-15deg) translateZ(-40px);
+      top: -15px;
+      right: -30px;
+      transform: rotate(-10deg) translateZ(-20px);
     }
 
     .star-particle {
       position: absolute;
-      font-size: 20px;
+      font-size: 18px;
       color: var(--glow-pink);
       z-index: -1;
-      animation: pulseGlow 3.5s ease-in-out infinite;
-      opacity: 0.95;
-      filter: drop-shadow(0 0 10px var(--glow-color));
-      transform-style: preserve-3d;
+      animation: pulseGlow 4s ease-in-out infinite;
+      opacity: 0.8;
+      filter: drop-shadow(0 0 5px var(--glow-color));
     }
 
     .portfolio-dropdown {
       position: relative;
       display: block;
       width: 100%;
-      max-width: 400px;
-      margin: 12px auto;
-      transform: translateZ(20px);
+      max-width: 350px;
+      margin: 10px auto;
+      transform: translateZ(10px);
     }
 
     .portfolio-dropbtn {
       display: block;
-      background: rgba(255, 0, 122, 0.3);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 42, 141, 0.2);
+      backdrop-filter: blur(8px);
       color: var(--starlight);
-      padding: 14px 20px;
-      border-radius: 12px;
+      padding: 12px 18px;
+      border-radius: 10px;
       text-decoration: none;
       text-align: center;
       font-weight: bold;
-      font-size: 15px;
-      transition: all 0.5s ease;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6),
-                  inset 0 0 10px rgba(255, 255, 255, 0.4),
-                  0 0 35px var(--glow-color);
+      font-size: 14px;
+      transition: all 0.3s ease-out;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5),
+                  0 0 25px var(--glow-color);
       position: relative;
       width: 100%;
-      overflow: hidden;
-      border: 2px solid rgba(255, 0, 122, 0.7);
+      border: 1px solid rgba(255, 42, 141, 0.5);
       cursor: pointer;
-      transform: translateZ(20px) rotateX(10deg);
+      transform: translateZ(10px);
     }
 
     .portfolio-dropbtn:hover {
-      background: rgba(255, 0, 122, 0.5);
-      transform: translateZ(40px) translateY(-4px) rotateX(0deg);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7),
-                  0 0 50px var(--glow-color);
+      background: rgba(255, 42, 141, 0.4);
+      transform: translateZ(20px) translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6),
+                  0 0 30px var(--glow-color);
     }
 
     .portfolio-dropdown-content {
       display: none;
-      position: relative;
-      background: rgba(255, 0, 122, 0.3);
-      backdrop-filter: blur(10px);
-      border-radius: 0 0 12px 12px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5),
-                  0 0 35px var(--glow-color);
-      z-index: 1;
+      position: absolute;
       width: 100%;
-      margin-top: -12px;
-      padding-top: 12px;
-      border: 2px solid rgba(255, 0, 122, 0.5);
+      background: rgba(255, 42, 141, 0.2);
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5),
+                  0 0 25px var(--glow-color);
+      z-index: 10;
+      margin-top: -1px;
+      padding-top: 8px;
+      border: 1px solid rgba(255, 42, 141, 0.5);
       border-top: none;
-      transform: translateZ(10px);
+      transform: translateZ(0);
     }
 
     .portfolio-dropdown-content a {
       color: var(--starlight);
-      padding: 10px 15px;
+      padding: 8px 12px;
       text-decoration: none;
       display: block;
-      transition: all 0.4s ease;
-      font-size: 14px;
-      text-shadow: 0 0 10px var(--glow-color);
-      transform: translateZ(10px);
+      transition: all 0.3s ease-out;
+      font-size: 13px;
+      text-shadow: 0 0 5px var(--glow-color);
     }
 
     .portfolio-dropdown-content a:hover {
-      background-color: rgba(255, 0, 122, 0.5);
-      transform: translateZ(20px) translateX(5px);
-      box-shadow: 0 0 30px var(--glow-color);
+      background-color: rgba(255, 42, 141, 0.4);
+      transform: translateX(5px);
+      box-shadow: 0 0 5px var(--glow-color);
     }
 
     .portfolio-dropdown:hover .portfolio-dropdown-content {
@@ -637,12 +569,11 @@
     }
 
     .portfolio-dropdown:hover .portfolio-dropbtn {
-      border-radius: 12px 12px 0 0;
+      border-radius: 8px 8px 0 0;
     }
 
     .portfolio-submenu {
       position: relative;
-      transform: translateZ(10px);
     }
 
     .portfolio-submenu-btn {
@@ -651,28 +582,26 @@
       background: transparent;
       border: none;
       color: var(--starlight);
-      padding: 10px 15px;
-      font-size: 14px;
+      padding: 8px 12px;
+      font-size: 12px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: all 0.4s ease;
-      text-shadow: 0 0 10px var(--glow-color);
-      transform: translateZ(10px);
+      transition: all 0.3s ease-out;
+      text-shadow: 0 0 5px var(--glow-color);
     }
 
     .portfolio-submenu-btn:hover {
-      background-color: rgba(255, 0, 122, 0.4);
-      transform: translateZ(20px) translateX(5px);
-      box-shadow: 0 0 20px var(--glow-color);
+      background-color: rgba(255, 42, 141, 0.3);
+      transform: translateX(5px);
+      box-shadow: 0 0 5px var(--glow-color);
     }
 
     .portfolio-submenu-content {
       display: none;
-      background: rgba(0, 0, 0, 0.5);
-      padding-left: 20px;
-      transform: translateZ(10px);
+      background: rgba(0, 0, 0, 0.3);
+      padding-left: 5px;
     }
 
     .portfolio-submenu:hover .portfolio-submenu-content {
@@ -680,88 +609,84 @@
     }
 
     .portfolio-submenu-content a {
-      padding: 8px 15px;
-      font-size: 13px;
+      padding: 8px 12px;
+      font-size: 12px;
     }
 
     .portfolio-submenu-content a i {
-      margin-right: 8px;
-      width: 18px;
+      margin-right: 6px;
+      width: 16px;
       text-align: center;
-      filter: drop-shadow(0 0 6px var(--glow-color));
+      filter: drop-shadow(0 0 3px var(--glow-color));
     }
 
     .github-dropdown {
       position: relative;
       display: block;
       width: 100%;
-      max-width: 400px;
-      margin: 12px auto;
-      transform: translateZ(20px);
+      max-width: 350px;
+      margin: 10px auto;
+      transform: translateZ(10px);
     }
 
     .github-dropbtn {
       display: block;
-      background: rgba(255, 0, 122, 0.3);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 42, 141, 0.2);
+      backdrop-filter: blur(8px);
       color: var(--starlight);
-      padding: 14px 20px;
-      border-radius: 12px;
+      padding: 12px 18px;
+      border-radius: 10px;
       text-decoration: none;
       text-align: center;
       font-weight: bold;
-      font-size: 15px;
-      transition: all 0.5s ease;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6),
-                  inset 0 0 10px rgba(255, 255, 255, 0.4),
-                  0 0 35px var(--glow-color);
+      font-size: 14px;
+      transition: all 0.3s ease-out;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5),
+                  0 0 25px var(--glow-color);
       position: relative;
       width: 100%;
-      overflow: hidden;
-      border: 2px solid rgba(255, 0, 122, 0.7);
+      border: 1px solid rgba(255, 42, 141, 0.5);
       cursor: pointer;
-      transform: translateZ(20px) rotateX(10deg);
+      transform: translateZ(10px);
     }
 
     .github-dropbtn:hover {
-      background: rgba(255, 0, 122, 0.5);
-      transform: translateZ(40px) translateY(-4px) rotateX(0deg);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7),
-                  0 0 50px var(--glow-color);
+      background: rgba(255, 42, 141, 0.4);
+      transform: translateZ(20px) translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6),
+                  0 0 30px var(--glow-color);
     }
 
     .github-dropdown-content {
       display: none;
-      position: relative;
-      background: rgba(255, 0, 122, 0.3);
-      backdrop-filter: blur(10px);
-      border-radius: 0 0 12px 12px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5),
-                  0 0 35px var(--glow-color);
-      z-index: 1;
+      position: absolute;
       width: 100%;
-      margin-top: -12px;
-      padding-top: 12px;
-      border: 2px solid rgba(255, 0, 122, 0.5);
+      background: rgba(255, 42, 141, 0.2);
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5),
+                  0 0 25px var(--glow-color);
+      z-index: 10;
+      margin-top: -1px;
+      padding-top: 8px;
+      border: 1px solid rgba(255, 42, 141, 0.5);
       border-top: none;
-      transform: translateZ(10px);
+      transform: translateZ(0);
     }
 
     .github-dropdown-content a {
       color: var(--starlight);
-      padding: 10px 15px;
+      padding: 8px 12px;
       text-decoration: none;
       display: block;
-      transition: all 0.4s ease;
-      font-size: 14px;
-      text-shadow: 0 0 10px var(--glow-color);
-      transform: translateZ(10px);
+      transition: all 0.3s ease-out;
+      font-size: 13px;
+      text-shadow: 0 0 5px var(--glow-color);
     }
 
     .github-dropdown-content a:hover {
-      background-color: rgba(255, 0, 122, 0.5);
-      transform: translateZ(20px) translateX(5px);
-      box-shadow: 0 0 30px var(--glow-color);
+      background-color: rgba(255, 42, 141, 0.4);
+      transform: translateX(5px);
+      box-shadow: 0 0 5px var(--glow-color);
     }
 
     .github-dropdown:hover .github-dropdown-content {
@@ -769,12 +694,11 @@
     }
 
     .github-dropdown:hover .github-dropbtn {
-      border-radius: 12px 12px 0 0;
+      border-radius: 8px 8px 0 0;
     }
 
     .gumroad-submenu {
       position: relative;
-      transform: translateZ(10px);
     }
 
     .gumroad-submenu-btn {
@@ -783,28 +707,26 @@
       background: transparent;
       border: none;
       color: var(--starlight);
-      padding: 10px 15px;
-      font-size: 14px;
+      padding: 8px 12px;
+      font-size: 12px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: all 0.4s ease;
-      text-shadow: 0 0 10px var(--glow-color);
-      transform: translateZ(10px);
+      transition: all 0.3s ease-out;
+      text-shadow: 0 0 5px var(--glow-color);
     }
 
     .gumroad-submenu-btn:hover {
-      background-color: rgba(255, 0, 122, 0.4);
-      transform: translateZ(20px) translateX(5px);
-      box-shadow: 0 0 20px var(--glow-color);
+      background-color: rgba(255, 42, 141, 0.3);
+      transform: translateX(5px);
+      box-shadow: 0 0 5px var(--glow-color);
     }
 
     .gumroad-submenu-content {
       display: none;
-      background: rgba(0, 0, 0, 0.5);
-      padding-left: 20px;
-      transform: translateZ(10px);
+      background: rgba(0, 0, 0, 0.3);
+      padding-left: 5px;
     }
 
     .gumroad-submenu:hover .gumroad-submenu-content {
@@ -812,15 +734,15 @@
     }
 
     .gumroad-submenu-content a {
-      padding: 8px 15px;
-      font-size: 13px;
+      padding: 8px 12px;
+      font-size: 12px;
     }
 
     .gumroad-submenu-content a i {
-      margin-right: 8px;
-      width: 18px;
+      margin-right: 6px;
+      width: 16px;
       text-align: center;
-      filter: drop-shadow(0 0 6px var(--glow-color));
+      filter: drop-shadow(0 0 3px var(--glow-color));
     }
 
     /* Desktop Adjustments */
@@ -835,108 +757,108 @@
       }
 
       .profile-img-container {
-        width: 120px;
-        height: 120px;
+        width: 110px;
+        height: 110px;
       }
 
       h1 {
-        font-size: 28px;
-      }
-
-      p {
-        font-size: 16px;
-      }
-
-      .link {
-        padding: 16px 22px;
-        font-size: 16px;
-        max-width: 450px;
-      }
-
-      .social-link {
-        width: 50px;
-        height: 50px;
         font-size: 26px;
       }
 
-      .whatsapp-float {
-        width: 60px;
-        height: 60px;
-        font-size: 28px;
-        line-height: 60px;
+      p {
+        font-size: 15px;
       }
 
-      .career-button {
-        padding: 18px 22px;
-        font-size: 18px;
-        max-width: 450px;
+      .link {
+        padding: 14px 20px;
+        font-size: 15px;
+        max-width: 400px;
       }
 
-      .services-title {
+      .social-link {
+        width: 45px;
+        height: 45px;
         font-size: 24px;
       }
 
-      .service-card {
-        padding: 20px;
+      .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        font-size: 26px;
+        line-height: 55px;
       }
 
-      .service-title {
+      .career-button {
+        padding: 16px 20px;
+        font-size: 16px;
+        max-width: 400px;
+      }
+
+      .services-title {
         font-size: 22px;
       }
 
+      .service-card {
+        padding: 18px;
+      }
+
+      .service-title {
+        font-size: 20px;
+      }
+
       .service-description {
-        font-size: 15px;
+        font-size: 14px;
       }
 
       .service-features li {
-        font-size: 14px;
+        font-size: 13px;
       }
 
       .service-button {
-        padding: 12px 22px;
-        font-size: 15px;
+        padding: 10px 20px;
+        font-size: 14px;
       }
 
       .portfolio-dropbtn {
-        padding: 16px 22px;
-        font-size: 16px;
-        max-width: 450px;
+        padding: 14px 20px;
+        font-size: 15px;
+        max-width: 400px;
       }
 
       .portfolio-dropdown-content a {
-        padding: 12px 18px;
-        font-size: 15px;
+        padding: 10px 15px;
+        font-size: 14px;
       }
 
       .portfolio-submenu-btn {
-        padding: 12px 18px;
-        font-size: 15px;
+        padding: 10px 15px;
+        font-size: 13px;
       }
 
       .portfolio-submenu-content a {
-        padding: 10px 18px;
-        font-size: 14px;
+        padding: 8px 15px;
+        font-size: 13px;
       }
 
       .github-dropbtn {
-        padding: 16px 22px;
-        font-size: 16px;
-        max-width: 450px;
+        padding: 14px 20px;
+        font-size: 15px;
+        max-width: 400px;
       }
 
       .github-dropdown-content a {
-        padding: 12px 18px;
-        font-size: 15px;
+        padding: 10px 15px;
+        font-size: 14px;
       }
 
       .gumroad-submenu-btn {
-        padding: 12px 18px;
-        font-size: 15px;
+        padding: 10px 15px;
+        font-size: 13px;
       }
 
       .gumroad-submenu-content a {
-        padding: 10px 18px;
-        font-size: 14px;
+        padding: 8px 15px;
+        font-size: 13px;
       }
     }
   </style>
@@ -1138,49 +1060,49 @@
       document.getElementById("starLayer3")
     ];
 
-    // Create cosmic particles
-    const colors = ['#ff007a', '#ff66b2', '#b300ff', '#fff0f5'];
-    for (let i = 0; i < 50; i++) {
+    // Optimized particles (reduced count)
+    const colors = ['#ff2a8d', '#ff8cc6', '#cc33ff'];
+    for (let i = 0; i < 30; i++) {
       let particle = document.createElement("div");
       particle.className = "particle";
       particle.style.left = Math.random() * 100 + "vw";
       particle.style.top = Math.random() * 100 + "vh";
       particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      particle.style.animationDuration = (10 + Math.random() * 10) + "s";
-      particle.style.animationDelay = Math.random() * 5 + "s";
-      particle.style.width = (5 + Math.random() * 5) + "px";
+      particle.style.animationDuration = (8 + Math.random() * 8) + "s";
+      particle.style.animationDelay = Math.random() * 4 + "s";
+      particle.style.width = (4 + Math.random() * 4) + "px";
       particle.style.height = particle.style.width;
       particlesContainer.appendChild(particle);
     }
 
-    // Create stars for starfield layers
-    const starEmojis = ['✦', '✧', '✨', '⭐', '🌟'];
+    // Optimized stars for starfield layers (reduced count)
+    const starEmojis = ['✦', '✧', '✨'];
     starLayers.forEach((layer, index) => {
-      const starCount = 40 + index * 15;
+      const starCount = 30 + index * 10;
       for (let i = 0; i < starCount; i++) {
         let star = document.createElement("div");
         star.className = "star";
         star.textContent = starEmojis[Math.floor(Math.random() * starEmojis.length)];
         star.style.left = Math.random() * 100 + "vw";
-        star.style.top = Math.random() * 200 + "vh";
-        star.style.fontSize = (6 + Math.random() * 8) + "px";
-        star.style.opacity = 0.6 + Math.random() * 0.4;
-        star.style.filter = `drop-shadow(0 0 ${5 + index * 3}px var(--glow-color))`;
+        star.style.top = Math.random() * 150 + "vh";
+        star.style.fontSize = (5 + Math.random() * 6) + "px";
+        star.style.opacity = 0.7 + Math.random() * 0.3;
+        star.style.filter = `drop-shadow(0 0 ${3 + index * 2}px var(--glow-color))`;
         layer.appendChild(star);
       }
     });
 
-    // Create stars for thank you overlay
+    // Optimized stars for thank you overlay (reduced count)
     function createStars() {
-      const emojis = ['✦', '✧', '✨', '⭐', '🌟'];
-      for (let i = 0; i < 20; i++) {
+      const emojis = ['✦', '✧', '✨'];
+      for (let i = 0; i < 15; i++) {
         let star = document.createElement("div");
         star.className = "star";
         star.textContent = emojis[Math.floor(Math.random() * emojis.length)];
         star.style.left = Math.random() * 100 + "vw";
-        star.style.animationDuration = (5 + Math.random() * 10) + "s";
-        star.style.animationDelay = Math.random() * 5 + "s";
-        star.style.fontSize = (20 + Math.random() * 30) + "px";
+        star.style.animationDuration = (4 + Math.random() * 8) + "s";
+        star.style.animationDelay = Math.random() * 4 + "s";
+        star.style.fontSize = (18 + Math.random() * 20) + "px";
         starContainer.appendChild(star);
       }
     }
@@ -1196,7 +1118,7 @@
             overlay.style.display = 'none';
             starContainer.innerHTML = '';
             window.location.href = this.href;
-          }, 3000);
+          }, 2000);
         }
       });
     });
