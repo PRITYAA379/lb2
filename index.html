@@ -2,13 +2,12 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pritam's Shiny Mirror Portal</title>
   <style>
     :root {
       --neon-pink: #ff2a8d;
-      --neon-blue: #00ddeb;
       --glow-pink: #ff8cc6;
       --dark-cosmos: #0a0015;
       --cosmic-white: #fff5f8;
@@ -16,45 +15,494 @@
       --glow-color: rgba(255, 42, 141, 0.8);
     }
 
-    * {
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, var(--dark-cosmos), #1a0030);
+      color: var(--cosmic-white);
       margin: 0;
-      padding: 0;
+      padding: 20px;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .profile-img-container {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin: 30px auto 15px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, var(--neon-pink), var(--glow-pink));
+      background-size: 800% 800%;
+      animation: neonGlow 8s ease infinite;
+      padding: 3px;
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--cosmic-white);
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Orbitron', sans-serif;
-      background: var(--void-black);
-      color: var(--cosmic-white);
-      padding: 15px;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-      font-size: 16px;
+    @keyframes neonGlow {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
-    body::before {
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    h1 {
+      text-align: center;
+      margin: 10px 0;
+      font-size: 28px;
+      background: linear-gradient(to right, var(--neon-pink), var(--glow-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      animation: neonGlowText 8s ease infinite;
+      background-size: 800% 800%;
+    }
+
+    @keyframes neonGlowText {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    p {
+      text-align: center;
+      opacity: 0.9;
+      font-size: 16px;
+      color: var(--cosmic-white);
+      text-shadow: 0 0 5px var(--glow-color);
+    }
+
+    .link {
+      display: block;
+      background: rgba(255, 42, 141, 0.15);
+      backdrop-filter: blur(10px);
+      color: var(--cosmic-white);
+      padding: 15px 20px;
+      margin: 15px auto;
+      border-radius: 12px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      transition: all 0.4s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+      width: 90%;
+      overflow: hidden;
+      border: 1px solid var(--glow-color);
+    }
+
+    .link::before {
       content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right,
+          rgba(255, 42, 141, 0) 0%,
+          rgba(255, 42, 141, 0) 45%,
+          rgba(255, 42, 141, 0.5) 50%,
+          rgba(255, 42, 141, 0) 55%,
+          rgba(255, 42, 141, 0) 100%);
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% {
+        transform: translateX(-100%) rotate(30deg);
+      }
+
+      100% {
+        transform: translateX(100%) rotate(30deg);
+      }
+    }
+
+    .link:hover {
+      background: rgba(255, 42, 141, 0.25);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5),
+        0 0 15px var(--glow-color);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 25px 0;
+    }
+
+    .social-link {
+      color: var(--cosmic-white);
+      font-size: 24px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 42, 141, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-link::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right,
+          rgba(255, 42, 141, 0) 0%,
+          rgba(255, 42, 141, 0) 45%,
+          rgba(255, 42, 141, 0.8) 50%,
+          rgba(255, 42, 141, 0) 55%,
+          rgba(255, 42, 141, 0) 100%);
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+      animation-delay: calc(var(--i) * 0.2s);
+    }
+
+    .social-link:hover {
+      color: var(--cosmic-white);
+      background: linear-gradient(45deg, var(--neon-pink), var(--glow-pink));
+      background-size: 800% 800%;
+      animation: neonGlow 8s ease infinite;
+      transform: scale(1.1);
+      box-shadow: 0 0 15px var(--glow-color);
+    }
+
+    .whatsapp-float {
       position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--neon-pink);
+      color: var(--cosmic-white);
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      font-size: 26px;
+      text-align: center;
+      line-height: 55px;
+      z-index: 999;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
+        0 0 15px var(--glow-color);
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1) rotate(10deg);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5),
+        0 0 20px var(--glow-color);
+    }
+
+    /* 3D Career Guide Button */
+    .career-button {
+      display: block;
+      background: linear-gradient(135deg, var(--neon-pink), var(--glow-pink));
+      color: var(--cosmic-white);
+      padding: 18px 20px;
+      margin: 25px auto;
+      border-radius: 12px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3),
+        0 5px 0 0 rgba(255, 42, 141, 0.5),
+        inset 0 0 10px rgba(255, 255, 255, 0.2);
+      transform-style: preserve-3d;
+      position: relative;
+      width: 90%;
+      border: none;
+      cursor: pointer;
+      overflow: hidden;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .career-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4),
+        0 7px 0 0 rgba(255, 42, 141, 0.5),
+        inset 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .career-button:active {
+      transform: translateY(2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+        0 2px 0 0 rgba(255, 42, 141, 0.5),
+        inset 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+
+    .career-button::before {
+      content: '';
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 50% 50%, rgba(255, 42, 141, 0.2) 0%, transparent 70%);
-      z-index: -2;
+      background: linear-gradient(to right,
+          rgba(255, 42, 141, 0) 0%,
+          rgba(255, 42, 141, 0.3) 50%,
+          rgba(255, 42, 141, 0) 100%);
+      transform: translateX(-100%);
+      transition: all 0.6s ease;
     }
 
-    @keyframes floatParticles {
-      0% { transform: translateY(0); opacity: 0; }
-      10% { opacity: 0.8; }
-      100% { transform: translateY(-100vh); opacity: 0; }
+    .career-button:hover::before {
+      transform: translateX(100%);
     }
 
-    @keyframes rainbowGlow {
-      0% { filter: hue-rotate(0deg); }
-      100% { filter: hue-rotate(360deg); }
+    /* Services Section */
+    .services-section {
+      margin: 30px 0;
     }
 
+    .services-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      background: linear-gradient(to right, var(--neon-pink), var(--glow-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .services-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .service-card {
+      background: rgba(255, 42, 141, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 20px;
+      transition: all 0.4s ease;
+      border: 1px solid var(--glow-color);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right,
+          rgba(255, 42, 141, 0) 0%,
+          rgba(255, 42, 141, 0) 45%,
+          rgba(255, 42, 141, 0.1) 50%,
+          rgba(255, 42, 141, 0) 55%,
+          rgba(255, 42, 141, 0) 100%);
+      transform: rotate(30deg);
+      animation: shine 6s infinite;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3),
+        0 0 15px var(--glow-color);
+      background: rgba(255, 42, 141, 0.15);
+    }
+
+    .service-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: var(--cosmic-white);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .service-icon {
+      font-size: 24px;
+      background: linear-gradient(45deg, var(--neon-pink), var(--glow-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .service-description {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .service-features {
+      list-style-type: none;
+      padding-left: 0;
+      margin-bottom: 15px;
+    }
+
+    .service-features li {
+      padding: 5px 0;
+      color: rgba(255, 255, 255, 0.7);
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .service-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--glow-pink);
+      font-weight: bold;
+    }
+
+    .service-button {
+      display: inline-block;
+      background: linear-gradient(45deg, var(--neon-pink), var(--glow-pink));
+      color: var(--cosmic-white);
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .service-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px var(--glow-color);
+    }
+
+    /* Thank You Overlay */
+    .thank-you-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(135deg, var(--void-black), var(--dark-cosmos));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 1000;
+      color: var(--cosmic-white);
+      font-size: 30px;
+      display: none;
+      overflow: hidden;
+    }
+
+    .rose {
+      position: absolute;
+      font-size: 24px;
+      animation: floatRose 10s linear infinite;
+      filter: drop-shadow(0 0 5px var(--glow-pink));
+    }
+
+    @keyframes floatRose {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Mirror Effect */
+    .mirror-container {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .mirror-reflection {
+      position: absolute;
+      width: 90%;
+      height: 30px;
+      bottom: -25px;
+      left: 5%;
+      transform: scaleY(-1);
+      opacity: 0.3;
+      background: linear-gradient(to bottom,
+          var(--glow-color),
+          rgba(255, 42, 141, 0));
+      -webkit-mask-image: linear-gradient(to bottom,
+          rgba(0, 0, 0, 0.8),
+          transparent);
+      mask-image: linear-gradient(to bottom,
+          rgba(0, 0, 0, 0.8),
+          transparent);
+      border-radius: 0 0 12px 12px;
+      filter: blur(1px);
+    }
+
+    .profile-img-mirror {
+      position: absolute;
+      width: 120px;
+      height: 30px;
+      top: 120px;
+      left: 0;
+      transform: scaleY(-1);
+      opacity: 0.3;
+      background: linear-gradient(to bottom,
+          var(--glow-color),
+          rgba(255, 42, 141, 0));
+      -webkit-mask-image: linear-gradient(to bottom,
+          rgba(0, 0, 0, 0.8),
+          transparent);
+      mask-image: linear-gradient(to bottom,
+          rgba(0, 0, 0, 0.8),
+          transparent);
+      border-radius: 0 0 60px 60px;
+      filter: blur(1px);
+    }
+
+    /* Colorful floating particles */
     .particles {
       position: fixed;
       top: 0;
@@ -67,321 +515,522 @@
 
     .particle {
       position: absolute;
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
-      background-color: var(--glow-pink);
-      box-shadow: 0 0 15px var(--glow-color);
-      animation: floatParticles 15s linear infinite;
+      animation: floatParticle 15s linear infinite;
+      opacity: 0.6;
     }
 
-    .container {
-      max-width: 100%;
-      margin: 0 auto;
+    @keyframes floatParticle {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0.6;
+      }
+
+      90% {
+        opacity: 0.6;
+      }
+
+      100% {
+        transform: translateY(-100vh) translateX(100px);
+        opacity: 0;
+      }
+    }
+
+    /* Portfolio Dropdown Styles */
+    .portfolio-dropdown {
       position: relative;
-      z-index: 1;
-      padding-bottom: 60px;
-    }
-
-    .profile-img-container {
-      width: 100px;
-      height: 100px;
-      margin: 20px auto 10px;
-      border-radius: 50%;
-      background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
-      padding: 4px;
-      border: 2px solid var(--neon-pink);
-      box-shadow: 0 0 40px var(--glow-color);
-      animation: rainbowGlow 5s linear infinite;
-    }
-
-    .profile-img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--cosmic-white);
-      box-sizing: border-box;
-    }
-
-    h1 {
-      text-align: center;
-      margin: 10px 0;
-      font-size: 24px;
-      background: linear-gradient(to right, var(--neon-pink), var(--neon-blue));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 20px var(--glow-color);
-    }
-
-    p {
-      text-align: center;
-      opacity: 0.85;
-      font-size: 14px;
-      color: var(--cosmic-white);
-      text-shadow: 0 0 10px var(--glow-color);
-      margin-bottom: 15px;
-    }
-
-    .link {
-      display: block;
-      background: rgba(255, 42, 141, 0.3);
-      backdrop-filter: blur(10px);
-      color: var(--cosmic-white);
-      padding: 12px 20px;
-      margin: 10px auto;
-      border-radius: 12px;
-      text-decoration: none;
-      text-align: center;
-      font-weight: bold;
-      font-size: 14px;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 30px var(--glow-color);
-      width: 100%;
-      max-width: 320px;
-      border: 1px solid rgba(255, 42, 141, 0.6);
-    }
-
-    .link:hover {
-      background: rgba(255, 42, 141, 0.5);
-      box-shadow: 0 0 40px var(--glow-color);
-      transform: translateY(-2px);
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin: 20px 0;
-      flex-wrap: wrap;
-    }
-
-    .social-link {
-      color: var(--cosmic-white);
-      font-size: 24px;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 42, 141, 0.4);
-      transition: all 0.3s ease;
-      border: 1px solid var(--neon-pink);
-      box-shadow: 0 0 25px var(--glow-color);
-    }
-
-    .social-link:hover {
-      background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
-      transform: scale(1.1);
-      box-shadow: 0 0 35px var(--glow-color);
-    }
-
-    .services-section {
-      margin: 20px 0;
-    }
-
-    .services-title {
-      text-align: center;
-      margin-bottom: 15px;
-      font-size: 20px;
-      background: linear-gradient(to right, var(--neon-pink), var(--neon-blue));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 20px var(--glow-color);
-    }
-
-    .service-card {
-      background: rgba(255, 42, 141, 0.3);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 15px;
-      margin: 10px 0;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 42, 141, 0.6);
-      box-shadow: 0 0 30px var(--glow-color);
-    }
-
-    .service-card:hover {
-      background: rgba(255, 42, 141, 0.5);
-      box-shadow: 0 0 40px var(--glow-color);
-      transform: translateY(-2px);
-    }
-
-    .service-title {
-      font-size: 18px;
-      margin-bottom: 10px;
-      color: var(--cosmic-white);
-      text-shadow: 0 0 10px var(--glow-color);
-    }
-
-    .service-description {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 13px;
-      line-height: 1.5;
-      margin-bottom: 10px;
-    }
-
-    .service-button {
       display: inline-block;
-      background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
+      width: 90%;
+      margin: 15px auto;
+    }
+
+    .portfolio-dropbtn {
+      display: block;
+      background: rgba(255, 42, 141, 0.15);
+      backdrop-filter: blur(10px);
       color: var(--cosmic-white);
-      padding: 8px 15px;
-      border-radius: 8px;
+      padding: 15px 20px;
+      border-radius: 12px;
       text-decoration: none;
+      text-align: center;
       font-weight: bold;
-      font-size: 13px;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 25px var(--glow-color);
-    }
-
-    .service-button:hover {
-      box-shadow: 0 0 35px var(--glow-color);
-      transform: translateY(-2px);
-    }
-
-    .thank-you-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
+      transition: all 0.4s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
       width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, var(--void-black), var(--dark-cosmos));
-      display: none;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      z-index: 1000;
-      color: var(--cosmic-white);
-      font-size: 24px;
-      text-shadow: 0 0 20px var(--glow-color);
+      overflow: hidden;
+      border: 1px solid var(--glow-color);
+      cursor: pointer;
     }
 
-    @media (min-width: 768px) {
-      .container {
-        max-width: 500px;
-      }
+    .portfolio-dropbtn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right,
+          rgba(255, 42, 141, 0) 0%,
+          rgba(255, 42, 141, 0) 45%,
+          rgba(255, 42, 141, 0.5) 50%,
+          rgba(255, 42, 141, 0) 55%,
+          rgba(255, 42, 141, 0) 100%);
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
 
-      .profile-img-container {
-        width: 120px;
-        height: 120px;
-      }
+    .portfolio-dropbtn:hover {
+      background: rgba(255, 42, 141, 0.25);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5),
+        0 0 15px var(--glow-color);
+    }
 
-      h1 {
-        font-size: 28px;
-      }
+    .portfolio-dropdown-content {
+      display: none;
+      position: relative;
+      background: rgba(255, 42, 141, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      width: 100%;
+      margin-top: -15px;
+      padding-top: 15px;
+      border: 1px solid var(--glow-color);
+      border-top: none;
+    }
 
-      p {
-        font-size: 16px;
-      }
+    .portfolio-dropdown-content a {
+      color: var(--cosmic-white);
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s ease;
+    }
 
-      .link {
-        max-width: 350px;
-        font-size: 15px;
-        padding: 14px 22px;
-      }
+    .portfolio-dropdown-content a:hover {
+      background-color: rgba(255, 42, 141, 0.2);
+      transform: translateX(5px);
+    }
 
-      .social-link {
-        width: 48px;
-        height: 48px;
-        font-size: 26px;
-      }
+    .portfolio-dropdown:hover .portfolio-dropdown-content {
+      display: block;
+    }
 
-      .services-title {
-        font-size: 22px;
-      }
+    .portfolio-dropdown:hover .portfolio-dropbtn {
+      border-radius: 12px 12px 0 0;
+    }
 
-      .service-card {
-        padding: 20px;
-      }
+    /* Portfolio Submenu Styles */
+    .portfolio-submenu {
+      position: relative;
+    }
 
-      .service-title {
-        font-size: 20px;
-      }
+    .portfolio-submenu-btn {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      color: var(--cosmic-white);
+      padding: 12px 16px;
+      font-size: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
 
-      .service-description {
-        font-size: 14px;
-      }
+    .portfolio-submenu-btn:hover {
+      background-color: rgba(255, 42, 141, 0.1);
+      transform: translateX(5px);
+    }
 
-      .service-button {
-        font-size: 14px;
-        padding: 10px 18px;
-      }
+    .portfolio-submenu-content {
+      display: none;
+      background: rgba(0, 0, 0, 0.2);
+      padding-left: 20px;
+    }
+
+    .portfolio-submenu:hover .portfolio-submenu-content {
+      display: block;
+    }
+
+    .portfolio-submenu-content a {
+      padding: 10px 16px;
+      font-size: 14px;
+    }
+
+    .portfolio-submenu-content a i {
+      margin-right: 8px;
+      width: 18px;
+      text-align: center;
+    }
+
+    /* GitHub Dropdown Styles */
+    .github-dropdown {
+      position: relative;
+      display: inline-block;
+      width: 90%;
+      margin: 15px auto;
+    }
+
+    .github-dropbtn {
+      display: block;
+      background: rgba(255, 42, 141, 0.15);
+      backdrop-filter: blur(10px);
+      color: var(--cosmic-white);
+      padding: 15px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      transition: all 0.4s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid var(--glow-color);
+      cursor: pointer;
+    }
+
+    .github-dropbtn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right,
+          rgba(255, 42, 141, 0) 0%,
+          rgba(255, 42, 141, 0) 45%,
+          rgba(255, 42, 141, 0.5) 50%,
+          rgba(255, 42, 141, 0) 55%,
+          rgba(255, 42, 141, 0) 100%);
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+
+    .github-dropbtn:hover {
+      background: rgba(255, 42, 141, 0.25);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5),
+        0 0 15px var(--glow-color);
+    }
+
+    .github-dropdown-content {
+      display: none;
+      position: relative;
+      background: rgba(255, 42, 141, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      width: 100%;
+      margin-top: -15px;
+      padding-top: 15px;
+      border: 1px solid var(--glow-color);
+      border-top: none;
+    }
+
+    .github-dropdown-content a {
+      color: var(--cosmic-white);
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    .github-dropdown-content a:hover {
+      background-color: rgba(255, 42, 141, 0.2);
+      transform: translateX(5px);
+    }
+
+    .github-dropdown:hover .github-dropdown-content {
+      display: block;
+    }
+
+    .github-dropdown:hover .github-dropbtn {
+      border-radius: 12px 12px 0 0;
+    }
+
+    /* Gumroad Submenu Styles */
+    .gumroad-submenu {
+      position: relative;
+    }
+
+    .gumroad-submenu-btn {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      color: var(--cosmic-white);
+      padding: 12px 16px;
+      font-size: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+
+    .gumroad-submenu-btn:hover {
+      background-color: rgba(255, 42, 141, 0.1);
+      transform: translateX(5px);
+    }
+
+    .gumroad-submenu-content {
+      display: none;
+      background: rgba(0, 0, 0, 0.2);
+      padding-left: 20px;
+    }
+
+    .gumroad-submenu:hover .gumroad-submenu-content {
+      display: block;
+    }
+
+    .gumroad-submenu-content a {
+      padding: 10px 16px;
+      font-size: 14px;
+    }
+
+    .gumroad-submenu-content a i {
+      margin-right: 8px;
+      width: 18px;
+      text-align: center;
     }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
 
 <body>
   <div class="particles" id="particles"></div>
-  <div class="container">
+  <div class="container" id="main-container">
     <div class="profile-img-container">
       <img src="https://i.ibb.co/BKZv5FzD/IMG-20250613-062802-529.webp" class="profile-img" alt="Pritam">
+      <div class="profile-img-mirror"></div>
     </div>
     <h1>Pritam Jagtap</h1>
-    <p>Interstellar Creator | Cosmic Developer | Galactic Visionary</p>
+    <p>Digital Creator | Developer | Visionary</p>
 
-    <a href="https://yourwebsite.com" class="link"><i class="fas fa-globe"></i> Visit My Website</a>
-    <a href="https://jagtappritam7.gumroad.com/l/npjvdt" class="link"><i class="fas fa-store"></i> Start Gumroad with Me</a>
-    <a href="mailto:jagtappritam73@gmail.com" class="link"><i class="fas fa-envelope"></i> Email Me</a>
-    <a href="tel:+919372035409" class="link"><i class="fas fa-phone"></i> Call Me</a>
-    <a href="https://wa.me/919372035409?text=Hi%20Pritam%2C%20I%20saw%20your%20webpage%20and%20I'm%20interested%20in%20your%20services!" class="link" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
-    <a href="https://prityaa379.github.io/theethicalglitchcontent/" class="link" target="_blank"><i class="fas fa-book"></i> Upcoming Books</a>
+    <div class="mirror-container">
+      <a href="https://yourwebsite.com" class="link"><i class="fas fa-globe"></i> Visit My Website</a>
+      <div class="mirror-reflection"></div>
+    </div>
 
+    <!-- Portfolio Dropdown -->
+    <div class="mirror-container">
+      <div class="portfolio-dropdown">
+        <button class="portfolio-dropbtn"><i class="fas fa-briefcase"></i> Portfolio</button>
+        <div class="portfolio-dropdown-content">
+          <div class="portfolio-submenu">
+            <button class="portfolio-submenu-btn"><i class="fas fa-dumbbell"></i> Landing Pages for Fitness Coaches <i class="fas fa-caret-down"></i></button>
+            <div class="portfolio-submenu-content">
+              <a href="https://prityaa379.github.io/rahulfc/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 1</a>
+              <a href="https://prityaa379.github.io/rahulfc1/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 2</a>
+              <a href="https://prityaa379.github.io/rahulfc2/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 3</a>
+              <a href="https://prityaa379.github.io/rahulfc3/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 4</a>
+              <a href="https://prityaa379.github.io/rahulfc4/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 5</a>
+              <a href="https://prityaa379.github.io/rahulfc5/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 6</a>
+              <a href="https://prityaa379.github.io/rahulfc6/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 7</a>
+              <a href="https://prityaa379.github.io/rahulfc7/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 8</a>
+              <a href="https://prityaa379.github.io/rahulfc8/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 9</a>
+              <a href="https://prityaa379.github.io/rahulfc9/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 10</a>
+            </div>
+          </div>
+          <a href="#"><i class="fas fa-laptop-code"></i> Web Development Projects</a>
+          <a href="#"><i class="fas fa-mobile-alt"></i> Mobile Apps</a>
+        </div>
+        <div class="mirror-reflection"></div>
+      </div>
+    </div>
+
+    <!-- GitHub Dropdown -->
+    <div class="mirror-container">
+      <div class="github-dropdown">
+        <button class="github-dropbtn"><i class="fab fa-github"></i> GitHub</button>
+        <div class="github-dropdown-content">
+          <a href="https://github.com/PRITYAA379" target="_blank"><i class="fas fa-code-branch"></i> My Repositories</a>
+          <a href="https://github.com/PRITYAA379?tab=repositories" target="_blank"><i class="fas fa-box-open"></i> My Products</a>
+          <a href="https://github.com/sponsors/PRITYAA379" target="_blank"><i class="fas fa-heart"></i> Sponsor Me</a>
+          <a href="https://github.com/PRITYAA379?tab=subscriptions" target="_blank"><i class="fas fa-bell"></i> Subscribe</a>
+        </div>
+        <div class="mirror-reflection"></div>
+      </div>
+    </div>
+
+    <!-- Gumroad Dropdown Section -->
+    <div class="mirror-container">
+      <div class="github-dropdown">
+        <button class="github-dropbtn"><i class="fas fa-store"></i> Gumroad</button>
+        <div class="github-dropdown-content">
+          <div class="gumroad-submenu">
+            <button class="gumroad-submenu-btn"><i class="fas fa-star"></i> Subscriptions <i class="fas fa-caret-down"></i></button>
+            <div class="gumroad-submenu-content">
+              <a href="https://jagtappritam7.gumroad.com/l/npjvdt" target="_blank"><i class="fas fa-gem"></i> Gumroad Subscription</a>
+              <a href="https://gumroad.com/PRITYAA379/membership" target="_blank"><i class="fas fa-crown"></i> Membership</a>
+              <a href="https://gumroad.com/PRITYAA379/newsletter" target="_blank"><i class="fas fa-newspaper"></i> Newsletter</a>
+            </div>
+          </div>
+          <div class="gumroad-submenu">
+            <button class="gumroad-submenu-btn"><i class="fas fa-box-open"></i> Products <i class="fas fa-caret-down"></i></button>
+            <div class="gumroad-submenu-content">
+              <a href="https://jagtappritam7.gumroad.com/l/uplaw" target="_blank"><i class="fas fa-question-circle"></i> What is Gumroad?</a>
+              <a href="https://jagtappritam7.gumroad.com/l/qnsim" target="_blank"><i class="fas fa-link"></i> LINK IN BIO SAMPLES</a>
+              <a href="https://jagtappritam7.gumroad.com/l/qkevcg" target="_blank"><i class="fas fa-calendar-check"></i> Daily Productivity Planner</a>
+              <a href="https://jagtappritam7.gumroad.com/l/tdnocf" target="_blank"><i class="fas fa-chart-line"></i> Top 10 Digital Assets in India</a>
+              <a href="https://jagtappritam7.gumroad.com/l/pvoryz" target="_blank"><i class="fas fa-download"></i> Start Gumroad for Free</a>
+            </div>
+          </div>
+          <a href="https://gumroad.com/PRITYAA379" target="_blank"><i class="fas fa-store-alt"></i> Visit My Store</a>
+        </div>
+        <div class="mirror-reflection"></div>
+      </div>
+    </div>
+
+    <div class="mirror-container">
+      <a href="mailto:jagtappritam73@gmail.com" class="link"><i class="fas fa-envelope"></i> Email Me</a>
+      <div class="mirror-reflection"></div>
+    </div>
+
+    <div class="mirror-container">
+      <a href="tel:+919372035409" class="link"><i class="fas fa-phone"></i> Call Me</a>
+      <div class="mirror-reflection"></div>
+    </div>
+
+    <div class="mirror-container">
+      <a href="https://wa.me/919372035409?text=Hi%20Pritam%2C%20I%20saw%20your%204D%20Webpage%20and%20I'm%20interested%20in%20your%20services!" class="link" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+      <div class="mirror-reflection"></div>
+    </div>
+
+    <div class="mirror-container">
+      <a href="https://prityaa379.github.io/theethicalglitchcontent/" class="link" target="_blank"><i class="fas fa-book"></i> Upcoming Books</a>
+      <div class="mirror-reflection"></div>
+    </div>
+
+    <!-- 3D Career Guide Button -->
+    <button class="career-button" onclick="window.open('https://calendly.com/jagtappritam73/book-your-slot', '_blank')">
+      <i class="fas fa-calendar-alt"></i> Schedule 15-Min Free Career Guide
+    </button>
+
+    <!-- Services Section -->
     <div class="services-section">
       <h2 class="services-title">My Services</h2>
-      <div class="service-card">
-        <h3 class="service-title">Digital Marketing</h3>
-        <p class="service-description">Amplify your interstellar presence with cosmic digital marketing strategies tailored to your galactic goals.</p>
-        <a href="https://calendly.com/jagtappritam73/book-your-slot" class="service-button" target="_blank">Launch Now</a>
-      </div>
-      <div class="service-card">
-        <h3 class="service-title">Web Development</h3>
-        <p class="service-description">Craft hyperspace-ready, responsive websites that shine across all devices and deliver out-of-this-world user experiences.</p>
-        <a href="https://calendly.com/jagtappritam73/book-your-slot" class="service-button" target="_blank">Launch Now</a>
+      <div class="services-container">
+        <!-- Digital Marketing Service -->
+        <div class="service-card">
+          <h3 class="service-title">
+            <i class="fas fa-bullhorn service-icon"></i>
+            Digital Marketing
+          </h3>
+          <p class="service-description">
+            Boost your online presence with comprehensive digital marketing strategies tailored to your business needs.
+          </p>
+          <ul class="service-features">
+            <li>Social Media Marketing</li>
+            <li>Search Engine Optimization (SEO)</li>
+            <li>Pay-Per-Click Advertising (PPC)</li>
+            <li>Content Marketing</li>
+            <li>Email Marketing Campaigns</li>
+          </ul>
+          <button class="service-button" onclick="window.open('https://calendly.com/jagtappritam73/book-your-slot', '_blank')">
+            Get Started
+          </button>
+        </div>
+
+        <!-- Web Development Service -->
+        <div class="service-card">
+          <h3 class="service-title">
+            <i class="fas fa-code service-icon"></i>
+            Web Development
+          </h3>
+          <p class="service-description">
+            Custom, responsive websites that look great on any device and deliver exceptional user experiences.
+          </p>
+          <ul class="service-features">
+            <li>Responsive Web Design</li>
+            <li>Frontend & Backend Development</li>
+            <li>E-commerce Solutions</li>
+            <li>Website Maintenance</li>
+            <li>Performance Optimization</li>
+          </ul>
+          <button class="service-button" onclick="window.open('https://calendly.com/jagtappritam73/book-your-slot', '_blank')">
+            Get Started
+          </button>
+        </div>
       </div>
     </div>
 
     <div class="social-links">
-      <a href="https://www.instagram.com/" class="social-link"><i class="fab fa-instagram"></i></a>
-      <a href="https://x.com/Prityaa379?t=1wZ0UV_K_9DzXa_-y3_qSw&s=09" class="social-link"><i class="fab fa-x-twitter"></i></a>
-      <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" class="social-link"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/PRITYAA379" class="social-link"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/" class="social-link" style="--i: 0"><i class="fab fa-instagram"></i></a>
+      <a href="https://x.com/Prityaa379?t=1wZ0UV_K_9DzXa_-y3_qSw&s=09" class="social-link" style="--i: 1"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" class="social-link" style="--i: 2"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/PRITYAA379" class="social-link" style="--i: 3"><i class="fab fa-github"></i></a>
     </div>
   </div>
 
+  <a href="https://wa.me/919372035409?text=Hi%20Pritam%2C%20I%20saw%20your%204D%20Webpage%20and%20I'm%20interested%20in%20your%20services!" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Thank You Overlay -->
   <div class="thank-you-overlay" id="thankYouOverlay">
-    <div>✦ Thank You for Making Contact ✦</div>
+    <div>🌹 Thank You for Reaching Out 🌹</div>
+    <div id="roses"></div>
   </div>
 
   <script>
-    const particlesContainer = document.getElementById('particles');
-    const overlay = document.getElementById('thankYouOverlay');
-
-    // Generate particles
-    const colors = ['#ff2a8d', '#00ddeb', '#ff8cc6'];
+    const overlay = document.getElementById("thankYouOverlay");
+    const roseContainer = document.getElementById("roses");
+    const particlesContainer = document.getElementById("particles");
+    // Create colorful particles  
+    const colors = ['#ff2a8d', '#ff8cc6', '#ff0066', '#ff99cc'];
     for (let i = 0; i < 50; i++) {
-      let particle = document.createElement('div');
-      particle.className = 'particle';
-      particle.style.left = Math.random() * 100 + 'vw';
-      particle.style.top = Math.random() * 100 + 'vh';
+      let particle = document.createElement("div");
+      particle.className = "particle";
+      particle.style.left = Math.random() * 100 + "vw";
+      particle.style.top = Math.random() * 100 + "vh";
       particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      particle.style.animationDuration = (10 + Math.random() * 10) + 's';
-      particle.style.animationDelay = Math.random() * 5 + 's';
+      particle.style.animationDuration = (10 + Math.random() * 10) + "s";
+      particle.style.animationDelay = Math.random() * 5 + "s";
+      particle.style.width = (3 + Math.random() * 5) + "px";
+      particle.style.height = particle.style.width;
       particlesContainer.appendChild(particle);
     }
-
-    // Thank you overlay for links
-    document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"], .link:not([href*="prityaa379.github.io"]), .social-link').forEach(link => {
+    // Create roses for thank you overlay  
+    function createRoses() {
+      const emojis = ['🌹', '🌸', '🌺', '🌻', '🌷', '💐', '🏵️'];
+      for (let i = 0; i < 20; i++) {
+        let rose = document.createElement("div");
+        rose.className = "rose";
+        rose.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        rose.style.left = Math.random() * 100 + "vw";
+        rose.style.animationDuration = (5 + Math.random() * 10) + "s";
+        rose.style.animationDelay = Math.random() * 5 + "s";
+        rose.style.fontSize = (20 + Math.random() * 30) + "px";
+        roseContainer.appendChild(rose);
+      }
+    }
+    // Show thank you overlay when links are clicked  
+    document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"], .link, .social-link').forEach(link => {
       link.addEventListener('click', function(e) {
         if (this.getAttribute('target') !== '_blank') {
           e.preventDefault();
+          createRoses();
           overlay.style.display = 'flex';
           setTimeout(() => {
             overlay.style.display = 'none';
+            roseContainer.innerHTML = '';
             window.location.href = this.href;
-          }, 2000);
+          }, 3000);
         }
       });
     });
