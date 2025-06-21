@@ -268,6 +268,51 @@
       transform: translateX(100%);
     }
 
+    .whatsapp-group-button {
+      display: block;
+      background: linear-gradient(135deg, var(--neon-pink), var(--glow-pink));
+      color: var(--cosmic-white);
+      padding: 15px 20px;
+      margin: 15px auto;
+      border-radius: 12px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.2);
+      position: relative;
+      width: 90%;
+      overflow: hidden;
+      border: 1px solid var(--glow-color);
+    }
+
+    .whatsapp-group-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .whatsapp-group-button::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right,
+          rgba(255, 42, 141, 0) 0%,
+          rgba(255, 42, 141, 0) 45%,
+          rgba(255, 42, 141, 0.5) 50%,
+          rgba(255, 42, 141, 0) 55%,
+          rgba(255, 42, 141, 0) 100%);
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+
+    .whatsapp-group-button i {
+      margin-right: 8px;
+    }
+
     .services-section, .movies-section {
       margin: 30px 0;
     }
@@ -939,6 +984,13 @@
       <img src="https://i.ibb.co/BKZv5FzD/IMG-20250613-062802-529.webp" class="profile-img" alt="Pritam">
       <div class="profile-img-mirror"></div>
     </div>
+    <!-- WhatsApp Group Button -->
+    <div class="mirror-container">
+      <a href="https://chat.whatsapp.com/B9gRY5oP11VG7jCyOjgsHp" class="whatsapp-group-button" target="_blank">
+        <i class="fab fa-whatsapp"></i> Join My WhatsApp Group to Learn Free Gumroad
+      </a>
+      <div class="mirror-reflection"></div>
+    </div>
     <h1>Pritam Jagtap</h1>
     <p>Digital Creator | Developer | Visionary</p>
 
@@ -1010,14 +1062,14 @@
             <button class="portfolio-submenu-btn"><i class="fas fa-dumbbell"></i> Landing Pages for Fitness Coaches <i class="fas fa-caret-down"></i></button>
             <div class="portfolio-submenu-content">
               <a href="https://prityaa379.github.io/rahulfc/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 1</a>
-              <a href="https://prityaa379.github.io/rahulfc1/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 2</a>
-              <a href="https://prityaa379.github.io/rahulfc2/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 3</a>
+              <a href="https://prityaa379.github.io/rahulfc/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 2</a>
+              <a href="https://prityaa379.github.io/practice/" target="_blank"><i class="fas fa-link"></i> Fitness Coach</a>
               <a href="https://prityaa379.github.io/rahulfc3/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 4</a>
               <a href="https://prityaa379.github.io/rahulfc4/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 5</a>
-              <a href="https://prityaa379.github.io/rahulfc5/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 6</a>
-              <a href="https://prityaa379.github.io/rahulfc6/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 7</a>
-              <a href="https://prityaa379.github.io/rahulfc7/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 8</a>
-              <a href="https://prityaa379.github.io/rahulfc8/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 9</a>
+              <a href="https://prityaa379.github.io/rahulfc5/" target="_blank"><i class="fas fa-link"></i> Fitness PR</a>
+              <a href="https://prityaa379.github.io/rahulfc6/" target="_blank"><i class="fas fa-prity"></i>
+              <a href="https://prityaa379.github.io/practice/" target="_blank"><i class="fas fa-practise"></i></a>
+              <a href="https://prityaa379.github.io/rahulfc8/" target="_prity"><a>
               <a href="https://prityaa379.github.io/rahulfc9/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 10</a>
             </div>
           </div>
@@ -1032,6 +1084,8 @@
     <div class="mirror-container">
       <div class="github-dropdown">
         <button class="github-dropbtn"><i class="fas fa-store"></i> Gumroad</button>
+        <a href="https://gumroad.com/discover" target="_blank"><i class="fab fa-gumroad"></i> Discover</a>
+      </div>
         <div class="github-dropdown-content">
           <div class="gumroad-submenu">
             <button class="gumroad-submenu-btn"><i class="fas fa-star"></i> Subscriptions <i class="fas fa-caret-down"></i></button>
@@ -1132,7 +1186,7 @@
 
     <div class="social-links">
       <a href="https://www.instagram.com/" class="social-link" style="--i: 0" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://x.com/Prityaa379?t=1wZ0UV_K_9DzXa_-y3_qSw&s=09" class="social-link" style="--i: 1" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://x.com/Prityaa379?t=1wZ0UV_K_9DsXa_-y3_qSw&s=09" class="social-link" style="--i: 1" target="_blank"><i class="fab fa-x-twitter"></i></a>
       <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" class="social-link" style="--i: 2" target="_blank"><i class="fab fa-linkedin"></i></a>
       <a href="https://github.com/PRITYAA379" class="social-link" style="--i: 3" target="_blank"><i class="fab fa-github"></i></a>
     </div>
