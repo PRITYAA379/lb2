@@ -970,6 +970,92 @@
       text-align: center;
     }
 
+    .fatloss-dropdown {
+      position: relative;
+      display: inline-block;
+      width: 90%;
+      margin: 15px auto;
+    }
+
+    .fatloss-dropbtn {
+      display: block;
+      background: rgba(255, 42, 141, 0.15);
+      backdrop-filter: blur(10px);
+      color: var(--cosmic-white);
+      padding: 15px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      transition: all 0.4s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid var(--glow-color);
+      cursor: pointer;
+    }
+
+    .fatloss-dropbtn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right,
+          rgba(255, 42, 141, 0) 0%,
+          rgba(255, 42, 141, 0) 45%,
+          rgba(255, 42, 141, 0.5) 50%,
+          rgba(255, 42, 141, 0) 55%,
+          rgba(255, 42, 141, 0) 100%);
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+
+    .fatloss-dropbtn:hover {
+      background: rgba(255, 42, 141, 0.25);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5),
+        0 0 15px var(--glow-color);
+    }
+
+    .fatloss-dropdown-content {
+      display: none;
+      position: relative;
+      background: rgba(255, 42, 141, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      width: 100%;
+      margin-top: -15px;
+      padding-top: 15px;
+      border: 1px solid var(--glow-color);
+      border-top: none;
+    }
+
+    .fatloss-dropdown-content a {
+      color: var(--cosmic-white);
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    .fatloss-dropdown-content a:hover {
+      background-color: rgba(255, 42, 141, 0.2);
+      transform: translateX(5px);
+    }
+
+    .fatloss-dropdown:hover .fatloss-dropdown-content {
+      display: block;
+    }
+
+    .fatloss-dropdown:hover .fatloss-dropbtn {
+      border-radius: 12px 12px 0 0;
+    }
+
     .social-channels-section {
       margin: 30px 0;
     }
@@ -981,6 +1067,18 @@
   <!-- Visit My Website -->
   <div class="particles" id="particles"></div>
   <div class="container" id="main-container">
+    <!-- New Fatloss Portal Dropdown -->
+    <div class="mirror-container">
+      <div class="fatloss-dropdown">
+        <button class="fatloss-dropbtn"><i class="fas fa-weight"></i> Buy Fatloss Portal Now</button>
+        <div class="fatloss-dropdown-content">
+          <a href="https://jagtappritam7.gumroad.com/l/fatloss-portal" target="_blank"><i class="fas fa-shopping-cart"></i> Purchase Now</a>
+          <!-- Add more links or details if needed -->
+        </div>
+      </div>
+      <div class="mirror-reflection"></div>
+    </div>
+
     <div class="profile-img-container">
       <img src="https://i.ibb.co/BKZv5FzD/IMG-20250613-062802-529.webp" class="profile-img" alt="Pritam">
       <div class="profile-img-mirror"></div>
