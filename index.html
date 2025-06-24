@@ -270,7 +270,7 @@
     }
 
     .whatsapp-float:hover {
-      transform: scale(1.1) rotate(10 ~~deg);
+      transform: scale(1.1) rotate(10deg);
       box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5),
         0 0 20px var(--glow-color);
     }
@@ -540,7 +540,7 @@
       bottom: -25px;
       left: 5%;
       transform: scaleY(-1);
-      opacity semanticLabel: "Reflection effect for links";
+      opacity: 0.3;
       background: linear-gradient(to bottom,
           var(--glow-color),
           rgba(255, 42, 141, 0));
@@ -562,7 +562,7 @@
       left: 0;
       transform: scaleY(-1);
       opacity: 0.3;
-      background: linear-gradient(to-bottom,
+      background: linear-gradient(to bottom,
           var(--glow-color),
           rgba(255, 42, 141, 0));
       -webkit-mask-image: linear-gradient(to bottom,
@@ -636,7 +636,7 @@
       height: 200%;
       background: linear-gradient(to bottom right,
           rgba(255, 42, 141, 0) 0%,
-          rgba(255, 42, 141, 0) 45%;
+          rgba(255, 42, 141, 0) 45%,
           rgba(255, 42, 141, 0.5) 50%,
           rgba(255, 42, 141, 0) 55%,
           rgba(255, 42, 141, 0) 100%);
@@ -1132,9 +1132,15 @@
   <!-- Particles Background -->
   <div class="particles" id="particles"></div>
 
+  <!-- Horror-Themed Banner Title (Detached) -->
+  <div style="text-align: center; padding: 15px; background: #000000; border: 2px solid #8b0000; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.4), 0 0 25px rgba(139,0,0,0.6); max-width: 500px; margin: 0 auto 10px;">
+    <div style="font-size: 24px; font-weight: bold; color: #fff5f8; text-shadow: 0 0 10px #8b0000, 0 0 20px rgba(139,0,0,0.6); letter-spacing: 1px; text-transform: uppercase;">
+      Understanding Human Behaviours with Machine Learning
+    </div>
+  </div>
+
   <!-- Horror-Themed Banner Section with YouTube Video -->
   <div class="banner" style="background: #000000; border: 2px solid #8b0000; box-shadow: 0 8px 20px rgba(0,0,0,0.4), 0 0 25px rgba(139,0,0,0.6);">
-    <div class="banner-title" style="background: none; -webkit-text-fill-color: #fff5f8; text-shadow: 0 0 10px #8b0000, 0 0 20px rgba(139,0,0,0.6);">Understanding Human Behaviours with Machine Learning</div>
     <iframe src="https://www.youtube.com/embed/oZR5f1IirLI?si=inTxYibtpG1XaKyR" frameborder="0" allowfullscreen></iframe>
   </div>
 
