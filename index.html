@@ -7,28 +7,64 @@
   <title>Pritam's Shiny Mirror Portal</title>
   <style>
     :root {
-      --neon-pink: #ff2a8d;
-      --glow-pink: #ff8cc6;
-      --dark-cosmos: #0a0015;
-      --cosmic-white: #fff5f8;
-      --void-black: #000010;
-      --glow-color: rgba(255, 42, 141, 0.8);
+      --dark-sky-blue: #1e3a8a; /* Dark sky blue base */
+      --icy-blue: #a3bffa; /* Lighter icy blue accent */
+      --neon-icy: #00ccff; /* Neon icy blue glow */
+      --cosmic-white: #f0f8ff; /* Soft white for reference */
+      --void-black: #0a1f3d; /* Darker void for contrast */
+      --glow-color: rgba(0, 204, 255, 0.6); /* Reduced glow intensity */
+      --dark-text: #1a2a44; /* Dark gray text for better contrast */
+      --high-contrast-dark: #0d1b33; /* Even darker text for critical areas */
     }
 
     body {
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, var(--dark-cosmos), #1a0030);
-      color: var(--cosmic-white);
+      background: linear-gradient(135deg, var(--dark-sky-blue), var(--void-black));
+      color: var(--dark-text); /* Darker text color */
       margin: 0;
       padding: 20px;
       min-height: 100vh;
       overflow-x: hidden;
+      /* Subdued geometric pattern */
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 20%);
+      background-size: 200px 200px;
     }
 
     .container {
       max-width: 500px;
       margin: 0 auto;
       position: relative;
+    }
+
+    /* Visionary Section at Top */
+    .visionary-section {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(135deg, var(--dark-sky-blue), var(--void-black));
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px var(--glow-color); /* Reduced glow */
+      margin-bottom: 20px;
+    }
+
+    .visionary-img-container {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, var(--icy-blue), var(--neon-icy));
+      animation: neonGlow 8s ease infinite;
+      padding: 3px;
+    }
+
+    .visionary-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--dark-text);
     }
 
     /* Enhanced Banner Section Styling */
@@ -39,11 +75,11 @@
       margin: 0 auto 30px;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 25px var(--glow-color);
-      background: linear-gradient(135deg, var(--neon-pink), var(--glow-pink));
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px var(--glow-color); /* Reduced glow */
+      background: linear-gradient(135deg, var(--icy-blue), var(--neon-icy));
       animation: neonGlow 8s ease infinite;
       background-size: 800% 800%;
-      border: 2px solid var(--glow-pink);
+      border: 2px solid var(--neon-icy);
       padding: 10px;
     }
 
@@ -55,18 +91,18 @@
       width: 200%;
       height: 200%;
       background: linear-gradient(to bottom right,
-          rgba(255, 42, 141, 0) 0%,
-          rgba(255, 42, 141, 0) 45%,
-          rgba(255, 42, 141, 0.6) 50%,
-          rgba(255, 42, 141, 0) 55%,
-          rgba(255, 42, 141, 0) 100%);
+          rgba(0, 204, 255, 0) 0%,
+          rgba(0, 204, 255, 0) 45%,
+          rgba(0, 204, 255, 0.4) 50%, /* Reduced intensity */
+          rgba(0, 204, 255, 0) 55%,
+          rgba(0, 204, 255, 0) 100%);
       transform: rotate(30deg);
       animation: shine 3s infinite;
     }
 
     .banner iframe {
       width: 100%;
-      height: 280px; /* Increased height for better visibility */
+      height: 280px;
       border: none;
       border-radius: 8px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
@@ -77,10 +113,10 @@
       padding: 15px 0;
       font-size: 24px;
       font-weight: bold;
-      background: linear-gradient(to right, var(--neon-pink), var(--glow-pink));
+      background: linear-gradient(to right, var(--icy-blue), var(--neon-icy));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.3), 0 0 8px var(--glow-color);
+      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.3), 0 0 5px var(--high-contrast-dark); /* Darker shadow */
       margin-bottom: 10px;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -89,32 +125,14 @@
     .neon-strip {
       width: 100%;
       height: 8px;
-      background: linear-gradient(90deg, var(--neon-pink), var(--glow-pink));
-      box-shadow: 0 0 15px var(--glow-pink), 0 0 25px var(--neon-pink);
+      background: linear-gradient(90deg, var(--icy-blue), var(--neon-icy));
+      box-shadow: 0 0 10px var(--neon-icy), 0 0 15px var(--icy-blue); /* Reduced shadow */
       border-radius: 4px;
       margin-bottom: 10px;
     }
 
-    /* Existing Styles (unchanged) */
     .profile-img-container {
-      position: relative;
-      width: 120px;
-      height: 120px;
-      margin: 30px auto 15px;
-      border-radius: 50%;
-      background: linear-gradient(45deg, var(--neon-pink), var(--glow-pink));
-      background-size: 800% 800%;
-      animation: neonGlow 8s ease infinite;
-      padding: 3px;
-    }
-
-    .profile-img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--cosmic-white);
-      box-sizing: border-box;
+      display: none; /* Hidden since moved to visionary */
     }
 
     @keyframes neonGlow {
@@ -123,19 +141,19 @@
       100% { background-position: 0% 50%; }
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+    @keyframes shine {
+      0% { transform: translateX(-100%) rotate(30deg); }
+      100% { transform: translateX(100%) rotate(30deg); }
     }
 
     h1 {
       text-align: center;
       margin: 10px 0;
       font-size: 28px;
-      background: linear-gradient(to right, var(--neon-pink), var(--glow-pink));
+      background: linear-gradient(to right, var(--icy-blue), var(--neon-icy));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2), 0 0 5px var(--high-contrast-dark); /* Darker shadow */
       animation: neonGlowText 8s ease infinite;
       background-size: 800% 800%;
     }
@@ -148,17 +166,16 @@
 
     p {
       text-align: center;
-      opacity: 0.9;
       font-size: 16px;
-      color: var(--cosmic-white);
-      text-shadow: 0 0 5px var(--glow-color);
+      color: var(--cosmic-white); /* Changed to white for tags */
+      text-shadow: 0 0 3px rgba(0, 0, 0, 0.3); /* Subtle shadow */
     }
 
     .link {
       display: block;
-      background: rgba(255, 42, 141, 0.15);
-      backdrop-filter: blur(10px);
-      color: var(--cosmic-white);
+      background: rgba(0, 204, 255, 0.1); /* Slightly lighter background */
+      backdrop-filter: blur(8px); /* Reduced blur */
+      color: var(--high-contrast-dark);
       padding: 15px 20px;
       margin: 15px auto;
       border-radius: 12px;
@@ -181,25 +198,19 @@
       width: 200%;
       height: 200%;
       background: linear-gradient(to bottom right,
-          rgba(255, 42, 141, 0) 0%,
-          rgba(255, 42, 141, 0) 45%,
-          rgba(255, 42, 141, 0.5) 50%,
-          rgba(255, 42, 141, 0) 55%,
-          rgba(255, 42, 141, 0) 100%);
+          rgba(0, 204, 255, 0) 0%,
+          rgba(0, 204, 255, 0) 45%,
+          rgba(0, 204, 255, 0.3) 50%, /* Reduced intensity */
+          rgba(0, 204, 255, 0) 55%,
+          rgba(0, 204, 255, 0) 100%);
       transform: rotate(30deg);
       animation: shine 3s infinite;
     }
 
-    @keyframes shine {
-      0% { transform: translateX(-100%) rotate(30deg); }
-      100% { transform: translateX(100%) rotate(30deg); }
-    }
-
     .link:hover {
-      background: rgba(255, 42, 141, 0.25);
+      background: rgba(0, 204, 255, 0.2);
       transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5),
-        0 0 15px var(--glow-color);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 10px var(--glow-color); /* Reduced glow */
     }
 
     .social-links {
@@ -210,7 +221,7 @@
     }
 
     .social-link {
-      color: var(--cosmic-white);
+      color: var(--high-contrast-dark);
       font-size: 24px;
       width: 45px;
       height: 45px;
@@ -218,7 +229,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255, 42, 141, 0.1);
+      background: rgba(0, 204, 255, 0.1);
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
@@ -232,31 +243,31 @@
       width: 200%;
       height: 200%;
       background: linear-gradient(to bottom right,
-          rgba(255, 42, 141, 0) 0%,
-          rgba(255, 42, 142, 0) 45%,
-          rgba(255, 42, 141, 0.8) 50%,
-          rgba(255, 42, 141, 0) 55%,
-          rgba(255, 42, 141, 0) 100%);
+          rgba(0, 204, 255, 0) 0%,
+          rgba(0, 204, 255, 0) 45%,
+          rgba(0, 204, 255, 0.6) 50%,
+          rgba(0, 204, 255, 0) 55%,
+          rgba(0, 204, 255, 0) 100%);
       transform: rotate(30deg);
       animation: shine 3s infinite;
       animation-delay: calc(var(--i) * 0.2s);
     }
 
     .social-link:hover {
-      color: var(--cosmic-white);
-      background: linear-gradient(45deg, var(--neon-pink), var(--glow-pink));
+      color: var(--high-contrast-dark);
+      background: linear-gradient(45deg, var(--icy-blue), var(--neon-icy));
       background-size: 800% 800%;
       animation: neonGlow 8s ease infinite;
       transform: scale(1.1);
-      box-shadow: 0 0 15px var(--glow-color);
+      box-shadow: 0 0 10px var(--glow-color); /* Reduced shadow */
     }
 
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: var(--neon-pink);
-      color: var(--cosmic-white);
+      background: var(--neon-icy);
+      color: var(--high-contrast-dark);
       border-radius: 50%;
       width: 55px;
       height: 55px;
@@ -264,21 +275,19 @@
       text-align: center;
       line-height: 55px;
       z-index: 999;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
-        0 0 15px var(--glow-color);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 10px var(--glow-color); /* Reduced glow */
       transition: all 0.3s ease;
     }
 
     .whatsapp-float:hover {
       transform: scale(1.1) rotate(10deg);
-      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5),
-        0 0 20px var(--glow-color);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5), 0 0 15px var(--glow-color);
     }
 
     .career-button {
       display: block;
-      background: linear-gradient(135deg, var(--neon-pink), var(--glow-pink));
-      color: var(--cosmic-white);
+      background: linear-gradient(135deg, var(--icy-blue), var(--neon-icy));
+      color: var(--high-contrast-dark);
       padding: 18px 20px;
       margin: 25px auto;
       border-radius: 12px;
@@ -287,9 +296,7 @@
       font-weight: bold;
       font-size: 18px;
       transition: all 0.3s ease;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3),
-        0 5px 0 0 rgba(255, 42, 141, 0.5),
-        inset 0 0 10px rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 5px 0 0 rgba(0, 204, 255, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.2); /* Darker inset */
       transform-style: preserve-3d;
       position: relative;
       width: 90%;
@@ -302,16 +309,12 @@
 
     .career-button:hover {
       transform: translateY(-5px);
-      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4),
-        0 7px 0 0 rgba(255, 42, 141, 0.5),
-        inset 0 0 15px rgba(255, 255, 255, 0.3);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4), 0 7px 0 0 rgba(0, 204, 255, 0.5), inset 0 0 15px rgba(0, 0, 0, 0.3);
     }
 
     .career-button:active {
       transform: translateY(2px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
-        0 2px 0 0 rgba(255, 42, 141, 0.5),
-        inset 0 0 10px rgba(255, 255, 255, 0.2);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 2px 0 0 rgba(0, 204, 255, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.2);
     }
 
     .career-button::before {
@@ -322,9 +325,9 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(to right,
-          rgba(255, 42, 141, 0) 0%,
-          rgba(255, 42, 141, 0.3) 50%,
-          rgba(255, 42, 141, 0) 100%);
+          rgba(0, 204, 255, 0) 0%,
+          rgba(0, 204, 255, 0.2) 50%, /* Reduced intensity */
+          rgba(0, 204, 255, 0) 100%);
       transform: translateX(-100%);
       transition: all 0.6s ease;
     }
@@ -335,8 +338,8 @@
 
     .whatsapp-group-button {
       display: block;
-      background: linear-gradient(135deg, var(--neon-pink), var(--glow-pink));
-      color: var(--cosmic-white);
+      background: linear-gradient(135deg, var(--icy-blue), var(--neon-icy));
+      color: var(--high-contrast-dark);
       padding: 15px 20px;
       margin: 15px auto;
       border-radius: 12px;
@@ -345,7 +348,7 @@
       font-weight: bold;
       font-size: 16px;
       transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.2);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(0, 0, 0, 0.2); /* Darker inset */
       position: relative;
       width: 90%;
       overflow: hidden;
@@ -354,7 +357,7 @@
 
     .whatsapp-group-button:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.3);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 0, 0, 0.3);
     }
 
     .whatsapp-group-button::before {
@@ -365,11 +368,11 @@
       width: 200%;
       height: 200%;
       background: linear-gradient(to bottom right,
-          rgba(255, 42, 141, 0) 0%,
-          rgba(255, 42, 141, 0) 45%,
-          rgba(255, 42, 141, 0.5) 50%,
-          rgba(255, 42, 141, 0) 55%,
-          rgba(255, 42, 141, 0) 100%);
+          rgba(0, 204, 255, 0) 0%,
+          rgba(0, 204, 255, 0) 45%,
+          rgba(0, 204, 255, 0.3) 50%, /* Reduced intensity */
+          rgba(0, 204, 255, 0) 55%,
+          rgba(0, 204, 255, 0) 100%);
       transform: rotate(30deg);
       animation: shine 3s infinite;
     }
@@ -386,10 +389,10 @@
       text-align: center;
       margin-bottom: 20px;
       font-size: 24px;
-      background: linear-gradient(to right, var(--neon-pink), var(--glow-pink));
+      background: linear-gradient(to right, var(--icy-blue), var(--neon-icy));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2), 0 0 5px var(--high-contrast-dark); /* Darker shadow */
     }
 
     .services-container {
@@ -399,8 +402,8 @@
     }
 
     .service-card {
-      background: rgba(255, 42, 141, 0.1);
-      backdrop-filter: blur(10px);
+      background: rgba(0, 204, 255, 0.08); /* Lighter background */
+      backdrop-filter: blur(6px); /* Reduced blur */
       border-radius: 15px;
       padding: 20px;
       transition: all 0.4s ease;
@@ -418,26 +421,25 @@
       width: 200%;
       height: 200%;
       background: linear-gradient(to bottom right,
-          rgba(255, 42, 141, 0) 0%,
-          rgba(255, 42, 141, 0) 45%,
-          rgba(255, 42, 141, 0.1) 50%,
-          rgba(255, 42, 141, 0) 55%,
-          rgba(255, 42, 141, 0) 100%);
+          rgba(0, 204, 255, 0) 0%,
+          rgba(0, 204, 255, 0) 45%,
+          rgba(0, 204, 255, 0.1) 50%, /* Reduced intensity */
+          rgba(0, 204, 255, 0) 55%,
+          rgba(0, 204, 255, 0) 100%);
       transform: rotate(30deg);
       animation: shine 6s infinite;
     }
 
     .service-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3),
-        0 0 15px var(--glow-color);
-      background: rgba(255, 42, 141, 0.15);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3), 0 0 10px var(--glow-color); /* Reduced glow */
+      background: rgba(0, 204, 255, 0.12);
     }
 
     .service-title {
       font-size: 20px;
       margin-bottom: 10px;
-      color: var(--cosmic-white);
+      color: var(--high-contrast-dark);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -445,13 +447,13 @@
 
     .service-icon {
       font-size: 24px;
-      background: linear-gradient(45deg, var(--neon-pink), var(--glow-pink));
+      background: linear-gradient(45deg, var(--icy-blue), var(--neon-icy));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .service-description {
-      color: rgba(255, 255, 255, 0.8);
+      color: var(--high-contrast-dark);
       font-size: 15px;
       line-height: 1.5;
       margin-bottom: 15px;
@@ -465,7 +467,7 @@
 
     .service-features li {
       padding: 5px 0;
-      color: rgba(255, 255, 255, 0.7);
+      color: var(--high-contrast-dark);
       position: relative;
       padding-left: 25px;
     }
@@ -474,14 +476,14 @@
       content: '✓';
       position: absolute;
       left: 0;
-      color: var(--glow-pink);
+      color: var(--neon-icy);
       font-weight: bold;
     }
 
     .service-button {
       display: inline-block;
-      background: linear-gradient(45deg, var(--neon-pink), var(--glow-pink));
-      color: var(--cosmic-white);
+      background: linear-gradient(45deg, var(--icy-blue), var(--neon-icy));
+      color: var(--high-contrast-dark);
       padding: 10px 20px;
       border-radius: 8px;
       text-decoration: none;
@@ -504,13 +506,13 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: linear-gradient(135deg, var(--void-black), var(--dark-cosmos));
+      background: linear-gradient(135deg, var(--void-black), var(--dark-sky-blue));
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
       z-index: 1000;
-      color: var(--cosmic-white);
+      color: var(--high-contrast-dark);
       font-size: 30px;
       display: none;
       overflow: hidden;
@@ -520,7 +522,7 @@
       position: absolute;
       font-size: 24px;
       animation: floatRose 10s linear infinite;
-      filter: drop-shadow(0 0 5px var(--glow-pink));
+      filter: drop-shadow(0 0 5px var(--neon-icy));
     }
 
     @keyframes floatRose {
@@ -540,39 +542,16 @@
       bottom: -25px;
       left: 5%;
       transform: scaleY(-1);
-      opacity: 0.3;
-      background: linear-gradient(to bottom,
-          var(--glow-color),
-          rgba(255, 42, 141, 0));
-      -webkit-mask-image: linear-gradient(to bottom,
-          rgba(0, 0, 0, 0.8),
-          transparent);
-      mask-image: linear-gradient(to bottom,
-          rgba(0, 0, 0, 0.8),
-          transparent);
+      opacity: 0.2; /* Reduced opacity */
+      background: linear-gradient(to bottom, var(--glow-color), rgba(0, 204, 255, 0));
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent); /* Reduced mask intensity */
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
       border-radius: 0 0 12px 12px;
       filter: blur(1px);
     }
 
     .profile-img-mirror {
-      position: absolute;
-      width: 120px;
-      height: 30px;
-      top: 120px;
-      left: 0;
-      transform: scaleY(-1);
-      opacity: 0.3;
-      background: linear-gradient(to bottom,
-          var(--glow-color),
-          rgba(255, 42, 141, 0));
-      -webkit-mask-image: linear-gradient(to bottom,
-          rgba(0, 0, 0, 0.8),
-          transparent);
-      mask-image: linear-gradient(to bottom,
-          rgba(0, 0, 0, 0.8),
-          transparent);
-      border-radius: 0 0 60px 60px;
-      filter: blur(1px);
+      display: none; /* Removed since profile image is in visionary */
     }
 
     .particles {
@@ -591,28 +570,29 @@
       height: 5px;
       border-radius: 50%;
       animation: floatParticle 15s linear infinite;
-      opacity: 0.6;
+      opacity: 0.4; /* Reduced opacity */
+      background: var(--neon-icy);
     }
 
     @keyframes floatParticle {
       0% { transform: translateY(0) translateX(0); opacity: 0; }
-      10% { opacity: 0.6; }
-      90% { opacity: 0.6; }
+      10% { opacity: 0.4; }
+      90% { opacity: 0.4; }
       100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
     }
 
-    .portfolio-dropdown {
+    .portfolio-dropdown, .instagram-dropdown, .youtube-dropdown, .github-dropdown, .fatloss-dropdown {
       position: relative;
       display: inline-block;
       width: 90%;
       margin: 15px auto;
     }
 
-    .portfolio-dropbtn {
+    .portfolio-dropbtn, .instagram-dropbtn, .youtube-dropbtn, .github-dropbtn, .fatloss-dropbtn {
       display: block;
-      background: rgba(255, 42, 141, 0.15);
-      backdrop-filter: blur(10px);
-      color: var(--cosmic-white);
+      background: rgba(0, 204, 255, 0.1); /* Lighter background */
+      backdrop-filter: blur(6px); /* Reduced blur */
+      color: var(--high-contrast-dark);
       padding: 15px 20px;
       border-radius: 12px;
       text-decoration: none;
@@ -627,7 +607,7 @@
       cursor: pointer;
     }
 
-    .portfolio-dropbtn::before {
+    .portfolio-dropbtn::before, .instagram-dropbtn::before, .youtube-dropbtn::before, .github-dropbtn::before, .fatloss-dropbtn::before {
       content: '';
       position: absolute;
       top: -50%;
@@ -635,27 +615,26 @@
       width: 200%;
       height: 200%;
       background: linear-gradient(to bottom right,
-          rgba(255, 42, 141, 0) 0%,
-          rgba(255, 42, 141, 0) 45%,
-          rgba(255, 42, 141, 0.5) 50%,
-          rgba(255, 42, 141, 0) 55%,
-          rgba(255, 42, 141, 0) 100%);
+          rgba(0, 204, 255, 0) 0%,
+          rgba(0, 204, 255, 0) 45%,
+          rgba(0, 204, 255, 0.3) 50%, /* Reduced intensity */
+          rgba(0, 204, 255, 0) 55%,
+          rgba(0, 204, 255, 0) 100%);
       transform: rotate(30deg);
       animation: shine 3s infinite;
     }
 
-    .portfolio-dropbtn:hover {
-      background: rgba(255, 42, 141, 0.25);
+    .portfolio-dropbtn:hover, .instagram-dropbtn:hover, .youtube-dropbtn:hover, .github-dropbtn:hover, .fatloss-dropbtn:hover {
+      background: rgba(0, 204, 255, 0.2);
       transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5),
-        0 0 15px var(--glow-color);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 10px var(--glow-color); /* Reduced glow */
     }
 
-    .portfolio-dropdown-content {
+    .portfolio-dropdown-content, .instagram-dropdown-content, .youtube-dropdown-content, .github-dropdown-content, .fatloss-dropdown-content {
       display: none;
       position: relative;
-      background: rgba(255, 42, 141, 0.1);
-      backdrop-filter: blur(10px);
+      background: rgba(0, 204, 255, 0.08); /* Lighter background */
+      backdrop-filter: blur(6px); /* Reduced blur */
       border-radius: 0 0 12px 12px;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
       z-index: 1;
@@ -666,459 +645,80 @@
       border-top: none;
     }
 
-    .portfolio-dropdown-content a {
-      color: var(--cosmic-white);
+    .portfolio-dropdown-content a, .instagram-dropdown-content a, .youtube-dropdown-content a, .github-dropdown-content a, .fatloss-dropdown-content a {
+      color: var(--high-contrast-dark);
       padding: 12px 16px;
       text-decoration: none;
       display: block;
       transition: all 0.3s ease;
     }
 
-    .portfolio-dropdown-content a:hover {
-      background-color: rgba(255, 42, 141, 0.2);
+    .portfolio-dropdown-content a:hover, .instagram-dropdown-content a:hover, .youtube-dropdown-content a:hover, .github-dropdown-content a:hover, .fatloss-dropdown-content a:hover {
+      background-color: rgba(0, 204, 255, 0.15);
       transform: translateX(5px);
     }
 
-    .portfolio-dropdown:hover .portfolio-dropdown-content {
-      display: block;
-    }
-
-    .portfolio-dropdown:hover .portfolio-dropbtn {
-      border-radius: 12px 12px 0 0;
-    }
-
-    .portfolio-submenu {
-      position: relative;
-    }
-
-    .portfolio-submenu-btn {
-      width: 100%;
-      text-align: left;
-      background: transparent;
-      border: none;
-      color: var(--cosmic-white);
-      padding: 12px 16px;
-      font-size: 15px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: all 0.3s ease;
-    }
-
-    .portfolio-submenu-btn:hover {
-      background-color: rgba(255, 42, 141, 0.1);
-      transform: translateX(5px);
-    }
-
-    .portfolio-submenu-content {
-      display: none;
-      background: rgba(0, 0, 0, 0.2);
-      padding-left: 20px;
-    }
-
-    .portfolio-submenu:hover .portfolio-submenu-content {
-      display: block;
-    }
-
-    .portfolio-submenu-content a {
-      padding: 10px 16px;
-      font-size: 14px;
-    }
-
-    .portfolio-submenu-content a i {
-      margin-right: 8px;
-      width: 18px;
-      text-align: center;
-    }
-
-    .instagram-dropdown {
-      position: relative;
-      display: inline-block;
-      width: 90%;
-      margin: 15px auto;
-    }
-
-    .instagram-dropbtn {
-      display: block;
-      background: rgba(255, 42, 141, 0.15);
-      backdrop-filter: blur(10px);
-      color: var(--cosmic-white);
-      padding: 15px 20px;
-      border-radius: 12px;
-      text-decoration: none;
-      text-align: center;
-      font-weight: bold;
-      transition: all 0.4s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      border: 1px solid var(--glow-color);
-      cursor: pointer;
-    }
-
-    .instagram-dropbtn::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(to bottom right,
-          rgba(255, 42, 141, 0) 0%,
-          rgba(255, 42, 141, 0) 45%,
-          rgba(255, 42, 141, 0.5) 50%,
-          rgba(255, 42, 141, 0) 55%,
-          rgba(255, 42, 141, 0) 100%);
-      transform: rotate(30deg);
-      animation: shine 3s infinite;
-    }
-
-    .instagram-dropbtn:hover {
-      background: rgba(255, 42, 141, 0.25);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5),
-        0 0 15px var(--glow-color);
-    }
-
-    .instagram-dropdown-content {
-      display: none;
-      position: relative;
-      background: rgba(255, 46, 141, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 0 0 12px 12px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-      width: 100%;
-      margin-top: -15px;
-      padding-top: 15px;
-      border: 1px solid var(--glow-color);
-      border-top: none;
-    }
-
-    .instagram-dropdown-content a {
-      color: var(--cosmic-white);
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-      transition: all 0.3s ease;
-    }
-
-    .instagram-dropdown-content a:hover {
-      background-color: rgba(255, 42, 141, 0.2);
-      transform: translateX(5px);
-    }
-
-    .instagram-dropdown:hover .instagram-dropdown-content {
-      display: block;
-    }
-
-    .instagram-dropdown:hover .instagram-dropbtn {
-      border-radius: 12px 12px 0 0;
-    }
-
-    .youtube-dropdown {
-      position: relative;
-      display: inline-block;
-      width: 90%;
-      margin: 15px auto;
-    }
-
-    .youtube-dropbtn {
-      display: block;
-      background: rgba(255, 42, 141, 0.15);
-      backdrop-filter: blur(10px);
-      color: var(--cosmic-white);
-      padding: 15px 20px;
-      border-radius: 12px;
-      text-decoration: none;
-      text-align: center;
-      font-weight: bold;
-      transition: all 0.4s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      border: 1px solid var(--glow-color);
-      cursor: pointer;
-    }
-
-    .youtube-dropbtn::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(to bottom right,
-          rgba(255, 42, 141, 0) 0%,
-          rgba(255, 42, 141, 0) 45%,
-          rgba(255, 42, 141, 0.5) 50%,
-          rgba(255, 42, 141, 0) 55%,
-          rgba(255, 42, 141, 0) 100%);
-      transform: rotate(30deg);
-      animation: shine 3s infinite;
-    }
-
-    .youtube-dropbtn:hover {
-      background: rgba(255, 42, 141, 0.25);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5),
-        0 0 15px var(--glow-color);
-    }
-
-    .youtube-dropdown-content {
-      display: none;
-      position: relative;
-      background: rgba(255, 42, 141, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 0 0 12px 12px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-      width: 100%;
-      margin-top: -15px;
-      padding-top: 15px;
-      border: 1px solid var(--glow-color);
-      border-top: none;
-    }
-
-    .youtube-dropdown-content a {
-      color: var(--cosmic-white);
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-      transition: all 0.3s ease;
-    }
-
-    .youtube-dropdown-content a:hover {
-      background-color: rgba(255, 42, 141, 0.2);
-      transform: translateX(5px);
-    }
-
-    .youtube-dropdown:hover .youtube-dropdown-content {
-      display: block;
-    }
-
-    .youtube-dropdown:hover .youtube-dropbtn {
-      border-radius: 12px 12px 0 0;
-    }
-
-    .github-dropdown {
-      position: relative;
-      display: inline-block;
-      width: 90%;
-      margin: 15px auto;
-    }
-
-    .github-dropbtn {
-      display: block;
-      background: rgba(255, 42, 141, 0.15);
-      backdrop-filter: blur(10px);
-      color: var(--cosmic-white);
-      padding: 15px 20px;
-      border-radius: 12px;
-      text-decoration: none;
-      text-align: center;
-      font-weight: bold;
-      transition: all 0.4s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      border: 1px solid var(--glow-color);
-      cursor: pointer;
-    }
-
-    .github-dropbtn::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(to bottom right,
-          rgba(255, 42, 141, 0) 0%,
-          rgba(255, 42, 141, 0) 45%,
-          rgba(255, 42, 141, 0.5) 50%,
-          rgba(255, 42, 141, 0) 55%,
-          rgba(255, 42, 141, 0) 100%);
-      transform: rotate(30deg);
-      animation: shine 3s infinite;
-    }
-
-    .github-dropbtn:hover {
-      background: rgba(255, 42, 141, 0.25);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5),
-        0 0 15px var(--glow-color);
-    }
-
-    .github-dropdown-content {
-      display: none;
-      position: relative;
-      background: rgba(255, 42, 141, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 0 0 12px 12px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-      width: 100%;
-      margin-top: -15px;
-      padding-top: 15px;
-      border: 1px solid var(--glow-color);
-      border-top: none;
-    }
-
-    .github-dropdown-content a {
-      color: var(--cosmic-white);
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-      transition: all 0.3s ease;
-    }
-
-    .github-dropdown-content a:hover {
-      background-color: rgba(255, 42, 141, 0.2);
-      transform: translateX(5px);
-    }
-
-    .github-dropdown:hover .github-dropdown-content {
-      display: block;
-    }
-
-    .github-dropdown:hover .github-dropbtn {
-      border-radius: 12px 12px 0 0;
-    }
-
-    .gumroad-submenu {
-      position: relative;
-    }
-
-    .gumroad-submenu-btn {
-      width: 100%;
-      text-align: left;
-      background: transparent;
-      border: none;
-      color: var(--cosmic-white);
-      padding: 12px 16px;
-      font-size: 15px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: all 0.3s ease;
-    }
-
-    .gumroad-submenu-btn:hover {
-      background-color: rgba(255, 42, 141, 0.1);
-      transform: translateX(5px);
-    }
-
-    .gumroad-submenu-content {
-      display: none;
-      background: rgba(0, 0, 0, 0.2);
-      padding-left: 20px;
-    }
-
-    .gumroad-submenu:hover .gumroad-submenu-content {
-      display: block;
-    }
-
-    .gumroad-submenu-content a {
-      padding: 10px 16px;
-      font-size: 14px;
-    }
-
-    .gumroad-submenu-content a i {
-      margin-right: 8px;
-      width: 18px;
-      text-align: center;
-    }
-
-    .fatloss-dropdown {
-      position: relative;
-      display: inline-block;
-      width: 90%;
-      margin: 15px auto;
-    }
-
-    .fatloss-dropbtn {
-      display: block;
-      background: rgba(255, 42, 141, 0.15);
-      backdrop-filter: blur(10px);
-      color: var(--cosmic-white);
-      padding: 15px 20px;
-      border-radius: 12px;
-      text-decoration: none;
-      text-align: center;
-      font-weight: bold;
-      transition: all 0.4s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      border: 1px solid var(--glow-color);
-      cursor: pointer;
-    }
-
-    .fatloss-dropbtn::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(to bottom right,
-          rgba(255, 42, 141, 0) 0%,
-          rgba(255, 42, 141, 0) 45%,
-          rgba(255, 42, 141, 0.5) 50%,
-          rgba(255, 42, 141, 0) 55%,
-          rgba(255, 42, 141, 0) 100%);
-      transform: rotate(30deg);
-      animation: shine 3s infinite;
-    }
-
-    .fatloss-dropbtn:hover {
-      background: rgba(255, 42, 141, 0.25);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5),
-        0 0 15px var(--glow-color);
-    }
-
-    .fatloss-dropdown-content {
-      display: none;
-      position: relative;
-      background: rgba(255, 42, 141, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 0 0 12px 12px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-      width: 100%;
-      margin-top: -15px;
-      padding-top: 15px;
-      border: 1px solid var(--glow-color);
-      border-top: none;
-    }
-
-    .fatloss-dropdown-content a {
-      color: var(--cosmic-white);
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-      transition: all 0.3s ease;
-    }
-
-    .fatloss-dropdown-content a:hover {
-      background-color: rgba(255, 42, 141, 0.2);
-      transform: translateX(5px);
-    }
-
+    .portfolio-dropdown:hover .portfolio-dropdown-content,
+    .instagram-dropdown:hover .instagram-dropdown-content,
+    .youtube-dropdown:hover .youtube-dropdown-content,
+    .github-dropdown:hover .github-dropdown-content,
     .fatloss-dropdown:hover .fatloss-dropdown-content {
       display: block;
     }
 
+    .portfolio-dropdown:hover .portfolio-dropbtn,
+    .instagram-dropdown:hover .instagram-dropbtn,
+    .youtube-dropdown:hover .youtube-dropbtn,
+    .github-dropdown:hover .github-dropbtn,
     .fatloss-dropdown:hover .fatloss-dropbtn {
       border-radius: 12px 12px 0 0;
+    }
+
+    .portfolio-submenu, .gumroad-submenu {
+      position: relative;
+    }
+
+    .portfolio-submenu-btn, .gumroad-submenu-btn {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      color: var(--high-contrast-dark);
+      padding: 12px 16px;
+      font-size: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+
+    .portfolio-submenu-btn:hover, .gumroad-submenu-btn:hover {
+      background-color: rgba(0, 204, 255, 0.1);
+      transform: translateX(5px);
+    }
+
+    .portfolio-submenu-content, .gumroad-submenu-content {
+      display: none;
+      background: rgba(0, 0, 0, 0.15); /* Slightly lighter */
+      padding-left: 20px;
+    }
+
+    .portfolio-submenu:hover .portfolio-submenu-content,
+    .gumroad-submenu:hover .gumroad-submenu-content {
+      display: block;
+    }
+
+    .portfolio-submenu-content a, .gumroad-submenu-content a {
+      padding: 10px 16px;
+      font-size: 14px;
+      color: var(--high-contrast-dark);
+    }
+
+    .portfolio-submenu-content a i, .gumroad-submenu-content a i {
+      margin-right: 8px;
+      width: 18px;
+      text-align: center;
     }
 
     .social-channels-section {
@@ -1132,16 +732,18 @@
   <!-- Particles Background -->
   <div class="particles" id="particles"></div>
 
-  <!-- Horror-Themed Banner Title (Detached) -->
-  <div style="text-align: center; padding: 15px; background: #000000; border: 2px solid #8b0000; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.4), 0 0 25px rgba(139,0,0,0.6); max-width: 500px; margin: 0 auto 10px;">
-    <div style="font-size: 24px; font-weight: bold; color: #fff5f8; text-shadow: 0 0 10px #8b0000, 0 0 20px rgba(139,0,0,0.6); letter-spacing: 1px; text-transform: uppercase;">
-      Understanding Human Behaviours with Machine Learning
+  <!-- Visionary Section at Top -->
+  <div class="visionary-section">
+    <div class="visionary-img-container">
+      <img src="https://i.ibb.co/BKZv5FzD/IMG-20250613-062802-529.webp" class="visionary-img" alt="Pritam Jagtap">
     </div>
+    <h1>Pritam Jagtap</h1>
+    <p>Developer | Visionary</p>
   </div>
 
-  <!-- Horror-Themed Banner Section with YouTube Video -->
-  <div class="banner" style="background: #000000; border: 2px solid #8b0000; box-shadow: 0 8px 20px rgba(0,0,0,0.4), 0 0 25px rgba(139,0,0,0.6);">
-    <iframe src="https://www.youtube.com/embed/oZR5f1IirLI?si=inTxYibtpG1XaKyR" frameborder="0" allowfullscreen></iframe>
+  <!-- Banner Section with New Video -->
+  <div class="banner">
+    <iframe src="https://www.youtube.com/embed/10r3g6NTMzo?si=jdUQH8af3QN8Wlwk" frameborder="0" allowfullscreen></iframe>
   </div>
 
   <div class="container" id="main-container">
@@ -1156,10 +758,6 @@
       <div class="mirror-reflection"></div>
     </div>
 
-    <div class="profile-img-container">
-      <img src="https://i.ibb.co/BKZv5FzD/IMG-20250613-062802-529.webp" class="profile-img" alt="Pritam">
-      <div class="profile-img-mirror"></div>
-    </div>
     <!-- WhatsApp Group Button -->
     <div class="mirror-container">
       <a href="https://chat.whatsapp.com/B9gRY5oP11VG7jCyOjgsHp" class="whatsapp-group-button" target="_blank">
@@ -1167,8 +765,6 @@
       </a>
       <div class="mirror-reflection"></div>
     </div>
-    <h1>Pritam Jagtap</h1>
-    <p>Digital Creator | Developer | Visionary</p>
 
     <!-- My Social Channels Section -->
     <div class="social-channels-section">
@@ -1206,11 +802,16 @@
         <div class="mirror-reflection"></div>
       </div>
       <div class="mirror-container">
-        <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="link" target="_blank"><i class="fab fa-linkedin"></i> Pritam Jagtap</a>
+        <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="link" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
         <div class="mirror-reflection"></div>
       </div>
       <div class="mirror-container">
-        <a href="https://github.com/PRITYAA379" class="link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <div class="github-dropdown">
+          <button class="github-dropbtn"><i class="fab fa-github"></i> GitHub</button>
+          <div class="github-dropdown-content">
+            <a href="https://github.com/PRITYAA379" target="_blank"><i class="fab fa-github"></i> PRITYAA379</a>
+          </div>
+        </div>
         <div class="mirror-reflection"></div>
       </div>
     </div>
@@ -1327,9 +928,9 @@
     </div>
 
     <div class="social-links">
-      <a href="https://www.instagram.com/" class="social-link" style="--i: 0" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://x.com/Prityaa379?t=1wZ0UV_K_9DsXa_-y3_qSw&s=09" class="social-link" style="--i: 1" target="_blank"><i class="fab fa-x-twitter"></i></a>
-      <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" class="social-link" style="--i: 2" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/prityaa379?igsh=c3B6b2ptejUwMjF4&utm_source=qr" class="social-link" style="--i: 0" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://x.com/Prityaa379?t=_oyA6dOBxrm5O7wtdcbZpQ&s=09" class="social-link" style="--i: 1" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="social-link" style="--i: 2" target="_blank"><i class="fab fa-linkedin"></i></a>
       <a href="https://github.com/PRITYAA379" class="social-link" style="--i: 3" target="_blank"><i class="fab fa-github"></i></a>
     </div>
   </div>
@@ -1350,7 +951,7 @@
     const particlesContainer = document.getElementById("particles");
 
     // Create colorful particles
-    const colors = ['#ff2a8d', '#ff8cc6', '#ff0066', '#ff99cc'];
+    const colors = ['#00ccff', '#a3bffa', '#1e3a8a', '#f0f8ff'];
     for (let i = 0; i < 50; i++) {
       let particle = document.createElement("div");
       particle.className = "particle";
