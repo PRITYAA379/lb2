@@ -635,6 +635,46 @@
       font-weight: bold;
     }
 
+    /* Banner Styles */
+    .promo-banner {
+      background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+      color: white;
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+      margin: 20px 0;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #ff4757;
+    }
+
+    .promo-banner h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .promo-banner p {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .promo-banner .banner-btn {
+      display: inline-block;
+      background: white;
+      color: #ff6b6b;
+      padding: 8px 15px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .promo-banner .banner-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
     /* Animations */
     @keyframes neonGlow {
       0% { background-position: 0% 50%; }
@@ -696,7 +736,14 @@
   <!-- Video Banner -->
   <div class="video-banner">
     <div class="video-title">Latest Video: Digital Transformation Insights</div>
-    <iframe src="https://www.youtube.com/embed/10r3g6NTMzo?si=jdUQH8af3QN8Wlwk" frameborder="0" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/6TUyU7f_394?si=Y1CGa762QIWIanAs" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  <!-- Promo Banner -->
+  <div class="promo-banner">
+    <h3>🎉 Special Offer! 🎉</h3>
+    <p>Get 20% off on all Gumroad products this week only!</p>
+    <a href="https://gumroad.com/PRITYAA379" class="banner-btn" target="_blank">Shop Now</a>
   </div>
 
   <div class="container">
