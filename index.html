@@ -7,25 +7,24 @@
   <title>Pritam's Shiny Mirror Portal</title>
   <style>
     :root {
-      --dark-sky-blue: #1e3a8a; /* Dark sky blue base */
-      --icy-blue: #a3bffa; /* Lighter icy blue accent */
-      --neon-icy: #00ccff; /* Neon icy blue glow */
-      --cosmic-white: #f0f8ff; /* Soft white for reference */
-      --void-black: #0a1f3d; /* Darker void for contrast */
-      --glow-color: rgba(0, 204, 255, 0.6); /* Reduced glow intensity */
-      --dark-text: #1a2a44; /* Dark gray text for better contrast */
-      --high-contrast-dark: #0d1b33; /* Even darker text for critical areas */
+      --dark-sky-blue: #1e3a8a;
+      --icy-blue: #a3bffa;
+      --neon-icy: #00ccff;
+      --cosmic-white: #f0f8ff;
+      --void-black: #0a1f3d;
+      --glow-color: rgba(0, 204, 255, 0.6);
+      --dark-text: #1a2a44;
+      --high-contrast-dark: #0d1b33;
     }
 
     body {
       font-family: 'Arial', sans-serif;
       background: linear-gradient(135deg, var(--dark-sky-blue), var(--void-black));
-      color: var(--dark-text); /* Darker text color */
+      color: var(--dark-text);
       margin: 0;
       padding: 20px;
       min-height: 100vh;
       overflow-x: hidden;
-      /* Subdued geometric pattern */
       background-image: 
         radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 20%),
         radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 20%);
@@ -38,13 +37,63 @@
       position: relative;
     }
 
-    /* Visionary Section at Top */
+    /* Hamburger Menu */
+    .hamburger-menu {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      background: var(--dark-sky-blue);
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .hamburger-menu input {
+      display: none;
+    }
+
+    .hamburger-menu label {
+      font-size: 24px;
+      color: var(--cosmic-white);
+      cursor: pointer;
+    }
+
+    .hamburger-menu-content {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 20px;
+      background: rgba(0, 204, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .hamburger-menu-content a {
+      display: block;
+      color: var(--high-contrast-dark);
+      padding: 10px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .hamburger-menu-content a:hover {
+      background: rgba(0, 204, 255, 0.2);
+    }
+
+    #hamburger-toggle:checked ~ .hamburger-menu-content {
+      display: block;
+    }
+
+    /* Visionary Section */
     .visionary-section {
       text-align: center;
       padding: 20px;
       background: linear-gradient(135deg, var(--dark-sky-blue), var(--void-black));
       border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px var(--glow-color); /* Reduced glow */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px var(--glow-color);
       margin-bottom: 20px;
     }
 
@@ -67,7 +116,7 @@
       border: 2px solid var(--dark-text);
     }
 
-    /* Enhanced Banner Section Styling */
+    /* Banner Section */
     .banner {
       position: relative;
       width: 100%;
@@ -75,7 +124,7 @@
       margin: 0 auto 30px;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px var(--glow-color); /* Reduced glow */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px var(--glow-color);
       background: linear-gradient(135deg, var(--icy-blue), var(--neon-icy));
       animation: neonGlow 8s ease infinite;
       background-size: 800% 800%;
@@ -93,7 +142,7 @@
       background: linear-gradient(to bottom right,
           rgba(0, 204, 255, 0) 0%,
           rgba(0, 204, 255, 0) 45%,
-          rgba(0, 204, 255, 0.4) 50%, /* Reduced intensity */
+          rgba(0, 204, 255, 0.4) 50%,
           rgba(0, 204, 255, 0) 55%,
           rgba(0, 204, 255, 0) 100%);
       transform: rotate(30deg);
@@ -102,7 +151,7 @@
 
     .banner iframe {
       width: 100%;
-      height: 280px;
+      height: 200px;
       border: none;
       border-radius: 8px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
@@ -111,12 +160,12 @@
     .banner-title {
       text-align: center;
       padding: 15px 0;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: bold;
       background: linear-gradient(to right, var(--icy-blue), var(--neon-icy));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.3), 0 0 5px var(--high-contrast-dark); /* Darker shadow */
+      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.3), 0 0 5px var(--high-contrast-dark);
       margin-bottom: 10px;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -126,13 +175,13 @@
       width: 100%;
       height: 8px;
       background: linear-gradient(90deg, var(--icy-blue), var(--neon-icy));
-      box-shadow: 0 0 10px var(--neon-icy), 0 0 15px var(--icy-blue); /* Reduced shadow */
+      box-shadow: 0 0 10px var(--neon-icy), 0 0 15px var(--icy-blue);
       border-radius: 4px;
       margin-bottom: 10px;
     }
 
     .profile-img-container {
-      display: none; /* Hidden since moved to visionary */
+      display: none;
     }
 
     @keyframes neonGlow {
@@ -153,7 +202,7 @@
       background: linear-gradient(to right, var(--icy-blue), var(--neon-icy));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2), 0 0 5px var(--high-contrast-dark); /* Darker shadow */
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2), 0 0 5px var(--high-contrast-dark);
       animation: neonGlowText 8s ease infinite;
       background-size: 800% 800%;
     }
@@ -167,14 +216,14 @@
     p {
       text-align: center;
       font-size: 16px;
-      color: var(--cosmic-white); /* Changed to white for tags */
-      text-shadow: 0 0 3px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+      color: var(--cosmic-white);
+      text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
     }
 
     .link {
       display: block;
-      background: rgba(0, 204, 255, 0.1); /* Slightly lighter background */
-      backdrop-filter: blur(8px); /* Reduced blur */
+      background: rgba(0, 204, 255, 0.1);
+      backdrop-filter: blur(8px);
       color: var(--high-contrast-dark);
       padding: 15px 20px;
       margin: 15px auto;
@@ -200,7 +249,7 @@
       background: linear-gradient(to bottom right,
           rgba(0, 204, 255, 0) 0%,
           rgba(0, 204, 255, 0) 45%,
-          rgba(0, 204, 255, 0.3) 50%, /* Reduced intensity */
+          rgba(0, 204, 255, 0.3) 50%,
           rgba(0, 204, 255, 0) 55%,
           rgba(0, 204, 255, 0) 100%);
       transform: rotate(30deg);
@@ -210,7 +259,7 @@
     .link:hover {
       background: rgba(0, 204, 255, 0.2);
       transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 10px var(--glow-color); /* Reduced glow */
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 10px var(--glow-color);
     }
 
     .social-links {
@@ -259,7 +308,7 @@
       background-size: 800% 800%;
       animation: neonGlow 8s ease infinite;
       transform: scale(1.1);
-      box-shadow: 0 0 10px var(--glow-color); /* Reduced shadow */
+      box-shadow: 0 0 10px var(--glow-color);
     }
 
     .whatsapp-float {
@@ -275,7 +324,7 @@
       text-align: center;
       line-height: 55px;
       z-index: 999;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 10px var(--glow-color); /* Reduced glow */
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 10px var(--glow-color);
       transition: all 0.3s ease;
     }
 
@@ -290,13 +339,13 @@
       color: var(--high-contrast-dark);
       padding: 18px 20px;
       margin: 25px auto;
-      border-radius: 12px;
+      border-radius: 3px;
       text-decoration: none;
       text-align: center;
       font-weight: bold;
       font-size: 18px;
       transition: all 0.3s ease;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 5px 0 0 rgba(0, 204, 255, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.2); /* Darker inset */
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 5px 0 0 rgba(0, 204, 255, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.2);
       transform-style: preserve-3d;
       position: relative;
       width: 90%;
@@ -326,7 +375,7 @@
       height: 100%;
       background: linear-gradient(to right,
           rgba(0, 204, 255, 0) 0%,
-          rgba(0, 204, 255, 0.2) 50%, /* Reduced intensity */
+          rgba(0, 204, 255, 0.2) 50%,
           rgba(0, 204, 255, 0) 100%);
       transform: translateX(-100%);
       transition: all 0.6s ease;
@@ -348,7 +397,7 @@
       font-weight: bold;
       font-size: 16px;
       transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(0, 0, 0, 0.2); /* Darker inset */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(0, 0, 0, 0.2);
       position: relative;
       width: 90%;
       overflow: hidden;
@@ -370,7 +419,7 @@
       background: linear-gradient(to bottom right,
           rgba(0, 204, 255, 0) 0%,
           rgba(0, 204, 255, 0) 45%,
-          rgba(0, 204, 255, 0.3) 50%, /* Reduced intensity */
+          rgba(0, 204, 255, 0.3) 50%,
           rgba(0, 204, 255, 0) 55%,
           rgba(0, 204, 255, 0) 100%);
       transform: rotate(30deg);
@@ -381,18 +430,18 @@
       margin-right: 8px;
     }
 
-    .services-section, .movies-section {
+    .services-section {
       margin: 30px 0;
     }
 
-    .services-title, .movies-title {
+    .services-title {
       text-align: center;
       margin-bottom: 20px;
       font-size: 24px;
       background: linear-gradient(to right, var(--icy-blue), var(--neon-icy));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2), 0 0 5px var(--high-contrast-dark); /* Darker shadow */
+      text-shadow: 0 XVIIIpx 10px rgba(0, 0, 0, 0.2), 0 0 5px var(--high-contrast-dark);
     }
 
     .services-container {
@@ -402,8 +451,8 @@
     }
 
     .service-card {
-      background: rgba(0, 204, 255, 0.08); /* Lighter background */
-      backdrop-filter: blur(6px); /* Reduced blur */
+      background: rgba(0, 204, 255, 0.08);
+      backdrop-filter: blur(6px);
       border-radius: 15px;
       padding: 20px;
       transition: all 0.4s ease;
@@ -423,7 +472,7 @@
       background: linear-gradient(to bottom right,
           rgba(0, 204, 255, 0) 0%,
           rgba(0, 204, 255, 0) 45%,
-          rgba(0, 204, 255, 0.1) 50%, /* Reduced intensity */
+          rgba(0, 204, 255, 0.1) 50%,
           rgba(0, 204, 255, 0) 55%,
           rgba(0, 204, 255, 0) 100%);
       transform: rotate(30deg);
@@ -432,7 +481,7 @@
 
     .service-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3), 0 0 10px var(--glow-color); /* Reduced glow */
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3), 0 0 10px var(--glow-color);
       background: rgba(0, 204, 255, 0.12);
     }
 
@@ -542,16 +591,16 @@
       bottom: -25px;
       left: 5%;
       transform: scaleY(-1);
-      opacity: 0.2; /* Reduced opacity */
+      opacity: 0.2;
       background: linear-gradient(to bottom, var(--glow-color), rgba(0, 204, 255, 0));
-      -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent); /* Reduced mask intensity */
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
       mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
       border-radius: 0 0 12px 12px;
       filter: blur(1px);
     }
 
     .profile-img-mirror {
-      display: none; /* Removed since profile image is in visionary */
+      display: none;
     }
 
     .particles {
@@ -570,7 +619,7 @@
       height: 5px;
       border-radius: 50%;
       animation: floatParticle 15s linear infinite;
-      opacity: 0.4; /* Reduced opacity */
+      opacity: 0.4;
       background: var(--neon-icy);
     }
 
@@ -590,8 +639,8 @@
 
     .portfolio-dropbtn, .instagram-dropbtn, .youtube-dropbtn, .github-dropbtn, .fatloss-dropbtn {
       display: block;
-      background: rgba(0, 204, 255, 0.1); /* Lighter background */
-      backdrop-filter: blur(6px); /* Reduced blur */
+      background: rgba(0, 204, 255, 0.1);
+      backdrop-filter: blur(6px);
       color: var(--high-contrast-dark);
       padding: 15px 20px;
       border-radius: 12px;
@@ -617,7 +666,7 @@
       background: linear-gradient(to bottom right,
           rgba(0, 204, 255, 0) 0%,
           rgba(0, 204, 255, 0) 45%,
-          rgba(0, 204, 255, 0.3) 50%, /* Reduced intensity */
+          rgba(0, 204, 255, 0.3) 50%,
           rgba(0, 204, 255, 0) 55%,
           rgba(0, 204, 255, 0) 100%);
       transform: rotate(30deg);
@@ -627,14 +676,14 @@
     .portfolio-dropbtn:hover, .instagram-dropbtn:hover, .youtube-dropbtn:hover, .github-dropbtn:hover, .fatloss-dropbtn:hover {
       background: rgba(0, 204, 255, 0.2);
       transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 10px var(--glow-color); /* Reduced glow */
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 10px var(--glow-color);
     }
 
     .portfolio-dropdown-content, .instagram-dropdown-content, .youtube-dropdown-content, .github-dropdown-content, .fatloss-dropdown-content {
       display: none;
       position: relative;
-      background: rgba(0, 204, 255, 0.08); /* Lighter background */
-      backdrop-filter: blur(6px); /* Reduced blur */
+      background: rgba(0, 204, 255, 0.08);
+      backdrop-filter: blur(6px);
       border-radius: 0 0 12px 12px;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
       z-index: 1;
@@ -700,7 +749,7 @@
 
     .portfolio-submenu-content, .gumroad-submenu-content {
       display: none;
-      background: rgba(0, 0, 0, 0.15); /* Slightly lighter */
+      background: rgba(0, 0, 0, 0.15);
       padding-left: 20px;
     }
 
@@ -721,8 +770,184 @@
       text-align: center;
     }
 
+    /* Social Channels Section */
     .social-channels-section {
       margin: 30px 0;
+      text-align: center;
+    }
+
+    .social-icon {
+      font-size: 30px;
+      color: var(--neon-icy);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      transform: scale(1.1);
+    }
+
+    .social-dropdown-content {
+      display: none;
+      position: relative;
+      background: rgba(0, 204, 255, 0.08);
+      backdrop-filter: blur(6px);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      margin-top: 10px;
+      z-index: 1;
+    }
+
+    .social-dropdown-content a {
+      display: block;
+      color: var(--high-contrast-dark);
+      padding: 8px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .social-dropdown-content a:hover {
+      background: rgba(0, 204, 255, 0.15);
+    }
+
+    .social-dropdown-content.show {
+      display: block;
+      animation: fadeOut 5s forwards;
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; display: none; }
+    }
+
+    /* Gumroad Aayat Box */
+    .gumroad-aayat {
+      background: linear-gradient(135deg, var(--icy-blue), var(--neon-icy));
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      position: relative;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .gumroad-hamburger {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 24px;
+      color: var(--high-contrast-dark);
+      cursor: pointer;
+    }
+
+    .gumroad-dropdown-content {
+      display: none;
+      background: rgba(0, 204, 255, 0.08);
+      backdrop-filter: blur(6px);
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .gumroad-dropdown-content a {
+      display: block;
+      color: var(--high-contrast-dark);
+      padding: 8px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .gumroad-dropdown-content a:hover {
+      background: rgba(0, 204, 255, 0.15);
+    }
+
+    #gumroad-toggle:checked ~ .gumroad-dropdown-content {
+      display: block;
+    }
+
+    /* Luxury Link Banner */
+    .luxury-link-banner {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto 30px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px var(--glow-color);
+      background: linear-gradient(135deg, var(--icy-blue), var(--neon-icy));
+      animation: neonGlow 8s ease infinite;
+      background-size: 800% 800%;
+      border: 2px solid var(--neon-icy);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .luxury-link-banner::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right,
+          rgba(0, 204, 255, 0) 0%,
+          rgba(0, 204, 255, 0) 45%,
+          rgba(0, 204, 255, 0.4) 50%,
+          rgba(0, 204, 255, 0) 55%,
+          rgba(0, 204, 255, 0) 100%);
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+
+    .luxury-link-title {
+      font-size: 20px;
+      font-weight: bold;
+      background: linear-gradient(to right, var(--icy-blue), var(--neon-icy));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.3), 0 0 5px var(--high-contrast-dark);
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    .luxury-link-tiers {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .luxury-link-tier {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--high-contrast-dark);
+    }
+
+    .luxury-link-button {
+      display: inline-block;
+      background: var(--high-contrast-dark);
+      color: var(--cosmic-white);
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      margin-top: 10px;
+    }
+
+    .luxury-link-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
@@ -732,7 +957,19 @@
   <!-- Particles Background -->
   <div class="particles" id="particles"></div>
 
-  <!-- Visionary Section at Top -->
+  <!-- Hamburger Menu -->
+  <div class="hamburger-menu">
+    <input type="checkbox" id="hamburger-toggle">
+    <label for="hamburger-toggle"><i class="fas fa-bars"></i></label>
+    <div class="hamburger-menu-content">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#social">Social Channels</a>
+      <a href="#gumroad">Gumroad</a>
+    </div>
+  </div>
+
+  <!-- Visionary Section -->
   <div class="visionary-section">
     <div class="visionary-img-container">
       <img src="https://i.ibb.co/BKZv5FzD/IMG-20250613-062802-529.webp" class="visionary-img" alt="Pritam Jagtap">
@@ -741,13 +978,25 @@
     <p>Developer | Visionary</p>
   </div>
 
-  <!-- Banner Section with New Video -->
+  <!-- Luxury Link Banner -->
+  <div class="luxury-link-banner">
+    <h2 class="luxury-link-title">I Want Smart Bio Link Like Yours</h2>
+    <div class="luxury-link-tiers">
+      <span class="luxury-link-tier">✔ Basic</span>
+      <span class="luxury-link-tier">✔ Premium</span>
+      <span class="luxury-link-tier">✔ Elite</span>
+    </div>
+    <a href="https://prityaa379.gumroad.com/l/unxyn" class="luxury-link-button" target="_blank">Get Your Bio Link Now</a>
+  </div>
+
+  <!-- Banner Section with Video Title -->
   <div class="banner">
+    <div class="banner-title">Latest Video: Digital Transformation Insights</div>
     <iframe src="https://www.youtube.com/embed/10r3g6NTMzo?si=jdUQH8af3QN8Wlwk" frameborder="0" allowfullscreen></iframe>
   </div>
 
   <div class="container" id="main-container">
-    <!-- New Fatloss Portal Dropdown -->
+    <!-- Fatloss Portal Dropdown -->
     <div class="mirror-container">
       <div class="fatloss-dropdown">
         <button class="fatloss-dropbtn"><i class="fas fa-weight"></i> Buy Fatloss Portal Now</button>
@@ -766,70 +1015,36 @@
       <div class="mirror-reflection"></div>
     </div>
 
-    <!-- My Social Channels Section -->
+    <!-- Social Channels Section -->
     <div class="social-channels-section">
       <h2 class="services-title">My Social Channels</h2>
       <div class="mirror-container">
-        <div class="instagram-dropdown">
-          <button class="instagram-dropbtn"><i class="fab fa-instagram"></i> Instagram</button>
-          <div class="instagram-dropdown-content">
-            <a href="https://www.instagram.com/prityaa379?igsh=c3B6b2ptejUwMjF4&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i> prityaa379</a>
-            <a href="https://www.instagram.com/digitalconfvisions?igsh=MXF6Y2xxeDluMm1wZA%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i> digitalconfvisions</a>
-            <a href="https://www.instagram/stock/slumforlife/profilecard/?igsh=MWF1M2QwOGU3cG5oMA==" target="_blank"><i class="fab fa-instagram"></i> slumforlife</a>
-            <a href="https://www.instagram.com/tri_ptoworld?igsh=MTQ5dTRjMTdqcnA3cA%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i> triptoworld</a>
-            <a href="https://www.instagram.com/stolen.stuff9?igsh=MTQzd2k3bmdtdmZncQ%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i> stolenstuff9</a>
-          </div>
-        </div>
-        <div class="mirror-reflection"></div>
-      </div>
-      <div class="mirror-container">
-        <div class="youtube-dropdown">
-          <button class="youtube-dropbtn"><i class="fab fa-youtube"></i> YouTube</button>
-          <div class="youtube-dropdown-content">
-            <a href="https://youtube.com/@prityaa379?si=nXQegrscXMJ9nlO-" target="_blank"><i class="fab fa-youtube"></i> prityaa379</a>
-            <a href="https://youtube.com/@preetjagtap?si=jMSN64JYU-92jX7H" target="_blank"><i class="fab fa-youtube"></i> AI Case Study</a>
-            <a href="https://youtube.com/@dgvjns?si=kr3DO1VkNswNM_yT" target="_blank"><i class="fab fa-youtube"></i> digitalconfvisions</a>
-          </div>
-        </div>
-        <div class="mirror-reflection"></div>
-      </div>
-      <div class="mirror-container">
-        <a href="https://www.facebook.com/share/16fmTVSfFx/?mibextid=wwXIfr" class="link" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
-        <div class="mirror-reflection"></div>
-      </div>
-      <div class="mirror-container">
-        <a href="https://x.com/Prityaa379?t=_oyA6dOBxrm5O7wtdcbZpQ&s=09" class="link" target="_blank"><i class="fab fa-x-twitter"></i> X</a>
-        <div class="mirror-reflection"></div>
-      </div>
-      <div class="mirror-container">
-        <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="link" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <div class="mirror-reflection"></div>
-      </div>
-      <div class="mirror-container">
-        <div class="github-dropdown">
-          <button class="github-dropbtn"><i class="fab fa-github"></i> GitHub</button>
-          <div class="github-dropdown-content">
-            <a href="https://github.com/PRITYAA379" target="_blank"><i class="fab fa-github"></i> PRITYAA379</a>
-          </div>
+        <i class="fas fa-share-alt social-icon" id="social-icon"></i>
+        <div class="social-dropdown-content" id="social-dropdown">
+          <a href="https://www.instagram.com/prityaa379?igsh=c3B6b2ptejUwMjF4&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i> prityaa379</a>
+          <a href="https://www.instagram.com/digitalconfvisions?igsh=MXF6Y2xxeDluMm1wZA%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i> digitalconfvisions</a>
+          <a href="https://www.instagram/stock/slumforlife/profilecard/?igsh=MWF1M2QwOGU3cG5oMA==" target="_blank"><i class="fab fa-instagram"></i> slumforlife</a>
+          <a href="https://www.instagram.com/tri_ptoworld?igsh=MTQ5dTRjMTdqcnA3cA%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i> triptoworld</a>
+          <a href="https://www.instagram.com/stolen.stuff9?igsh=MTQzd2k3bmdtdmZncQ%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i> stolenstuff9</a>
+          <a href="https://youtube.com/@prityaa379?si=nXQegrscXMJ9nlO-" target="_blank"><i class="fab fa-youtube"></i> prityaa379</a>
+          <a href="https://youtube.com/@preetjagtap?si=jMSN64JYU-92jX7H" target="_blank"><i class="fab fa-youtube"></i> AI Case Study</a>
+          <a href="https://youtube.com/@dgvjns?si=kr3DO1VkNswNM_yT" target="_blank"><i class="fab fa-youtube"></i> digitalconfvisions</a>
+          <a href="https://www.facebook.com/share/16fmTVSfFx/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+          <a href="https://x.com/Prityaa379?t=_oyA6dOBxrm5O7wtdcbZpQ&s=09" target="_blank"><i class="fab fa-x-twitter"></i> X</a>
+          <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="https://github.com/PRITYAA379" target="_blank"><i class="fab fa-github"></i> GitHub</a>
         </div>
         <div class="mirror-reflection"></div>
       </div>
     </div>
 
-    <!-- Free Movies & Web Series App Section -->
-    <div class="movies-section">
-      <h2 class="movies-title">Free Movies & Web Series App</h2>
-      <div class="mirror-container">
-        <a href="https://filmm.me/xD9ou2qk" class="link" target="_blank"><i class="fas fa-film"></i> Download Movies & Web Series App</a>
-        <div class="mirror-reflection"></div>
-      </div>
-    </div>
-
-    <!-- Gumroad Dropdown Section -->
+    <!-- Gumroad Aayat Box -->
     <div class="mirror-container">
-      <div class="github-dropdown">
-        <button class="github-dropbtn"><i class="fas fa-store"></i> Gumroad</button>
-        <div class="github-dropdown-content">
+      <div class="gumroad-aayat">
+        <h2 class="services-title">Gumroad Offerings</h2>
+        <input type="checkbox" id="gumroad-toggle" style="display: none;">
+        <label for="gumroad-toggle" class="gumroad-hamburger"><i class="fas fa-bars"></i></label>
+        <div class="gumroad-dropdown-content">
           <div class="gumroad-submenu">
             <button class="gumroad-submenu-btn"><i class="fas fa-star"></i> Subscriptions <i class="fas fa-caret-down"></i></button>
             <div class="gumroad-submenu-content">
@@ -854,6 +1069,7 @@
       <div class="mirror-reflection"></div>
     </div>
 
+    <!-- Other Sections -->
     <div class="mirror-container">
       <a href="mailto:jagtappritam73@gmail.com" class="link"><i class="fas fa-envelope"></i> Email Me</a>
       <div class="mirror-reflection"></div>
@@ -949,6 +1165,8 @@
     const overlay = document.getElementById("thankYouOverlay");
     const roseContainer = document.getElementById("roses");
     const particlesContainer = document.getElementById("particles");
+    const socialIcon = document.getElementById("social-icon");
+    const socialDropdown = document.getElementById("social-dropdown");
 
     // Create colorful particles
     const colors = ['#00ccff', '#a3bffa', '#1e3a8a', '#f0f8ff'];
@@ -993,6 +1211,22 @@
             window.location.href = this.href;
           }, 3000);
         }
+      });
+    });
+
+    // Social dropdown toggle
+    socialIcon.addEventListener('click', () => {
+      socialDropdown.classList.add('show');
+      setTimeout(() => {
+        socialDropdown.classList.remove('show');
+      }, 5000);
+    });
+
+    // Gumroad submenu toggle
+    document.querySelectorAll('.gumroad-submenu-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        content.style.display = content.style.display === 'block' ? 'none' : 'block';
       });
     });
   </script>
