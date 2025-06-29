@@ -4,23 +4,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pritam's Shiny Mirror Portal</title>
+  <title>Pritam Jagtap | Digital Visionary</title>
   <style>
     :root {
-      --dark-sky-blue: #1e3a8a;
-      --icy-blue: #a3bffa;
-      --neon-icy: #00ccff;
-      --cosmic-white: #f0f8ff;
-      --void-black: #0a1f3d;
+      --dark-bg: #0a0a12;
+      --darker-bg: #050508;
+      --card-bg: #151520;
+      --accent-blue: #00ccff;
+      --accent-purple: #a3bffa;
+      --text-primary: #ffffff;
+      --text-secondary: #e0e0e0;
       --glow-color: rgba(0, 204, 255, 0.6);
-      --dark-text: #1a2a44;
-      --high-contrast-dark: #0d1b33;
+      --border-color: #2a2a3a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, var(--dark-sky-blue), var(--void-black));
-      color: var(--dark-text);
+      background: var(--dark-bg);
+      color: var(--text-primary);
       margin: 0;
       padding: 20px;
       min-height: 100vh;
@@ -37,102 +44,87 @@
       position: relative;
     }
 
-    /* Hamburger Menu */
-    .hamburger-menu {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 1000;
-      background: var(--dark-sky-blue);
-      padding: 10px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .hamburger-menu input {
-      display: none;
-    }
-
-    .hamburger-menu label {
-      font-size: 24px;
-      color: var(--cosmic-white);
-      cursor: pointer;
-    }
-
-    .hamburger-menu-content {
-      display: none;
-      position: fixed;
-      top: 60px;
-      left: 20px;
-      background: rgba(0, 204, 255, 0.1);
-      backdrop-filter: blur(8px);
-      border-radius: 8px;
-      padding: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .hamburger-menu-content a {
-      display: block;
-      color: var(--high-contrast-dark);
-      padding: 10px;
-      text-decoration: none;
-      font-size: 16px;
-    }
-
-    .hamburger-menu-content a:hover {
-      background: rgba(0, 204, 255, 0.2);
-    }
-
-    #hamburger-toggle:checked ~ .hamburger-menu-content {
-      display: block;
-    }
-
-    /* Visionary Section */
-    .visionary-section {
+    /* Header Section */
+    .header-section {
       text-align: center;
       padding: 20px;
-      background: linear-gradient(135deg, var(--dark-sky-blue), var(--void-black));
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px var(--glow-color);
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
-    .visionary-img-container {
+    .profile-container {
       position: relative;
       width: 150px;
       height: 150px;
       margin: 0 auto 15px;
       border-radius: 50%;
-      background: linear-gradient(45deg, var(--icy-blue), var(--neon-icy));
+      background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
       animation: neonGlow 8s ease infinite;
       padding: 3px;
     }
 
-    .visionary-img {
+    .profile-img {
       width: 100%;
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid var(--dark-text);
+      border: 2px solid var(--card-bg);
     }
 
-    /* Banner Section */
-    .banner {
+    h1 {
+      text-align: center;
+      margin: 10px 0;
+      font-size: 28px;
+      background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: neonGlowText 8s ease infinite;
+      background-size: 800% 800%;
+    }
+
+    .tagline {
+      text-align: center;
+      font-size: 16px;
+      color: var(--text-secondary);
+    }
+
+    /* Main Content Sections */
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: var(--text-primary);
       position: relative;
-      width: 100%;
-      max-width: 500px;
-      margin: 0 auto 30px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px var(--glow-color);
-      background: linear-gradient(135deg, var(--icy-blue), var(--neon-icy));
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
+      margin: 8px auto 0;
       animation: neonGlow 8s ease infinite;
       background-size: 800% 800%;
-      border: 2px solid var(--neon-icy);
-      padding: 10px;
     }
 
-    .banner::before {
+    /* Card Styles */
+    .card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: all 0.4s ease;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
       content: '';
       position: absolute;
       top: -50%;
@@ -142,89 +134,24 @@
       background: linear-gradient(to bottom right,
           rgba(0, 204, 255, 0) 0%,
           rgba(0, 204, 255, 0) 45%,
-          rgba(0, 204, 255, 0.4) 50%,
+          rgba(0, 204, 255, 0.1) 50%,
           rgba(0, 204, 255, 0) 55%,
           rgba(0, 204, 255, 0) 100%);
       transform: rotate(30deg);
-      animation: shine 3s infinite;
+      animation: shine 6s infinite;
     }
 
-    .banner iframe {
-      width: 100%;
-      height: 200px;
-      border: none;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4), 0 0 15px var(--glow-color);
+      border-color: var(--accent-blue);
     }
 
-    .banner-title {
-      text-align: center;
-      padding: 15px 0;
-      font-size: 20px;
-      font-weight: bold;
-      background: linear-gradient(to right, var(--icy-blue), var(--neon-icy));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.3), 0 0 5px var(--high-contrast-dark);
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .neon-strip {
-      width: 100%;
-      height: 8px;
-      background: linear-gradient(90deg, var(--icy-blue), var(--neon-icy));
-      box-shadow: 0 0 10px var(--neon-icy), 0 0 15px var(--icy-blue);
-      border-radius: 4px;
-      margin-bottom: 10px;
-    }
-
-    .profile-img-container {
-      display: none;
-    }
-
-    @keyframes neonGlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    @keyframes shine {
-      0% { transform: translateX(-100%) rotate(30deg); }
-      100% { transform: translateX(100%) rotate(30deg); }
-    }
-
-    h1 {
-      text-align: center;
-      margin: 10px 0;
-      font-size: 28px;
-      background: linear-gradient(to right, var(--icy-blue), var(--neon-icy));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2), 0 0 5px var(--high-contrast-dark);
-      animation: neonGlowText 8s ease infinite;
-      background-size: 800% 800%;
-    }
-
-    @keyframes neonGlowText {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    p {
-      text-align: center;
-      font-size: 16px;
-      color: var(--cosmic-white);
-      text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-    }
-
+    /* Link Styles */
     .link {
       display: block;
-      background: rgba(0, 204, 255, 0.1);
-      backdrop-filter: blur(8px);
-      color: var(--high-contrast-dark);
+      background: var(--card-bg);
+      color: var(--text-primary);
       padding: 15px 20px;
       margin: 15px auto;
       border-radius: 12px;
@@ -234,9 +161,9 @@
       transition: all 0.4s ease;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       position: relative;
-      width: 90%;
+      width: 100%;
       overflow: hidden;
-      border: 1px solid var(--glow-color);
+      border: 1px solid var(--border-color);
     }
 
     .link::before {
@@ -257,11 +184,62 @@
     }
 
     .link:hover {
-      background: rgba(0, 204, 255, 0.2);
+      background: #1a1a2a;
       transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 10px var(--glow-color);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px var(--glow-color);
+      border-color: var(--accent-blue);
     }
 
+    /* Special Buttons */
+    .primary-btn {
+      display: block;
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+      color: var(--dark-bg);
+      padding: 18px 20px;
+      margin: 25px auto;
+      border-radius: 8px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 15px var(--glow-color);
+      position: relative;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4), 0 0 20px var(--glow-color);
+    }
+
+    .primary-btn:active {
+      transform: translateY(2px);
+    }
+
+    .primary-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.2) 50%,
+          rgba(255, 255, 255, 0) 100%);
+      transform: translateX(-100%);
+      transition: all 0.6s ease;
+    }
+
+    .primary-btn:hover::before {
+      transform: translateX(100%);
+    }
+
+    /* Social Links */
     .social-links {
       display: flex;
       justify-content: center;
@@ -270,7 +248,7 @@
     }
 
     .social-link {
-      color: var(--high-contrast-dark);
+      color: var(--text-primary);
       font-size: 24px;
       width: 45px;
       height: 45px;
@@ -278,10 +256,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(0, 204, 255, 0.1);
+      background: var(--card-bg);
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      border: 1px solid var(--border-color);
     }
 
     .social-link::after {
@@ -303,113 +282,41 @@
     }
 
     .social-link:hover {
-      color: var(--high-contrast-dark);
-      background: linear-gradient(45deg, var(--icy-blue), var(--neon-icy));
+      background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
       background-size: 800% 800%;
       animation: neonGlow 8s ease infinite;
       transform: scale(1.1);
-      box-shadow: 0 0 10px var(--glow-color);
+      box-shadow: 0 0 15px var(--glow-color);
+      border-color: var(--accent-blue);
     }
 
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--neon-icy);
-      color: var(--high-contrast-dark);
-      border-radius: 50%;
-      width: 55px;
-      height: 55px;
-      font-size: 26px;
-      text-align: center;
-      line-height: 55px;
-      z-index: 999;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 10px var(--glow-color);
-      transition: all 0.3s ease;
-    }
-
-    .whatsapp-float:hover {
-      transform: scale(1.1) rotate(10deg);
-      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5), 0 0 15px var(--glow-color);
-    }
-
-    .career-button {
-      display: block;
-      background: linear-gradient(135deg, var(--icy-blue), var(--neon-icy));
-      color: var(--high-contrast-dark);
-      padding: 18px 20px;
-      margin: 25px auto;
-      border-radius: 3px;
-      text-decoration: none;
-      text-align: center;
-      font-weight: bold;
-      font-size: 18px;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 5px 0 0 rgba(0, 204, 255, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.2);
-      transform-style: preserve-3d;
+    /* Dropdowns */
+    .dropdown {
       position: relative;
-      width: 90%;
-      border: none;
-      cursor: pointer;
-      overflow: hidden;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .career-button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4), 0 7px 0 0 rgba(0, 204, 255, 0.5), inset 0 0 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .career-button:active {
-      transform: translateY(2px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 2px 0 0 rgba(0, 204, 255, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .career-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to right,
-          rgba(0, 204, 255, 0) 0%,
-          rgba(0, 204, 255, 0.2) 50%,
-          rgba(0, 204, 255, 0) 100%);
-      transform: translateX(-100%);
-      transition: all 0.6s ease;
-    }
-
-    .career-button:hover::before {
-      transform: translateX(100%);
-    }
-
-    .whatsapp-group-button {
       display: block;
-      background: linear-gradient(135deg, var(--icy-blue), var(--neon-icy));
-      color: var(--high-contrast-dark);
-      padding: 15px 20px;
+      width: 100%;
       margin: 15px auto;
+    }
+
+    .dropbtn {
+      display: block;
+      background: var(--card-bg);
+      color: var(--text-primary);
+      padding: 15px 20px;
       border-radius: 12px;
       text-decoration: none;
       text-align: center;
       font-weight: bold;
-      font-size: 16px;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       position: relative;
-      width: 90%;
+      width: 100%;
       overflow: hidden;
-      border: 1px solid var(--glow-color);
+      border: 1px solid var(--border-color);
+      cursor: pointer;
     }
 
-    .whatsapp-group-button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .whatsapp-group-button::before {
+    .dropbtn::before {
       content: '';
       position: absolute;
       top: -50%;
@@ -426,43 +333,111 @@
       animation: shine 3s infinite;
     }
 
-    .whatsapp-group-button i {
-      margin-right: 8px;
+    .dropbtn:hover {
+      background: #1a1a2a;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px var(--glow-color);
+      border-color: var(--accent-blue);
     }
 
-    .services-section {
-      margin: 30px 0;
-    }
-
-    .services-title {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 24px;
-      background: linear-gradient(to right, var(--icy-blue), var(--neon-icy));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 XVIIIpx 10px rgba(0, 0, 0, 0.2), 0 0 5px var(--high-contrast-dark);
-    }
-
-    .services-container {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .service-card {
-      background: rgba(0, 204, 255, 0.08);
-      backdrop-filter: blur(6px);
-      border-radius: 15px;
-      padding: 20px;
-      transition: all 0.4s ease;
-      border: 1px solid var(--glow-color);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    .dropdown-content {
+      display: none;
       position: relative;
-      overflow: hidden;
+      background: var(--darker-bg);
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+      width: 100%;
+      margin-top: -15px;
+      padding-top: 15px;
+      border: 1px solid var(--accent-blue);
+      border-top: none;
     }
 
-    .service-card::before {
+    .dropdown-content a {
+      color: var(--text-primary);
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    .dropdown-content a:hover {
+      background-color: rgba(0, 204, 255, 0.15);
+      transform: translateX(5px);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+      border-radius: 12px 12px 0 0;
+    }
+
+    /* Submenus */
+    .submenu {
+      position: relative;
+    }
+
+    .submenu-btn {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      padding: 12px 16px;
+      font-size: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+
+    .submenu-btn:hover {
+      background-color: rgba(0, 204, 255, 0.1);
+      transform: translateX(5px);
+    }
+
+    .submenu-content {
+      display: none;
+      background: rgba(0, 0, 0, 0.2);
+      padding-left: 20px;
+    }
+
+    .submenu:hover .submenu-content {
+      display: block;
+    }
+
+    .submenu-content a {
+      padding: 10px 16px;
+      font-size: 14px;
+      color: var(--text-primary);
+    }
+
+    .submenu-content a i {
+      margin-right: 8px;
+      width: 18px;
+      text-align: center;
+    }
+
+    /* Video Banner */
+    .video-banner {
+      position: relative;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px var(--glow-color);
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+      animation: neonGlow 8s ease infinite;
+      background-size: 800% 800%;
+      border: 1px solid var(--accent-blue);
+      padding: 10px;
+      margin-bottom: 30px;
+    }
+
+    .video-banner::before {
       content: '';
       position: absolute;
       top: -50%;
@@ -472,113 +447,32 @@
       background: linear-gradient(to bottom right,
           rgba(0, 204, 255, 0) 0%,
           rgba(0, 204, 255, 0) 45%,
-          rgba(0, 204, 255, 0.1) 50%,
+          rgba(0, 204, 255, 0.4) 50%,
           rgba(0, 204, 255, 0) 55%,
           rgba(0, 204, 255, 0) 100%);
       transform: rotate(30deg);
-      animation: shine 6s infinite;
+      animation: shine 3s infinite;
     }
 
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3), 0 0 10px var(--glow-color);
-      background: rgba(0, 204, 255, 0.12);
-    }
-
-    .service-title {
-      font-size: 20px;
-      margin-bottom: 10px;
-      color: var(--high-contrast-dark);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .service-icon {
-      font-size: 24px;
-      background: linear-gradient(45deg, var(--icy-blue), var(--neon-icy));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .service-description {
-      color: var(--high-contrast-dark);
-      font-size: 15px;
-      line-height: 1.5;
-      margin-bottom: 15px;
-    }
-
-    .service-features {
-      list-style-type: none;
-      padding-left: 0;
-      margin-bottom: 15px;
-    }
-
-    .service-features li {
-      padding: 5px 0;
-      color: var(--high-contrast-dark);
-      position: relative;
-      padding-left: 25px;
-    }
-
-    .service-features li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--neon-icy);
-      font-weight: bold;
-    }
-
-    .service-button {
-      display: inline-block;
-      background: linear-gradient(45deg, var(--icy-blue), var(--neon-icy));
-      color: var(--high-contrast-dark);
-      padding: 10px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 14px;
-      transition: all 0.3s ease;
+    .video-banner iframe {
+      width: 100%;
+      height: 200px;
       border: none;
-      cursor: pointer;
-      margin-top: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     }
 
-    .service-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px var(--glow-color);
+    .video-title {
+      text-align: center;
+      padding: 15px 0;
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--dark-bg);
+      margin-bottom: 10px;
+      letter-spacing: 1px;
     }
 
-    .thank-you-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: linear-gradient(135deg, var(--void-black), var(--dark-sky-blue));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      z-index: 1000;
-      color: var(--high-contrast-dark);
-      font-size: 30px;
-      display: none;
-      overflow: hidden;
-    }
-
-    .rose {
-      position: absolute;
-      font-size: 24px;
-      animation: floatRose 10s linear infinite;
-      filter: drop-shadow(0 0 5px var(--neon-icy));
-    }
-
-    @keyframes floatRose {
-      0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-    }
-
+    /* Mirror Effects */
     .mirror-container {
       position: relative;
       margin-bottom: 30px;
@@ -599,10 +493,7 @@
       filter: blur(1px);
     }
 
-    .profile-img-mirror {
-      display: none;
-    }
-
+    /* Particles Background */
     .particles {
       position: fixed;
       top: 0;
@@ -620,7 +511,151 @@
       border-radius: 50%;
       animation: floatParticle 15s linear infinite;
       opacity: 0.4;
-      background: var(--neon-icy);
+      background: var(--accent-blue);
+    }
+
+    /* Thank You Overlay */
+    .thank-you-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: var(--darker-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 1000;
+      color: var(--text-primary);
+      font-size: 30px;
+      display: none;
+      overflow: hidden;
+    }
+
+    .rose {
+      position: absolute;
+      font-size: 24px;
+      animation: floatRose 10s linear infinite;
+      filter: drop-shadow(0 0 5px var(--accent-blue));
+    }
+
+    /* WhatsApp Float */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      font-size: 26px;
+      text-align: center;
+      line-height: 55px;
+      z-index: 999;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 10px var(--glow-color);
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1) rotate(10deg);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5), 0 0 15px var(--glow-color);
+    }
+
+    /* Hamburger Menu */
+    .hamburger-menu {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      background: var(--card-bg);
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+    }
+
+    .hamburger-menu input {
+      display: none;
+    }
+
+    .hamburger-menu label {
+      font-size: 24px;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    .hamburger-menu-content {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 20px;
+      background: var(--darker-bg);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+    }
+
+    .hamburger-menu-content a {
+      display: block;
+      color: var(--text-primary);
+      padding: 10px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .hamburger-menu-content a:hover {
+      background: rgba(0, 204, 255, 0.2);
+    }
+
+    #hamburger-toggle:checked ~ .hamburger-menu-content {
+      display: block;
+    }
+
+    /* Feature List */
+    .feature-list {
+      list-style: none;
+      margin-bottom: 15px;
+    }
+
+    .feature-list li {
+      padding: 5px 0;
+      color: var(--text-secondary);
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent-blue);
+      font-weight: bold;
+    }
+
+    /* Animations */
+    @keyframes neonGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes neonGlowText {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%) rotate(30deg); }
+      100% { transform: translateX(100%) rotate(30deg); }
+    }
+
+    @keyframes floatRose {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
     }
 
     @keyframes floatParticle {
@@ -628,326 +663,6 @@
       10% { opacity: 0.4; }
       90% { opacity: 0.4; }
       100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
-    }
-
-    .portfolio-dropdown, .instagram-dropdown, .youtube-dropdown, .github-dropdown, .fatloss-dropdown {
-      position: relative;
-      display: inline-block;
-      width: 90%;
-      margin: 15px auto;
-    }
-
-    .portfolio-dropbtn, .instagram-dropbtn, .youtube-dropbtn, .github-dropbtn, .fatloss-dropbtn {
-      display: block;
-      background: rgba(0, 204, 255, 0.1);
-      backdrop-filter: blur(6px);
-      color: var(--high-contrast-dark);
-      padding: 15px 20px;
-      border-radius: 12px;
-      text-decoration: none;
-      text-align: center;
-      font-weight: bold;
-      transition: all 0.4s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      border: 1px solid var(--glow-color);
-      cursor: pointer;
-    }
-
-    .portfolio-dropbtn::before, .instagram-dropbtn::before, .youtube-dropbtn::before, .github-dropbtn::before, .fatloss-dropbtn::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(to bottom right,
-          rgba(0, 204, 255, 0) 0%,
-          rgba(0, 204, 255, 0) 45%,
-          rgba(0, 204, 255, 0.3) 50%,
-          rgba(0, 204, 255, 0) 55%,
-          rgba(0, 204, 255, 0) 100%);
-      transform: rotate(30deg);
-      animation: shine 3s infinite;
-    }
-
-    .portfolio-dropbtn:hover, .instagram-dropbtn:hover, .youtube-dropbtn:hover, .github-dropbtn:hover, .fatloss-dropbtn:hover {
-      background: rgba(0, 204, 255, 0.2);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 10px var(--glow-color);
-    }
-
-    .portfolio-dropdown-content, .instagram-dropdown-content, .youtube-dropdown-content, .github-dropdown-content, .fatloss-dropdown-content {
-      display: none;
-      position: relative;
-      background: rgba(0, 204, 255, 0.08);
-      backdrop-filter: blur(6px);
-      border-radius: 0 0 12px 12px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-      width: 100%;
-      margin-top: -15px;
-      padding-top: 15px;
-      border: 1px solid var(--glow-color);
-      border-top: none;
-    }
-
-    .portfolio-dropdown-content a, .instagram-dropdown-content a, .youtube-dropdown-content a, .github-dropdown-content a, .fatloss-dropdown-content a {
-      color: var(--high-contrast-dark);
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-      transition: all 0.3s ease;
-    }
-
-    .portfolio-dropdown-content a:hover, .instagram-dropdown-content a:hover, .youtube-dropdown-content a:hover, .github-dropdown-content a:hover, .fatloss-dropdown-content a:hover {
-      background-color: rgba(0, 204, 255, 0.15);
-      transform: translateX(5px);
-    }
-
-    .portfolio-dropdown:hover .portfolio-dropdown-content,
-    .instagram-dropdown:hover .instagram-dropdown-content,
-    .youtube-dropdown:hover .youtube-dropdown-content,
-    .github-dropdown:hover .github-dropdown-content,
-    .fatloss-dropdown:hover .fatloss-dropdown-content {
-      display: block;
-    }
-
-    .portfolio-dropdown:hover .portfolio-dropbtn,
-    .instagram-dropdown:hover .instagram-dropbtn,
-    .youtube-dropdown:hover .youtube-dropbtn,
-    .github-dropdown:hover .github-dropbtn,
-    .fatloss-dropdown:hover .fatloss-dropbtn {
-      border-radius: 12px 12px 0 0;
-    }
-
-    .portfolio-submenu, .gumroad-submenu {
-      position: relative;
-    }
-
-    .portfolio-submenu-btn, .gumroad-submenu-btn {
-      width: 100%;
-      text-align: left;
-      background: transparent;
-      border: none;
-      color: var(--high-contrast-dark);
-      padding: 12px 16px;
-      font-size: 15px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: all 0.3s ease;
-    }
-
-    .portfolio-submenu-btn:hover, .gumroad-submenu-btn:hover {
-      background-color: rgba(0, 204, 255, 0.1);
-      transform: translateX(5px);
-    }
-
-    .portfolio-submenu-content, .gumroad-submenu-content {
-      display: none;
-      background: rgba(0, 0, 0, 0.15);
-      padding-left: 20px;
-    }
-
-    .portfolio-submenu:hover .portfolio-submenu-content,
-    .gumroad-submenu:hover .gumroad-submenu-content {
-      display: block;
-    }
-
-    .portfolio-submenu-content a, .gumroad-submenu-content a {
-      padding: 10px 16px;
-      font-size: 14px;
-      color: var(--high-contrast-dark);
-    }
-
-    .portfolio-submenu-content a i, .gumroad-submenu-content a i {
-      margin-right: 8px;
-      width: 18px;
-      text-align: center;
-    }
-
-    /* Social Channels Section */
-    .social-channels-section {
-      margin: 30px 0;
-      text-align: center;
-    }
-
-    .social-icon {
-      font-size: 30px;
-      color: var(--neon-icy);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .social-icon:hover {
-      transform: scale(1.1);
-    }
-
-    .social-dropdown-content {
-      display: none;
-      position: relative;
-      background: rgba(0, 204, 255, 0.08);
-      backdrop-filter: blur(6px);
-      border-radius: 8px;
-      padding: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      margin-top: 10px;
-      z-index: 1;
-    }
-
-    .social-dropdown-content a {
-      display: block;
-      color: var(--high-contrast-dark);
-      padding: 8px;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    .social-dropdown-content a:hover {
-      background: rgba(0, 204, 255, 0.15);
-    }
-
-    .social-dropdown-content.show {
-      display: block;
-      animation: fadeOut 5s forwards;
-    }
-
-    @keyframes fadeOut {
-      0% { opacity: 1; }
-      80% { opacity: 1; }
-      100% { opacity: 0; display: none; }
-    }
-
-    /* Gumroad Aayat Box */
-    .gumroad-aayat {
-      background: linear-gradient(135deg, var(--icy-blue), var(--neon-icy));
-      border-radius: 12px;
-      padding: 20px;
-      margin: 20px 0;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-      position: relative;
-      width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .gumroad-hamburger {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      font-size: 24px;
-      color: var(--high-contrast-dark);
-      cursor: pointer;
-    }
-
-    .gumroad-dropdown-content {
-      display: none;
-      background: rgba(0, 204, 255, 0.08);
-      backdrop-filter: blur(6px);
-      border-radius: 8px;
-      padding: 10px;
-      margin-top: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .gumroad-dropdown-content a {
-      display: block;
-      color: var(--high-contrast-dark);
-      padding: 8px;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    .gumroad-dropdown-content a:hover {
-      background: rgba(0, 204, 255, 0.15);
-    }
-
-    #gumroad-toggle:checked ~ .gumroad-dropdown-content {
-      display: block;
-    }
-
-    /* Luxury Link Banner */
-    .luxury-link-banner {
-      position: relative;
-      width: 100%;
-      max-width: 500px;
-      margin: 0 auto 30px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px var(--glow-color);
-      background: linear-gradient(135deg, var(--icy-blue), var(--neon-icy));
-      animation: neonGlow 8s ease infinite;
-      background-size: 800% 800%;
-      border: 2px solid var(--neon-icy);
-      padding: 20px;
-      text-align: center;
-    }
-
-    .luxury-link-banner::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(to bottom right,
-          rgba(0, 204, 255, 0) 0%,
-          rgba(0, 204, 255, 0) 45%,
-          rgba(0, 204, 255, 0.4) 50%,
-          rgba(0, 204, 255, 0) 55%,
-          rgba(0, 204, 255, 0) 100%);
-      transform: rotate(30deg);
-      animation: shine 3s infinite;
-    }
-
-    .luxury-link-title {
-      font-size: 20px;
-      font-weight: bold;
-      background: linear-gradient(to right, var(--icy-blue), var(--neon-icy));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.3), 0 0 5px var(--high-contrast-dark);
-      margin-bottom: 15px;
-      letter-spacing: 1px;
-    }
-
-    .luxury-link-tiers {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 15px;
-    }
-
-    .luxury-link-tier {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 8px 15px;
-      border-radius: 20px;
-      font-size: 14px;
-      font-weight: bold;
-      color: var(--high-contrast-dark);
-    }
-
-    .luxury-link-button {
-      display: inline-block;
-      background: var(--high-contrast-dark);
-      color: var(--cosmic-white);
-      padding: 12px 25px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      margin-top: 10px;
-    }
-
-    .luxury-link-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
@@ -969,93 +684,55 @@
     </div>
   </div>
 
-  <!-- Visionary Section -->
-  <div class="visionary-section">
-    <div class="visionary-img-container">
-      <img src="https://i.ibb.co/BKZv5FzD/IMG-20250613-062802-529.webp" class="visionary-img" alt="Pritam Jagtap">
+  <!-- Header Section -->
+  <div class="header-section" id="home">
+    <div class="profile-container">
+      <img src="https://i.ibb.co/BKZv5FzD/IMG-20250613-062802-529.webp" class="profile-img" alt="Pritam Jagtap">
     </div>
     <h1>Pritam Jagtap</h1>
-    <p>Developer | Visionary</p>
+    <p class="tagline">Developer | Visionary</p>
   </div>
 
-  <!-- Luxury Link Banner -->
-  <div class="luxury-link-banner">
-    <h2 class="luxury-link-title">I Want Smart Bio Link Like Yours</h2>
-    <div class="luxury-link-tiers">
-      <span class="luxury-link-tier">✔ Basic</span>
-      <span class="luxury-link-tier">✔ Premium</span>
-      <span class="luxury-link-tier">✔ Elite</span>
-    </div>
-    <a href="https://prityaa379.gumroad.com/l/unxyn" class="luxury-link-button" target="_blank">Get Your Bio Link Now</a>
-  </div>
-
-  <!-- Banner Section with Video Title -->
-  <div class="banner">
-    <div class="banner-title">Latest Video: Digital Transformation Insights</div>
+  <!-- Video Banner -->
+  <div class="video-banner">
+    <div class="video-title">Latest Video: Digital Transformation Insights</div>
     <iframe src="https://www.youtube.com/embed/10r3g6NTMzo?si=jdUQH8af3QN8Wlwk" frameborder="0" allowfullscreen></iframe>
   </div>
 
-  <div class="container" id="main-container">
-    <!-- Fatloss Portal Dropdown -->
-    <div class="mirror-container">
-      <div class="fatloss-dropdown">
-        <button class="fatloss-dropbtn"><i class="fas fa-weight"></i> Buy Fatloss Portal Now</button>
-        <div class="fatloss-dropdown-content">
-          <a href="https://jagtappritam7.gumroad.com/l/onrle" target="_blank"><i class="fas fa-shopping-cart"></i> Purchase Now</a>
-        </div>
-      </div>
-      <div class="mirror-reflection"></div>
-    </div>
-
-    <!-- WhatsApp Group Button -->
-    <div class="mirror-container">
-      <a href="https://chat.whatsapp.com/B9gRY5oP11VG7jCyOjgsHp" class="whatsapp-group-button" target="_blank">
-        <i class="fab fa-whatsapp"></i> Join My WhatsApp Group to Learn Free Gumroad
-      </a>
-      <div class="mirror-reflection"></div>
-    </div>
-
-    <!-- Social Channels Section -->
-    <div class="social-channels-section">
-      <h2 class="services-title">My Social Channels</h2>
+  <div class="container">
+    <!-- Gumroad Offerings -->
+    <div class="section" id="gumroad">
+      <h2 class="section-title">Gumroad Offerings</h2>
       <div class="mirror-container">
-        <i class="fas fa-share-alt social-icon" id="social-icon"></i>
-        <div class="social-dropdown-content" id="social-dropdown">
-          <a href="https://www.instagram.com/prityaa379?igsh=c3B6b2ptejUwMjF4&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i> prityaa379</a>
-          <a href="https://www.instagram.com/digitalconfvisions?igsh=MXF6Y2xxeDluMm1wZA%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i> digitalconfvisions</a>
-          <a href="https://www.instagram/stock/slumforlife/profilecard/?igsh=MWF1M2QwOGU3cG5oMA==" target="_blank"><i class="fab fa-instagram"></i> slumforlife</a>
-          <a href="https://www.instagram.com/tri_ptoworld?igsh=MTQ5dTRjMTdqcnA3cA%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i> triptoworld</a>
-          <a href="https://www.instagram.com/stolen.stuff9?igsh=MTQzd2k3bmdtdmZncQ%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i> stolenstuff9</a>
-          <a href="https://youtube.com/@prityaa379?si=nXQegrscXMJ9nlO-" target="_blank"><i class="fab fa-youtube"></i> prityaa379</a>
-          <a href="https://youtube.com/@preetjagtap?si=jMSN64JYU-92jX7H" target="_blank"><i class="fab fa-youtube"></i> AI Case Study</a>
-          <a href="https://youtube.com/@dgvjns?si=kr3DO1VkNswNM_yT" target="_blank"><i class="fab fa-youtube"></i> digitalconfvisions</a>
-          <a href="https://www.facebook.com/share/16fmTVSfFx/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
-          <a href="https://x.com/Prityaa379?t=_oyA6dOBxrm5O7wtdcbZpQ&s=09" target="_blank"><i class="fab fa-x-twitter"></i> X</a>
-          <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-          <a href="https://github.com/PRITYAA379" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <div class="card">
+          <h3 class="service-title">
+            <i class="fas fa-star service-icon"></i>
+            Premium Bio Links
+          </h3>
+          <p class="tagline">
+            Get your custom-designed bio link page to showcase all your important links
+          </p>
+          <a href="https://prityaa379.gumroad.com/l/unxyn" class="link" target="_blank">
+            <i class="fas fa-shopping-cart"></i> Get Yours Now
+          </a>
         </div>
         <div class="mirror-reflection"></div>
       </div>
-    </div>
 
-    <!-- Gumroad Aayat Box -->
-    <div class="mirror-container">
-      <div class="gumroad-aayat">
-        <h2 class="services-title">Gumroad Offerings</h2>
-        <input type="checkbox" id="gumroad-toggle" style="display: none;">
-        <label for="gumroad-toggle" class="gumroad-hamburger"><i class="fas fa-bars"></i></label>
-        <div class="gumroad-dropdown-content">
-          <div class="gumroad-submenu">
-            <button class="gumroad-submenu-btn"><i class="fas fa-star"></i> Subscriptions <i class="fas fa-caret-down"></i></button>
-            <div class="gumroad-submenu-content">
+      <div class="dropdown">
+        <button class="dropbtn"><i class="fas fa-box-open"></i> All Gumroad Products</button>
+        <div class="dropdown-content">
+          <div class="submenu">
+            <button class="submenu-btn"><i class="fas fa-gem"></i> Subscriptions <i class="fas fa-caret-down"></i></button>
+            <div class="submenu-content">
               <a href="https://jagtappritam7.gumroad.com/l/npjvdt" target="_blank"><i class="fas fa-gem"></i> Gumroad Subscription</a>
               <a href="https://gumroad.com/PRITYAA379/membership" target="_blank"><i class="fas fa-crown"></i> Membership</a>
               <a href="https://gumroad.com/PRITYAA379/newsletter" target="_blank"><i class="fas fa-newspaper"></i> Newsletter</a>
             </div>
           </div>
-          <div class="gumroad-submenu">
-            <button class="gumroad-submenu-btn"><i class="fas fa-box-open"></i> Products <i class="fas fa-caret-down"></i></button>
-            <div class="gumroad-submenu-content">
+          <div class="submenu">
+            <button class="submenu-btn"><i class="fas fa-box"></i> Products <i class="fas fa-caret-down"></i></button>
+            <div class="submenu-content">
               <a href="https://jagtappritam7.gumroad.com/l/uplaw" target="_blank"><i class="fas fa-question-circle"></i> What is Gumroad?</a>
               <a href="https://jagtappritam7.gumroad.com/l/qnsim" target="_blank"><i class="fas fa-link"></i> LINK IN BIO SAMPLES</a>
               <a href="https://jagtappritam7.gumroad.com/l/qkevcg" target="_blank"><i class="fas fa-calendar-check"></i> Daily Productivity Planner</a>
@@ -1066,92 +743,177 @@
           <a href="https://gumroad.com/PRITYAA379" target="_blank"><i class="fas fa-store-alt"></i> Visit My Store</a>
         </div>
       </div>
-      <div class="mirror-reflection"></div>
     </div>
 
-    <!-- Other Sections -->
-    <div class="mirror-container">
-      <a href="mailto:jagtappritam73@gmail.com" class="link"><i class="fas fa-envelope"></i> Email Me</a>
-      <div class="mirror-reflection"></div>
+    <!-- Fatloss Portal -->
+    <div class="section">
+      <div class="mirror-container">
+        <div class="card">
+          <h3 class="service-title">
+            <i class="fas fa-weight service-icon"></i>
+            Fatloss Portal
+          </h3>
+          <p class="tagline">
+            Comprehensive guide to effective fat loss strategies and techniques
+          </p>
+          <a href="https://jagtappritam7.gumroad.com/l/onrle" class="link" target="_blank">
+            <i class="fas fa-shopping-cart"></i> Purchase Now
+          </a>
+        </div>
+        <div class="mirror-reflection"></div>
+      </div>
     </div>
 
-    <div class="mirror-container">
-      <a href="tel:+919372035409" class="link"><i class="fas fa-phone"></i> Call Me</a>
-      <div class="mirror-reflection"></div>
+    <!-- WhatsApp Group -->
+    <div class="section">
+      <div class="mirror-container">
+        <a href="https://chat.whatsapp.com/B9gRY5oP11VG7jCyOjgsHp" class="primary-btn" target="_blank">
+          <i class="fab fa-whatsapp"></i> Join My WhatsApp Group
+        </a>
+        <div class="mirror-reflection"></div>
+      </div>
     </div>
-
-    <div class="mirror-container">
-      <a href="https://wa.me/919372035409?text=Hi%20Pritam%2C%20I%20saw%20your%204D%20Webpage%20and%20I'm%20interested%20in%20your%20services!" class="link" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
-      <div class="mirror-reflection"></div>
-    </div>
-
-    <div class="mirror-container">
-      <a href="https://prityaa379.github.io/theethicalglitchcontent/" class="link" target="_blank"><i class="fas fa-book"></i> Upcoming Books</a>
-      <div class="mirror-reflection"></div>
-    </div>
-
-    <!-- 3D Career Guide Button -->
-    <button class="career-button" onclick="window.open('https://calendly.com/jagtappritam73/book-your-slot', '_blank')">
-      <i class="fas fa-calendar-alt"></i> Schedule 15-Min Free Career Guide
-    </button>
 
     <!-- Services Section -->
-    <div class="services-section">
-      <h2 class="services-title">My Services</h2>
-      <div class="services-container">
-        <!-- Digital Marketing Service -->
-        <div class="service-card">
+    <div class="section" id="services">
+      <h2 class="section-title">My Services</h2>
+      
+      <div class="mirror-container">
+        <div class="card">
           <h3 class="service-title">
             <i class="fas fa-bullhorn service-icon"></i>
             Digital Marketing
           </h3>
-          <p class="service-description">
-            Boost your online presence with comprehensive digital marketing strategies tailored to your business needs.
+          <p class="tagline">
+            Boost your online presence with comprehensive digital marketing strategies
           </p>
-          <ul class="service-features">
+          <ul class="feature-list">
             <li>Social Media Marketing</li>
             <li>Search Engine Optimization (SEO)</li>
             <li>Pay-Per-Click Advertising (PPC)</li>
             <li>Content Marketing</li>
-            <li>Email Marketing Campaigns</li>
           </ul>
-          <button class="service-button" onclick="window.open('https://calendly.com/jagtappritam73/book-your-slot', '_blank')">
-            Get Started
-          </button>
+          <a href="https://calendly.com/jagtappritam73/book-your-slot" class="link" target="_blank">
+            <i class="fas fa-calendar-alt"></i> Book Consultation
+          </a>
         </div>
+        <div class="mirror-reflection"></div>
+      </div>
 
-        <!-- Web Development Service -->
-        <div class="service-card">
+      <div class="mirror-container">
+        <div class="card">
           <h3 class="service-title">
             <i class="fas fa-code service-icon"></i>
             Web Development
           </h3>
-          <p class="service-description">
-            Custom, responsive websites that look great on any device and deliver exceptional user experiences.
+          <p class="tagline">
+            Custom, responsive websites that look great on any device
           </p>
-          <ul class="service-features">
+          <ul class="feature-list">
             <li>Responsive Web Design</li>
             <li>Frontend & Backend Development</li>
             <li>E-commerce Solutions</li>
             <li>Website Maintenance</li>
-            <li>Performance Optimization</li>
           </ul>
-          <button class="service-button" onclick="window.open('https://calendly.com/jagtappritam73/book-your-slot', '_blank')">
-            Get Started
-          </button>
+          <a href="https://calendly.com/jagtappritam73/book-your-slot" class="link" target="_blank">
+            <i class="fas fa-calendar-alt"></i> Book Consultation
+          </a>
         </div>
+        <div class="mirror-reflection"></div>
       </div>
     </div>
 
-    <div class="social-links">
-      <a href="https://www.instagram.com/prityaa379?igsh=c3B6b2ptejUwMjF4&utm_source=qr" class="social-link" style="--i: 0" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://x.com/Prityaa379?t=_oyA6dOBxrm5O7wtdcbZpQ&s=09" class="social-link" style="--i: 1" target="_blank"><i class="fab fa-x-twitter"></i></a>
-      <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="social-link" style="--i: 2" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/PRITYAA379" class="social-link" style="--i: 3" target="_blank"><i class="fab fa-github"></i></a>
+    <!-- Contact Links -->
+    <div class="section">
+      <h2 class="section-title">Contact Me</h2>
+      
+      <div class="mirror-container">
+        <a href="mailto:jagtappritam73@gmail.com" class="link">
+          <i class="fas fa-envelope"></i> Email Me
+        </a>
+        <div class="mirror-reflection"></div>
+      </div>
+
+      <div class="mirror-container">
+        <a href="tel:+919372035409" class="link">
+          <i class="fas fa-phone"></i> Call Me
+        </a>
+        <div class="mirror-reflection"></div>
+      </div>
+
+      <div class="mirror-container">
+        <a href="https://wa.me/919372035409" class="link" target="_blank">
+          <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+        <div class="mirror-reflection"></div>
+      </div>
+    </div>
+
+    <!-- Books Section -->
+    <div class="section">
+      <div class="mirror-container">
+        <a href="https://prityaa379.github.io/theethicalglitchcontent/" class="primary-btn" target="_blank">
+          <i class="fas fa-book"></i> View My Upcoming Books
+        </a>
+        <div class="mirror-reflection"></div>
+      </div>
+    </div>
+
+    <!-- Career Guide -->
+    <div class="section">
+      <div class="mirror-container">
+        <a href="https://calendly.com/jagtappritam73/book-your-slot" class="primary-btn" target="_blank">
+          <i class="fas fa-calendar-alt"></i> Free 15-Min Career Guide
+        </a>
+        <div class="mirror-reflection"></div>
+      </div>
+    </div>
+
+    <!-- Social Channels -->
+    <div class="section" id="social">
+      <h2 class="section-title">Social Channels</h2>
+      
+      <div class="social-links">
+        <a href="https://www.instagram.com/prityaa379" class="social-link" style="--i: 0" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://youtube.com/@prityaa379" class="social-link" style="--i: 1" target="_blank">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://x.com/Prityaa379" class="social-link" style="--i: 2" target="_blank">
+          <i class="fab fa-x-twitter"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" class="social-link" style="--i: 3" target="_blank">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/PRITYAA379" class="social-link" style="--i: 4" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn"><i class="fas fa-share-alt"></i> All Social Channels</button>
+        <div class="dropdown-content">
+          <h3 style="padding: 12px 16px; color: var(--text-primary);">Instagram</h3>
+          <a href="https://www.instagram.com/prityaa379" target="_blank"><i class="fab fa-instagram"></i> prityaa379</a>
+          <a href="https://www.instagram.com/digitalconfvisions" target="_blank"><i class="fab fa-instagram"></i> digitalconfvisions</a>
+          <a href="https://www.instagram.com/tri_ptoworld" target="_blank"><i class="fab fa-instagram"></i> triptoworld</a>
+          
+          <h3 style="padding: 12px 16px; color: var(--text-primary);">YouTube</h3>
+          <a href="https://youtube.com/@prityaa379" target="_blank"><i class="fab fa-youtube"></i> prityaa379</a>
+          <a href="https://youtube.com/@preetjagtap" target="_blank"><i class="fab fa-youtube"></i> AI Case Study</a>
+          <a href="https://youtube.com/@dgvjns" target="_blank"><i class="fab fa-youtube"></i> digitalconfvisions</a>
+          
+          <h3 style="padding: 12px 16px; color: var(--text-primary);">Other</h3>
+          <a href="https://www.facebook.com/share/16fmTVSfFx" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+          <a href="https://x.com/Prityaa379" target="_blank"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
+        </div>
+      </div>
     </div>
   </div>
 
-  <a href="https://wa.me/919372035409?text=Hi%20Pritam%2C%20I%20saw%20your%204D%20Webpage%20and%20I'm%20interested%20in%20your%20services!" class="whatsapp-float" target="_blank">
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/919372035409" class="whatsapp-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
 
@@ -1162,14 +924,10 @@
   </div>
 
   <script>
-    const overlay = document.getElementById("thankYouOverlay");
-    const roseContainer = document.getElementById("roses");
+    // Create particles
     const particlesContainer = document.getElementById("particles");
-    const socialIcon = document.getElementById("social-icon");
-    const socialDropdown = document.getElementById("social-dropdown");
-
-    // Create colorful particles
     const colors = ['#00ccff', '#a3bffa', '#1e3a8a', '#f0f8ff'];
+    
     for (let i = 0; i < 50; i++) {
       let particle = document.createElement("div");
       particle.className = "particle";
@@ -1185,7 +943,9 @@
 
     // Create roses for thank you overlay
     function createRoses() {
+      const roseContainer = document.getElementById("roses");
       const emojis = ['🌹', '🌸', '🌺', '🌻', '🌷', '💐', '🏵️'];
+      
       for (let i = 0; i < 20; i++) {
         let rose = document.createElement("div");
         rose.className = "rose";
@@ -1198,35 +958,31 @@
       }
     }
 
-    // Show thank you overlay when links are clicked
-    document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"], .link:not([target="_blank"]), .social-link:not([target="_blank"])').forEach(link => {
+    // Show thank you overlay when contact links are clicked
+    document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"], .link:not([target="_blank"])').forEach(link => {
       link.addEventListener('click', function(e) {
         if (!this.getAttribute('target')) {
           e.preventDefault();
           createRoses();
-          overlay.style.display = 'flex';
+          document.getElementById("thankYouOverlay").style.display = 'flex';
           setTimeout(() => {
-            overlay.style.display = 'none';
-            roseContainer.innerHTML = '';
+            document.getElementById("thankYouOverlay").style.display = 'none';
+            document.getElementById("roses").innerHTML = '';
             window.location.href = this.href;
           }, 3000);
         }
       });
     });
 
-    // Social dropdown toggle
-    socialIcon.addEventListener('click', () => {
-      socialDropdown.classList.add('show');
-      setTimeout(() => {
-        socialDropdown.classList.remove('show');
-      }, 5000);
-    });
-
-    // Gumroad submenu toggle
-    document.querySelectorAll('.gumroad-submenu-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const content = btn.nextElementSibling;
-        content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    // Smooth scroll for menu links
+    document.querySelectorAll('.hamburger-menu-content a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        document.querySelector(targetId).scrollIntoView({
+          behavior: 'smooth'
+        });
+        document.getElementById('hamburger-toggle').checked = false;
       });
     });
   </script>
