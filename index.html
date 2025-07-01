@@ -9,13 +9,13 @@
     :root {
       --dark-bg: #0a0a12;
       --darker-bg: #050508;
-      --card-bg: #151520;
-      --accent-blue: #00ccff;
-      --accent-purple: #a3bffa;
+      --card-bg: rgba(21, 21, 32, 0.8);
+      --accent-blue: #b300ff;
+      --accent-purple: #d46ff9;
       --text-primary: #ffffff;
       --text-secondary: #e0e0e0;
-      --glow-color: rgba(0, 204, 255, 0.6);
-      --border-color: #2a2a3a;
+      --glow-color: rgba(179, 0, 255, 0.6);
+      --border-color: #3a2a3a;
     }
 
     * {
@@ -122,6 +122,7 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
       position: relative;
       overflow: hidden;
+      backdrop-filter: blur(10px);
     }
 
     .card::before {
@@ -132,11 +133,11 @@
       width: 200%;
       height: 200%;
       background: linear-gradient(to bottom right,
-          rgba(0, 204, 255, 0) 0%,
-          rgba(0, 204, 255, 0) 45%,
-          rgba(0, 204, 255, 0.1) 50%,
-          rgba(0, 204, 255, 0) 55%,
-          rgba(0, 204, 255, 0) 100%);
+          rgba(179, 0, 255, 0) 0%,
+          rgba(179, 0, 255, 0) 45%,
+          rgba(179, 0, 255, 0.1) 50%,
+          rgba(179, 0, 255, 0) 55%,
+          rgba(179, 0, 255, 0) 100%);
       transform: rotate(30deg);
       animation: shine 6s infinite;
     }
@@ -160,6 +161,19 @@
       font-weight: bold;
     }
 
+    .timer-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ff4757;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: bold;
+      animation: pulse 2s infinite;
+    }
+
     /* Link Styles */
     .link {
       display: block;
@@ -177,6 +191,7 @@
       width: 100%;
       overflow: hidden;
       border: 1px solid var(--border-color);
+      backdrop-filter: blur(10px);
     }
 
     .link::before {
@@ -187,17 +202,17 @@
       width: 200%;
       height: 200%;
       background: linear-gradient(to bottom right,
-          rgba(0, 204, 255, 0) 0%,
-          rgba(0, 204, 255, 0) 45%,
-          rgba(0, 204, 255, 0.3) 50%,
-          rgba(0, 204, 255, 0) 55%,
-          rgba(0, 204, 255, 0) 100%);
+          rgba(179, 0, 255, 0) 0%,
+          rgba(179, 0, 255, 0) 45%,
+          rgba(179, 0, 255, 0.3) 50%,
+          rgba(179, 0, 255, 0) 55%,
+          rgba(179, 0, 255, 0) 100%);
       transform: rotate(30deg);
       animation: shine 3s infinite;
     }
 
     .link:hover {
-      background: #1a1a2a;
+      background: rgba(26, 26, 42, 0.8);
       transform: translateY(-5px);
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px var(--glow-color);
       border-color: var(--accent-blue);
@@ -274,6 +289,7 @@
       position: relative;
       overflow: hidden;
       border: 1px solid var(--border-color);
+      backdrop-filter: blur(10px);
     }
 
     .social-link::after {
@@ -284,11 +300,11 @@
       width: 200%;
       height: 200%;
       background: linear-gradient(to bottom right,
-          rgba(0, 204, 255, 0) 0%,
-          rgba(0, 204, 255, 0) 45%,
-          rgba(0, 204, 255, 0.6) 50%,
-          rgba(0, 204, 255, 0) 55%,
-          rgba(0, 204, 255, 0) 100%);
+          rgba(179, 0, 255, 0) 0%,
+          rgba(179, 0, 255, 0) 45%,
+          rgba(179, 0, 255, 0.6) 50%,
+          rgba(179, 0, 255, 0) 55%,
+          rgba(179, 0, 255, 0) 100%);
       transform: rotate(30deg);
       animation: shine 3s infinite;
       animation-delay: calc(var(--i) * 0.2s);
@@ -327,6 +343,7 @@
       overflow: hidden;
       border: 1px solid var(--border-color);
       cursor: pointer;
+      backdrop-filter: blur(10px);
     }
 
     .dropbtn::before {
@@ -337,17 +354,17 @@
       width: 200%;
       height: 200%;
       background: linear-gradient(to bottom right,
-          rgba(0, 204, 255, 0) 0%,
-          rgba(0, 204, 255, 0) 45%,
-          rgba(0, 204, 255, 0.3) 50%,
-          rgba(0, 204, 255, 0) 55%,
-          rgba(0, 204, 255, 0) 100%);
+          rgba(179, 0, 255, 0) 0%,
+          rgba(179, 0, 255, 0) 45%,
+          rgba(179, 0, 255, 0.3) 50%,
+          rgba(179, 0, 255, 0) 55%,
+          rgba(179, 0, 255, 0) 100%);
       transform: rotate(30deg);
       animation: shine 3s infinite;
     }
 
     .dropbtn:hover {
-      background: #1a1a2a;
+      background: rgba(26, 26, 42, 0.8);
       transform: translateY(-5px);
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px var(--glow-color);
       border-color: var(--accent-blue);
@@ -356,7 +373,7 @@
     .dropdown-content {
       display: none;
       position: relative;
-      background: var(--darker-bg);
+      background: rgba(5, 5, 8, 0.8);
       border-radius: 0 0 12px 12px;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
       z-index: 1;
@@ -365,6 +382,7 @@
       padding-top: 15px;
       border: 1px solid var(--accent-blue);
       border-top: none;
+      backdrop-filter: blur(10px);
     }
 
     .dropdown-content a {
@@ -376,7 +394,7 @@
     }
 
     .dropdown-content a:hover {
-      background-color: rgba(0, 204, 255, 0.15);
+      background-color: rgba(179, 0, 255, 0.15);
       transform: translateX(5px);
     }
 
@@ -409,7 +427,7 @@
     }
 
     .submenu-btn:hover {
-      background-color: rgba(0, 204, 255, 0.1);
+      background-color: rgba(179, 0, 255, 0.1);
       transform: translateX(5px);
     }
 
@@ -458,11 +476,11 @@
       width: 200%;
       height: 200%;
       background: linear-gradient(to bottom right,
-          rgba(0, 204, 255, 0) 0%,
-          rgba(0, 204, 255, 0) 45%,
-          rgba(0, 204, 255, 0.4) 50%,
-          rgba(0, 204, 255, 0) 55%,
-          rgba(0, 204, 255, 0) 100%);
+          rgba(179, 0, 255, 0) 0%,
+          rgba(179, 0, 255, 0) 45%,
+          rgba(179, 0, 255, 0.4) 50%,
+          rgba(179, 0, 255, 0) 55%,
+          rgba(179, 0, 255, 0) 100%);
       transform: rotate(30deg);
       animation: shine 3s infinite;
     }
@@ -499,7 +517,7 @@
       left: 5%;
       transform: scaleY(-1);
       opacity: 0.2;
-      background: linear-gradient(to bottom, var(--glow-color), rgba(0, 204, 255, 0));
+      background: linear-gradient(to bottom, var(--glow-color), rgba(179, 0, 255, 0));
       -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
       mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
       border-radius: 0 0 12px 12px;
@@ -587,6 +605,7 @@
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       border: 1px solid var(--border-color);
+      backdrop-filter: blur(10px);
     }
 
     .hamburger-menu input {
@@ -604,11 +623,12 @@
       position: fixed;
       top: 60px;
       left: 20px;
-      background: var(--darker-bg);
+      background: rgba(5, 5, 8, 0.8);
       border-radius: 8px;
       padding: 10px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       border: 1px solid var(--border-color);
+      backdrop-filter: blur(10px);
     }
 
     .hamburger-menu-content a {
@@ -620,7 +640,7 @@
     }
 
     .hamburger-menu-content a:hover {
-      background: rgba(0, 204, 255, 0.2);
+      background: rgba(179, 0, 255, 0.2);
     }
 
     #hamburger-toggle:checked ~ .hamburger-menu-content {
@@ -688,6 +708,23 @@
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     }
 
+    /* Timer Styles */
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      margin: 10px 0;
+      font-size: 14px;
+    }
+
+    .timer-segment {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 5px 8px;
+      border-radius: 5px;
+      min-width: 30px;
+      text-align: center;
+    }
+
     /* Animations */
     @keyframes neonGlow {
       0% { background-position: 0% 50%; }
@@ -716,6 +753,12 @@
       10% { opacity: 0.4; }
       90% { opacity: 0.4; }
       100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
@@ -748,7 +791,7 @@
 
   <!-- Video Banner -->
   <div class="video-banner">
-    <div class="video-title">Latest Video: Digital Transformation Insights</div>
+    <div class="video-title">Understanding Human Behaviors with Machine Learning</div>
     <iframe src="https://www.youtube.com/embed/6TUyU7f_394?si=Y1CGa762QIWIanAs" frameborder="0" allowfullscreen></iframe>
   </div>
 
@@ -756,7 +799,9 @@
   <div class="section">
     <div class="mirror-container">
       <div class="card">
-        <div class="download-badge">1 Download</div>
+        <div class="timer-badge" id="gumroadTimer1">
+          FREE FOR <span id="hours1">23</span>:<span id="minutes1">59</span>:<span id="seconds1">59</span>
+        </div>
         <h3 class="service-title">
           <i class="fas fa-question-circle service-icon"></i>
           What is Gumroad?
@@ -764,8 +809,18 @@
         <p class="tagline">
           A simple guide to understanding and starting your Gumroad journey
         </p>
+        <div class="countdown-timer">
+          <div>Hurry! Offer ends in:</div>
+          <div class="timer-segment" id="days1">1</div>
+          <div>days</div>
+          <div class="timer-segment" id="hours2">23</div>
+          <div>:</div>
+          <div class="timer-segment" id="minutes2">59</div>
+          <div>:</div>
+          <div class="timer-segment" id="seconds2">59</div>
+        </div>
         <a href="https://prityaa379.gumroad.com/l/uplaw" class="link" target="_blank">
-          <i class="fas fa-shopping-cart"></i> Get It Free
+          <i class="fas fa-shopping-cart"></i> Download Now - FREE for 24 Hours
         </a>
       </div>
       <div class="mirror-reflection"></div>
@@ -773,7 +828,9 @@
 
     <div class="mirror-container">
       <div class="card">
-        <div class="download-badge">1 Download</div>
+        <div class="timer-badge" id="gumroadTimer2">
+          FREE FOR <span id="hours3">23</span>:<span id="minutes3">59</span>:<span id="seconds3">59</span>
+        </div>
         <h3 class="service-title">
           <i class="fas fa-download service-icon"></i>
           Start Gumroad for Free
@@ -781,8 +838,18 @@
         <p class="tagline">
           Turn your ideas into digital products with this free strategic guide
         </p>
+        <div class="countdown-timer">
+          <div>Limited time offer:</div>
+          <div class="timer-segment" id="days2">1</div>
+          <div>days</div>
+          <div class="timer-segment" id="hours4">23</div>
+          <div>:</div>
+          <div class="timer-segment" id="minutes4">59</div>
+          <div>:</div>
+          <div class="timer-segment" id="seconds4">59</div>
+        </div>
         <a href="https://prityaa379.gumroad.com/l/pvoryz" class="link" target="_blank">
-          <i class="fas fa-shopping-cart"></i> Download Now
+          <i class="fas fa-shopping-cart"></i> Get It Free - Limited Time
         </a>
       </div>
       <div class="mirror-reflection"></div>
@@ -791,9 +858,9 @@
 
   <!-- Promo Banner -->
   <div class="promo-banner">
-    <h3>🎉 Special Offer! 🎉</h3>
-    <p>Get 20% off on all Gumroad products this week only!</p>
-    <a href="https://gumroad.com/PRITYAA379" class="banner-btn" target="_blank">Shop Now</a>
+    <h3>🎉 Flash Sale! 🎉</h3>
+    <p>All Gumroad products FREE for next 24 hours only!</p>
+    <a href="https://gumroad.com/PRITYAA379" class="banner-btn" target="_blank">Download Now</a>
   </div>
 
   <div class="container">
@@ -802,6 +869,9 @@
       <h2 class="section-title">Gumroad Offerings</h2>
       <div class="mirror-container">
         <div class="card">
+          <div class="timer-badge">
+            <span id="hours5">23</span>:<span id="minutes5">59</span>:<span id="seconds5">59</span> LEFT
+          </div>
           <h3 class="service-title">
             <i class="fas fa-star service-icon"></i>
             Premium Bio Links
@@ -810,7 +880,7 @@
             Get your custom-designed bio link page to showcase all your important links
           </p>
           <a href="https://prityaa379.gumroad.com/l/unxyn" class="link" target="_blank">
-            <i class="fas fa-shopping-cart"></i> Get Yours Now
+            <i class="fas fa-shopping-cart"></i> Get Yours Now - FREE Today
           </a>
         </div>
         <div class="mirror-reflection"></div>
@@ -846,6 +916,9 @@
     <div class="section">
       <div class="mirror-container">
         <div class="card">
+          <div class="timer-badge">
+            FREE FOR <span id="hours6">23</span>:<span id="minutes6">59</span>:<span id="seconds6">59</span>
+          </div>
           <h3 class="service-title">
             <i class="fas fa-weight service-icon"></i>
             Fatloss Portal
@@ -854,7 +927,7 @@
             Comprehensive guide to effective fat loss strategies and techniques
           </p>
           <a href="https://jagtappritam7.gumroad.com/l/onrle" class="link" target="_blank">
-            <i class="fas fa-shopping-cart"></i> Purchase Now
+            <i class="fas fa-shopping-cart"></i> Download Now - FREE Today
           </a>
         </div>
         <div class="mirror-reflection"></div>
@@ -1023,7 +1096,7 @@
   <script>
     // Create particles
     const particlesContainer = document.getElementById("particles");
-    const colors = ['#00ccff', '#a3bffa', '#1e3a8a', '#f0f8ff'];
+    const colors = ['#b300ff', '#d46ff9', '#1e3a8a', '#f0f8ff'];
     
     for (let i = 0; i < 50; i++) {
       let particle = document.createElement("div");
@@ -1082,6 +1155,32 @@
         document.getElementById('hamburger-toggle').checked = false;
       });
     });
+
+    // Countdown timer for Gumroad offers
+    function updateCountdown() {
+      // Set the end time (24 hours from now)
+      const now = new Date();
+      const endTime = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+      
+      // Calculate remaining time
+      const diff = endTime - now;
+      
+      // Calculate days, hours, minutes, seconds
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      // Update all timer elements
+      document.querySelectorAll('[id^="days"]').forEach(el => el.textContent = days);
+      document.querySelectorAll('[id^="hours"]').forEach(el => el.textContent = hours.toString().padStart(2, '0'));
+      document.querySelectorAll('[id^="minutes"]').forEach(el => el.textContent = minutes.toString().padStart(2, '0'));
+      document.querySelectorAll('[id^="seconds"]').forEach(el => el.textContent = seconds.toString().padStart(2, '0'));
+    }
+
+    // Update countdown every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
   </script>
 </body>
 </html>
