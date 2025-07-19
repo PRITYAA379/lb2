@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pritam's Shiny Mirror Portal</title>
+  <title>Pritam Jagtap | Digital Creator & Developer</title>
   <style>
     :root {
       --primary: #6e45e2;
@@ -77,6 +77,25 @@
       50% {
         transform: translateY(-10px);
       }
+    }
+
+    .name-title {
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    .professional-name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: white;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .tagline {
+      font-size: 16px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 10px;
     }
 
     h1 {
@@ -815,6 +834,98 @@
       width: 18px;
       text-align: center;
     }
+    
+    /* SaaS Ideas Section */
+    .saas-section {
+      margin: 30px 0;
+    }
+    
+    .saas-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      background: linear-gradient(to right, #6e45e2, #88d3ce);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .saas-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .saas-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3),
+        0 0 15px rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .saas-card-title {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .saas-card-icon {
+      font-size: 20px;
+      background: linear-gradient(45deg, #ff7e5f, #feb47b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .saas-card-description {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+    
+    .saas-link {
+      display: inline-block;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .saas-link:hover {
+      color: #88d3ce;
+      transform: translateX(5px);
+    }
+    
+    .linkedin-connect {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .linkedin-connect a {
+      color: #88d3ce;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .linkedin-connect a:hover {
+      color: #6e45e2;
+      text-decoration: underline;
+    }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
@@ -823,11 +934,16 @@
   <div class="particles" id="particles"></div>
   <div class="container" id="main-container">
     <div class="profile-img-container">
-      <img src="https://i.ibb.co/BKZv5FzD/IMG-20250613-062802-529.webp" class="profile-img" alt="Pritam">
+      <img src="https://i.ibb.co/BKZv5FzD/IMG-20250613-062802-529.webp" class="profile-img" alt="Pritam Jagtap">
       <div class="profile-img-mirror"></div>
     </div>
-    <h1>Pritam Jagtap</h1>
-    <p>Digital Creator | Developer | Visionary</p>
+    
+    <div class="name-title">
+      <div class="professional-name">PRITYAA | Pritam Jagtap</div>
+      <div class="tagline">Digital Creator & Full Stack Developer</div>
+    </div>
+    
+    <p>Building digital experiences that inspire and transform</p>
 
     <div class="mirror-container">
       <a href="https://yourwebsite.com" class="link"><i class="fas fa-globe"></i> Visit My Website</a>
@@ -901,6 +1017,54 @@
           <a href="https://gumroad.com/PRITYAA379" target="_blank"><i class="fas fa-store-alt"></i> Visit My Store</a>
         </div>
         <div class="mirror-reflection"></div>
+      </div>
+    </div>
+
+    <!-- SaaS Ideas Section -->
+    <div class="saas-section">
+      <h2 class="saas-title">SaaS Ideas for Quick Start</h2>
+      
+      <div class="saas-card">
+        <h3 class="saas-card-title">
+          <i class="fas fa-microphone-alt saas-card-icon"></i>
+          Podcast Hosting Platform
+        </h3>
+        <p class="saas-card-description">
+          A simple, affordable platform for creators to host, distribute, and monetize their podcasts with built-in analytics.
+        </p>
+        <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" class="saas-link" target="_blank">
+          <i class="fas fa-lightbulb"></i> Want to discuss this idea?
+        </a>
+      </div>
+      
+      <div class="saas-card">
+        <h3 class="saas-card-title">
+          <i class="fas fa-calendar-check saas-card-icon"></i>
+          Appointment Scheduling System
+        </h3>
+        <p class="saas-card-description">
+          A smart scheduling tool for service businesses with automated reminders, payment integration, and calendar sync.
+        </p>
+        <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" class="saas-link" target="_blank">
+          <i class="fas fa-lightbulb"></i> Let's build this together
+        </a>
+      </div>
+      
+      <div class="saas-card">
+        <h3 class="saas-card-title">
+          <i class="fas fa-chart-line saas-card-icon"></i>
+          Social Media Analytics Dashboard
+        </h3>
+        <p class="saas-card-description">
+          Comprehensive analytics for all social platforms in one place with actionable insights and competitor benchmarking.
+        </p>
+        <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" class="saas-link" target="_blank">
+          <i class="fas fa-lightbulb"></i> Connect to explore
+        </a>
+      </div>
+      
+      <div class="linkedin-connect">
+        Connect with me on <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" target="_blank">LinkedIn</a> to stay updated with more SaaS ideas and collaborations
       </div>
     </div>
 
