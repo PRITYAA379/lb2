@@ -3,165 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pritam Jagtap - Mobile First</title>
+    <title>Pritam Jagtap | Portfolio Book</title>
     <style>
-        /* Mobile-First Base Styles */
+        /* Mobile-First Book Design */
         :root {
-            --pink-accent: #ff5d9e;
-            --pink-light: #ff7eb9;
-            --pink-bg: linear-gradient(135deg, #fff5f7 0%, #ffebf3 100%);
-        }
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+            --book-cover: #ff5d9e;
+            --page-color: #fff9fc;
+            --text-color: #333;
+            --shadow: rgba(0, 0, 0, 0.2);
         }
         
         body {
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            background: var(--pink-bg);
-            color: #333;
-            padding: 20px;
+            font-family: 'Georgia', serif;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Book Container */
+        .book {
+            width: 100%;
+            max-width: 800px;
+            height: 500px;
+            position: relative;
+            perspective: 1500px;
+        }
+
+        /* Hard Cover */
+        .cover {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            background: var(--book-cover);
+            border-radius: 2px 0 0 2px;
+            box-shadow: 
+                inset 3px 0 10px var(--shadow),
+                5px 5px 15px var(--shadow);
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            transform-origin: right center;
+            transition: transform 1s;
+        }
+
+        /* Pages */
+        .page {
+            position: absolute;
+            width: 50%;
+            height: 96%;
+            top: 2%;
+            background: var(--page-color);
+            box-shadow: 
+                0 0 5px var(--shadow),
+                inset 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transform-origin: left center;
+            transition: transform 1s;
+        }
+
+        /* Left Page (Image) */
+        .page-left {
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            z-index: 5;
+        }
+
+        .page-left img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--shadow);
+        }
+
+        /* Right Page (Content) */
+        .page-right {
+            right: 0;
+            padding: 30px;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
+            z-index: 4;
         }
-        
-        /* Circular Image (Top) */
-        .circle-container {
-            width: 100%;
-            max-width: 150px;
-            aspect-ratio: 1/1;
-            margin: 0 auto 20px;
-            perspective: 1000px;
+
+        /* Content Styling */
+        .content {
+            transform: rotateY(10deg);
+            transform-origin: left center;
+            transition: transform 1s;
         }
-        
-        .circle {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 3px solid var(--pink-light);
-            box-shadow: 
-                0 4px 15px rgba(255, 126, 185, 0.3),
-                inset 0 0 8px rgba(255, 255, 255, 0.5);
-            animation: float 3s ease-in-out infinite;
+
+        h1 {
+            color: var(--book-cover);
+            margin-bottom: 20px;
+            font-size: 28px;
+            border-bottom: 2px solid var(--book-cover);
+            padding-bottom: 10px;
         }
-        
-        .circle img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+
+        p {
+            margin: 10px 0;
+            line-height: 1.6;
         }
-        
-        /* 3D Cube (Responsive Units) */
-        .cube-container {
-            width: 100%;
-            max-width: 280px; /* Mobile-first width */
-            height: 63px; /* 2.5in equivalent at 96dpi */
-            perspective: 800px;
-            margin: 30px auto;
-        }
-        
-        .cube {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            animation: rotate 20s infinite linear;
-        }
-        
-        .cube-face {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            border: 2px solid var(--pink-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: clamp(0.8rem, 3vw, 1.1rem);
+
+        .highlight {
             font-weight: bold;
-            color: var(--pink-accent);
-            box-shadow: 0 0 10px rgba(255, 126, 185, 0.2);
-            backface-visibility: hidden;
-            overflow: hidden;
-            padding: 10px;
+            color: var(--book-cover);
         }
-        
-        .cube-face.image-face img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+
+        /* Page Turn Effect */
+        .book:hover .cover {
+            transform: rotateY(-160deg);
         }
-        
-        /* Cube Positioning (Mobile-friendly units) */
-        .cube-face.front { transform: translateZ(31.5px); }
-        .cube-face.back { transform: rotateY(180deg) translateZ(31.5px); }
-        .cube-face.right { transform: rotateY(90deg) translateZ(31.5px); }
-        .cube-face.left { transform: rotateY(-90deg) translateZ(31.5px); }
-        .cube-face.top { transform: rotateX(90deg) translateZ(31.5px); }
-        .cube-face.bottom { transform: rotateX(-90deg) translateZ(31.5px); }
-        
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+
+        .book:hover .page-left {
+            transform: rotateY(-20deg);
         }
-        
-        @keyframes rotate {
-            0% { transform: rotateY(0); }
-            100% { transform: rotateY(360deg); }
+
+        .book:hover .content {
+            transform: rotateY(0);
         }
-        
-        /* Desktop Enhancements */
-        @media (min-width: 768px) {
-            .circle-container {
-                max-width: 180px;
-                margin-bottom: 30px;
+
+        /* Mobile Adaptation */
+        @media (max-width: 768px) {
+            .book {
+                height: 400px;
             }
             
-            .cube-container {
-                max-width: 400px;
-                height: 90px;
+            .page-right {
+                padding: 15px;
             }
             
-            .cube-face {
-                font-size: 1.1rem;
+            h1 {
+                font-size: 22px;
             }
-            
-            .cube-face.front { transform: translateZ(45px); }
-            .cube-face.back { transform: rotateY(180deg) translateZ(45px); }
-            .cube-face.right { transform: rotateY(90deg) translateZ(45px); }
-            .cube-face.left { transform: rotateY(-90deg) translateZ(45px); }
-            .cube-face.top { transform: rotateX(90deg) translateZ(45px); }
-            .cube-face.bottom { transform: rotateX(-90deg) translateZ(45px); }
         }
     </style>
 </head>
 <body>
-    <!-- Circular Profile Image -->
-    <div class="circle-container">
-        <div class="circle">
+    <div class="book">
+        <!-- Book Cover -->
+        <div class="cover">
+            PRITAM JAGTAP
+        </div>
+
+        <!-- Left Page (Image) -->
+        <div class="page page-left">
             <img src="https://i.ibb.co/nsRbTz4d/IMG-1396.jpg" alt="Pritam Jagtap">
         </div>
-    </div>
 
-    <!-- 3D Rotating Cube -->
-    <div class="cube-container">
-        <div class="cube">
-            <div class="cube-face front">🎥 Video Creator</div>
-            <div class="cube-face back">📈 Digital Marketer</div>
-            <div class="cube-face right">🧠 Strategist</div>
-            <div class="cube-face left image-face">
-                <img src="https://i.ibb.co/nsRbTz4d/IMG-1396.jpg" alt="Pritam Jagtap">
+        <!-- Right Page (Content) -->
+        <div class="page page-right">
+            <div class="content">
+                <h1>About Me</h1>
+                <p>Hello! I'm <span class="highlight">Pritam Jagtap</span>, a <span class="highlight">23-year-old</span> creative professional.</p>
+                
+                <p>My expertise spans:</p>
+                <p>🎥 <span class="highlight">Video Creation</span></p>
+                <p>📈 <span class="highlight">Digital Marketing</span></p>
+                <p>🧠 <span class="highlight">Strategic Planning</span></p>
+                
+                <p>I blend artistic vision with analytical thinking to deliver impactful results.</p>
             </div>
-            <div class="cube-face top">🚀 Innovator</div>
-            <div class="cube-face bottom">💡 Thinker</div>
         </div>
     </div>
 </body>
