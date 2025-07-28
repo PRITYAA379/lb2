@@ -3,94 +3,801 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>5 Deep Conscious Pages</title>
+  <title>Cosmic Experience</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0; padding: 0;
-      box-sizing: border-box;
-    }
-
     html, body {
-      height: 100%;
-      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
+      background: #000;
       font-family: 'Segoe UI', sans-serif;
-      overflow-x: hidden;
+      color: white;
+      overflow: hidden;
     }
 
-    section {
+    /* Navigation Tabs */
+    .nav-tabs {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+      z-index: 1000;
+    }
+
+    .nav-tabs button {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    .nav-tabs button:hover, .nav-tabs button.active {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .section {
+      display: none;
       width: 100%;
       height: 100vh;
-      padding: 60px 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: white;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    /* Cosmic Breathing Meditation Styles */
+    #breathing-section canvas {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+
+    .vertical-divider {
+      position: fixed;
+      left: 15%;
+      top: 0;
+      width: 10px;
+      height: 100vh;
+      z-index: 1;
+      background: linear-gradient(to bottom, #ff0 0%, #ff0 50%, #fff 50%, #fff 100%);
+      box-shadow: 0 0 30px 10px rgba(255, 255, 0, 0.7), 0 0 30px 10px rgba(255, 255, 255, 0.7);
+      border-radius: 5px;
+    }
+
+    .breathing-guide {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+      background: rgba(0,0,0,0.7);
+      padding: 15px 30px;
+      border-radius: 50px;
+      z-index: 10;
       text-align: center;
+      min-width: 250px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: none;
     }
 
-    h1 {
-      font-size: 2.7rem;
+    .breath-circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 10px;
+      vertical-align: middle;
+      animation: pulse 2s infinite alternate;
+    }
+
+    .countdown {
+      font-size: 18px;
+      margin-top: 8px;
+      opacity: 0.8;
+    }
+
+    .start-breathing {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 15px 30px;
+      border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+      z-index: 10;
+      backdrop-filter: blur(5px);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.9); opacity: 0.7; }
+      100% { transform: scale(1.1); opacity: 1; }
+    }
+
+    @keyframes breathIn {
+      0% { transform: scale(0.9); }
+      100% { transform: scale(1.3); }
+    }
+
+    @keyframes breathOut {
+      0% { transform: scale(1.3); }
+      100% { transform: scale(0.9); }
+    }
+
+    /* Nakshatra Cosmic Profile Styles */
+    #profile-section canvas {
+      display: block;
+    }
+
+    .hamburger {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 30px;
+      height: 22px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .hamburger div {
+      height: 4px;
+      background: white;
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: 0.3s ease;
+    }
+
+    .menu {
+      position: absolute;
+      top: 0;
+      left: -260px;
+      width: 250px;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+      padding: 60px 20px;
+      z-index: 9;
+      transition: left 0.5s ease;
+      overflow-y: auto;
+    }
+
+    .menu.active {
+      left: 0;
+    }
+
+    .menu h2 {
+      margin-bottom: 15px;
+      font-size: 22px;
+      border-bottom: 1px solid white;
+    }
+
+    .menu ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu ul li {
+      padding: 10px 0;
+      border-bottom: 1px solid #444;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .menu ul li a {
+      color: white;
+      text-decoration: none;
+      display: block;
+    }
+
+    .social-channels {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .social-channels a {
+      color: #00ccff;
+      text-decoration: none;
+      font-size: 14px;
+      display: block;
+      margin: 5px 0;
+    }
+
+    .social-channels a:hover {
+      text-decoration: underline;
+    }
+
+    #about-content img {
+      width: 100%;
+      border-radius: 12px;
       margin-bottom: 20px;
-      text-shadow: 0 0 10px rgba(0,0,0,0.6);
+      box-shadow: 0 0 20px #00ffff;
     }
 
-    p {
-      font-size: 1.2rem;
-      line-height: 1.8;
-      max-width: 900px;
-      text-shadow: 0 0 6px rgba(0,0,0,0.4);
+    #about-content p {
+      margin-bottom: 20px;
+      font-size: 14px;
+      line-height: 1.5;
     }
 
-    /* Backgrounds */
-    .page1 { background: linear-gradient(135deg, #0f2027, #203a43); }
-    .page2 { background: linear-gradient(135deg, #2c3e50, #4ca1af); }
-    .page3 { background: linear-gradient(135deg, #1e3c72, #2a5298); }
-    .page4 { background: linear-gradient(135deg, #8e44ad, #c0392b); }
-    .page5 { background: linear-gradient(135deg, #f39c12, #d35400); }
+    /* Digital Confvision 2030 Styles */
+    #confvision-section {
+      background: radial-gradient(ellipse at center, #000 0%, #111 100%);
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .confvision-hamburger {
+      position: fixed;
+      top: 30px;
+      right: 40px;
+      width: 30px;
+      height: 25px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .confvision-hamburger div {
+      background: white;
+      height: 3px;
+      margin: 6px 0;
+      transition: all 0.3s ease;
+    }
+
+    .confvision-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 0;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+      transition: 0.5s ease;
+      overflow-x: hidden;
+      z-index: 999;
+    }
+
+    .confvision-menu a {
+      display: block;
+      color: white;
+      padding: 20px;
+      font-size: 1.5em;
+      text-decoration: none;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .confvision-menu.open {
+      width: 250px;
+    }
+
+    .confvision-menu.open a {
+      opacity: 1;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .glitch {
+      font-size: 2.5em;
+      line-height: 1.4;
+      animation: flicker 2s infinite;
+      text-shadow: 0 0 5px #ff00cc, 0 0 10px #ffffff, 0 0 20px #ff99ff;
+    }
+
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+      20%, 22%, 24%, 55% { opacity: 0.4; }
+    }
   </style>
 </head>
 <body>
+  <!-- Navigation Tabs -->
+  <div class="nav-tabs">
+    <button class="tab-button active" onclick="showSection('breathing-section')">Cosmic Breathing</button>
+    <button class="tab-button" onclick="showSection('profile-section')">Cosmic Profile</button>
+    <button class="tab-button" onclick="showSection('confvision-section')">Digital Confvision</button>
+  </div>
 
-<!-- Page 1 -->
-<section class="page1">
-  <h1>1. What is Vibration in Consciousness?</h1>
-  <p>
-    Everything is vibration — from thoughts to light to memory. In consciousness, vibration determines the quality of awareness. Low vibration clouds clarity. High vibration sharpens it. You don’t need to change your life. Just raise your vibration, and life changes itself.
-  </p>
-</section>
+  <!-- Cosmic Breathing Meditation Section -->
+  <div id="breathing-section" class="section active">
+    <div class="vertical-divider"></div>
+    <div class="breathing-guide" id="breathing-guide">
+      <div class="breath-circle" style="background: #4CAF50;"></div>
+      <div id="breath-text">Begin with an inhale</div>
+      <div class="countdown" id="countdown">8 seconds</div>
+    </div>
+    <button class="start-breathing" onclick="startBreathing()">Start Breathing</button>
+    <canvas id="cosmicCanvas"></canvas>
+  </div>
 
-<!-- Page 2 -->
-<section class="page2">
-  <h1>2. Can Trees Move? Stillness Is Motion</h1>
-  <p>
-    Trees move in ways unseen. They feel intention. They adapt their roots. They transfer frequency through silence. In quantum stillness, they journey not across space, but through vibration. The forest is not still — it is deeply alive in slow motion.
-  </p>
-</section>
+  <!-- Nakshatra Cosmic Profile Section -->
+  <div id="profile-section" class="section">
+    <div class="hamburger" onclick="toggleProfileMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="menu" id="profile-menu">
+      <h2>Menu</h2>
+      <ul>
+        <li onclick="showAbout()">About Me</li>
+        <li onclick="showSocialChannels()">My Social Channels</li>
+        <li>My Journey</li>
+      </ul>
+      <div id="about-content" style="display: none; margin-top: 30px;">
+        <img src="32B28C64-34DF-493A-9E10-E7C5A1C1E779.jpeg" alt="My Photo">
+        <p>मी स्वतःला एका नव्या जगाची सुरुवात मानतो. मला वाटतं की 2025 हे वर्ष फक्त डिजिटल नव्हे, तर आत्मशोधाचंही आहे. मी कोण आहे हे सांगण्यापेक्षा, मी काय निर्माण करतो हे सांगणं मला अधिक योग्य वाटतं. माझं आयुष्य हे एक प्रयोगशाळा आहे—जिथं भावना, विचार आणि कृती यांचं मिश्रण घडतंय.</p>
+        <p>चित्रकला, कोडिंग, आणि कॉस्मिक इंटेलिजन्स यांचं एकत्रीकरण हेच माझं मिशन आहे. मी फक्त स्क्रिप्ट लिहीत नाही, मी विश्वाशी संवाद साधतो. प्रत्येक प्रोजेक्टमध्ये मी माझी अंतरात्मा गुंतवतो. हे काम म्हणजे माझ्या आतल्या विश्वाची बाह्य आवृत्ती आहे.</p>
+        <p>माझ्या सोशल मीडियावर जे काही तुम्ही पाहता—ते फक्त कंटेंट नाही. ते माझ्या अंतर्मनाचा आवाज आहे. प्रत्येक पोस्ट, प्रत्येक कोडिंग लाइन, प्रत्येक डिझाइन ह्याचा संबंध माझ्या अस्तित्वाशी आहे. मी लोकांशी कनेक्ट होतो—फॉर्म्युला नव्हे, तर भावना देऊन.</p>
+        <p>माझ्या प्रवासात अनेक संघर्ष आले, पण प्रत्येक अडचण ही एक इनर्जी कन्व्हर्जन होती. ती वेदना होती, पण तीच शक्ती झाली. मी स्वतःला 'स्पिरिच्युअल टेक आर्टिस्ट' म्हणतो—कारण मी डिझाईन आणि तंत्रज्ञान यांमध्ये चेतना गुंफतो.</p>
+        <p>माझं ध्येय फक्त पैसा नाही. माझं ध्येय आहे—प्रत्येकाने स्वतःला ओळखणं. मी निर्माण करतो डिजिटल कॉसमॉस, जिथे प्रत्येक वापरकर्ता स्वतःला पुन्हा शोधू शकतो. हाच माझा आत्मप्रकाश आहे.</p>
+      </div>
+      <div id="social-channels" class="social-channels" style="display: none;">
+        <h3>Social Channels & Contact</h3>
+        <p><strong>Instagram:</strong></p>
+        <a href="https://www.instagram.com/prityaa379?igsh=c3B6b2ptejUwMjF4&utm_source=qr" target="_blank">prityaa379</a>
+        <a href="https://www.instagram.com/digitalconfvisions?igsh=MXF6Y2xxeDluMm1wZA%3D%3D&utm_source=qr" target="_blank">digitalconfvisions</a>
+        <a href="https://www.instagram.com/slumforlife/profilecard/?igsh=MWF1M2QwOGU3cG5oMA==" target="_blank">slumforlife</a>
+        <a href="https://www.instagram.com/tri_ptoworld?igsh=MTQ5dTRjMTdqcnA3cA%3D%3D&utm_source=qr" target="_blank">triptoworld</a>
+        <a href="https://www.instagram.com/stolen.stuff9?igsh=MTQzd2k3bmdtdmZncQ%3D%3D&utm_source=qr" target="_blank">stolenstuff9</a>
+        <p><strong>YouTube:</strong></p>
+        <a href="https://youtube.com/@prityaa379?si=nXQegrscXMJ9nlO-" target="_blank">prityaa379</a>
+        <a href="https://youtube.com/@preetjagtap?si=jMSN64JYU-92jX7H" target="_blank">AI Case Study</a>
+        <a href="https://youtube.com/@dgvjns?si=kr3DO1VkNswNM_yT" target="_blank">digitalconfvisions</a>
+        <p><strong>LinkedIn:</strong></p>
+        <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">Pritam Jagtap</a>
+        <p><strong>Facebook:</strong></p>
+        <a href="https://www.facebook.com/share/16fmTVSfFx/?mibextid=wwXIfr" target="_blank">Pritam Jagtap</a>
+        <p><strong>Spotify:</strong></p>
+        <a href="https://open.spotify.com/artist/09ivobvbWFoOs0J7aUDK7n?si=Rjq7LswURAu6-Ilt5LfPnA" target="_blank">Artist Profile</a>
+        <p><strong>X:</strong></p>
+        <a href="https://x.com/Prityaa379?t=_oyA6dOBxrm5O7wtdcbZpQ&s=09" target="_blank">Prityaa379</a>
+        <p><strong>Contact:</strong></p>
+        <p>Email: <a href="mailto:jagtappreet73@gmail.com">jagtappreet73@gmail.com</a></p>
+        <p>Phone: 9372035409</p>
+      </div>
+    </div>
+    <canvas id="profileCanvas"></canvas>
+  </div>
 
-<!-- Page 3 -->
-<section class="page3">
-  <h1>3. What Is a Human?</h1>
-  <p>
-    A human is a portal — spirit wrapped in story. You are not your mind, your job, or your history. You are a field of awareness experiencing reality through filters. Your potential isn’t in what you become, but what you remember you are.
-  </p>
-</section>
+  <!-- Digital Confvision 2030 Section -->
+  <div id="confvision-section" class="section">
+    <div class="confvision-hamburger" onclick="toggleConfvisionMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="confvision-menu" id="confvision-menu">
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#">Projects</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="hero">
+      <div class="glitch">
+        WHAT WE DO<br>
+        It’s not boring.<br>
+        It’s DIGITAL MARKETING — updated for 2030.<br>
+        <span style="font-size:0.8em; color:#aaa;">🧠 Brain-bending. Trend-smashing. Mind-shifting.</span>
+      </div>
+    </div>
+  </div>
 
-<!-- Page 4 -->
-<section class="page4">
-  <h1>4. Where Do Thoughts Come From?</h1>
-  <p>
-    Thoughts are not created — they are tuned into. Like a radio station, your mind receives signals based on your internal frequency. Some thoughts are yours. Many are not. The art is in choosing which to believe, and which to release like clouds.
-  </p>
-</section>
+  <script>
+    // Tab Navigation
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-button').forEach(button => {
+        button.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+      document.querySelector(`button[onclick="showSection('${sectionId}')"]`).classList.add('active');
 
-<!-- Page 5 -->
-<section class="page5">
-  <h1>5. Why Consciousness Matters in 2025</h1>
-  <p>
-    In the age of AI, noise, and simulation, consciousness is your only compass. It's the only thing you truly own. Attention is currency. Presence is power. In 2025 and beyond, your inner clarity will define your outer reality. Protect it like sacred fire.
-  </p>
-</section>
+      // Stop animations when switching sections
+      if (sectionId !== 'breathing-section') cancelAnimationFrame(breathingAnimationId);
+      if (sectionId !== 'profile-section') cancelAnimationFrame(profileAnimationId);
+      if (sectionId === 'breathing-section') initBreathing();
+      if (sectionId === 'profile-section') initProfile();
+    }
 
+    // Cosmic Breathing Meditation Script
+    let breathingAnimationId;
+    let breathingStarted = false;
+    function initBreathing() {
+      const canvas = document.getElementById("cosmicCanvas");
+      const ctx = canvas.getContext("2d");
+      let w = canvas.width = window.innerWidth;
+      let h = canvas.height = window.innerHeight;
+
+      const BREATH_PHASES = {
+        INHALE: { text: "INHALE deeply", color: "#4CAF50", duration: 8000, animation: "breathIn" },
+        HOLD: { text: "HOLD your breath", color: "#FFC107", duration: 9000, animation: "" },
+        EXHALE: { text: "EXHALE slowly", color: "#F44336", duration: 9000, animation: "breathOut" }
+      };
+
+      let currentBreathPhase = BREATH_PHASES.INHALE;
+      let breathStartTime = Date.now();
+      let countdownInterval;
+
+      const stars = Array.from({ length: 2000 }, () => {
+        const z = Math.random() * 0.7 + 0.3;
+        return {
+          x: (Math.random() - 0.5) * w * 3,
+          y: (Math.random() - 0.5) * h * 3,
+          z: z,
+          size: z * 2,
+          speed: z * 0.003,
+          originalSize: z * 2,
+          twinkleSpeed: Math.random() * 0.01 + 0.01
+        };
+      });
+
+      const nakshatras = [
+        {count: 6, radius: 90, speed: 0.05, color: "rgba(255,200,50,0.9)"},
+        {count: 7, radius: 100, speed: 0.06, color: "rgba(255,180,60,0.9)"},
+        {count: 5, radius: 80, speed: 0.04, color: "rgba(255,160,70,0.9)"},
+        {count: 8, radius: 110, speed: 0.07, color: "rgba(255,140,80,0.9)"},
+        {count: 7, radius: 95, speed: 0.06, color: "rgba(255,120,90,0.9)"},
+        {count: 6, radius: 85, speed: 0.05, color: "rgba(255,100,100,0.9)"},
+        {count: 9, radius: 120, speed: 0.08, color: "rgba(255,80,110,0.9)"},
+        {count: 5, radius: 75, speed: 0.04, color: "rgba(255,60,120,0.9)"},
+        {count: 8, radius: 105, speed: 0.07, color: "rgba(255,40,130,0.9)"},
+        {count: 7, radius: 90, speed: 0.06, color: "rgba(255,20,140,0.9)"},
+        {count: 6, radius: 80, speed: 0.05, color: "rgba(255,0,150,0.9)"},
+        {count: 5, radius: 70, speed: 0.04, color: "rgba(230,0,170,0.9)"},
+        {count: 7, radius: 95, speed: 0.06, color: "rgba(210,0,190,0.9)"},
+        {count: 8, radius: 100, speed: 0.07, color: "rgba(190,0,210,0.9)"},
+        {count: 6, radius: 85, speed: 0.05, color: "rgba(170,0,230,0.9)"},
+        {count: 5, radius: 75, speed: 0.04, color: "rgba(150,0,255,0.9)"},
+        {count: 7, radius: 90, speed: 0.06, color: "rgba(130,20,255,0.9)"},
+        {count: 6, radius: 80, speed: 0.05, color: "rgba(110,40,255,0.9)"},
+        {count: 5, radius: 70, speed: 0.04, color: "rgba(90,60,255,0.9)"},
+        {count: 7, radius: 95, speed: 0.06, color: "rgba(70,80,255,0.9)"},
+        {count: 6, radius: 85, speed: 0.05, color: "rgba(50,100,255,0.9)"},
+        {count: 5, radius: 75, speed: 0.04, color: "rgba(30,120,255,0.9)"},
+        {count: 7, radius: 90, speed: 0.06, color: "rgba(10,140,255,0.9)"},
+        {count: 6, radius: 80, speed: 0.05, color: "rgba(0,160,255,0.9)"},
+        {count: 5, radius: 70, speed: 0.04, color: "rgba(0,180,255,0.9)"},
+        {count: 7, radius: 95, speed: 0.06, color: "rgba(0,200,255,0.9)"},
+        {count: 6, radius: 85, speed: 0.05, color: "rgba(0,220,255,0.9)"}
+      ];
+
+      let currentNakshatra = 0;
+      let nakPoints = [];
+      let zoomActive = true;
+      let lastToggleTime = Date.now();
+      const zoomDuration = 8000;
+      const pauseDuration = 9000;
+
+      function generateNakshatraPoints() {
+        const nak = nakshatras[currentNakshatra];
+        const cx = w / 2, cy = h / 2;
+        const angleStep = (Math.PI * 2) / nak.count;
+        nakPoints = Array.from({ length: nak.count }, (_, i) => {
+          const angle = i * angleStep;
+          return {
+            x: cx + Math.cos(angle) * nak.radius,
+            y: cy + Math.sin(angle) * nak.radius,
+            currentX: Math.random() * w,
+            currentY: Math.random() * h,
+            speed: nak.speed + Math.random() * 0.02,
+            color: nak.color
+          };
+        });
+      }
+
+      function updateBreathingGuide() {
+        const breathElement = document.getElementById("breath-text");
+        const circleElement = document.querySelector(".breath-circle");
+        const countdownElement = document.getElementById("countdown");
+        circleElement.style.animation = '';
+        void circleElement.offsetWidth;
+        if (currentBreathPhase.animation) {
+          circleElement.style.animation = `${currentBreathPhase.animation} ${currentBreathPhase.duration/1000}s ease-in-out forwards`;
+        }
+        breathElement.textContent = currentBreathPhase.text;
+        circleElement.style.background = currentBreathPhase.color;
+        clearInterval(countdownInterval);
+        updateCountdown();
+        countdownInterval = setInterval(updateCountdown, 1000);
+
+        function updateCountdown() {
+          const elapsed = Date.now() - breathStartTime;
+          const remaining = Math.ceil((currentBreathPhase.duration - elapsed) / 1000);
+          countdownElement.textContent = `${remaining > 0 ? remaining : 0} seconds`;
+          if (elapsed > currentBreathPhase.duration) {
+            transitionToNextPhase();
+          }
+        }
+      }
+
+      function transitionToNextPhase() {
+        if (currentBreathPhase === BREATH_PHASES.INHALE) {
+          currentBreathPhase = BREATH_PHASES.HOLD;
+        } else if (currentBreathPhase === BREATH_PHASES.HOLD) {
+          currentBreathPhase = BREATH_PHASES.EXHALE;
+        } else {
+          currentBreathPhase = BREATH_PHASES.INHALE;
+        }
+        breathStartTime = Date.now();
+        updateBreathingGuide();
+      }
+
+      function drawStars() {
+        ctx.save();
+        ctx.translate(w / 2, h / 2);
+        stars.forEach(star => {
+          if (zoomActive) {
+            star.x *= (1 + star.speed);
+            star.y *= (1 + star.speed);
+            star.size = star.originalSize * (0.7 + Math.sin(Date.now() * star.twinkleSpeed) * 0.3);
+            if (Math.abs(star.x) > w * 2 || Math.abs(star.y) > h * 2) {
+              star.x = (Math.random() - 0.5) * w * 3;
+              star.y = (Math.random() - 0.5) * h * 3;
+              star.z = Math.random() * 0.7 + 0.3;
+              star.size = star.z * 2;
+              star.originalSize = star.size;
+            }
+          }
+          const gradient = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, star.size * 4);
+          gradient.addColorStop(0, `rgba(255, 255, 255, ${star.z})`);
+          gradient.addColorStop(0.5, `rgba(200, 220, 255, ${star.z * 0.7})`);
+          gradient.addColorStop(1, `rgba(0, 50, 100, 0)`);
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+          ctx.fillStyle = gradient;
+          ctx.fill();
+        });
+        ctx.restore();
+      }
+
+      function drawNakshatra() {
+        let allReached = true;
+        const nak = nakshatras[currentNakshatra];
+        ctx.beginPath();
+        for (let i = 0; i < nakPoints.length; i++) {
+          const p = nakPoints[i];
+          if (i === 0) {
+            ctx.moveTo(p.currentX, p.currentY);
+          } else {
+            ctx.lineTo(p.currentX, p.currentY);
+          }
+        }
+        ctx.closePath();
+        ctx.strokeStyle = `rgba(150, 220, 255, 0.2)`;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        for (let i = 0; i < nakPoints.length; i++) {
+          const p = nakPoints[i];
+          const dx = p.x - p.currentX;
+          const dy = p.y - p.currentY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist > 1) {
+            p.currentX += dx * p.speed;
+            p.currentY += dy * p.speed;
+            allReached = false;
+          }
+          const gradient = ctx.createRadialGradient(p.currentX, p.currentY, 0, p.currentX, p.currentY, 20);
+          gradient.addColorStop(0, p.color);
+          gradient.addColorStop(0.7, p.color.replace('0.9', '0.4'));
+          gradient.addColorStop(1, p.color.replace('0.9', '0'));
+          ctx.beginPath();
+          ctx.arc(p.currentX, p.currentY, 6, 0, Math.PI * 2);
+          ctx.fillStyle = gradient;
+          ctx.fill();
+        }
+        return allReached;
+      }
+
+      function checkZoomState() {
+        const currentTime = Date.now();
+        const elapsed = currentTime - lastToggleTime;
+        if (zoomActive && elapsed > zoomDuration) {
+          zoomActive = false;
+          lastToggleTime = currentTime;
+        } else if (!zoomActive && elapsed > pauseDuration) {
+          zoomActive = true;
+          lastToggleTime = currentTime;
+          currentNakshatra = (currentNakshatra + 1) % nakshatras.length;
+          generateNakshatraPoints();
+        }
+      }
+
+      function animateBreathing() {
+        if (!breathingStarted) return;
+        ctx.fillStyle = "rgba(0, 5, 15, 0.2)";
+        ctx.fillRect(0, 0, w, h);
+        checkZoomState();
+        updateBreathingGuide();
+        drawStars();
+        if (!zoomActive) {
+          drawNakshatra();
+        }
+        breathingAnimationId = requestAnimationFrame(animateBreathing);
+      }
+
+      window.startBreathing = function() {
+        breathingStarted = true;
+        document.getElementById("breathing-guide").style.display = "block";
+        document.querySelector(".start-breathing").style.display = "none";
+        generateNakshatraPoints();
+        updateBreathingGuide();
+        animateBreathing();
+      }
+
+      window.addEventListener('resize', function() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+        generateNakshatraPoints();
+      });
+    }
+
+    // Nakshatra Cosmic Profile Script
+    let profileAnimationId;
+    function initProfile() {
+      const canvas = document.getElementById("profileCanvas");
+      const ctx = canvas.getContext("2d");
+      let w = canvas.width = window.innerWidth;
+      let h = canvas.height = window.innerHeight;
+
+      const menu = document.getElementById("profile-menu");
+      let menuOpen = false;
+      function openMenu() { menu.classList.add("active"); menuOpen = true; }
+      function closeMenu() { menu.classList.remove("active"); menuOpen = false; }
+      window.toggleProfileMenu = function() { menuOpen ? closeMenu() : openMenu(); }
+
+      window.showAbout = function() {
+        document.getElementById("about-content").style.display = "block";
+        document.getElementById("social-channels").style.display = "none";
+        openMenu();
+      }
+
+      window.showSocialChannels = function() {
+        document.getElementById("social-channels").style.display = "block";
+        document.getElementById("about-content").style.display = "none";
+        openMenu();
+      }
+
+      let zoomActive = true;
+      let zoomPauseTime = 0;
+      let stars = Array.from({ length: 800 }, () => ({
+        x: (Math.random() - 0.5) * w * 4,
+        y: (Math.random() - 0.5) * h * 4,
+        size: Math.random() * 1.2 + 0.3,
+        speed: Math.random() * 0.008 + 0.002
+      }));
+
+      const nakshatras = Array.from({ length: 27 }, (_, i) => ({ count: 6 + (i % 5) }));
+      let currentIndex = 0;
+      let nakPoints = generateNakshatraPoints(nakshatras[currentIndex].count);
+      let nakshatraComplete = false;
+
+      function generateNakshatraPoints(count) {
+        const cx = w / 2, cy = h / 2;
+        const angleStep = (Math.PI * 2) / count;
+        const radius = 120;
+        return Array.from({ length: count }, (_, i) => {
+          const angle = i * angleStep;
+          return {
+            x: cx + Math.cos(angle) * radius,
+            y: cy + Math.sin(angle) * radius,
+            currentX: Math.random() * w,
+            currentY: Math.random() * h,
+            speed: 0.06 + Math.random() * 0.02
+          };
+        });
+      }
+
+      function drawZoomingStars() {
+        ctx.save();
+        ctx.translate(w / 2, h / 2);
+        stars.forEach(star => {
+          if (zoomActive) {
+            star.x *= (1 + star.speed);
+            star.y *= (1 + star.speed);
+            if (Math.abs(star.x) > w * 2 || Math.abs(star.y) > h * 2) {
+              star.x = (Math.random() - 0.5) * w * 4;
+              star.y = (Math.random() - 0.5) * h * 4;
+            }
+          }
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+          ctx.fillStyle = "white";
+          ctx.shadowColor = "#00ccff";
+          ctx.shadowBlur = 10;
+          ctx.fill();
+        });
+        ctx.restore();
+      }
+
+      function drawNakshatra() {
+        let allReached = true;
+        for (let i = 0; i < nakPoints.length; i++) {
+          const p = nakPoints[i];
+          const dx = p.x - p.currentX;
+          const dy = p.y - p.currentY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist > 1) {
+            p.currentX += dx * p.speed;
+            p.currentY += dy * p.speed;
+            allReached = false;
+          }
+          ctx.beginPath();
+          ctx.arc(p.currentX, p.currentY, 3.8, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(0,255,255,0.95)";
+          ctx.shadowBlur = 18;
+          ctx.shadowColor = "#00ffff";
+          ctx.fill();
+          if (i > 0) {
+            const prev = nakPoints[i - 1];
+            ctx.beginPath();
+            ctx.moveTo(prev.currentX, prev.currentY);
+            ctx.lineTo(p.currentX, p.currentY);
+            ctx.strokeStyle = "rgba(0,255,255,0.2)";
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+        if (allReached && !nakshatraComplete) {
+          zoomActive = false;
+          nakshatraComplete = true;
+          zoomPauseTime = Date.now();
+          if (currentIndex === 3) showAbout();
+          else openMenu();
+        }
+        if (nakshatraComplete && Date.now() - zoomPauseTime > 5000) {
+          currentIndex = (currentIndex + 1) % nakshatras.length;
+          nakPoints = generateNakshatraPoints(nakshatras[currentIndex].count);
+          nakshatraComplete = false;
+          zoomActive = true;
+          closeMenu();
+        }
+      }
+
+      function animateProfile() {
+        ctx.fillStyle = "rgba(0,0,0,0.3)";
+        ctx.fillRect(0, 0, w, h);
+        drawZoomingStars();
+        drawNakshatra();
+        profileAnimationId = requestAnimationFrame(animateProfile);
+      }
+
+      window.addEventListener('resize', function() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+        nakPoints = generateNakshatraPoints(nakshatras[currentIndex].count);
+      });
+
+      animateProfile();
+    }
+
+    // Digital Confvision Menu Toggle
+    window.toggleConfvisionMenu = function() {
+      const menu = document.getElementById("confvision-menu");
+      menu.classList.toggle("open");
+    }
+
+    // Initialize the first section
+    initBreathing();
+  </script>
 </body>
 </html>
