@@ -1,133 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pritya's Profile</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Pritya’s Profile</title>
 <style>
-  html, body {
+  /* Reset */
+  * {
     margin: 0;
     padding: 0;
-    background: black;
-    color: white;
-    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+  }
+  html, body {
+    height: 100%;
+    background: #000;
+    font-family: 'Courier New', Courier, monospace;
+    color: #e5e5e5;
     overflow-x: hidden;
   }
 
-  /* ---------- TOP HERO SECTION ---------- */
-  .hero {
+  /* ===== TOP SECTION ===== */
+  .top-section {
     position: relative;
     height: 100vh;
+    width: 300vw; /* Wide for horizontal scroll */
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    white-space: nowrap;
+    cursor: grab;
   }
 
-  /* Infinite zoom dark green energy */
+  /* Infinite zoom dark green energy background */
   .energy-bg {
     position: absolute;
-    width: 300%;
-    height: 300%;
-    background: radial-gradient(circle, #00ff99 0%, #003322 80%);
-    animation: zoomEnergy 10s infinite linear;
+    top: 0;
+    left: 0;
+    width: 300vw;
+    height: 100%;
+    background:
+      radial-gradient(circle at center, rgba(0,255,0,0.2) 0%, rgba(0,100,0,0.9) 80%, black 100%);
+    animation: zoomEnergy 15s linear infinite;
     z-index: 0;
   }
-
   @keyframes zoomEnergy {
     0% { transform: scale(1) rotate(0deg); }
     50% { transform: scale(1.5) rotate(180deg); }
     100% { transform: scale(1) rotate(360deg); }
   }
 
-  /* Flickering 3D text */
-  .hero h1 {
+  /* Flickering 3D heading */
+  .heading {
+    position: relative;
+    z-index: 1;
     font-size: 6rem;
     font-weight: bold;
-    text-transform: uppercase;
-    color: #00ffcc;
+    text-align: center;
+    color: #0f0;
     text-shadow:
-      0 0 5px #00ffcc,
-      0 0 10px #00ffcc,
-      0 0 20px #00ffcc,
-      0 0 40px #00ffcc;
-    animation: flicker 1.5s infinite alternate;
-    z-index: 1;
+      0 0 10px #0f0,
+      0 0 20px #0f0,
+      0 0 30px #0f0,
+      0 0 50px #0f0;
+    animation: flicker 1.5s infinite;
+    user-select: none;
+    white-space: nowrap;
+    transform: perspective(900px) rotateY(15deg);
+    padding: 0 40px;
   }
-
   @keyframes flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-      opacity: 1;
-      text-shadow:
-        0 0 5px #00ffcc,
-        0 0 10px #00ffcc,
-        0 0 20px #00ffcc,
-        0 0 40px #00ffcc;
-    }
-    20%, 24%, 55% {
-      opacity: 0.6;
-      text-shadow: none;
-    }
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+    20%, 24%, 55% { opacity: 0.4; }
   }
 
-  /* Horizontal scroll for hero content */
-  .hero-inner {
+  /* ===== BELOW CONTENT SECTION ===== */
+  .content-wrapper {
+    background: #0f0f0f;
+    padding: 40px 20px 80px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* Profile Image */
+  .profile-img {
+    display: block;
+    margin: 2rem auto 1rem;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 20px #5efaff;
+  }
+
+  h1.slogan {
+    font-size: 1.8rem;
+    color: #5efaff;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  /* Typing paragraphs */
+  .typewriter p {
+    font-size: 1rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    margin-bottom: 20px;
+    border-right: 2px solid #5efaff;
+    animation: typing 8s steps(80, end), blink .75s step-end infinite;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  @keyframes blink {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: #5efaff; }
+  }
+
+  .underline-flicker {
+    width: 100%;
+    max-width: 650px;
+    height: 2px;
+    background: #5efaff;
+    margin: 10px auto 40px;
+    animation: flickerUnderline 1.2s infinite alternate;
+  }
+
+  @keyframes flickerUnderline {
+    0% { opacity: 0.1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.4; }
+  }
+
+  /* ===== SOCIAL BUTTONS ===== */
+  .social-buttons {
+    margin-top: 30px;
     display: flex;
-    flex-direction: row;
-    animation: scrollRight 20s linear infinite;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
   }
 
-  @keyframes scrollRight {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+  .social-buttons a {
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+    padding: 12px 18px;
+    border-radius: 12px;
+    color: #5efaff;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 4px 4px 8px #000, -4px -4px 8px #222, 0 0 10px #5efaff;
+    transition: all 0.2s ease-in-out;
+    user-select: none;
+    white-space: nowrap;
+  }
+  .social-buttons a:hover {
+    box-shadow: 0 0 18px #5efaff, 0 0 28px #5efaff;
+    transform: translateY(-3px) scale(1.05);
   }
 
-  /* ---------- MAIN CONTENT ---------- */
-  .content {
-    padding: 40px;
-    background: #111;
-  }
-  .content section {
-    margin-bottom: 50px;
-    background: #1a1a1a;
-    padding: 20px;
-    border-radius: 8px;
+  /* Responsive */
+  @media (max-width: 600px) {
+    .heading {
+      font-size: 3rem;
+      padding: 0 20px;
+      transform: perspective(600px) rotateY(10deg);
+    }
+    h1.slogan {
+      font-size: 1.4rem;
+    }
+    .typewriter p {
+      font-size: 0.9rem;
+      padding: 0 10px;
+      max-width: 100%;
+    }
+    .social-buttons {
+      gap: 10px;
+    }
   }
 </style>
 </head>
 <body>
 
-<!-- HERO SECTION -->
-<div class="hero">
+<!-- TOP SECTION -->
+<div class="top-section" id="top-section">
   <div class="energy-bg"></div>
-  <div class="hero-inner">
-    <h1>WELCOME ON PRITYA'S PROFILE</h1>
-    <h1>WELCOME ON PRITYA'S PROFILE</h1> <!-- Repeat for infinite scroll illusion -->
+  <div class="heading" aria-label="Welcome on Pritya's Profile">
+    WELCOME ON PRITYA’S PROFILE
   </div>
 </div>
 
 <!-- MAIN CONTENT -->
-<div class="content">
-  <section>
-    <h2>About Pritya</h2>
-    <p>
-      This is Pritya’s world – welcome! Scroll down to explore more about the journey, ideas, and creations.
-    </p>
-  </section>
-  <section>
-    <h2>Projects</h2>
-    <p>
-      Here’s a showcase of projects that define innovation, creativity, and passion.
-    </p>
-  </section>
-  <section>
-    <h2>Contact</h2>
-    <p>
-      Reach out for collaborations, ideas, or just to say hi!
-    </p>
-  </section>
+<div class="content-wrapper">
+  <img class="profile-img" src="https://i.ibb.co/7NK1nJCG/IMG-1396.jpg" alt="Pritam Jagtap" />
+
+  <h1 class="slogan">Exploring Human Behaviors with Machine Learning</h1>
+
+  <div class="typewriter">
+    <p>Hey, I’m Pritam Jagtap — 23 y/o with beyond-the-world dreams.</p>
+    <div class="underline-flicker"></div>
+
+    <p>Since 2017, I’ve been in the digital game. Built my first 10k subscribers on YouTube by just showing up, experimenting, and staying real. (🎥 YouTube link below.) I’ve always believed that the internet is more than just content – it’s where human energy meets digital signals. That’s where I live.</p>
+    <div class="underline-flicker"></div>
+
+    <p>Today, I help digital-first coaches build their own AI-powered digital assets. Not theory – real, working tools using 23+ AI models. If you’re building something that speaks your truth, I can build the backend that scales it. I recently started selling services and I’m fully deep-dived into this space.</p>
+    <div class="underline-flicker"></div>
+
+    <p>I come from a middle-class Indian family. Didn’t start with much – no fancy network, no investors, no shortcuts. Just one thing: clarity of intent. And the hustle. This isn’t about money anymore – it’s about decoding the system and rewriting it consciously.</p>
+    <div class="underline-flicker"></div>
+  </div>
+
+  <div class="social-buttons">
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/prityaa379?igsh=c3B6b2ptejUwMjF4&utm_source=qr" target="_blank" rel="noopener noreferrer">📷 Instagram – prityaa379</a>
+    <a href="https://www.instagram.com/digitalconfvisions?igsh=MXF6Y2xxeDluMm1wZA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">📷 Instagram – digitalconfvisions</a>
+    <a href="https://www.instagram.com/slumforlife/profilecard/?igsh=MWF1M2QwOGU3cG5oMA==" target="_blank" rel="noopener noreferrer">📷 Instagram – slumforlife</a>
+    <a href="https://www.instagram.com/tri_ptoworld?igsh=MTQ5dTRjMTdqcnA3cA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">📷 Instagram – triptoworld</a>
+    <a href="https://www.instagram.com/stolen.stuff9?igsh=MTQzd2k3bmdtdmZncQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">📷 Instagram – stolenstuff9</a>
+
+    <!-- YouTube -->
+    <a href="https://youtube.com/@prityaa379?si=nXQegrscXMJ9nlO-" target="_blank" rel="noopener noreferrer">▶️ YouTube – prityaa379</a>
+    <a href="https://youtube.com/@preetjagtap?si=jMSN64JYU-92jX7H" target="_blank" rel="noopener noreferrer">▶️ YouTube – AI Case Study</a>
+    <a href="https://youtube.com/@dgvjns?si=kr3DO1VkNswNM_yT" target="_blank" rel="noopener noreferrer">▶️ YouTube – digitalconfvisions</a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer">💼 LinkedIn</a>
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/share/16fmTVSfFx/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">📘 Facebook</a>
+
+    <!-- Spotify -->
+    <a href="https://open.spotify.com/artist/09ivobvbWFoOs0J7aUDK7n?si=Rjq7LswURAu6-Ilt5LfPnA" target="_blank" rel="noopener noreferrer">🎵 Spotify</a>
+
+    <!-- Gmail -->
+    <a href="mailto:jagtappreet73@gmail.com" rel="noopener noreferrer">📧 Gmail – jagtappreet73@gmail.com</a>
+
+    <!-- Contact -->
+    <a href="tel:9372035409" rel="noopener noreferrer">📞 Contact – 9372035409</a>
+
+    <!-- X (Twitter) -->
+    <a href="https://x.com/Prityaa379?t=_oyA6dOBxrm5O7wtdcbZpQ&s=09" target="_blank" rel="noopener noreferrer">🐦 X (Twitter)</a>
+  </div>
 </div>
+
+<script>
+  // Enable horizontal swipe/scroll only in the top section using mouse wheel
+  const topSection = document.getElementById('top-section');
+  let scrollPos = 0;
+
+  window.addEventListener('wheel', e => {
+    if(window.scrollY < window.innerHeight) {
+      e.preventDefault();
+      scrollPos += e.deltaY;
+      // Clamp scrollPos to top-section width range
+      scrollPos = Math.min(Math.max(scrollPos, 0), window.innerWidth * 2);
+      topSection.scrollLeft = scrollPos;
+    }
+  }, { passive: false });
+
+  // Optional: change cursor while dragging for better UX
+  let isDragging = false;
+  let startX;
+  let scrollLeft;
+
+  topSection.addEventListener('mousedown', e => {
+    isDragging = true;
+    topSection.style.cursor = 'grabbing';
+    startX = e.pageX - topSection.offsetLeft;
+    scrollLeft = topSection.scrollLeft;
+  });
+  topSection.addEventListener('mouseleave', () => {
+    isDragging = false;
+    topSection.style.cursor = 'grab';
+  });
+  topSection.addEventListener('mouseup', () => {
+    isDragging = false;
+    topSection.style.cursor = 'grab';
+  });
+  topSection.addEventListener('mousemove', e => {
+    if(!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - topSection.offsetLeft;
+    const walk = (x - startX) * 2; //scroll-fast
+    topSection.scrollLeft = scrollLeft - walk;
+  });
+</script>
 
 </body>
 </html>
