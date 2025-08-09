@@ -1,366 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pritam Jagtap – Digital Human</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #0f0f0f;
-      color: #e5e5e5;
-      font-family: 'Courier New', Courier, monospace;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pritam Jagtap – Digital Human</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #0f0f0f;
+    color: #e5e5e5;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
 
-    img {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-top: 40px;
-      box-shadow: 0 0 20px #5efaff;
-    }
+  /* Flickering Top Banner */
+  .flicker-tab {
+    width: 100%;
+    height: 3.5in;
+    background: linear-gradient(to right, #5efaff 20%, #0f0f0f 40%, #5efaff 60%);
+    animation: flickerGlow 1s infinite alternate;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    opacity: 0.4;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
 
-    h1 {
-      font-size: 1.8rem;
-      margin-top: 20px;
-      color: #5efaff;
-      text-align: center;
-    }
+  /* Big 3D Neon Heading on Top */
+  .banner-text {
+    position: fixed;
+    top: 1.2in;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    font-weight: bold;
+    color: #5efaff;
+    text-shadow: 
+      0 0 5px #5efaff,
+      0 0 15px #5efaff,
+      0 0 30px #00f7ff,
+      0 0 50px #00e5ff;
+    animation: flickerText 1.5s infinite alternate;
+    z-index: 1000;
+    text-align: center;
+    white-space: nowrap;
+  }
 
+  @keyframes flickerGlow {
+    0%   { opacity: 0.15; }
+    50%  { opacity: 0.5; }
+    100% { opacity: 0.25; }
+  }
+
+  @keyframes flickerText {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+      opacity: 1;
+      text-shadow: 
+        0 0 5px #5efaff,
+        0 0 15px #5efaff,
+        0 0 30px #00f7ff,
+        0 0 50px #00e5ff;
+    }
+    20%, 24%, 55% {
+      opacity: 0.6;
+      text-shadow: none;
+    }
+  }
+
+  img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 4.5in; /* Pushed down for new heading space */
+    box-shadow: 0 0 20px #5efaff;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin-top: 20px;
+    color: #5efaff;
+    text-align: center;
+  }
+
+  .typewriter p {
+    font-size: 1rem;
+    text-align: left;
+    max-width: 650px;
+    margin-top: 30px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    overflow: hidden;
+    border-right: 2px solid #5efaff;
+    animation: typing 8s steps(80, end), blink .75s step-end infinite;
+  }
+
+  .underline-flicker {
+    width: 100%;
+    max-width: 650px;
+    height: 2px;
+    background: #5efaff;
+    margin: 10px 0 40px 0;
+    animation: flickerUnderline 1.2s infinite alternate;
+  }
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  @keyframes blink {
+    from, to { border-color: transparent }
+    50% { border-color: #5efaff; }
+  }
+
+  @keyframes flickerUnderline {
+    0% { opacity: 0.1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.4; }
+  }
+
+  /* 3D Neon Buttons */
+  .social-buttons {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
+
+  .social-buttons a {
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+    padding: 12px 20px;
+    border-radius: 10px;
+    color: #5efaff;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 4px 4px 8px #000, -4px -4px 8px #222, 0 0 10px #5efaff;
+    transition: all 0.2s ease-in-out;
+    transform: translateY(0px);
+  }
+
+  .social-buttons a:hover {
+    box-shadow: 0 0 15px #5efaff, 0 0 25px #5efaff;
+    transform: translateY(-3px) scale(1.05);
+  }
+
+  @media (max-width: 600px) {
     .typewriter p {
-      font-size: 1rem;
-      text-align: left;
-      max-width: 650px;
-      width: 100%;
-      margin-top: 30px;
-      line-height: 1.6;
-      white-space: pre-wrap;
-      border-right: 2px solid #5efaff;
-      overflow: hidden;
-      animation: typing 8s steps(80, end), blink .75s step-end infinite;
+      font-size: 0.9rem;
+      padding: 0 10px;
     }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink {
-      from, to { border-color: transparent }
-      50% { border-color: #5efaff; }
-    }
-
-    .social-stickers {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-    .social-stickers a {
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-    }
-
-    .social-stickers img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      transition: transform 0.3s ease;
-    }
-
-    .social-stickers img:hover {
-      transform: scale(1.15);
-    }
-
-    .contacts {
-      margin-top: 40px;
-      max-width: 600px;
-      width: 100%;
-      font-size: 1rem;
-    }
-
-    .contacts h2 {
-      color: #5efaff;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-
-    .contacts ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .contacts li {
-      margin-bottom: 10px;
-    }
-
-    .contacts a {
-      color: #00bfff;
-      text-decoration: none;
-    }
-
-    .contacts a:hover {
-      text-decoration: underline;
-    }
-
-    /* New Sections Below */
-    .marathi-section {
-      margin-top: 60px;
-      background: #1a1a1a;
-      padding: 30px;
-      border-radius: 15px;
-      max-width: 700px;
-      width: 100%;
-      line-height: 1.8;
-      box-shadow: 0 0 10px #222;
-    }
-
-    .marathi-section h2 {
-      color: #00ffc3;
-      margin-bottom: 1rem;
+    h1 {
       font-size: 1.5rem;
-      text-align: center;
     }
-
-    .marathi-section ul {
-      padding-left: 20px;
+    .banner-text {
+      font-size: 2rem;
     }
-
-    .marathi-section li {
-      margin-bottom: 10px;
-    }
-
-    .download-button {
-      display: inline-block;
-      margin: 30px auto 0;
-      padding: 1rem 2rem;
-      background-color: #00ffc3;
-      color: #000;
-      font-weight: bold;
-      font-size: 1.1rem;
-      border-radius: 30px;
-      text-decoration: none;
-      box-shadow: 0 0 15px rgba(0, 255, 195, 0.4);
-      transition: all 0.3s ease;
-    }
-
-    .download-button:hover {
-      background-color: #00cc9f;
-      transform: scale(1.05);
-    }
-
-    /* New: AI Money Making Section */
-    .ai-marathi-section {
-      margin-top: 60px;
-      background: linear-gradient(135deg, #1a1a1a 0%, #3e0d1a 100%);
-      padding: 30px;
-      border-radius: 15px;
-      max-width: 700px;
-      width: 100%;
-      line-height: 1.8;
-      box-shadow: 0 0 20px rgba(255, 0, 100, 0.3);
-      border: 1px solid #ff0055;
-    }
-
-    .ai-marathi-section h2 {
-      color: #ff5eaf;
-      margin-bottom: 1.5rem;
-      font-size: 1.8rem;
-      text-align: center;
-      text-shadow: 0 0 10px rgba(255, 94, 175, 0.3);
-    }
-
-    .ai-marathi-section h3 {
-      color: #ff5eaf;
-      margin: 1.5rem 0 0.5rem;
-      font-size: 1.3rem;
-    }
-
-    .ai-features {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin: 20px 0;
-    }
-
-    .ai-feature-box {
-      flex: 1 1 200px;
-      background: rgba(255, 0, 85, 0.1);
-      padding: 15px;
-      border-radius: 8px;
-      border-left: 3px solid #ff5eaf;
-    }
-
-    .ai-button {
-      display: block;
-      margin: 30px auto 0;
-      padding: 1.2rem 2.5rem;
-      background: linear-gradient(90deg, #ff5eaf 0%, #ff0055 100%);
-      color: #000;
-      font-weight: bold;
-      font-size: 1.2rem;
-      border-radius: 30px;
-      text-decoration: none;
-      box-shadow: 0 0 20px rgba(255, 94, 175, 0.5);
-      transition: all 0.3s ease;
-      text-align: center;
-    }
-
-    .ai-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(255, 94, 175, 0.7);
-    }
-
-    .price-comparison {
-      display: flex;
-      justify-content: space-between;
-      margin: 20px 0;
-      padding: 15px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-    }
-
-    .original-price {
-      text-decoration: line-through;
-      color: #aaa;
-    }
-
-    .discount-price {
-      color: #ff5eaf;
-      font-weight: bold;
-      font-size: 1.3rem;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
-  <!-- Profile Image -->
-  <img src="https://i.ibb.co/7NK1nJCG/IMG-1396.jpg" alt="Profile photo of Pritam Jagtap" />
+<!-- Flickering Strip -->
+<div class="flicker-tab"></div>
+<div class="banner-text">WELCOME ON PRITYA’S PROFILE</div>
 
-  <!-- Slogan -->
-  <h1>Exploring Human Behaviors with Machine Learning</h1>
+<!-- Profile Image -->
+<img src="https://i.ibb.co/7NK1nJCG/IMG-1396.jpg" alt="Pritam Jagtap" />
 
-  <!-- Typing Paragraphs -->
-  <div class="typewriter">
-    <p>
-Hey, I'm Pritam Jagtap — 23 y/o with beyond-the-world dreams.
+<!-- Slogan -->
+<h1>Exploring Human Behaviors with Machine Learning</h1>
 
-Since 2017, I've been in the digital game. Built my first 10k subscribers on YouTube by just showing up, experimenting, and staying real. (🎥 YouTube link below.) I've always believed that the internet is more than just content – it's where human energy meets digital signals. That's where I live.
+<!-- Typing Paragraph -->
+<div class="typewriter">
+  <p> Hey, I’m Pritam Jagtap — 23 y/o with beyond-the-world dreams.</p>
+  <div class="underline-flicker"></div>
 
-Today, I help digital-first coaches build their own AI-powered digital assets. Not theory – real, working tools using 23+ AI models. If you're building something that speaks your truth, I can build the backend that scales it. I recently started selling services and I'm fully deep-dived into this space.
+  <p> Since 2017, I’ve been in the digital game. Built my first 10k subscribers on YouTube by just showing up, experimenting, and staying real. I’ve always believed that the internet is more than just content – it’s where human energy meets digital signals. That’s where I live.</p>
+  <div class="underline-flicker"></div>
 
-I come from a middle-class Indian family. Didn't start with much – no fancy network, no investors, no shortcuts. Just one thing: clarity of intent. And the hustle. This isn't about money anymore – it's about decoding the system and rewriting it consciously.
-    </p>
-  </div>
+  <p> Today, I help digital-first coaches build their own AI-powered digital assets. Not theory – real, working tools using 23+ AI models. If you’re building something that speaks your truth, I can build the backend that scales it.</p>
+  <div class="underline-flicker"></div>
 
-  <!-- Social Sticker Icons -->
-  <div class="social-stickers">
-    <a href="https://www.instagram.com/prityaa379" target="_blank"><img src="https://img.icons8.com/color/48/000000/instagram-new.png" alt="Instagram"></a>
-    <a href="https://youtube.com/@prityaa379" target="_blank"><img src="https://img.icons8.com/color/48/000000/youtube-play.png" alt="YouTube"></a>
-    <a href="https://x.com/Prityaa379" target="_blank"><img src="https://img.icons8.com/color/48/000000/twitter--v1.png" alt="X"></a>
-    <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" target="_blank"><img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn"></a>
-    <a href="https://open.spotify.com/artist/09ivobvbWFoOs0J7aUDK7n" target="_blank"><img src="https://img.icons8.com/color/48/000000/spotify.png" alt="Spotify"></a>
-    <a href="https://www.facebook.com/share/16fmTVSfFx/?mibextid=wwXIfr" target="_blank"><img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook"></a>
-  </div>
+  <p> I come from a middle-class Indian family. Didn’t start with much – no fancy network, no investors, no shortcuts. Just one thing: clarity of intent. And the hustle. This isn’t about money anymore – it’s about decoding the system and rewriting it consciously.</p>
+  <div class="underline-flicker"></div>
+</div>
 
-  <!-- Contacts -->
-  <div class="contacts">
-    <h2>Contact & Socials</h2>
-    <ul>
-      <li><strong>Email:</strong> <a href="mailto:jagtappreet73@gmail.com">jagtappreet73@gmail.com</a></li>
-      <li><strong>Phone:</strong> 9372035409</li>
-    </ul>
-  </div>
-
-  <!-- New: Digital मालमत्ता Section -->
-  <div class="marathi-section">
-    <h2>डिजिटल मालमत्ता म्हणजे काय?</h2>
-    <ul>
-      <li>1. डिजिटल मालमत्ता म्हणजे इंटरनेटवर असलेली संपत्ती.</li>
-      <li>2. यात ई-बुक्स, कोर्सेस, वेबसाईट, म्युझिक, PDF यांचा समावेश होतो.</li>
-      <li>3. प्रत्येक डिजिटल मालमत्ता एकदा तयार केली की अनेक वेळा विकता येते.</li>
-      <li>4. 2025 मध्ये हीच मालमत्ता लोकांचे मुख्य उत्पन्न स्त्रोत बनली आहे.</li>
-      <li>5. NFT, कोड, आणि GPT प्रॉम्प्ट्स सुद्धा डिजिटल मालमत्तेचाच भाग आहेत.</li>
-      <li>6. वेळ, ज्ञान आणि कल्पनाशक्ती वापरून यांची निर्मिती होते.</li>
-      <li>7. त्यासाठी कोणत्याही भौतिक जागेची गरज नसते.</li>
-      <li>8. भारतात हजारो तरुण यावर लाखो रुपये कमवत आहेत.</li>
-      <li>9. एक मजबूत डिजिटल मालमत्ता म्हणजे तुमचे स्वतःचे ब्रँड आहे.</li>
-      <li>10. याचा अभ्यास करून तुम्ही 2025 मध्ये स्वतंत्र उत्पन्न मिळवू शकता.</li>
-    </ul>
-    <a class="download-button" href="https://example.com/digital-asset-types.pdf" download>💾 फ्री PDF डाउनलोड करा</a>
-  </div>
-
-  <!-- New: Selling on Gumroad Section -->
-  <div class="marathi-section">
-    <h2>मी कुठे विकतो?</h2>
-    <p>मी माझे डिजिटल प्रॉडक्ट्स <strong>Gumroad</strong> वर विकतो. माझा नवीन प्रॉडक्ट:</p>
-    <a class="download-button" href="https://prityaa379.gumroad.com/l/pvoryz" target="_blank">
-      Gumroad Starter डाउनलोड करा
-    </a>
-  </div>
-
-  <!-- New: Gumroad काय आहे Section -->
-  <div class="marathi-section">
-    <h2>Gumroad म्हणजे काय?</h2>
-    <p>Gumroad हा एक फ्री प्लॅटफॉर्म आहे जिथे तुम्ही सहज तुमची डिजिटल मालमत्ता अपलोड करून थेट विकू शकता. कोणीही खरेदीदार एक क्लिकमध्ये डाउनलोड लिंक प्राप्त करतो.</p>
-    <a class="download-button" href="https://prityaa379.gumroad.com/l/uplaw" target="_blank">
-      Uplaw Guide — फ्री PDF डाउनलोड करा
-    </a>
-  </div>
-
-  <!-- New: AI वापरून पैसा कमवा Section -->
-  <div class="ai-marathi-section">
-    <h2>AI वापरून पैसा कमवा (कोडिंग न करता!)</h2>
-    <p>जर तुमच्याकडे Internet आणि मोबाईल आहे, तर तुम्ही AI वापरून पैसा कमवू शकता - ही गाईड मराठीतून!</p>
-    
-    <div class="ai-features">
-      <div class="ai-feature-box">
-        <h3>30 मिनिटांची Replit AI Training</h3>
-        <p>पूर्ण मार्गदर्शन मराठीतून (मूल्य: ₹1,999)</p>
-      </div>
-      <div class="ai-feature-box">
-        <h3>Live Example प्रोजेक्ट</h3>
-        <p>तुमचं स्वतःचं Bio Link / Diagnosis Tool / Digital Product तयार करा (मूल्य: ₹2,000)</p>
-      </div>
-      <div class="ai-feature-box">
-        <h3>10 Powerful AI Prompts</h3>
-        <p>कोडिंग न करता वेबसाइट तयार करण्यासाठी (मूल्य: ₹1,000)</p>
-      </div>
-    </div>
-
-    <div class="price-comparison">
-      <div>
-        <h3>एकूण मूल्य:</h3>
-        <p class="original-price">₹7,998</p>
-      </div>
-      <div>
-        <h3>सवलत किंमत:</h3>
-        <p class="discount-price">फक्त ₹5,000</p>
-      </div>
-    </div>
-
-    <h3>ह्या गाईडमध्ये तुम्हाला काय मिळेल?</h3>
-    <ul>
-      <li>AI चा वापर करून पैसे कमवण्याचे ५ सोपे मार्ग</li>
-      <li>कोडिंग न करता स्वतःचे डिजिटल उत्पादन तयार करणे</li>
-      <li>Replit AI वर प्रोजेक्ट्स तयार करण्याचे स्टेप-बाय-स्टेप मार्गदर्शन</li>
-      <li>AI Tools चा योग्य वापर कसा करायचा</li>
-      <li>फ्रीमध्ये सुरुवात करण्यासाठी टिप्स</li>
-    </ul>
-
-    <a href="https://prityaa379.gumroad.com/l/ecctps" class="ai-button" target="_blank">
-      आत्ताच गाईड विकत घ्या
-    </a>
-  </div>
+<!-- 3D Social Buttons -->
+<div class="social-buttons">
+  <a href="https://www.instagram.com/prityaa379?igsh=c3B6b2ptejUwMjF4&utm_source=qr" target="_blank">📷 Instagram – prityaa379</a>
+  <a href="https://www.instagram.com/digitalconfvisions?igsh=MXF6Y2xxeDluMm1wZA%3D%3D&utm_source=qr" target="_blank">📷 Instagram – digitalconfvisions</a>
+  <a href="https://www.instagram.com/slumforlife/profilecard/?igsh=MWF1M2QwOGU3cG5oMA==" target="_blank">📷 Instagram – slumforlife</a>
+  <a href="https://www.instagram.com/tri_ptoworld?igsh=MTQ5dTRjMTdqcnA3cA%3D%3D&utm_source=qr" target="_blank">📷 Instagram – triptoworld</a>
+  <a href="https://www.instagram.com/stolen.stuff9?igsh=MTQzd2k3bmdtdmZncQ%3D%3D&utm_source=qr" target="_blank">📷 Instagram – stolenstuff9</a>
+  
+  <a href="https://youtube.com/@prityaa379?si=nXQegrscXMJ9nlO-" target="_blank">▶️ YouTube – prityaa379</a>
+  <a href="https://youtube.com/@preetjagtap?si=jMSN64JYU-92jX7H" target="_blank">▶️ YouTube – AI Case Study</a>
+  <a href="https://youtube.com/@dgvjns?si=kr3DO1VkNswNM_yT" target="_blank">▶️ YouTube – digitalconfvisions</a>
+  
+  <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">💼 LinkedIn</a>
+  <a href="https://www.facebook.com/share/16fmTVSfFx/?mibextid=wwXIfr" target="_blank">📘 Facebook</a>
+  <a href="https://open.spotify.com/artist/09ivobvbWFoOs0J7aUDK7n?si=Rjq7LswURAu6-Ilt5LfPnA" target="_blank">🎵 Spotify</a>
+  
+  <a href="mailto:jagtappreet73@gmail.com">📧 Gmail – jagtappreet73@gmail.com</a>
+  <a href="tel:9372035409">📞 Contact – 9372035409</a>
+  <a href="https://x.com/Prityaa379?t=_oyA6dOBxrm5O7wtdcbZpQ&s=09" target="_blank">🐦 X (Twitter)</a>
+</div>
 
 </body>
 </html>
