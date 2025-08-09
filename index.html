@@ -163,23 +163,57 @@
     transform: translateY(-3px) scale(1.05);
   }
 
-  /* Responsive */
-  @media (max-width: 600px) {
+  /* ===== RESPONSIVE STUFF ===== */
+  @media (max-width: 900px) {
     .heading {
-      font-size: 3rem;
+      font-size: 4rem;
       padding: 0 20px;
-      transform: perspective(600px) rotateY(10deg);
+      transform: perspective(600px) rotateY(12deg);
     }
+
+    .content-wrapper {
+      max-width: 90%;
+      padding: 30px 15px 60px;
+    }
+  }
+  @media (max-width: 480px) {
+    .heading {
+      font-size: 2.5rem;
+      padding: 0 15px;
+      transform: perspective(400px) rotateY(8deg);
+      white-space: normal;
+      text-align: center;
+    }
+
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      margin: 1.5rem auto 1rem;
+    }
+
     h1.slogan {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
     }
+
     .typewriter p {
-      font-size: 0.9rem;
-      padding: 0 10px;
+      font-size: 0.85rem;
       max-width: 100%;
+      padding: 0 10px;
     }
+
     .social-buttons {
       gap: 10px;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .social-buttons a {
+      font-size: 0.9rem;
+      padding: 10px 14px;
+      white-space: normal;
+      text-align: center;
+      width: 100%;
+      max-width: 300px;
     }
   }
 </style>
@@ -262,7 +296,7 @@
     }
   }, { passive: false });
 
-  // Optional: change cursor while dragging for better UX
+  // Click & drag support for desktop horizontal scroll
   let isDragging = false;
   let startX;
   let scrollLeft;
