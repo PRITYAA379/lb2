@@ -13,60 +13,61 @@
   }
   html, body {
     height: 100%;
-    background: #000;
+    background: #0f0f0f;
     font-family: 'Courier New', Courier, monospace;
     color: #e5e5e5;
     overflow-x: hidden;
   }
 
-  /* ===== TOP SECTION ===== */
+  /* ===== FLICKERING LIGHT STRIP TOP SECTION ===== */
+  .flicker-tab {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3in;
+    background: linear-gradient(to right, #5efaff 20%, #0f0f0f 40%, #5efaff 60%);
+    animation: flickerGlow 1s infinite alternate;
+    z-index: 999;
+    opacity: 0.4;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+  @keyframes flickerGlow {
+    0%   { opacity: 0.15; }
+    50%  { opacity: 0.5; }
+    100% { opacity: 0.25; }
+  }
+
+  /* Container for top heading to fix height and enable horizontal swipe */
   .top-section {
     position: relative;
-    height: 100vh;
-    width: 300vw; /* Wide for horizontal scroll */
+    margin-top: 3in; /* so content starts below flicker strip */
+    height: 150px;
+    overflow-x: auto;
+    white-space: nowrap;
+    cursor: grab;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    cursor: grab;
-  }
-
-  /* Infinite zoom dark green energy background */
-  .energy-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 300vw;
-    height: 100%;
-    background:
-      radial-gradient(circle at center, rgba(0,255,0,0.2) 0%, rgba(0,100,0,0.9) 80%, black 100%);
-    animation: zoomEnergy 15s linear infinite;
-    z-index: 0;
-  }
-  @keyframes zoomEnergy {
-    0% { transform: scale(1) rotate(0deg); }
-    50% { transform: scale(1.5) rotate(180deg); }
-    100% { transform: scale(1) rotate(360deg); }
   }
 
   /* Flickering 3D heading */
   .heading {
-    position: relative;
-    z-index: 1;
     font-size: 6rem;
     font-weight: bold;
-    text-align: center;
-    color: #0f0;
+    color: #5efaff;
     text-shadow:
-      0 0 10px #0f0,
-      0 0 20px #0f0,
-      0 0 30px #0f0,
-      0 0 50px #0f0;
+      0 0 10px #5efaff,
+      0 0 20px #5efaff,
+      0 0 30px #5efaff,
+      0 0 50px #5efaff;
     animation: flicker 1.5s infinite;
     user-select: none;
     white-space: nowrap;
     transform: perspective(900px) rotateY(15deg);
     padding: 0 40px;
+    margin: 0 20px;
   }
   @keyframes flicker {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
@@ -163,14 +164,14 @@
     transform: translateY(-3px) scale(1.05);
   }
 
-  /* ===== RESPONSIVE STUFF ===== */
+  /* ===== RESPONSIVE ===== */
   @media (max-width: 900px) {
     .heading {
       font-size: 4rem;
       padding: 0 20px;
       transform: perspective(600px) rotateY(12deg);
+      margin: 0 10px;
     }
-
     .content-wrapper {
       max-width: 90%;
       padding: 30px 15px 60px;
@@ -183,30 +184,26 @@
       transform: perspective(400px) rotateY(8deg);
       white-space: normal;
       text-align: center;
+      margin: 0 5px;
     }
-
     .profile-img {
       width: 120px;
       height: 120px;
       margin: 1.5rem auto 1rem;
     }
-
     h1.slogan {
       font-size: 1.2rem;
     }
-
     .typewriter p {
       font-size: 0.85rem;
       max-width: 100%;
       padding: 0 10px;
     }
-
     .social-buttons {
       gap: 10px;
       flex-direction: column;
       align-items: center;
     }
-
     .social-buttons a {
       font-size: 0.9rem;
       padding: 10px 14px;
@@ -220,9 +217,11 @@
 </head>
 <body>
 
-<!-- TOP SECTION -->
+<!-- Flickering strip -->
+<div class="flicker-tab"></div>
+
+<!-- Top heading with horizontal scroll -->
 <div class="top-section" id="top-section">
-  <div class="energy-bg"></div>
   <div class="heading" aria-label="Welcome on Pritya's Profile">
     WELCOME ON PRITYA’S PROFILE
   </div>
@@ -282,21 +281,21 @@
 </div>
 
 <script>
-  // Enable horizontal swipe/scroll only in the top section using mouse wheel
+  // Horizontal scroll on top-section using mouse wheel
   const topSection = document.getElementById('top-section');
   let scrollPos = 0;
 
   window.addEventListener('wheel', e => {
-    if(window.scrollY < window.innerHeight) {
+    // Only intercept if on top flicker heading area
+    if(window.scrollY < 200) {
       e.preventDefault();
       scrollPos += e.deltaY;
-      // Clamp scrollPos to top-section width range
-      scrollPos = Math.min(Math.max(scrollPos, 0), window.innerWidth * 2);
+      scrollPos = Math.min(Math.max(scrollPos, 0), topSection.scrollWidth - window.innerWidth);
       topSection.scrollLeft = scrollPos;
     }
   }, { passive: false });
 
-  // Click & drag support for desktop horizontal scroll
+  // Drag to scroll horizontally
   let isDragging = false;
   let startX;
   let scrollLeft;
@@ -319,7 +318,7 @@
     if(!isDragging) return;
     e.preventDefault();
     const x = e.pageX - topSection.offsetLeft;
-    const walk = (x - startX) * 2; //scroll-fast
+    const walk = (x - startX) * 2;
     topSection.scrollLeft = scrollLeft - walk;
   });
 </script>
