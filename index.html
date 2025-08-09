@@ -1,71 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Pritam Jagtap – Digital Human</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pritya's Profile</title>
 <style>
-  body {
+  html, body {
     margin: 0;
     padding: 0;
-    background-color: #0f0f0f;
-    color: #e5e5e5;
-    font-family: 'Courier New', Courier, monospace;
+    background: black;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ---------- TOP HERO SECTION ---------- */
+  .hero {
+    position: relative;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    padding: 20px;
-  }
-
-  /* Flickering Top Banner */
-  .flicker-tab {
-    width: 100%;
-    height: 3.5in;
-    background: linear-gradient(to right, #5efaff 20%, #0f0f0f 40%, #5efaff 60%);
-    animation: flickerGlow 1s infinite alternate;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
-    opacity: 0.4;
-    pointer-events: none;
-    mix-blend-mode: screen;
-  }
-
-  /* Big 3D Neon Heading on Top */
-  .banner-text {
-    position: fixed;
-    top: 1.2in;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 3rem;
-    font-weight: bold;
-    color: #5efaff;
-    text-shadow: 
-      0 0 5px #5efaff,
-      0 0 15px #5efaff,
-      0 0 30px #00f7ff,
-      0 0 50px #00e5ff;
-    animation: flickerText 1.5s infinite alternate;
-    z-index: 1000;
-    text-align: center;
+    justify-content: center;
+    overflow: hidden;
     white-space: nowrap;
   }
 
-  @keyframes flickerGlow {
-    0%   { opacity: 0.15; }
-    50%  { opacity: 0.5; }
-    100% { opacity: 0.25; }
+  /* Infinite zoom dark green energy */
+  .energy-bg {
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, #00ff99 0%, #003322 80%);
+    animation: zoomEnergy 10s infinite linear;
+    z-index: 0;
   }
 
-  @keyframes flickerText {
-    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+  @keyframes zoomEnergy {
+    0% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.5) rotate(180deg); }
+    100% { transform: scale(1) rotate(360deg); }
+  }
+
+  /* Flickering 3D text */
+  .hero h1 {
+    font-size: 6rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #00ffcc;
+    text-shadow:
+      0 0 5px #00ffcc,
+      0 0 10px #00ffcc,
+      0 0 20px #00ffcc,
+      0 0 40px #00ffcc;
+    animation: flicker 1.5s infinite alternate;
+    z-index: 1;
+  }
+
+  @keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
       opacity: 1;
-      text-shadow: 
-        0 0 5px #5efaff,
-        0 0 15px #5efaff,
-        0 0 30px #00f7ff,
-        0 0 50px #00e5ff;
+      text-shadow:
+        0 0 5px #00ffcc,
+        0 0 10px #00ffcc,
+        0 0 20px #00ffcc,
+        0 0 40px #00ffcc;
     }
     20%, 24%, 55% {
       opacity: 0.6;
@@ -73,145 +71,62 @@
     }
   }
 
-  img {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-top: 4.5in; /* Pushed down for new heading space */
-    box-shadow: 0 0 20px #5efaff;
-  }
-
-  h1 {
-    font-size: 1.8rem;
-    margin-top: 20px;
-    color: #5efaff;
-    text-align: center;
-  }
-
-  .typewriter p {
-    font-size: 1rem;
-    text-align: left;
-    max-width: 650px;
-    margin-top: 30px;
-    line-height: 1.6;
-    white-space: pre-wrap;
-    overflow: hidden;
-    border-right: 2px solid #5efaff;
-    animation: typing 8s steps(80, end), blink .75s step-end infinite;
-  }
-
-  .underline-flicker {
-    width: 100%;
-    max-width: 650px;
-    height: 2px;
-    background: #5efaff;
-    margin: 10px 0 40px 0;
-    animation: flickerUnderline 1.2s infinite alternate;
-  }
-
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-  }
-
-  @keyframes blink {
-    from, to { border-color: transparent }
-    50% { border-color: #5efaff; }
-  }
-
-  @keyframes flickerUnderline {
-    0% { opacity: 0.1; }
-    50% { opacity: 0.8; }
-    100% { opacity: 0.4; }
-  }
-
-  /* 3D Neon Buttons */
-  .social-buttons {
-    margin-top: 30px;
+  /* Horizontal scroll for hero content */
+  .hero-inner {
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
+    flex-direction: row;
+    animation: scrollRight 20s linear infinite;
   }
 
-  .social-buttons a {
-    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
-    padding: 12px 20px;
-    border-radius: 10px;
-    color: #5efaff;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: 4px 4px 8px #000, -4px -4px 8px #222, 0 0 10px #5efaff;
-    transition: all 0.2s ease-in-out;
-    transform: translateY(0px);
+  @keyframes scrollRight {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 
-  .social-buttons a:hover {
-    box-shadow: 0 0 15px #5efaff, 0 0 25px #5efaff;
-    transform: translateY(-3px) scale(1.05);
+  /* ---------- MAIN CONTENT ---------- */
+  .content {
+    padding: 40px;
+    background: #111;
   }
-
-  @media (max-width: 600px) {
-    .typewriter p {
-      font-size: 0.9rem;
-      padding: 0 10px;
-    }
-    h1 {
-      font-size: 1.5rem;
-    }
-    .banner-text {
-      font-size: 2rem;
-    }
+  .content section {
+    margin-bottom: 50px;
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 8px;
   }
 </style>
 </head>
 <body>
 
-<!-- Flickering Strip -->
-<div class="flicker-tab"></div>
-<div class="banner-text">WELCOME ON PRITYA’S PROFILE</div>
-
-<!-- Profile Image -->
-<img src="https://i.ibb.co/7NK1nJCG/IMG-1396.jpg" alt="Pritam Jagtap" />
-
-<!-- Slogan -->
-<h1>Exploring Human Behaviors with Machine Learning</h1>
-
-<!-- Typing Paragraph -->
-<div class="typewriter">
-  <p> Hey, I’m Pritam Jagtap — 23 y/o with beyond-the-world dreams.</p>
-  <div class="underline-flicker"></div>
-
-  <p> Since 2017, I’ve been in the digital game. Built my first 10k subscribers on YouTube by just showing up, experimenting, and staying real. I’ve always believed that the internet is more than just content – it’s where human energy meets digital signals. That’s where I live.</p>
-  <div class="underline-flicker"></div>
-
-  <p> Today, I help digital-first coaches build their own AI-powered digital assets. Not theory – real, working tools using 23+ AI models. If you’re building something that speaks your truth, I can build the backend that scales it.</p>
-  <div class="underline-flicker"></div>
-
-  <p> I come from a middle-class Indian family. Didn’t start with much – no fancy network, no investors, no shortcuts. Just one thing: clarity of intent. And the hustle. This isn’t about money anymore – it’s about decoding the system and rewriting it consciously.</p>
-  <div class="underline-flicker"></div>
+<!-- HERO SECTION -->
+<div class="hero">
+  <div class="energy-bg"></div>
+  <div class="hero-inner">
+    <h1>WELCOME ON PRITYA'S PROFILE</h1>
+    <h1>WELCOME ON PRITYA'S PROFILE</h1> <!-- Repeat for infinite scroll illusion -->
+  </div>
 </div>
 
-<!-- 3D Social Buttons -->
-<div class="social-buttons">
-  <a href="https://www.instagram.com/prityaa379?igsh=c3B6b2ptejUwMjF4&utm_source=qr" target="_blank">📷 Instagram – prityaa379</a>
-  <a href="https://www.instagram.com/digitalconfvisions?igsh=MXF6Y2xxeDluMm1wZA%3D%3D&utm_source=qr" target="_blank">📷 Instagram – digitalconfvisions</a>
-  <a href="https://www.instagram.com/slumforlife/profilecard/?igsh=MWF1M2QwOGU3cG5oMA==" target="_blank">📷 Instagram – slumforlife</a>
-  <a href="https://www.instagram.com/tri_ptoworld?igsh=MTQ5dTRjMTdqcnA3cA%3D%3D&utm_source=qr" target="_blank">📷 Instagram – triptoworld</a>
-  <a href="https://www.instagram.com/stolen.stuff9?igsh=MTQzd2k3bmdtdmZncQ%3D%3D&utm_source=qr" target="_blank">📷 Instagram – stolenstuff9</a>
-  
-  <a href="https://youtube.com/@prityaa379?si=nXQegrscXMJ9nlO-" target="_blank">▶️ YouTube – prityaa379</a>
-  <a href="https://youtube.com/@preetjagtap?si=jMSN64JYU-92jX7H" target="_blank">▶️ YouTube – AI Case Study</a>
-  <a href="https://youtube.com/@dgvjns?si=kr3DO1VkNswNM_yT" target="_blank">▶️ YouTube – digitalconfvisions</a>
-  
-  <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">💼 LinkedIn</a>
-  <a href="https://www.facebook.com/share/16fmTVSfFx/?mibextid=wwXIfr" target="_blank">📘 Facebook</a>
-  <a href="https://open.spotify.com/artist/09ivobvbWFoOs0J7aUDK7n?si=Rjq7LswURAu6-Ilt5LfPnA" target="_blank">🎵 Spotify</a>
-  
-  <a href="mailto:jagtappreet73@gmail.com">📧 Gmail – jagtappreet73@gmail.com</a>
-  <a href="tel:9372035409">📞 Contact – 9372035409</a>
-  <a href="https://x.com/Prityaa379?t=_oyA6dOBxrm5O7wtdcbZpQ&s=09" target="_blank">🐦 X (Twitter)</a>
+<!-- MAIN CONTENT -->
+<div class="content">
+  <section>
+    <h2>About Pritya</h2>
+    <p>
+      This is Pritya’s world – welcome! Scroll down to explore more about the journey, ideas, and creations.
+    </p>
+  </section>
+  <section>
+    <h2>Projects</h2>
+    <p>
+      Here’s a showcase of projects that define innovation, creativity, and passion.
+    </p>
+  </section>
+  <section>
+    <h2>Contact</h2>
+    <p>
+      Reach out for collaborations, ideas, or just to say hi!
+    </p>
+  </section>
 </div>
 
 </body>
