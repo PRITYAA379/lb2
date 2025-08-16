@@ -1,327 +1,1037 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Pritya’s Profile</title>
-<style>
-  /* Reset */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  html, body {
-    height: 100%;
-    background: #0f0f0f;
-    font-family: 'Courier New', Courier, monospace;
-    color: #e5e5e5;
-    overflow-x: hidden;
-  }
-
-  /* ===== FLICKERING LIGHT STRIP TOP SECTION ===== */
-  .flicker-tab {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3in;
-    background: linear-gradient(to right, #5efaff 20%, #0f0f0f 40%, #5efaff 60%);
-    animation: flickerGlow 1s infinite alternate;
-    z-index: 999;
-    opacity: 0.4;
-    pointer-events: none;
-    mix-blend-mode: screen;
-  }
-  @keyframes flickerGlow {
-    0%   { opacity: 0.15; }
-    50%  { opacity: 0.5; }
-    100% { opacity: 0.25; }
-  }
-
-  /* Container for top heading to fix height and enable horizontal swipe */
-  .top-section {
-    position: relative;
-    margin-top: 3in; /* so content starts below flicker strip */
-    height: 150px;
-    overflow-x: auto;
-    white-space: nowrap;
-    cursor: grab;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Flickering 3D heading */
-  .heading {
-    font-size: 6rem;
-    font-weight: bold;
-    color: #5efaff;
-    text-shadow:
-      0 0 10px #5efaff,
-      0 0 20px #5efaff,
-      0 0 30px #5efaff,
-      0 0 50px #5efaff;
-    animation: flicker 1.5s infinite;
-    user-select: none;
-    white-space: nowrap;
-    transform: perspective(900px) rotateY(15deg);
-    padding: 0 40px;
-    margin: 0 20px;
-  }
-  @keyframes flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
-    20%, 24%, 55% { opacity: 0.4; }
-  }
-
-  /* ===== BELOW CONTENT SECTION ===== */
-  .content-wrapper {
-    background: #0f0f0f;
-    padding: 40px 20px 80px;
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  /* Profile Image */
-  .profile-img {
-    display: block;
-    margin: 2rem auto 1rem;
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 0 20px #5efaff;
-  }
-
-  h1.slogan {
-    font-size: 1.8rem;
-    color: #5efaff;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  /* Typing paragraphs */
-  .typewriter p {
-    font-size: 1rem;
-    line-height: 1.6;
-    white-space: pre-wrap;
-    margin-bottom: 20px;
-    border-right: 2px solid #5efaff;
-    animation: typing 8s steps(80, end), blink .75s step-end infinite;
-    max-width: 650px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-  }
-
-  @keyframes blink {
-    0%, 100% { border-color: transparent; }
-    50% { border-color: #5efaff; }
-  }
-
-  .underline-flicker {
-    width: 100%;
-    max-width: 650px;
-    height: 2px;
-    background: #5efaff;
-    margin: 10px auto 40px;
-    animation: flickerUnderline 1.2s infinite alternate;
-  }
-
-  @keyframes flickerUnderline {
-    0% { opacity: 0.1; }
-    50% { opacity: 0.8; }
-    100% { opacity: 0.4; }
-  }
-
-  /* ===== SOCIAL BUTTONS ===== */
-  .social-buttons {
-    margin-top: 30px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-  }
-
-  .social-buttons a {
-    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
-    padding: 12px 18px;
-    border-radius: 12px;
-    color: #5efaff;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: 4px 4px 8px #000, -4px -4px 8px #222, 0 0 10px #5efaff;
-    transition: all 0.2s ease-in-out;
-    user-select: none;
-    white-space: nowrap;
-  }
-  .social-buttons a:hover {
-    box-shadow: 0 0 18px #5efaff, 0 0 28px #5efaff;
-    transform: translateY(-3px) scale(1.05);
-  }
-
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 900px) {
-    .heading {
-      font-size: 4rem;
-      padding: 0 20px;
-      transform: perspective(600px) rotateY(12deg);
-      margin: 0 10px;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pritam Jagtap | Digital Visionary</title>
+  <style>
+    :root {
+      --dark-bg: #0a0a12;
+      --darker-bg: #050508;
+      --card-bg: #151520;
+      --accent-blue: #00ccff;
+      --accent-purple: #a3bffa;
+      --text-primary: #ffffff;
+      --text-secondary: #e0e0e0;
+      --glow-color: rgba(0, 204, 255, 0.6);
+      --border-color: #2a2a3a;
     }
-    .content-wrapper {
-      max-width: 90%;
-      padding: 30px 15px 60px;
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-  }
-  @media (max-width: 480px) {
-    .heading {
-      font-size: 2.5rem;
-      padding: 0 15px;
-      transform: perspective(400px) rotateY(8deg);
-      white-space: normal;
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 20%);
+      background-size: 200px 200px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* Header Section */
+    .header-section {
       text-align: center;
-      margin: 0 5px;
+      padding: 20px;
+      margin-bottom: 30px;
     }
+
+    .profile-container {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+      animation: neonGlow 8s ease infinite;
+      padding: 3px;
+    }
+
     .profile-img {
-      width: 120px;
-      height: 120px;
-      margin: 1.5rem auto 1rem;
-    }
-    h1.slogan {
-      font-size: 1.2rem;
-    }
-    .typewriter p {
-      font-size: 0.85rem;
-      max-width: 100%;
-      padding: 0 10px;
-    }
-    .social-buttons {
-      gap: 10px;
-      flex-direction: column;
-      align-items: center;
-    }
-    .social-buttons a {
-      font-size: 0.9rem;
-      padding: 10px 14px;
-      white-space: normal;
-      text-align: center;
       width: 100%;
-      max-width: 300px;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--card-bg);
     }
-  }
-</style>
+
+    h1 {
+      text-align: center;
+      margin: 10px 0;
+      font-size: 28px;
+      background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: neonGlowText 8s ease infinite;
+      background-size: 800% 800%;
+    }
+
+    .tagline {
+      text-align: center;
+      font-size: 16px;
+      color: var(--text-secondary);
+    }
+
+    /* Main Content Sections */
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: var(--text-primary);
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
+      margin: 8px auto 0;
+      animation: neonGlow 8s ease infinite;
+      background-size: 800% 800%;
+    }
+
+    /* Card Styles */
+    .card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: all 0.4s ease;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right,
+          rgba(0, 204, 255, 0) 0%,
+          rgba(0, 204, 255, 0) 45%,
+          rgba(0, 204, 255, 0.1) 50%,
+          rgba(0, 204, 255, 0) 55%,
+          rgba(0, 204, 255, 0) 100%);
+      transform: rotate(30deg);
+      animation: shine 6s infinite;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4), 0 0 15px var(--glow-color);
+      border-color: var(--accent-blue);
+    }
+
+    /* Link Styles */
+    .link {
+      display: block;
+      background: var(--card-bg);
+      color: var(--text-primary);
+      padding: 15px 20px;
+      margin: 15px auto;
+      border-radius: 12px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      transition: all 0.4s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .link::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right,
+          rgba(0, 204, 255, 0) 0%,
+          rgba(0, 204, 255, 0) 45%,
+          rgba(0, 204, 255, 0.3) 50%,
+          rgba(0, 204, 255, 0) 55%,
+          rgba(0, 204, 255, 0) 100%);
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+
+    .link:hover {
+      background: #1a1a2a;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px var(--glow-color);
+      border-color: var(--accent-blue);
+    }
+
+    /* Special Buttons */
+    .primary-btn {
+      display: block;
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+      color: var(--dark-bg);
+      padding: 18px 20px;
+      margin: 25px auto;
+      border-radius: 8px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 15px var(--glow-color);
+      position: relative;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4), 0 0 20px var(--glow-color);
+    }
+
+    .primary-btn:active {
+      transform: translateY(2px);
+    }
+
+    .primary-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.2) 50%,
+          rgba(255, 255, 255, 0) 100%);
+      transform: translateX(-100%);
+      transition: all 0.6s ease;
+    }
+
+    .primary-btn:hover::before {
+      transform: translateX(100%);
+    }
+
+    /* Social Links */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 25px 0;
+    }
+
+    .social-link {
+      color: var(--text-primary);
+      font-size: 24px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--card-bg);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .social-link::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right,
+          rgba(0, 204, 255, 0) 0%,
+          rgba(0, 204, 255, 0) 45%,
+          rgba(0, 204, 255, 0.6) 50%,
+          rgba(0, 204, 255, 0) 55%,
+          rgba(0, 204, 255, 0) 100%);
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+      animation-delay: calc(var(--i) * 0.2s);
+    }
+
+    .social-link:hover {
+      background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+      background-size: 800% 800%;
+      animation: neonGlow 8s ease infinite;
+      transform: scale(1.1);
+      box-shadow: 0 0 15px var(--glow-color);
+      border-color: var(--accent-blue);
+    }
+
+    /* Dropdowns */
+    .dropdown {
+      position: relative;
+      display: block;
+      width: 100%;
+      margin: 15px auto;
+    }
+
+    .dropbtn {
+      display: block;
+      background: var(--card-bg);
+      color: var(--text-primary);
+      padding: 15px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      transition: all 0.4s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+    }
+
+    .dropbtn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right,
+          rgba(0, 204, 255, 0) 0%,
+          rgba(0, 204, 255, 0) 45%,
+          rgba(0, 204, 255, 0.3) 50%,
+          rgba(0, 204, 255, 0) 55%,
+          rgba(0, 204, 255, 0) 100%);
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+
+    .dropbtn:hover {
+      background: #1a1a2a;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px var(--glow-color);
+      border-color: var(--accent-blue);
+    }
+
+    .dropdown-content {
+      display: none;
+      position: relative;
+      background: var(--darker-bg);
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+      width: 100%;
+      margin-top: -15px;
+      padding-top: 15px;
+      border: 1px solid var(--accent-blue);
+      border-top: none;
+    }
+
+    .dropdown-content a {
+      color: var(--text-primary);
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    .dropdown-content a:hover {
+      background-color: rgba(0, 204, 255, 0.15);
+      transform: translateX(5px);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+      border-radius: 12px 12px 0 0;
+    }
+
+    /* Submenus */
+    .submenu {
+      position: relative;
+    }
+
+    .submenu-btn {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      padding: 12px 16px;
+      font-size: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+
+    .submenu-btn:hover {
+      background-color: rgba(0, 204, 255, 0.1);
+      transform: translateX(5px);
+    }
+
+    .submenu-content {
+      display: none;
+      background: rgba(0, 0, 0, 0.2);
+      padding-left: 20px;
+    }
+
+    .submenu:hover .submenu-content {
+      display: block;
+    }
+
+    .submenu-content a {
+      padding: 10px 16px;
+      font-size: 14px;
+      color: var(--text-primary);
+    }
+
+    .submenu-content a i {
+      margin-right: 8px;
+      width: 18px;
+      text-align: center;
+    }
+
+    /* Video Banner */
+    .video-banner {
+      position: relative;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px var(--glow-color);
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+      animation: neonGlow 8s ease infinite;
+      background-size: 800% 800%;
+      border: 1px solid var(--accent-blue);
+      padding: 10px;
+      margin-bottom: 30px;
+    }
+
+    .video-banner::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right,
+          rgba(0, 204, 255, 0) 0%,
+          rgba(0, 204, 255, 0) 45%,
+          rgba(0, 204, 255, 0.4) 50%,
+          rgba(0, 204, 255, 0) 55%,
+          rgba(0, 204, 255, 0) 100%);
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+
+    .video-banner iframe {
+      width: 100%;
+      height: 200px;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .video-title {
+      text-align: center;
+      padding: 15px 0;
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--dark-bg);
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    /* Mirror Effects */
+    .mirror-container {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .mirror-reflection {
+      position: absolute;
+      width: 90%;
+      height: 30px;
+      bottom: -25px;
+      left: 5%;
+      transform: scaleY(-1);
+      opacity: 0.2;
+      background: linear-gradient(to bottom, var(--glow-color), rgba(0, 204, 255, 0));
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
+      border-radius: 0 0 12px 12px;
+      filter: blur(1px);
+    }
+
+    /* Particles Background */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      animation: floatParticle 15s linear infinite;
+      opacity: 0.4;
+      background: var(--accent-blue);
+    }
+
+    /* Thank You Overlay */
+    .thank-you-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: var(--darker-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 1000;
+      color: var(--text-primary);
+      font-size: 30px;
+      display: none;
+      overflow: hidden;
+    }
+
+    .rose {
+      position: absolute;
+      font-size: 24px;
+      animation: floatRose 10s linear infinite;
+      filter: drop-shadow(0 0 5px var(--accent-blue));
+    }
+
+    /* WhatsApp Float */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      font-size: 26px;
+      text-align: center;
+      line-height: 55px;
+      z-index: 999;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 10px var(--glow-color);
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1) rotate(10deg);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5), 0 0 15px var(--glow-color);
+    }
+
+    /* Hamburger Menu */
+    .hamburger-menu {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      background: var(--card-bg);
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+    }
+
+    .hamburger-menu input {
+      display: none;
+    }
+
+    .hamburger-menu label {
+      font-size: 24px;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    .hamburger-menu-content {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 20px;
+      background: var(--darker-bg);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+    }
+
+    .hamburger-menu-content a {
+      display: block;
+      color: var(--text-primary);
+      padding: 10px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .hamburger-menu-content a:hover {
+      background: rgba(0, 204, 255, 0.2);
+    }
+
+    #hamburger-toggle:checked ~ .hamburger-menu-content {
+      display: block;
+    }
+
+    /* Feature List */
+    .feature-list {
+      list-style: none;
+      margin-bottom: 15px;
+    }
+
+    .feature-list li {
+      padding: 5px 0;
+      color: var(--text-secondary);
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent-blue);
+      font-weight: bold;
+    }
+
+    /* Banner Styles */
+    .promo-banner {
+      background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+      color: white;
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+      margin: 20px 0;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #ff4757;
+    }
+
+    .promo-banner h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .promo-banner p {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .promo-banner .banner-btn {
+      display: inline-block;
+      background: white;
+      color: #ff6b6b;
+      padding: 8px 15px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .promo-banner .banner-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Animations */
+    @keyframes neonGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes neonGlowText {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%) rotate(30deg); }
+      100% { transform: translateX(100%) rotate(30deg); }
+    }
+
+    @keyframes floatRose {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    @keyframes floatParticle {
+      0% { transform: translateY(0) translateX(0); opacity: 0; }
+      10% { opacity: 0.4; }
+      90% { opacity: 0.4; }
+      100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
+
 <body>
+  <!-- Particles Background -->
+  <div class="particles" id="particles"></div>
 
-<!-- Flickering strip -->
-<div class="flicker-tab"></div>
-
-<!-- Top heading with horizontal scroll -->
-<div class="top-section" id="top-section">
-  <div class="heading" aria-label="Welcome on Pritya's Profile">
-    WELCOME ON PRITYA’S PROFILE
-  </div>
-</div>
-
-<!-- MAIN CONTENT -->
-<div class="content-wrapper">
-  <img class="profile-img" src="https://i.ibb.co/7NK1nJCG/IMG-1396.jpg" alt="Pritam Jagtap" />
-
-  <h1 class="slogan">Exploring Human Behaviors with Machine Learning</h1>
-
-  <div class="typewriter">
-    <p>Hey, I’m Pritam Jagtap — 23 y/o with beyond-the-world dreams.</p>
-    <div class="underline-flicker"></div>
-
-    <p>Since 2017, I’ve been in the digital game. Built my first 10k subscribers on YouTube by just showing up, experimenting, and staying real. (🎥 YouTube link below.) I’ve always believed that the internet is more than just content – it’s where human energy meets digital signals. That’s where I live.</p>
-    <div class="underline-flicker"></div>
-
-    <p>Today, I help digital-first coaches build their own AI-powered digital assets. Not theory – real, working tools using 23+ AI models. If you’re building something that speaks your truth, I can build the backend that scales it. I recently started selling services and I’m fully deep-dived into this space.</p>
-    <div class="underline-flicker"></div>
-
-    <p>I come from a middle-class Indian family. Didn’t start with much – no fancy network, no investors, no shortcuts. Just one thing: clarity of intent. And the hustle. This isn’t about money anymore – it’s about decoding the system and rewriting it consciously.</p>
-    <div class="underline-flicker"></div>
+  <!-- Hamburger Menu -->
+  <div class="hamburger-menu">
+    <input type="checkbox" id="hamburger-toggle">
+    <label for="hamburger-toggle"><i class="fas fa-bars"></i></label>
+    <div class="hamburger-menu-content">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#social">Social Channels</a>
+      <a href="#gumroad">Gumroad</a>
+    </div>
   </div>
 
-  <div class="social-buttons">
-    <!-- Instagram -->
-    <a href="https://www.instagram.com/prityaa379?igsh=c3B6b2ptejUwMjF4&utm_source=qr" target="_blank" rel="noopener noreferrer">📷 Instagram – prityaa379</a>
-    <a href="https://www.instagram.com/digitalconfvisions?igsh=MXF6Y2xxeDluMm1wZA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">📷 Instagram – digitalconfvisions</a>
-    <a href="https://www.instagram.com/slumforlife/profilecard/?igsh=MWF1M2QwOGU3cG5oMA==" target="_blank" rel="noopener noreferrer">📷 Instagram – slumforlife</a>
-    <a href="https://www.instagram.com/tri_ptoworld?igsh=MTQ5dTRjMTdqcnA3cA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">📷 Instagram – triptoworld</a>
-    <a href="https://www.instagram.com/stolen.stuff9?igsh=MTQzd2k3bmdtdmZncQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">📷 Instagram – stolenstuff9</a>
-
-    <!-- YouTube -->
-    <a href="https://youtube.com/@prityaa379?si=nXQegrscXMJ9nlO-" target="_blank" rel="noopener noreferrer">▶️ YouTube – prityaa379</a>
-    <a href="https://youtube.com/@preetjagtap?si=jMSN64JYU-92jX7H" target="_blank" rel="noopener noreferrer">▶️ YouTube – AI Case Study</a>
-    <a href="https://youtube.com/@dgvjns?si=kr3DO1VkNswNM_yT" target="_blank" rel="noopener noreferrer">▶️ YouTube – digitalconfvisions</a>
-
-    <!-- LinkedIn -->
-    <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer">💼 LinkedIn</a>
-
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/share/16fmTVSfFx/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">📘 Facebook</a>
-
-    <!-- Spotify -->
-    <a href="https://open.spotify.com/artist/09ivobvbWFoOs0J7aUDK7n?si=Rjq7LswURAu6-Ilt5LfPnA" target="_blank" rel="noopener noreferrer">🎵 Spotify</a>
-
-    <!-- Gmail -->
-    <a href="mailto:jagtappreet73@gmail.com" rel="noopener noreferrer">📧 Gmail – jagtappreet73@gmail.com</a>
-
-    <!-- Contact -->
-    <a href="tel:9372035409" rel="noopener noreferrer">📞 Contact – 9372035409</a>
-
-    <!-- X (Twitter) -->
-    <a href="https://x.com/Prityaa379?t=_oyA6dOBxrm5O7wtdcbZpQ&s=09" target="_blank" rel="noopener noreferrer">🐦 X (Twitter)</a>
+  <!-- Header Section -->
+  <div class="header-section" id="home">
+    <div class="profile-container">
+      <img src="https://i.ibb.co/BKZv5FzD/IMG-20250613-062802-529.webp" class="profile-img" alt="Pritam Jagtap">
+    </div>
+    <h1>Pritam Jagtap</h1>
+    <p class="tagline">Developer | Visionary</p>
   </div>
-</div>
 
-<script>
-  // Horizontal scroll on top-section using mouse wheel
-  const topSection = document.getElementById('top-section');
-  let scrollPos = 0;
+  <!-- Video Banner -->
+  <div class="video-banner">
+    <div class="video-title">Latest Video: Digital Transformation Insights</div>
+    <iframe src="https://www.youtube.com/embed/6TUyU7f_394?si=Y1CGa762QIWIanAs" frameborder="0" allowfullscreen></iframe>
+  </div>
 
-  window.addEventListener('wheel', e => {
-    // Only intercept if on top flicker heading area
-    if(window.scrollY < 200) {
-      e.preventDefault();
-      scrollPos += e.deltaY;
-      scrollPos = Math.min(Math.max(scrollPos, 0), topSection.scrollWidth - window.innerWidth);
-      topSection.scrollLeft = scrollPos;
+  <!-- Promo Banner -->
+  <div class="promo-banner">
+    <h3>🎉 Special Offer! 🎉</h3>
+    <p>Get 20% off on all Gumroad products this week only!</p>
+    <a href="https://gumroad.com/PRITYAA379" class="banner-btn" target="_blank">Shop Now</a>
+  </div>
+
+  <div class="container">
+    <!-- Gumroad Offerings -->
+    <div class="section" id="gumroad">
+      <h2 class="section-title">Gumroad Offerings</h2>
+      <div class="mirror-container">
+        <div class="card">
+          <h3 class="service-title">
+            <i class="fas fa-star service-icon"></i>
+            Premium Bio Links
+          </h3>
+          <p class="tagline">
+            Get your custom-designed bio link page to showcase all your important links
+          </p>
+          <a href="https://prityaa379.gumroad.com/l/unxyn" class="link" target="_blank">
+            <i class="fas fa-shopping-cart"></i> Get Yours Now
+          </a>
+        </div>
+        <div class="mirror-reflection"></div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn"><i class="fas fa-box-open"></i> All Gumroad Products</button>
+        <div class="dropdown-content">
+          <div class="submenu">
+            <button class="submenu-btn"><i class="fas fa-gem"></i> Subscriptions <i class="fas fa-caret-down"></i></button>
+            <div class="submenu-content">
+              <a href="https://jagtappritam7.gumroad.com/l/npjvdt" target="_blank"><i class="fas fa-gem"></i> Gumroad Subscription</a>
+              <a href="https://gumroad.com/PRITYAA379/membership" target="_blank"><i class="fas fa-crown"></i> Membership</a>
+              <a href="https://gumroad.com/PRITYAA379/newsletter" target="_blank"><i class="fas fa-newspaper"></i> Newsletter</a>
+            </div>
+          </div>
+          <div class="submenu">
+            <button class="submenu-btn"><i class="fas fa-box"></i> Products <i class="fas fa-caret-down"></i></button>
+            <div class="submenu-content">
+              <a href="https://jagtappritam7.gumroad.com/l/uplaw" target="_blank"><i class="fas fa-question-circle"></i> What is Gumroad?</a>
+              <a href="https://jagtappritam7.gumroad.com/l/qnsim" target="_blank"><i class="fas fa-link"></i> LINK IN BIO SAMPLES</a>
+              <a href="https://jagtappritam7.gumroad.com/l/qkevcg" target="_blank"><i class="fas fa-calendar-check"></i> Daily Productivity Planner</a>
+              <a href="https://jagtappritam7.gumroad.com/l/tdnocf" target="_blank"><i class="fas fa-chart-line"></i> Top 10 Digital Assets in India</a>
+              <a href="https://jagtappritam7.gumroad.com/l/pvoryz" target="_blank"><i class="fas fa-download"></i> Start Gumroad for Free</a>
+            </div>
+          </div>
+          <a href="https://gumroad.com/PRITYAA379" target="_blank"><i class="fas fa-store-alt"></i> Visit My Store</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fatloss Portal -->
+    <div class="section">
+      <div class="mirror-container">
+        <div class="card">
+          <h3 class="service-title">
+            <i class="fas fa-weight service-icon"></i>
+            Fatloss Portal
+          </h3>
+          <p class="tagline">
+            Comprehensive guide to effective fat loss strategies and techniques
+          </p>
+          <a href="https://jagtappritam7.gumroad.com/l/onrle" class="link" target="_blank">
+            <i class="fas fa-shopping-cart"></i> Purchase Now
+          </a>
+        </div>
+        <div class="mirror-reflection"></div>
+      </div>
+    </div>
+
+    <!-- WhatsApp Group -->
+    <div class="section">
+      <div class="mirror-container">
+        <a href="https://chat.whatsapp.com/B9gRY5oP11VG7jCyOjgsHp" class="primary-btn" target="_blank">
+          <i class="fab fa-whatsapp"></i> Join My WhatsApp Group
+        </a>
+        <div class="mirror-reflection"></div>
+      </div>
+    </div>
+
+    <!-- Services Section -->
+    <div class="section" id="services">
+      <h2 class="section-title">My Services</h2>
+      
+      <div class="mirror-container">
+        <div class="card">
+          <h3 class="service-title">
+            <i class="fas fa-bullhorn service-icon"></i>
+            Digital Marketing
+          </h3>
+          <p class="tagline">
+            Boost your online presence with comprehensive digital marketing strategies
+          </p>
+          <ul class="feature-list">
+            <li>Social Media Marketing</li>
+            <li>Search Engine Optimization (SEO)</li>
+            <li>Pay-Per-Click Advertising (PPC)</li>
+            <li>Content Marketing</li>
+          </ul>
+          <a href="https://calendly.com/jagtappritam73/book-your-slot" class="link" target="_blank">
+            <i class="fas fa-calendar-alt"></i> Book Consultation
+          </a>
+        </div>
+        <div class="mirror-reflection"></div>
+      </div>
+
+      <div class="mirror-container">
+        <div class="card">
+          <h3 class="service-title">
+            <i class="fas fa-code service-icon"></i>
+            Web Development
+          </h3>
+          <p class="tagline">
+            Custom, responsive websites that look great on any device
+          </p>
+          <ul class="feature-list">
+            <li>Responsive Web Design</li>
+            <li>Frontend & Backend Development</li>
+            <li>E-commerce Solutions</li>
+            <li>Website Maintenance</li>
+          </ul>
+          <a href="https://calendly.com/jagtappritam73/book-your-slot" class="link" target="_blank">
+            <i class="fas fa-calendar-alt"></i> Book Consultation
+          </a>
+        </div>
+        <div class="mirror-reflection"></div>
+      </div>
+    </div>
+
+    <!-- Contact Links -->
+    <div class="section">
+      <h2 class="section-title">Contact Me</h2>
+      
+      <div class="mirror-container">
+        <a href="mailto:jagtappritam73@gmail.com" class="link">
+          <i class="fas fa-envelope"></i> Email Me
+        </a>
+        <div class="mirror-reflection"></div>
+      </div>
+
+      <div class="mirror-container">
+        <a href="tel:+919372035409" class="link">
+          <i class="fas fa-phone"></i> Call Me
+        </a>
+        <div class="mirror-reflection"></div>
+      </div>
+
+      <div class="mirror-container">
+        <a href="https://wa.me/919372035409" class="link" target="_blank">
+          <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+        <div class="mirror-reflection"></div>
+      </div>
+    </div>
+
+    <!-- Books Section -->
+    <div class="section">
+      <div class="mirror-container">
+        <a href="https://prityaa379.github.io/theethicalglitchcontent/" class="primary-btn" target="_blank">
+          <i class="fas fa-book"></i> View My Upcoming Books
+        </a>
+        <div class="mirror-reflection"></div>
+      </div>
+    </div>
+
+    <!-- Career Guide -->
+    <div class="section">
+      <div class="mirror-container">
+        <a href="https://calendly.com/jagtappritam73/book-your-slot" class="primary-btn" target="_blank">
+          <i class="fas fa-calendar-alt"></i> Free 15-Min Career Guide
+        </a>
+        <div class="mirror-reflection"></div>
+      </div>
+    </div>
+
+    <!-- Social Channels -->
+    <div class="section" id="social">
+      <h2 class="section-title">Social Channels</h2>
+      
+      <div class="social-links">
+        <a href="https://www.instagram.com/prityaa379" class="social-link" style="--i: 0" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://youtube.com/@prityaa379" class="social-link" style="--i: 1" target="_blank">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://x.com/Prityaa379" class="social-link" style="--i: 2" target="_blank">
+          <i class="fab fa-x-twitter"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" class="social-link" style="--i: 3" target="_blank">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/PRITYAA379" class="social-link" style="--i: 4" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn"><i class="fas fa-share-alt"></i> All Social Channels</button>
+        <div class="dropdown-content">
+          <h3 style="padding: 12px 16px; color: var(--text-primary);">Instagram</h3>
+          <a href="https://www.instagram.com/prityaa379" target="_blank"><i class="fab fa-instagram"></i> prityaa379</a>
+          <a href="https://www.instagram.com/digitalconfvisions" target="_blank"><i class="fab fa-instagram"></i> digitalconfvisions</a>
+          <a href="https://www.instagram.com/tri_ptoworld" target="_blank"><i class="fab fa-instagram"></i> triptoworld</a>
+          
+          <h3 style="padding: 12px 16px; color: var(--text-primary);">YouTube</h3>
+          <a href="https://youtube.com/@prityaa379" target="_blank"><i class="fab fa-youtube"></i> prityaa379</a>
+          <a href="https://youtube.com/@preetjagtap" target="_blank"><i class="fab fa-youtube"></i> AI Case Study</a>
+          <a href="https://youtube.com/@dgvjns" target="_blank"><i class="fab fa-youtube"></i> digitalconfvisions</a>
+          
+          <h3 style="padding: 12px 16px; color: var(--text-primary);">Other</h3>
+          <a href="https://www.facebook.com/share/16fmTVSfFx" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+          <a href="https://x.com/Prityaa379" target="_blank"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/919372035409" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Thank You Overlay -->
+  <div class="thank-you-overlay" id="thankYouOverlay">
+    <div>🌹 Thank You for Reaching Out 🌹</div>
+    <div id="roses"></div>
+  </div>
+
+  <script>
+    // Create particles
+    const particlesContainer = document.getElementById("particles");
+    const colors = ['#00ccff', '#a3bffa', '#1e3a8a', '#f0f8ff'];
+    
+    for (let i = 0; i < 50; i++) {
+      let particle = document.createElement("div");
+      particle.className = "particle";
+      particle.style.left = Math.random() * 100 + "vw";
+      particle.style.top = Math.random() * 100 + "vh";
+      particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      particle.style.animationDuration = (10 + Math.random() * 10) + "s";
+      particle.style.animationDelay = Math.random() * 5 + "s";
+      particle.style.width = (3 + Math.random() * 5) + "px";
+      particle.style.height = particle.style.width;
+      particlesContainer.appendChild(particle);
     }
-  }, { passive: false });
 
-  // Drag to scroll horizontally
-  let isDragging = false;
-  let startX;
-  let scrollLeft;
+    // Create roses for thank you overlay
+    function createRoses() {
+      const roseContainer = document.getElementById("roses");
+      const emojis = ['🌹', '🌸', '🌺', '🌻', '🌷', '💐', '🏵️'];
+      
+      for (let i = 0; i < 20; i++) {
+        let rose = document.createElement("div");
+        rose.className = "rose";
+        rose.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        rose.style.left = Math.random() * 100 + "vw";
+        rose.style.animationDuration = (5 + Math.random() * 10) + "s";
+        rose.style.animationDelay = Math.random() * 5 + "s";
+        rose.style.fontSize = (20 + Math.random() * 30) + "px";
+        roseContainer.appendChild(rose);
+      }
+    }
 
-  topSection.addEventListener('mousedown', e => {
-    isDragging = true;
-    topSection.style.cursor = 'grabbing';
-    startX = e.pageX - topSection.offsetLeft;
-    scrollLeft = topSection.scrollLeft;
-  });
-  topSection.addEventListener('mouseleave', () => {
-    isDragging = false;
-    topSection.style.cursor = 'grab';
-  });
-  topSection.addEventListener('mouseup', () => {
-    isDragging = false;
-    topSection.style.cursor = 'grab';
-  });
-  topSection.addEventListener('mousemove', e => {
-    if(!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - topSection.offsetLeft;
-    const walk = (x - startX) * 2;
-    topSection.scrollLeft = scrollLeft - walk;
-  });
-</script>
+    // Show thank you overlay when contact links are clicked
+    document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"], .link:not([target="_blank"])').forEach(link => {
+      link.addEventListener('click', function(e) {
+        if (!this.getAttribute('target')) {
+          e.preventDefault();
+          createRoses();
+          document.getElementById("thankYouOverlay").style.display = 'flex';
+          setTimeout(() => {
+            document.getElementById("thankYouOverlay").style.display = 'none';
+            document.getElementById("roses").innerHTML = '';
+            window.location.href = this.href;
+          }, 3000);
+        }
+      });
+    });
 
+    // Smooth scroll for menu links
+    document.querySelectorAll('.hamburger-menu-content a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        document.querySelector(targetId).scrollIntoView({
+          behavior: 'smooth'
+        });
+        document.getElementById('hamburger-toggle').checked = false;
+      });
+    });
+  </script>
 </body>
 </html>
