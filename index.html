@@ -637,7 +637,7 @@
 
     /* Banner Styles */
     .promo-banner {
-      background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
       color: white;
       padding: 15px;
       border-radius: 12px;
@@ -646,7 +646,9 @@
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
       position: relative;
       overflow: hidden;
-      border: 1px solid #ff4757;
+      border: 1px solid var(--accent-blue);
+      animation: neonGlow 8s ease infinite;
+      background-size: 800% 800%;
     }
 
     .promo-banner h3 {
@@ -662,7 +664,7 @@
     .promo-banner .banner-btn {
       display: inline-block;
       background: white;
-      color: #ff6b6b;
+      color: var(--accent-blue);
       padding: 8px 15px;
       border-radius: 20px;
       text-decoration: none;
@@ -673,6 +675,30 @@
     .promo-banner .banner-btn:hover {
       transform: scale(1.05);
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: linear-gradient(135deg, rgba(10, 10, 18, 0.8), rgba(5, 5, 8, 0.9));
+      border-radius: 15px;
+      padding: 20px;
+      margin: 20px 0;
+      border: 1px solid var(--accent-blue);
+      box-shadow: 0 0 20px rgba(0, 204, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.imgur.com/YpeqN0U.png') center/cover no-repeat;
+      opacity: 0.1;
+      z-index: -1;
     }
 
     /* Animations */
@@ -718,9 +744,9 @@
     <label for="hamburger-toggle"><i class="fas fa-bars"></i></label>
     <div class="hamburger-menu-content">
       <a href="#home">Home</a>
-      <a href="#services">Services</a>
+      <a href="#gumroad">Gumroad Products</a>
       <a href="#social">Social Channels</a>
-      <a href="#gumroad">Gumroad</a>
+      <a href="#contact">Contact</a>
     </div>
   </div>
 
@@ -730,7 +756,7 @@
       <img src="https://i.ibb.co/BKZv5FzD/IMG-20250613-062802-529.webp" class="profile-img" alt="Pritam Jagtap">
     </div>
     <h1>Pritam Jagtap</h1>
-    <p class="tagline">Developer | Visionary</p>
+    <p class="tagline">Digital Creator | Gumroad Visionary</p>
   </div>
 
   <!-- Video Banner -->
@@ -741,26 +767,93 @@
 
   <!-- Promo Banner -->
   <div class="promo-banner">
-    <h3>🎉 Special Offer! 🎉</h3>
-    <p>Get 20% off on all Gumroad products this week only!</p>
-    <a href="https://gumroad.com/PRITYAA379" class="banner-btn" target="_blank">Shop Now</a>
+    <h3>🚀 My Digital Products on Gumroad 🚀</h3>
+    <p>Join me in my vision to help everyone start selling digital assets by 2027! Subscribe to get exclusive content and updates.</p>
+    <a href="https://prityaa379.gumroad.com/l/npjvdt" class="banner-btn" target="_blank">
+      <i class="fas fa-envelope"></i> Get Email Updates
+    </a>
   </div>
 
   <div class="container">
     <!-- Gumroad Offerings -->
     <div class="section" id="gumroad">
-      <h2 class="section-title">Gumroad Offerings</h2>
+      <h2 class="section-title">Gumroad Products</h2>
+      
       <div class="mirror-container">
         <div class="card">
           <h3 class="service-title">
-            <i class="fas fa-star service-icon"></i>
-            Premium Bio Links
+            <i class="fas fa-gem service-icon"></i>
+            Gumroad Subscription
           </h3>
           <p class="tagline">
-            Get your custom-designed bio link page to showcase all your important links
+            Get exclusive access to all my digital products and future releases
           </p>
-          <a href="https://prityaa379.gumroad.com/l/unxyn" class="link" target="_blank">
-            <i class="fas fa-shopping-cart"></i> Get Yours Now
+          <a href="https://prityaa379.gumroad.com/l/npjvdt" class="link" target="_blank">
+            <i class="fas fa-shopping-cart"></i> Subscribe Now
+          </a>
+        </div>
+        <div class="mirror-reflection"></div>
+      </div>
+
+      <div class="mirror-container">
+        <div class="card">
+          <h3 class="service-title">
+            <i class="fas fa-rocket service-icon"></i>
+            Start Gumroad for Free
+          </h3>
+          <p class="tagline">
+            Beginner's guide to launching your digital products on Gumroad
+          </p>
+          <a href="https://prityaa379.gumroad.com/l/npjvdt" class="link" target="_blank">
+            <i class="fas fa-download"></i> Get Free Guide
+          </a>
+        </div>
+        <div class="mirror-reflection"></div>
+      </div>
+
+      <div class="mirror-container">
+        <div class="card">
+          <h3 class="service-title">
+            <i class="fas fa-calendar-check service-icon"></i>
+            Daily Productivity Planner
+          </h3>
+          <p class="tagline">
+            Boost your productivity with this comprehensive daily planning system
+          </p>
+          <a href="https://prityaa379.gumroad.com/l/npjvdt" class="link" target="_blank">
+            <i class="fas fa-shopping-cart"></i> Get Planner
+          </a>
+        </div>
+        <div class="mirror-reflection"></div>
+      </div>
+
+      <div class="mirror-container">
+        <div class="card">
+          <h3 class="service-title">
+            <i class="fas fa-language service-icon"></i>
+            Gumroad म्हणजे काय?
+          </h3>
+          <p class="tagline">
+            मराठीतून समजून घ्या Gumroad बद्दल सर्वकाही
+          </p>
+          <a href="https://prityaa379.gumroad.com/l/uplaw" class="link" target="_blank">
+            <i class="fas fa-book"></i> वाचा आता
+          </a>
+        </div>
+        <div class="mirror-reflection"></div>
+      </div>
+
+      <div class="mirror-container">
+        <div class="card">
+          <h3 class="service-title">
+            <i class="fas fa-brain service-icon"></i>
+            21 Day Nervous System Reset
+          </h3>
+          <p class="tagline">
+            Transform your mental health with this live writing program
+          </p>
+          <a href="https://prityaa379.gumroad.com/l/nisxb" class="link" target="_blank">
+            <i class="fas fa-shopping-cart"></i> Join Program
           </a>
         </div>
         <div class="mirror-reflection"></div>
@@ -772,7 +865,7 @@
           <div class="submenu">
             <button class="submenu-btn"><i class="fas fa-gem"></i> Subscriptions <i class="fas fa-caret-down"></i></button>
             <div class="submenu-content">
-              <a href="https://jagtappritam7.gumroad.com/l/npjvdt" target="_blank"><i class="fas fa-gem"></i> Gumroad Subscription</a>
+              <a href="https://prityaa379.gumroad.com/l/npjvdt" target="_blank"><i class="fas fa-gem"></i> Gumroad Subscription</a>
               <a href="https://gumroad.com/PRITYAA379/membership" target="_blank"><i class="fas fa-crown"></i> Membership</a>
               <a href="https://gumroad.com/PRITYAA379/newsletter" target="_blank"><i class="fas fa-newspaper"></i> Newsletter</a>
             </div>
@@ -780,11 +873,11 @@
           <div class="submenu">
             <button class="submenu-btn"><i class="fas fa-box"></i> Products <i class="fas fa-caret-down"></i></button>
             <div class="submenu-content">
-              <a href="https://jagtappritam7.gumroad.com/l/uplaw" target="_blank"><i class="fas fa-question-circle"></i> What is Gumroad?</a>
-              <a href="https://jagtappritam7.gumroad.com/l/qnsim" target="_blank"><i class="fas fa-link"></i> LINK IN BIO SAMPLES</a>
-              <a href="https://jagtappritam7.gumroad.com/l/qkevcg" target="_blank"><i class="fas fa-calendar-check"></i> Daily Productivity Planner</a>
-              <a href="https://jagtappritam7.gumroad.com/l/tdnocf" target="_blank"><i class="fas fa-chart-line"></i> Top 10 Digital Assets in India</a>
-              <a href="https://jagtappritam7.gumroad.com/l/pvoryz" target="_blank"><i class="fas fa-download"></i> Start Gumroad for Free</a>
+              <a href="https://prityaa379.gumroad.com/l/uplaw" target="_blank"><i class="fas fa-question-circle"></i> What is Gumroad?</a>
+              <a href="https://prityaa379.gumroad.com/l/qnsim" target="_blank"><i class="fas fa-link"></i> LINK IN BIO SAMPLES</a>
+              <a href="https://prityaa379.gumroad.com/l/qkevcg" target="_blank"><i class="fas fa-calendar-check"></i> Daily Productivity Planner</a>
+              <a href="https://prityaa379.gumroad.com/l/tdnocf" target="_blank"><i class="fas fa-chart-line"></i> Top 10 Digital Assets in India</a>
+              <a href="https://prityaa379.gumroad.com/l/pvoryz" target="_blank"><i class="fas fa-download"></i> Start Gumroad for Free</a>
             </div>
           </div>
           <a href="https://gumroad.com/PRITYAA379" target="_blank"><i class="fas fa-store-alt"></i> Visit My Store</a>
@@ -792,105 +885,11 @@
       </div>
     </div>
 
-    <!-- Fatloss Portal -->
-    <div class="section">
-      <div class="mirror-container">
-        <div class="card">
-          <h3 class="service-title">
-            <i class="fas fa-weight service-icon"></i>
-            Fatloss Portal
-          </h3>
-          <p class="tagline">
-            Comprehensive guide to effective fat loss strategies and techniques
-          </p>
-          <a href="https://jagtappritam7.gumroad.com/l/onrle" class="link" target="_blank">
-            <i class="fas fa-shopping-cart"></i> Purchase Now
-          </a>
-        </div>
-        <div class="mirror-reflection"></div>
-      </div>
-    </div>
-
     <!-- WhatsApp Group -->
     <div class="section">
       <div class="mirror-container">
         <a href="https://chat.whatsapp.com/B9gRY5oP11VG7jCyOjgsHp" class="primary-btn" target="_blank">
-          <i class="fab fa-whatsapp"></i> Join My WhatsApp Group
-        </a>
-        <div class="mirror-reflection"></div>
-      </div>
-    </div>
-
-    <!-- Services Section -->
-    <div class="section" id="services">
-      <h2 class="section-title">My Services</h2>
-      
-      <div class="mirror-container">
-        <div class="card">
-          <h3 class="service-title">
-            <i class="fas fa-bullhorn service-icon"></i>
-            Digital Marketing
-          </h3>
-          <p class="tagline">
-            Boost your online presence with comprehensive digital marketing strategies
-          </p>
-          <ul class="feature-list">
-            <li>Social Media Marketing</li>
-            <li>Search Engine Optimization (SEO)</li>
-            <li>Pay-Per-Click Advertising (PPC)</li>
-            <li>Content Marketing</li>
-          </ul>
-          <a href="https://calendly.com/jagtappritam73/book-your-slot" class="link" target="_blank">
-            <i class="fas fa-calendar-alt"></i> Book Consultation
-          </a>
-        </div>
-        <div class="mirror-reflection"></div>
-      </div>
-
-      <div class="mirror-container">
-        <div class="card">
-          <h3 class="service-title">
-            <i class="fas fa-code service-icon"></i>
-            Web Development
-          </h3>
-          <p class="tagline">
-            Custom, responsive websites that look great on any device
-          </p>
-          <ul class="feature-list">
-            <li>Responsive Web Design</li>
-            <li>Frontend & Backend Development</li>
-            <li>E-commerce Solutions</li>
-            <li>Website Maintenance</li>
-          </ul>
-          <a href="https://calendly.com/jagtappritam73/book-your-slot" class="link" target="_blank">
-            <i class="fas fa-calendar-alt"></i> Book Consultation
-          </a>
-        </div>
-        <div class="mirror-reflection"></div>
-      </div>
-    </div>
-
-    <!-- Contact Links -->
-    <div class="section">
-      <h2 class="section-title">Contact Me</h2>
-      
-      <div class="mirror-container">
-        <a href="mailto:jagtappritam73@gmail.com" class="link">
-          <i class="fas fa-envelope"></i> Email Me
-        </a>
-        <div class="mirror-reflection"></div>
-      </div>
-
-      <div class="mirror-container">
-        <a href="tel:+919372035409" class="link">
-          <i class="fas fa-phone"></i> Call Me
-        </a>
-        <div class="mirror-reflection"></div>
-      </div>
-
-      <div class="mirror-container">
-        <a href="https://wa.me/919372035409" class="link" target="_blank">
-          <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+          <i class="fab fa-whatsapp"></i> Join My Digital Creators WhatsApp Group
         </a>
         <div class="mirror-reflection"></div>
       </div>
@@ -910,7 +909,7 @@
     <div class="section">
       <div class="mirror-container">
         <a href="https://calendly.com/jagtappritam73/book-your-slot" class="primary-btn" target="_blank">
-          <i class="fas fa-calendar-alt"></i> Free 15-Min Career Guide
+          <i class="fas fa-calendar-alt"></i> Free 15-Min Digital Creator Career Guide
         </a>
         <div class="mirror-reflection"></div>
       </div>
@@ -955,6 +954,32 @@
           <a href="https://www.facebook.com/share/16fmTVSfFx" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
           <a href="https://x.com/Prityaa379" target="_blank"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
         </div>
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact-section" id="contact">
+      <h2 class="section-title">Contact Me</h2>
+      
+      <div class="mirror-container">
+        <a href="mailto:jagtappritam73@gmail.com" class="link">
+          <i class="fas fa-envelope"></i> Email Me
+        </a>
+        <div class="mirror-reflection"></div>
+      </div>
+
+      <div class="mirror-container">
+        <a href="tel:+919372035409" class="link">
+          <i class="fas fa-phone"></i> Call Me
+        </a>
+        <div class="mirror-reflection"></div>
+      </div>
+
+      <div class="mirror-container">
+        <a href="https://wa.me/919372035409" class="link" target="_blank">
+          <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+        <div class="mirror-reflection"></div>
       </div>
     </div>
   </div>
