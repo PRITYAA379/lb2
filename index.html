@@ -19,10 +19,10 @@
       width: 100%;
       background: white;
       color: black;
-      font-size: 1.2rem;
+      font-size: 0.9rem; /* smaller text */
       font-weight: bold;
       text-align: center;
-      padding: 12px 0;
+      padding: 10px 0;
       position: fixed;
       top: 0;
       left: 0;
@@ -32,7 +32,7 @@
 
     h1 {
       font-size: 3rem;
-      margin-top: 100px; /* pushed down to avoid overlap with strip */
+      margin-top: 100px; /* avoid overlap with strip */
       font-weight: bold;
       text-shadow: 0 0 20px white;
     }
@@ -56,21 +56,7 @@
       box-shadow: 0 0 40px rgba(255,0,0,1);
     }
 
-    .videos {
-      margin: 30px auto;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      max-width: 800px;
-    }
-    iframe {
-      width: 100%;
-      height: 200px;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0 0 20px white;
-    }
-
+    /* About section */
     .about {
       background: red;
       padding: 40px 20px;
@@ -85,13 +71,34 @@
       box-shadow: 0 0 30px rgba(255,0,0,0.8);
     }
 
+    /* Video section */
+    .videos {
+      margin: 30px auto;
+      max-width: 900px;
+      text-align: right; /* align to right */
+    }
+    .videos a {
+      display: inline-block;
+      margin: 10px;
+    }
+    .videos img {
+      width: 280px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px white;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .videos img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px white;
+    }
+
     /* Hamburger inside strip */
     .hamburger {
       position: absolute;
-      top: 8px;
+      top: 4px;
       right: 20px;
-      width: 40px;
-      height: 40px;
+      width: 60px; /* bigger hamburger */
+      height: 60px;
       cursor: pointer;
       z-index: 2001;
       background: transparent;
@@ -99,13 +106,14 @@
     }
     .hamburger div {
       width: 100%;
-      height: 5px;
+      height: 8px;
       background: black; /* black hamburger */
-      margin: 7px 0;
+      margin: 10px 0;
       border-radius: 10px;
       transition: all 0.4s ease;
     }
 
+    /* Full-screen snake menu */
     .menu {
       position: fixed;
       top: 0;
@@ -157,7 +165,7 @@
 
     @media(min-width:768px){
       h1 { font-size: 5rem; }
-      iframe { height: 400px; }
+      .videos img { width: 400px; }
     }
   </style>
 </head>
@@ -195,11 +203,20 @@
     <p>From fun roasts to unique digital experiments, Prityaa379 is building a shiny new portal for fans and creators worldwide. Stay tuned!</p>
   </div>
 
+  <!-- Video Thumbnails -->
   <div class="videos">
-    <iframe src="https://www.youtube.com/embed/oE81eYmvhIw" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/mm5t-5GFAFY" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/TAIdOAo3OaU" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/4DSYIWhypas" allowfullscreen></iframe>
+    <a href="https://youtu.be/oE81eYmvhIw?si=YshRhTmjAFW-tHUM" target="_blank">
+      <img src="https://img.youtube.com/vi/oE81eYmvhIw/hqdefault.jpg" alt="Video 1">
+    </a>
+    <a href="https://youtu.be/mm5t-5GFAFY?si=0n9Yj9pUks4PAsi3" target="_blank">
+      <img src="https://img.youtube.com/vi/mm5t-5GFAFY/hqdefault.jpg" alt="Video 2">
+    </a>
+    <a href="https://youtu.be/TAIdOAo3OaU?si=nCuO4_vxxZkQKF_W" target="_blank">
+      <img src="https://img.youtube.com/vi/TAIdOAo3OaU/hqdefault.jpg" alt="Video 3">
+    </a>
+    <a href="https://youtu.be/4DSYIWhypas?si=sG9b1ziq8YNBiYkg" target="_blank">
+      <img src="https://img.youtube.com/vi/4DSYIWhypas/hqdefault.jpg" alt="Video 4">
+    </a>
   </div>
 
   <script>
