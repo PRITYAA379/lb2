@@ -1,228 +1,118 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Prityaa379 Portal</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Arial Black', sans-serif;
-      background: black;
-      color: white;
-      text-align: center;
-      overflow-x: hidden;
-    }
-
-    /* Top white strip */
-    .top-strip {
-      width: 100%;
-      background: white;
-      color: black;
-      font-size: 0.9rem; /* smaller text */
-      font-weight: bold;
-      text-align: center;
-      padding: 10px 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 2000;
-      box-shadow: 0 0 15px rgba(255,255,255,0.8);
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin-top: 100px; /* avoid overlap with strip */
-      font-weight: bold;
-      text-shadow: 0 0 20px white;
-    }
-
-    .subscribe-btn {
-      margin: 20px auto;
-      padding: 20px 40px;
-      background: linear-gradient(145deg, #ff0000, #b30000);
-      border: none;
-      border-radius: 15px;
-      color: white;
-      font-size: 1.5rem;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 0 25px rgba(255,0,0,0.8);
-      transform: perspective(500px) rotateX(10deg);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .subscribe-btn:hover {
-      transform: perspective(500px) rotateX(0deg) scale(1.05);
-      box-shadow: 0 0 40px rgba(255,0,0,1);
-    }
-
-    /* About section */
-    .about {
-      background: red;
-      padding: 40px 20px;
-      margin: 40px 0;
-      border-radius: 15px;
-      color: white;
-      font-size: 1.2rem;
-      line-height: 1.6;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      box-shadow: 0 0 30px rgba(255,0,0,0.8);
-    }
-
-    /* Video section */
-    .videos {
-      margin: 30px auto;
-      max-width: 900px;
-      text-align: right; /* align to right */
-    }
-    .videos a {
-      display: inline-block;
-      margin: 10px;
-    }
-    .videos img {
-      width: 280px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px white;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .videos img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 40px white;
-    }
-
-    /* Hamburger inside strip */
-    .hamburger {
-      position: absolute;
-      top: 4px;
-      right: 20px;
-      width: 60px; /* bigger hamburger */
-      height: 60px;
-      cursor: pointer;
-      z-index: 2001;
-      background: transparent;
-      border: none;
-    }
-    .hamburger div {
-      width: 100%;
-      height: 8px;
-      background: black; /* black hamburger */
-      margin: 10px 0;
-      border-radius: 10px;
-      transition: all 0.4s ease;
-    }
-
-    /* Full-screen snake menu */
-    .menu {
-      position: fixed;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: rgba(255,255,255,0.95);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      z-index: 1500;
-      transition: left 0.5s ease;
-      font-size: 2rem;
-      font-weight: bold;
-      color: black;
-    }
-    .menu a {
-      color: black;
-      text-decoration: none;
-      margin: 20px 0;
-      transition: color 0.3s;
-    }
-    .menu a:hover {
-      color: red;
-    }
-    .menu.open {
-      left: 0;
-    }
-
-    /* White Snake effect */
-    .menu::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 200%;
-      height: 40in; /* giant snake */
-      background: white;
-      transform: rotate(20deg);
-      animation: snakeMove 10s linear infinite;
-      opacity: 0.1;
-    }
-
-    @keyframes snakeMove {
-      0% { left: -100%; }
-      100% { left: 0%; }
-    }
-
-    @media(min-width:768px){
-      h1 { font-size: 5rem; }
-      .videos img { width: 400px; }
-    }
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>prityaa379 Portal</title>
+<style>
+  body{margin:0;background:#000;color:#fff;font-family:sans-serif;text-align:center;}
+  /* top strip */
+  .top-strip{
+    background:#fff;color:#000;
+    padding:10px;font-weight:bold;font-size:0.9rem;
+  }
+  /* hamburger */
+  .hamburger{
+    position:fixed;top:15px;right:20px;
+    width:40px;height:30px;cursor:pointer;
+    display:flex;flex-direction:column;justify-content:space-between;
+    z-index:1000;
+  }
+  .hamburger span{
+    display:block;height:5px;width:100%;background:#000;border-radius:3px;
+  }
+  .dramatic{
+    font-size:clamp(2rem,8vw,4rem);
+    font-weight:900;
+    margin:60px 20px 20px;
+    text-transform:uppercase;
+  }
+  .subscribe-btn{
+    display:inline-block;margin:20px auto;
+    padding:16px 36px;background:#ff0000;color:#fff;
+    font-weight:800;text-transform:uppercase;
+    font-size:1.2rem;border-radius:14px;text-decoration:none;
+    box-shadow:0 6px 0 #660000;
+  }
+  .about{
+    background:#222;color:#fff;padding:30px;
+    margin:30px auto;max-width:800px;border-radius:12px;
+  }
+  .videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:1200px;margin:0 auto 50px;}
+  .video{position:relative;}
+  .video iframe{width:100%;height:200px;border:none;border-radius:12px;}
+  .overlay{
+    position:absolute;top:0;left:0;width:100%;height:100%;
+    background:rgba(0,0,0,0.85);color:#fff;display:flex;
+    justify-content:center;align-items:center;flex-direction:column;
+    opacity:0;transition:opacity .3s;border-radius:12px;
+  }
+  .overlay.show{opacity:1;}
+  .overlay a{color:#ff0;text-decoration:underline;margin-top:10px;}
+</style>
 </head>
 <body>
+  <div class="top-strip">Click the hamburger to see My Force</div>
 
-  <!-- Top White Strip with hamburger -->
-  <div class="top-strip">
-    ⚡ Click hamburger to see my force ⚡
-    <button class="hamburger" onclick="toggleMenu()">
-      <div></div>
-      <div></div>
-      <div></div>
-    </button>
+  <!-- hamburger -->
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
   </div>
 
-  <!-- Snake Menu -->
-  <div class="menu" id="menu">
-    <a href="https://codepen.io/">CodePen</a>
-    <a href="https://prityaa379.gumroad.com/">Gumroad</a>
-    <a href="https://chat.openai.com/">ChatGPT</a>
-    <a href="https://ai.google.dev/">Google AI Studio</a>
-    <a href="https://chat.deepseek.com/">DeepSeek</a>
-    <a href="https://x.ai/">Grok</a>
-  </div>
+  <!-- dramatic -->
+  <h1 class="dramatic">Under Construction</h1>
+  <p>But you can still vibe with my music, vlogs & roasts 😁</p>
 
-  <h1>This Bio Link is Under Construction</h1>
-  <p style="font-size:1.5rem;">But you can still subscribe to my YouTube and enjoy my music, vlogs, roasts etc 😁</p>
-
-  <a href="https://www.youtube.com/@prityaa379" target="_blank">
-    <button class="subscribe-btn">▶ Subscribe to My Channel</button>
+  <!-- subscribe -->
+  <a class="subscribe-btn" href="https://www.youtube.com/@prityaa379?sub_confirmation=1" target="_blank">
+    Subscribe on YouTube
   </a>
 
+  <!-- about -->
   <div class="about">
-    <p>Prityaa379 is a creative powerhouse of music, vlogs, and entertainment. Every project brings raw energy, real emotions, and a vibe you won’t forget.</p>
-    <p>From fun roasts to unique digital experiments, Prityaa379 is building a shiny new portal for fans and creators worldwide. Stay tuned!</p>
+    <p><b>About prityaa379:</b> A creative soul dropping music, vlogs, and savage roasts. This portal is just the start of something huge.</p>
+    <p>Stick around for wild vibes, raw energy, and content that’s both entertaining and unfiltered. 🚀</p>
   </div>
 
-  <!-- Video Thumbnails -->
+  <!-- videos -->
   <div class="videos">
-    <a href="https://youtu.be/oE81eYmvhIw?si=YshRhTmjAFW-tHUM" target="_blank">
-      <img src="https://img.youtube.com/vi/oE81eYmvhIw/hqdefault.jpg" alt="Video 1">
-    </a>
-    <a href="https://youtu.be/mm5t-5GFAFY?si=0n9Yj9pUks4PAsi3" target="_blank">
-      <img src="https://img.youtube.com/vi/mm5t-5GFAFY/hqdefault.jpg" alt="Video 2">
-    </a>
-    <a href="https://youtu.be/TAIdOAo3OaU?si=nCuO4_vxxZkQKF_W" target="_blank">
-      <img src="https://img.youtube.com/vi/TAIdOAo3OaU/hqdefault.jpg" alt="Video 3">
-    </a>
-    <a href="https://youtu.be/4DSYIWhypas?si=sG9b1ziq8YNBiYkg" target="_blank">
-      <img src="https://img.youtube.com/vi/4DSYIWhypas/hqdefault.jpg" alt="Video 4">
-    </a>
+    <div class="video">
+      <iframe id="vid1" src="https://www.youtube.com/embed/oE81eYmvhIw?enablejsapi=1" allowfullscreen></iframe>
+      <div class="overlay" id="ov1"><div>⏱ Watch full video on YouTube</div><a href="https://youtu.be/oE81eYmvhIw" target="_blank">Open on YouTube</a></div>
+    </div>
+    <div class="video">
+      <iframe id="vid2" src="https://www.youtube.com/embed/mm5t-5GFAFY?enablejsapi=1" allowfullscreen></iframe>
+      <div class="overlay" id="ov2"><div>⏱ Watch full video on YouTube</div><a href="https://youtu.be/mm5t-5GFAFY" target="_blank">Open on YouTube</a></div>
+    </div>
+    <div class="video">
+      <iframe id="vid3" src="https://www.youtube.com/embed/TAIdOAo3OaU?enablejsapi=1" allowfullscreen></iframe>
+      <div class="overlay" id="ov3"><div>⏱ Watch full video on YouTube</div><a href="https://youtu.be/TAIdOAo3OaU" target="_blank">Open on YouTube</a></div>
+    </div>
+    <div class="video">
+      <iframe id="vid4" src="https://www.youtube.com/embed/4DSYIWhypas?enablejsapi=1" allowfullscreen></iframe>
+      <div class="overlay" id="ov4"><div>⏱ Watch full video on YouTube</div><a href="https://youtu.be/4DSYIWhypas" target="_blank">Open on YouTube</a></div>
+    </div>
   </div>
 
-  <script>
-    function toggleMenu(){
-      document.getElementById("menu").classList.toggle("open");
-    }
-  </script>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+let players={};
+function onYouTubeIframeAPIReady(){
+  ['vid1','vid2','vid3','vid4'].forEach((id,i)=>{
+    players[id]=new YT.Player(id,{
+      events:{
+        'onStateChange':function(e){
+          if(e.data==YT.PlayerState.PLAYING){
+            setTimeout(()=>{
+              e.target.stopVideo();
+              document.getElementById('ov'+(i+1)).classList.add('show');
+            },60000); // 60 seconds
+          }
+        }
+      }
+    });
+  });
+}
+</script>
 </body>
 </html>
