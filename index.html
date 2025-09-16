@@ -6,69 +6,89 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Plate — prityaa379</title>
 
-  <!-- Google fonts used for visible font changes -->
+  <!-- Google fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&family=Playfair+Display:wght@700&family=Montserrat:wght@600&family=Roboto:wght@700&display=swap" rel="stylesheet">
 
   <style>
-    html,body{height:100%;margin:0}
+    html,body{margin:0;padding:0;}
     body{
-      display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:40px;background:#f0f0f0;font-family:Roboto,system-ui,Arial,sans-serif;
+      display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+      font-family:Roboto,system-ui,Arial,sans-serif;background:#f0f0f0;padding:20px;gap:20px;
     }
 
     .plate{
-      width:420px;height:420px;border-radius:50%;background:linear-gradient(180deg,#ffffff 0%, #f8f8f8 100%);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.18), inset 0 -6px 20px rgba(0,0,0,0.02);
+      width:280px;height:280px;border-radius:50%;background:linear-gradient(180deg,#fff 0%,#f8f8f8 100%);
       display:grid;place-items:center;position:relative;overflow:hidden;
+      box-shadow:0 20px 40px rgba(0,0,0,.25), inset 0 -6px 15px rgba(0,0,0,.1);
+      transform:perspective(800px) rotateX(5deg);
     }
     .label{
-      font-size:48px;color:#222;text-align:center;line-height:1;transition:opacity .6s ease, transform .6s ease;
-      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;padding:10px 18px;
+      font-size:32px;color:#222;text-align:center;transition:opacity .6s ease,transform .6s ease;
+      padding:8px 14px;
     }
     .rim{
-      position:absolute;inset:12px;border-radius:50%;box-shadow: inset 0 6px 12px rgba(0,0,0,0.02);
-      pointer-events:none;
+      position:absolute;inset:10px;border-radius:50%;box-shadow:inset 0 6px 12px rgba(0,0,0,0.1);
     }
-    .caption{margin-top:20px;color:#666;font-size:13px}
-    .fade-out{opacity:0;transform:scale(.98)}
+    .caption{font-size:13px;color:#666;text-align:center;margin-top:10px}
+    .fade-out{opacity:0;transform:scale(.95)}
     .fade-in{opacity:1;transform:scale(1)}
 
     /* Hamburger */
-    .hamburger{position:fixed;top:20px;left:20px;width:40px;height:32px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;z-index:1001}
-    .hamburger span{display:block;height:4px;background:#333;border-radius:2px;transition:all 0.4s}
-    .hamburger.active span:nth-child(1){transform:rotate(45deg) translateY(10px)}
+    .hamburger{position:fixed;top:16px;left:16px;width:34px;height:28px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;z-index:1001}
+    .hamburger span{display:block;height:4px;background:#333;border-radius:2px;transition:.4s}
+    .hamburger.active span:nth-child(1){transform:rotate(45deg) translateY(9px)}
     .hamburger.active span:nth-child(2){opacity:0}
-    .hamburger.active span:nth-child(3){transform:rotate(-45deg) translateY(-10px)}
+    .hamburger.active span:nth-child(3){transform:rotate(-45deg) translateY(-9px)}
 
     /* Side menu */
-    .side-menu{position:fixed;top:0;left:-260px;width:260px;height:100%;background:#111;color:#fff;transition:left 0.4s;padding:40px 20px;z-index:1000;display:flex;flex-direction:column;gap:18px}
+    .side-menu{position:fixed;top:0;left:-240px;width:240px;height:100%;background:#111;color:#fff;transition:left .4s;padding:40px 20px;z-index:1000;display:flex;flex-direction:column;gap:16px}
     .side-menu.open{left:0}
     .side-menu a{color:#fff;text-decoration:none;font-size:18px}
 
     /* Black strip */
-    .black-box{margin-top:20px;width:420px;height:60px;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:18px;font-weight:600;box-shadow:0 8px 20px rgba(0,0,0,0.25)}
+    .black-box{
+      width:100%;max-width:420px;height:50px;background:#000;color:#fff;
+      display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:16px;font-weight:600;
+      box-shadow:0 6px 16px rgba(0,0,0,.4);
+      transform:perspective(600px) rotateX(2deg);
+    }
 
     /* Big black A4-like box */
     .big-black-box{
-      margin-top:30px;width:794px;height:1123px;background:#000;color:#fff;border-radius:12px;padding:40px;box-shadow:0 12px 30px rgba(0,0,0,0.4);
-      display:flex;flex-direction:column;gap:20px;font-size:18px;line-height:1.6;max-width:90vw;overflow:auto;
+      width:100%;max-width:794px;min-height:400px;background:#000;color:#fff;border-radius:12px;padding:20px;
+      box-shadow:0 10px 25px rgba(0,0,0,.45);
+      font-size:16px;line-height:1.6;
+      transform:perspective(1000px) rotateX(3deg);
     }
 
     /* White half A4 box */
     .white-half-box{
-      margin-top:30px;width:397px;height:561px;background:#fff;color:#000;border-radius:12px;padding:30px;box-shadow:0 8px 20px rgba(0,0,0,0.25);
-      font-size:16px;line-height:1.6;max-width:90vw;overflow:auto;
+      width:100%;max-width:397px;min-height:200px;background:#fff;color:#000;border-radius:12px;padding:20px;
+      box-shadow:0 8px 20px rgba(0,0,0,.25);
+      font-size:15px;line-height:1.6;
+      transform:perspective(1000px) rotateX(-3deg);
+    }
+
+    /* Responsive */
+    @media(min-width:768px){
+      .plate{width:360px;height:360px;}
+      .label{font-size:40px;}
+      .black-box{height:60px;font-size:18px;}
+      .big-black-box{padding:40px;font-size:18px;}
+      .white-half-box{padding:30px;font-size:16px;}
+    }
+    @media(min-width:1024px){
+      body{padding:40px;gap:30px;}
+      .plate{width:420px;height:420px;}
+      .label{font-size:48px;}
     }
   </style>
 </head>
 <body>
-  <!-- Hamburger button -->
   <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </div>
 
-  <!-- Side menu -->
   <nav class="side-menu" id="sideMenu">
     <a href="#">Home</a>
     <a href="#">About</a>
@@ -76,13 +96,12 @@
     <a href="#">Contact</a>
   </nav>
 
-  <div>
-    <div class="plate" aria-label="white plate">
-      <div class="rim"></div>
-      <div id="label" class="label fade-in">prityaa379</div>
-    </div>
-    <div class="black-box">building timelines beyond the trend</div>
+  <div class="plate" aria-label="white plate">
+    <div class="rim"></div>
+    <div id="label" class="label fade-in">prityaa379</div>
   </div>
+
+  <div class="black-box">building timelines beyond the trend</div>
 
   <div class="big-black-box">
     <p>Prityaa379 is a creative identity built on the foundation of innovation and dedication. With a vision to craft designs and ideas that transcend temporary fashions, Prityaa379 believes in creating lasting impressions. The journey reflects a pursuit of excellence, aiming to inspire people with work that is both timeless and unique.</p>
@@ -97,43 +116,16 @@
 
   <script>
     (function(){
-      const fonts = [
-        'Lobster, cursive',
-        'Pacifico, cursive',
-        'Playfair Display, serif',
-        'Montserrat, sans-serif',
-        'Roboto, sans-serif'
-      ];
-
-      const label = document.getElementById('label');
-      let changes = 0;
-      const maxChanges = 5;
-      const intervalMs = 10000;
-
-      label.style.fontFamily = fonts[0];
-
-      const changeOnce = () => {
-        if (changes >= maxChanges) return clearInterval(timer);
-        label.classList.remove('fade-in');
-        label.classList.add('fade-out');
-        setTimeout(() => {
-          const fontIndex = (changes) % fonts.length;
-          label.style.fontFamily = fonts[fontIndex];
-          label.classList.remove('fade-out');
-          label.classList.add('fade-in');
-          changes += 1;
-        }, 600);
-      };
-      const timer = setInterval(changeOnce, intervalMs);
-      setTimeout(()=>{ if(changes>=maxChanges) clearInterval(timer); }, (maxChanges+1)*intervalMs);
-
-      // Hamburger toggle menu
-      const hamburger = document.getElementById('hamburger');
-      const sideMenu = document.getElementById('sideMenu');
-      hamburger.addEventListener('click', ()=>{
-        hamburger.classList.toggle('active');
-        sideMenu.classList.toggle('open');
-      });
+      const fonts=['Lobster, cursive','Pacifico, cursive','Playfair Display, serif','Montserrat, sans-serif','Roboto, sans-serif'];
+      const label=document.getElementById('label');
+      let changes=0;const maxChanges=5;const intervalMs=10000;
+      label.style.fontFamily=fonts[0];
+      const changeOnce=()=>{if(changes>=maxChanges)return clearInterval(timer);label.classList.remove('fade-in');label.classList.add('fade-out');setTimeout(()=>{const fontIndex=(changes)%fonts.length;label.style.fontFamily=fonts[fontIndex];label.classList.remove('fade-out');label.classList.add('fade-in');changes+=1;},600)};
+      const timer=setInterval(changeOnce,intervalMs);
+      setTimeout(()=>{if(changes>=maxChanges)clearInterval(timer);},(maxChanges+1)*intervalMs);
+      const hamburger=document.getElementById('hamburger');
+      const sideMenu=document.getElementById('sideMenu');
+      hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');sideMenu.classList.toggle('open');});
     })();
   </script>
 </body>
