@@ -1,79 +1,134 @@
-<!DOCTYPE html>
+<!-- file: prityaa379_plate.html -->
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prityaa's Authentic Journey</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: #fff;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1100px;
-            width: 100%;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .header-strip {
-            background: linear-gradient(to right, #4a00e0, #8e2de2);
-            color: white;
-            padding: 20px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            width: 100%;
-        }
-        
-        .header-content {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        
-        .header-strip h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            margin: 0;
-        }
-        
-        .sub-header {
-            min-height: 40px;
-            margin-top: 10px;
-            font-size: 1.1rem;
-            color: #e0e1dd;
-            position: relative;
-        }
-        
-        /* Typing animation */
-        .typing-text {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 2px solid #ff9e44;
-            animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
-        
-        @keyframes typing {
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Plate — prityaa379</title>
+
+  <!-- Google fonts used for visible font changes -->
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&family=Playfair+Display:wght@700&family=Montserrat:wght@600&family=Roboto:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    html,body{height:100%;margin:0}
+    body{
+      display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:40px;background:#f0f0f0;font-family:Roboto,system-ui,Arial,sans-serif;
+    }
+
+    .plate{
+      width:420px;height:420px;border-radius:50%;background:linear-gradient(180deg,#ffffff 0%, #f8f8f8 100%);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.18), inset 0 -6px 20px rgba(0,0,0,0.02);
+      display:grid;place-items:center;position:relative;overflow:hidden;
+    }
+    .label{
+      font-size:48px;color:#222;text-align:center;line-height:1;transition:opacity .6s ease, transform .6s ease;
+      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;padding:10px 18px;
+    }
+    .rim{
+      position:absolute;inset:12px;border-radius:50%;box-shadow: inset 0 6px 12px rgba(0,0,0,0.02);
+      pointer-events:none;
+    }
+    .caption{margin-top:20px;color:#666;font-size:13px}
+    .fade-out{opacity:0;transform:scale(.98)}
+    .fade-in{opacity:1;transform:scale(1)}
+
+    /* Hamburger */
+    .hamburger{position:fixed;top:20px;left:20px;width:40px;height:32px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;z-index:1001}
+    .hamburger span{display:block;height:4px;background:#333;border-radius:2px;transition:all 0.4s}
+    .hamburger.active span:nth-child(1){transform:rotate(45deg) translateY(10px)}
+    .hamburger.active span:nth-child(2){opacity:0}
+    .hamburger.active span:nth-child(3){transform:rotate(-45deg) translateY(-10px)}
+
+    /* Side menu */
+    .side-menu{position:fixed;top:0;left:-260px;width:260px;height:100%;background:#111;color:#fff;transition:left 0.4s;padding:40px 20px;z-index:1000;display:flex;flex-direction:column;gap:18px}
+    .side-menu.open{left:0}
+    .side-menu a{color:#fff;text-decoration:none;font-size:18px}
+
+    /* Black strip */
+    .black-box{margin-top:20px;width:420px;height:60px;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:18px;font-weight:600;box-shadow:0 8px 20px rgba(0,0,0,0.25)}
+
+    /* Big black A4-like box */
+    .big-black-box{
+      margin-top:30px;width:794px;height:1123px; /* A4 in px at 96dpi approx */
+      background:#000;color:#fff;border-radius:12px;padding:40px;box-shadow:0 12px 30px rgba(0,0,0,0.4);
+      display:flex;flex-direction:column;gap:20px;font-size:18px;line-height:1.6;max-width:90vw;overflow:auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- Hamburger button -->
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Side menu -->
+  <nav class="side-menu" id="sideMenu">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <div>
+    <div class="plate" aria-label="white plate">
+      <div class="rim"></div>
+      <div id="label" class="label fade-in">prityaa379</div>
+    </div>
+    <div class="black-box">building timelines beyond the trend</div>
+  </div>
+
+  <div class="big-black-box">
+    <p>Prityaa379 is a creative identity built on the foundation of innovation and dedication. With a vision to craft designs and ideas that transcend temporary fashions, Prityaa379 believes in creating lasting impressions. The journey reflects a pursuit of excellence, aiming to inspire people with work that is both timeless and unique.</p>
+    <p>Beyond the digital presence, Prityaa379 embodies consistency and authenticity. Each creation is more than just an outcome — it is a statement of passion and perseverance. By blending technology, creativity, and strategic thinking, Prityaa379 continues to push boundaries and set new benchmarks in its space.</p>
+  </div>
+
+  <div class="caption">Font will change every 10 seconds — 5 times.</div>
+
+  <script>
+    (function(){
+      const fonts = [
+        'Lobster, cursive',
+        'Pacifico, cursive',
+        'Playfair Display, serif',
+        'Montserrat, sans-serif',
+        'Roboto, sans-serif'
+      ];
+
+      const label = document.getElementById('label');
+      let changes = 0;
+      const maxChanges = 5;
+      const intervalMs = 10000;
+
+      label.style.fontFamily = fonts[0];
+
+      const changeOnce = () => {
+        if (changes >= maxChanges) return clearInterval(timer);
+        label.classList.remove('fade-in');
+        label.classList.add('fade-out');
+        setTimeout(() => {
+          const fontIndex = (changes) % fonts.length;
+          label.style.fontFamily = fonts[fontIndex];
+          label.classList.remove('fade-out');
+          label.classList.add('fade-in');
+          changes += 1;
+        }, 600);
+      };
+      const timer = setInterval(changeOnce, intervalMs);
+      setTimeout(()=>{ if(changes>=maxChanges) clearInterval(timer); }, (maxChanges+1)*intervalMs);
+
+      // Hamburger toggle menu
+      const hamburger = document.getElementById('hamburger');
+      const sideMenu = document.getElementById('sideMenu');
+      hamburger.addEventListener('click', ()=>{
+        hamburger.classList.toggle('active');
+        sideMenu.classList.toggle('open');
+      });
+    })();
+  </script>
+</body>
+</html>        @keyframes typing {
             from { width: 0; }
             to { width: 100%; }
         }
