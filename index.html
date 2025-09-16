@@ -3,50 +3,125 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>prityaa379 — YouTube</title>
+<title>prityaa379 Portal</title>
 <style>
   body{
     margin:0;
-    background:#050507;
+    font-family:"Inter",sans-serif;
+    background: radial-gradient(circle at center, #0a0a0a, #000000 70%);
     color:#fff;
-    font-family: "Inter", sans-serif;
-    text-align:center;
-    padding:20px;
+    overflow-x:hidden;
   }
+
+  /* Shiny portal effect */
+  body::before{
+    content:"";
+    position:fixed;
+    top:-50%;
+    left:-50%;
+    width:200%;
+    height:200%;
+    background:conic-gradient(from 0deg, #ffeb3b22, #ffffff11, #ffeb3b22, #00000000);
+    animation:rotate 10s linear infinite;
+    z-index:-1;
+  }
+  @keyframes rotate{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+  }
+
+  /* Hamburger menu */
+  .hamburger{
+    position:fixed;
+    top:20px;left:20px;
+    width:30px;height:22px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    cursor:pointer;
+    z-index:1001;
+  }
+  .hamburger span{
+    display:block;
+    height:4px;
+    background:#ffeb3b;
+    border-radius:2px;
+    transition:0.3s;
+  }
+  .sidebar{
+    position:fixed;
+    top:0;left:-250px;
+    width:250px;height:100%;
+    background:#111;
+    padding:60px 20px;
+    box-shadow:2px 0 10px rgba(0,0,0,0.7);
+    transition:left 0.3s ease;
+    z-index:1000;
+  }
+  .sidebar.open{left:0;}
+  .sidebar a{
+    display:block;
+    color:#fff;
+    padding:12px 0;
+    text-decoration:none;
+    font-weight:600;
+    transition:color 0.2s;
+  }
+  .sidebar a:hover{color:#ffeb3b;}
+
+  /* dramatic title */
   .dramatic{
-    font-size:clamp(2.5rem, 9vw, 6rem);
+    font-size:clamp(2.5rem,9vw,6rem);
     font-weight:900;
-    letter-spacing:-0.02em;
-    line-height:1;
-    margin:10px 0 20px;
+    text-align:center;
+    margin-top:80px;
+    color:#fff;
     text-transform:uppercase;
-    text-shadow: 0 4px 10px rgba(0,0,0,0.6);
+    text-shadow:0 0 20px #ffeb3b, 0 0 40px #ffeb3b33;
   }
   .sub{
-    font-size:clamp(1rem,3vw,1.6rem);
-    opacity:0.9;
+    text-align:center;
+    font-size:1.2rem;
     margin-bottom:20px;
+    opacity:0.9;
   }
-  /* 3D Subscribe button */
+
+  /* subscribe button */
   .subscribe-btn{
     display:inline-block;
     padding:16px 36px;
     margin:20px auto 40px;
-    background:linear-gradient(145deg, #ff0000, #cc0000);
-    color:#fff;
-    font-weight:800;
+    background:linear-gradient(145deg, #ffeb3b, #e6d100);
+    color:#000;
+    font-weight:900;
     text-transform:uppercase;
     font-size:1.2rem;
     border:none;
     border-radius:14px;
     cursor:pointer;
     text-decoration:none;
-    box-shadow:0 8px 0 #660000, 0 12px 22px rgba(0,0,0,0.6);
+    box-shadow:0 8px 0 #998c00,0 12px 22px rgba(0,0,0,0.6);
     transition:all 0.15s ease-in-out;
   }
   .subscribe-btn:active{
     transform:translateY(4px);
-    box-shadow:0 4px 0 #660000, 0 6px 14px rgba(0,0,0,0.6);
+    box-shadow:0 4px 0 #998c00,0 6px 14px rgba(0,0,0,0.6);
+  }
+
+  /* red about section */
+  .about{
+    background:#b71c1c;
+    color:#fff;
+    padding:40px 20px;
+    border-radius:12px;
+    max-width:900px;
+    margin:20px auto;
+    box-shadow:0 0 20px rgba(183,28,28,0.7);
+  }
+  .about p{
+    font-size:1.1rem;
+    line-height:1.6;
+    margin:15px 0;
   }
 
   /* video grid */
@@ -55,7 +130,8 @@
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:20px;
     max-width:1200px;
-    margin:0 auto;
+    margin:40px auto;
+    padding:0 20px;
   }
   .video iframe{
     width:100%;
@@ -64,56 +140,51 @@
     border-radius:12px;
     box-shadow:0 6px 18px rgba(0,0,0,0.6);
   }
-  @media (min-width:600px){
-    .video iframe{height:280px;}
-  }
-
-  /* about section */
-  .about{
-    margin-top:40px;
-    background:#cc0000;
-    padding:30px 20px;
-    border-radius:12px;
-    max-width:1000px;
-    margin-left:auto;
-    margin-right:auto;
-    box-shadow:0 6px 18px rgba(0,0,0,0.5);
-  }
-  .about p{
-    font-size:clamp(1rem, 3vw, 1.3rem);
-    line-height:1.6;
-    margin:12px 0;
-    font-weight:500;
-    color:#fff;
-  }
+  @media(min-width:600px){.video iframe{height:280px;}}
 </style>
 </head>
 <body>
+  <!-- Hamburger -->
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <a href="https://codepen.io/" target="_blank">CodePen</a>
+    <a href="https://gumroad.com/" target="_blank">Gumroad</a>
+    <a href="https://chat.openai.com/" target="_blank">ChatGPT</a>
+    <a href="https://aistudio.google.com/" target="_blank">Google AI Studio</a>
+    <a href="https://deepseek.com/" target="_blank">DeepSeek</a>
+    <a href="https://grok.com/" target="_blank">Grok</a>
+  </div>
+
+  <!-- Main content -->
   <h1 class="dramatic">Under Construction</h1>
   <div class="sub">But you can still vibe with my music, vlogs & roasts 😁</div>
 
-  <a class="subscribe-btn" href="https://www.youtube.com/@prityaa379?sub_confirmation=1" target="_blank" rel="noopener">
-    Subscribe on YouTube
-  </a>
-
-  <div class="videos">
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/oE81eYmvhIw" allowfullscreen></iframe>
-    </div>
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/mm5t-5GFAFY" allowfullscreen></iframe>
-    </div>
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/TAIdOAo3OaU" allowfullscreen></iframe>
-    </div>
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/4DSYIWhypas" allowfullscreen></iframe>
-    </div>
+  <div style="text-align:center;">
+    <a class="subscribe-btn" href="https://www.youtube.com/@prityaa379?sub_confirmation=1" target="_blank">
+      Subscribe on YouTube
+    </a>
   </div>
 
   <div class="about">
-    <p>prityaa379 is more than just a YouTube channel — it’s a whole vibe. From raw roasts that make you laugh out loud, to music and vlogs that show the real grind and daily hustle, this space is built to entertain, inspire, and connect. Every video drops with high energy, unfiltered thoughts, and that Gen-Z edge that keeps things authentic.</p>
-    <p>Behind prityaa379 is pure passion for creating content that feels alive. Whether it’s music drops, travel vlogs, or funny takes on everyday situations, the goal is simple: to keep you entertained and part of the journey. If you want a channel that mixes humor, creativity, and realness, you’re in the right place — welcome to the fam! 🔥</p>
+    <p>Prityaa379 is not just a name, it’s a whole vibe. A journey of music, raw energy, and storytelling that hits different. From wild vlogs to sharp roasts, every upload is a reflection of creativity blended with reality. This is a community for the bold ones who want to feel entertained, inspired, and connected.</p>
+    <p>At its core, prityaa379 is about freedom — the freedom to express, create, and share. It’s a growing digital space where sound, visuals, and words collide to spark emotions. Whether you come for the beats, the laughter, or the real talk, this space will always give you a reason to stay locked in. 🚀</p>
   </div>
+
+  <div class="videos">
+    <div class="video"><iframe src="https://www.youtube.com/embed/oE81eYmvhIw" allowfullscreen></iframe></div>
+    <div class="video"><iframe src="https://www.youtube.com/embed/mm5t-5GFAFY" allowfullscreen></iframe></div>
+    <div class="video"><iframe src="https://www.youtube.com/embed/TAIdOAo3OaU" allowfullscreen></iframe></div>
+    <div class="video"><iframe src="https://www.youtube.com/embed/4DSYIWhypas" allowfullscreen></iframe></div>
+  </div>
+
+<script>
+  function toggleMenu(){
+    document.getElementById("sidebar").classList.toggle("open");
+  }
+</script>
 </body>
 </html>
