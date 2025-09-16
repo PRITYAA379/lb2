@@ -1,179 +1,192 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>prityaa379 Portal</title>
-<style>
-  body{
-    margin:0;
-    font-family:"Inter",sans-serif;
-    background:#000;
-    color:#fff;
-    overflow-x:hidden;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prityaa379 Portal</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial Black', sans-serif;
+      background: black;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
 
-  /* Transparent floating hamburger */
-  .hamburger{
-    position:fixed;
-    top:20px;right:20px;
-    width:32px;height:24px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    cursor:pointer;
-    z-index:1001;
-    background:transparent;
-    border:none;
-  }
-  .hamburger span{
-    display:block;
-    height:4px;
-    background:#fff;
-    border-radius:2px;
-    transition:0.3s;
-  }
+    h1 {
+      font-size: 3rem;
+      margin-top: 2rem;
+      font-weight: bold;
+      text-shadow: 0 0 20px white;
+    }
 
-  /* overlay menu */
-  .overlay{
-    position:fixed;
-    top:0;left:0;
-    width:100%;height:100%;
-    background:rgba(0,0,0,0.95);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    transform:translateY(-100%);
-    transition:transform 0.4s ease;
-    z-index:1000;
-  }
-  .overlay.open{transform:translateY(0);}
-  .overlay a{
-    color:#fff;
-    font-size:2rem;
-    margin:15px 0;
-    text-decoration:none;
-    font-weight:700;
-  }
-  .overlay a:hover{color:#aaa;}
+    .subscribe-btn {
+      margin: 20px auto;
+      padding: 20px 40px;
+      background: linear-gradient(145deg, #ff0000, #b30000);
+      border: none;
+      border-radius: 15px;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 25px rgba(255,0,0,0.8);
+      transform: perspective(500px) rotateX(10deg);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .subscribe-btn:hover {
+      transform: perspective(500px) rotateX(0deg) scale(1.05);
+      box-shadow: 0 0 40px rgba(255,0,0,1);
+    }
 
-  /* dramatic title */
-  .dramatic{
-    font-size:clamp(3rem, 10vw, 7rem);
-    font-weight:900;
-    text-align:center;
-    margin-top:100px;
-    text-transform:uppercase;
-    text-shadow:0 0 20px #fff, 0 0 40px #fff;
-  }
-  .sub{
-    text-align:center;
-    font-size:clamp(1.2rem, 4vw, 2rem);
-    margin:20px auto 40px;
-    max-width:90%;
-    line-height:1.4;
-  }
+    .videos {
+      margin: 30px auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 800px;
+    }
+    iframe {
+      width: 100%;
+      height: 200px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 20px white;
+    }
 
-  /* subscribe button */
-  .subscribe-btn{
-    display:inline-block;
-    padding:16px 36px;
-    margin:20px auto 40px;
-    background:#fff;
-    color:#000;
-    font-weight:900;
-    text-transform:uppercase;
-    font-size:1.3rem;
-    border:none;
-    border-radius:14px;
-    cursor:pointer;
-    text-decoration:none;
-    box-shadow:0 8px 0 #444, 0 12px 22px rgba(0,0,0,0.6);
-    transition:all 0.15s ease-in-out;
-  }
-  .subscribe-btn:active{
-    transform:translateY(4px);
-    box-shadow:0 4px 0 #444,0 6px 14px rgba(0,0,0,0.6);
-  }
+    .about {
+      background: red;
+      padding: 40px 20px;
+      margin: 40px 0;
+      border-radius: 15px;
+      color: white;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 30px rgba(255,0,0,0.8);
+    }
 
-  /* about section */
-  .about{
-    background:#111;
-    color:#fff;
-    padding:40px 20px;
-    border-radius:12px;
-    max-width:900px;
-    margin:20px auto;
-    font-size:1.1rem;
-    line-height:1.6;
-    text-align:center;
-  }
+    /* Giant White Snake Hamburger */
+    .hamburger {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      z-index: 1000;
+      background: transparent;
+      border: none;
+    }
+    .hamburger div {
+      width: 100%;
+      height: 6px;
+      background: white;
+      margin: 8px 0;
+      border-radius: 10px;
+      transition: all 0.4s ease;
+    }
 
-  /* video grid */
-  .videos{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:20px;
-    max-width:1200px;
-    margin:40px auto;
-    padding:0 20px;
-  }
-  .video iframe{
-    width:100%;
-    height:200px;
-    border:none;
-    border-radius:12px;
-    box-shadow:0 6px 18px rgba(255,255,255,0.1);
-  }
-  @media(min-width:700px){
-    .videos{grid-template-columns:repeat(2,1fr);}
-    .video iframe{height:280px;}
-  }
-</style>
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 999;
+      transition: left 0.5s ease;
+      font-size: 2rem;
+      font-weight: bold;
+      color: black;
+    }
+    .menu a {
+      color: black;
+      text-decoration: none;
+      margin: 20px 0;
+      transition: color 0.3s;
+    }
+    .menu a:hover {
+      color: red;
+    }
+    .menu.open {
+      left: 0;
+    }
+
+    /* White Snake effect */
+    .menu::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 200%;
+      height: 40in; /* giant snake */
+      background: white;
+      transform: rotate(20deg);
+      animation: snakeMove 10s linear infinite;
+      opacity: 0.1;
+    }
+
+    @keyframes snakeMove {
+      0% { left: -100%; }
+      100% { left: 0%; }
+    }
+
+    @media(min-width:768px){
+      h1 { font-size: 5rem; }
+      iframe { height: 400px; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Transparent Hamburger -->
+
+  <!-- Hamburger -->
   <button class="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
+    <div></div>
+    <div></div>
+    <div></div>
   </button>
 
-  <!-- Overlay Menu -->
-  <div class="overlay" id="overlay">
-    <a href="https://codepen.io/" target="_blank">CodePen</a>
-    <a href="https://gumroad.com/" target="_blank">Gumroad</a>
-    <a href="https://chat.openai.com/" target="_blank">ChatGPT</a>
-    <a href="https://aistudio.google.com/" target="_blank">Google AI Studio</a>
-    <a href="https://deepseek.com/" target="_blank">DeepSeek</a>
-    <a href="https://grok.com/" target="_blank">Grok</a>
+  <!-- Snake Menu -->
+  <div class="menu" id="menu">
+    <a href="https://codepen.io/">CodePen</a>
+    <a href="https://prityaa379.gumroad.com/">Gumroad</a>
+    <a href="https://chat.openai.com/">ChatGPT</a>
+    <a href="https://ai.google.dev/">Google AI Studio</a>
+    <a href="https://chat.deepseek.com/">DeepSeek</a>
+    <a href="https://x.ai/">Grok</a>
   </div>
 
-  <!-- Main -->
-  <h1 class="dramatic">Under Construction</h1>
-  <div class="sub">But you can still vibe with my music, vlogs & roasts 😁</div>
+  <h1>This Bio Link is Under Construction</h1>
+  <p style="font-size:1.5rem;">But you can still subscribe to my YouTube and enjoy my music, vlogs, roasts etc 😁</p>
 
-  <div style="text-align:center;">
-    <a class="subscribe-btn" href="https://www.youtube.com/@prityaa379?sub_confirmation=1" target="_blank">
-      Subscribe on YouTube
-    </a>
-  </div>
+  <a href="https://www.youtube.com/@prityaa379" target="_blank">
+    <button class="subscribe-btn">▶ Subscribe to My Channel</button>
+  </a>
 
   <div class="about">
-    <p>Prityaa379 is not just a name, it’s a whole vibe. A journey of music, raw energy, and storytelling that hits different. From wild vlogs to sharp roasts, every upload is a reflection of creativity blended with reality.</p>
-    <p>At its core, prityaa379 is about freedom — the freedom to express, create, and share. Whether you come for the beats, the laughter, or the real talk, this space will always give you a reason to stay locked in. 🚀</p>
+    <p>Prityaa379 is a creative powerhouse of music, vlogs, and entertainment. Every project brings raw energy, real emotions, and a vibe you won’t forget.</p>
+    <p>From fun roasts to unique digital experiments, Prityaa379 is building a shiny new portal for fans and creators worldwide. Stay tuned!</p>
   </div>
 
   <div class="videos">
-    <div class="video"><iframe src="https://www.youtube.com/embed/oE81eYmvhIw" allowfullscreen></iframe></div>
-    <div class="video"><iframe src="https://www.youtube.com/embed/mm5t-5GFAFY" allowfullscreen></iframe></div>
-    <div class="video"><iframe src="https://www.youtube.com/embed/TAIdOAo3OaU" allowfullscreen></iframe></div>
-    <div class="video"><iframe src="https://www.youtube.com/embed/4DSYIWhypas" allowfullscreen></iframe></div>
+    <iframe src="https://www.youtube.com/embed/oE81eYmvhIw" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/mm5t-5GFAFY" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/TAIdOAo3OaU" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/4DSYIWhypas" allowfullscreen></iframe>
   </div>
 
-<script>
-  function toggleMenu(){
-    document.getElementById("overlay").classList.toggle("open");
-  }
-</script>
+  <script>
+    function toggleMenu(){
+      document.getElementById("menu").classList.toggle("open");
+    }
+  </script>
 </body>
 </html>
