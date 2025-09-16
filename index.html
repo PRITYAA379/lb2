@@ -13,16 +13,18 @@
     overflow-x:hidden;
   }
 
-  /* Hamburger menu */
+  /* Transparent floating hamburger */
   .hamburger{
     position:fixed;
-    top:20px;left:20px;
-    width:30px;height:22px;
+    top:20px;right:20px;
+    width:32px;height:24px;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
     cursor:pointer;
     z-index:1001;
+    background:transparent;
+    border:none;
   }
   .hamburger span{
     display:block;
@@ -31,25 +33,30 @@
     border-radius:2px;
     transition:0.3s;
   }
-  .sidebar{
+
+  /* overlay menu */
+  .overlay{
     position:fixed;
-    top:0;left:-250px;
-    width:250px;height:100%;
-    background:#111;
-    padding:60px 20px;
-    transition:left 0.3s ease;
+    top:0;left:0;
+    width:100%;height:100%;
+    background:rgba(0,0,0,0.95);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    transform:translateY(-100%);
+    transition:transform 0.4s ease;
     z-index:1000;
   }
-  .sidebar.open{left:0;}
-  .sidebar a{
-    display:block;
+  .overlay.open{transform:translateY(0);}
+  .overlay a{
     color:#fff;
-    padding:14px 0;
+    font-size:2rem;
+    margin:15px 0;
     text-decoration:none;
-    font-size:1.2rem;
-    font-weight:600;
+    font-weight:700;
   }
-  .sidebar a:hover{color:#aaa;}
+  .overlay a:hover{color:#aaa;}
 
   /* dramatic title */
   .dramatic{
@@ -126,13 +133,13 @@
 </style>
 </head>
 <body>
-  <!-- Hamburger -->
-  <div class="hamburger" onclick="toggleMenu()">
+  <!-- Transparent Hamburger -->
+  <button class="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 
-  <!-- Sidebar -->
-  <div class="sidebar" id="sidebar">
+  <!-- Overlay Menu -->
+  <div class="overlay" id="overlay">
     <a href="https://codepen.io/" target="_blank">CodePen</a>
     <a href="https://gumroad.com/" target="_blank">Gumroad</a>
     <a href="https://chat.openai.com/" target="_blank">ChatGPT</a>
@@ -165,7 +172,7 @@
 
 <script>
   function toggleMenu(){
-    document.getElementById("sidebar").classList.toggle("open");
+    document.getElementById("overlay").classList.toggle("open");
   }
 </script>
 </body>
