@@ -14,9 +14,25 @@
       overflow-x: hidden;
     }
 
+    /* Top white strip */
+    .top-strip {
+      width: 100%;
+      background: white;
+      color: black;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+      padding: 12px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 2000;
+      box-shadow: 0 0 15px rgba(255,255,255,0.8);
+    }
+
     h1 {
       font-size: 3rem;
-      margin-top: 2rem;
+      margin-top: 100px; /* pushed down to avoid overlap with strip */
       font-weight: bold;
       text-shadow: 0 0 20px white;
     }
@@ -69,23 +85,23 @@
       box-shadow: 0 0 30px rgba(255,0,0,0.8);
     }
 
-    /* Giant White Snake Hamburger */
+    /* Hamburger inside strip */
     .hamburger {
-      position: fixed;
-      top: 20px;
+      position: absolute;
+      top: 8px;
       right: 20px;
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       cursor: pointer;
-      z-index: 1000;
+      z-index: 2001;
       background: transparent;
       border: none;
     }
     .hamburger div {
       width: 100%;
-      height: 6px;
-      background: white;
-      margin: 8px 0;
+      height: 5px;
+      background: black; /* black hamburger */
+      margin: 7px 0;
       border-radius: 10px;
       transition: all 0.4s ease;
     }
@@ -101,7 +117,7 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      z-index: 999;
+      z-index: 1500;
       transition: left 0.5s ease;
       font-size: 2rem;
       font-weight: bold;
@@ -147,12 +163,15 @@
 </head>
 <body>
 
-  <!-- Hamburger -->
-  <button class="hamburger" onclick="toggleMenu()">
-    <div></div>
-    <div></div>
-    <div></div>
-  </button>
+  <!-- Top White Strip with hamburger -->
+  <div class="top-strip">
+    ⚡ Click hamburger to see my force ⚡
+    <button class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </button>
+  </div>
 
   <!-- Snake Menu -->
   <div class="menu" id="menu">
