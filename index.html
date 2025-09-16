@@ -8,26 +8,9 @@
   body{
     margin:0;
     font-family:"Inter",sans-serif;
-    background: radial-gradient(circle at center, #0a0a0a, #000000 70%);
+    background:#000;
     color:#fff;
     overflow-x:hidden;
-  }
-
-  /* Shiny portal effect */
-  body::before{
-    content:"";
-    position:fixed;
-    top:-50%;
-    left:-50%;
-    width:200%;
-    height:200%;
-    background:conic-gradient(from 0deg, #ffeb3b22, #ffffff11, #ffeb3b22, #00000000);
-    animation:rotate 10s linear infinite;
-    z-index:-1;
-  }
-  @keyframes rotate{
-    0%{transform:rotate(0deg);}
-    100%{transform:rotate(360deg);}
   }
 
   /* Hamburger menu */
@@ -44,7 +27,7 @@
   .hamburger span{
     display:block;
     height:4px;
-    background:#ffeb3b;
+    background:#fff;
     border-radius:2px;
     transition:0.3s;
   }
@@ -54,7 +37,6 @@
     width:250px;height:100%;
     background:#111;
     padding:60px 20px;
-    box-shadow:2px 0 10px rgba(0,0,0,0.7);
     transition:left 0.3s ease;
     z-index:1000;
   }
@@ -62,28 +44,28 @@
   .sidebar a{
     display:block;
     color:#fff;
-    padding:12px 0;
+    padding:14px 0;
     text-decoration:none;
+    font-size:1.2rem;
     font-weight:600;
-    transition:color 0.2s;
   }
-  .sidebar a:hover{color:#ffeb3b;}
+  .sidebar a:hover{color:#aaa;}
 
   /* dramatic title */
   .dramatic{
-    font-size:clamp(2.5rem,9vw,6rem);
+    font-size:clamp(3rem, 10vw, 7rem);
     font-weight:900;
     text-align:center;
-    margin-top:80px;
-    color:#fff;
+    margin-top:100px;
     text-transform:uppercase;
-    text-shadow:0 0 20px #ffeb3b, 0 0 40px #ffeb3b33;
+    text-shadow:0 0 20px #fff, 0 0 40px #fff;
   }
   .sub{
     text-align:center;
-    font-size:1.2rem;
-    margin-bottom:20px;
-    opacity:0.9;
+    font-size:clamp(1.2rem, 4vw, 2rem);
+    margin:20px auto 40px;
+    max-width:90%;
+    line-height:1.4;
   }
 
   /* subscribe button */
@@ -91,43 +73,40 @@
     display:inline-block;
     padding:16px 36px;
     margin:20px auto 40px;
-    background:linear-gradient(145deg, #ffeb3b, #e6d100);
+    background:#fff;
     color:#000;
     font-weight:900;
     text-transform:uppercase;
-    font-size:1.2rem;
+    font-size:1.3rem;
     border:none;
     border-radius:14px;
     cursor:pointer;
     text-decoration:none;
-    box-shadow:0 8px 0 #998c00,0 12px 22px rgba(0,0,0,0.6);
+    box-shadow:0 8px 0 #444, 0 12px 22px rgba(0,0,0,0.6);
     transition:all 0.15s ease-in-out;
   }
   .subscribe-btn:active{
     transform:translateY(4px);
-    box-shadow:0 4px 0 #998c00,0 6px 14px rgba(0,0,0,0.6);
+    box-shadow:0 4px 0 #444,0 6px 14px rgba(0,0,0,0.6);
   }
 
-  /* red about section */
+  /* about section */
   .about{
-    background:#b71c1c;
+    background:#111;
     color:#fff;
     padding:40px 20px;
     border-radius:12px;
     max-width:900px;
     margin:20px auto;
-    box-shadow:0 0 20px rgba(183,28,28,0.7);
-  }
-  .about p{
     font-size:1.1rem;
     line-height:1.6;
-    margin:15px 0;
+    text-align:center;
   }
 
   /* video grid */
   .videos{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    grid-template-columns:1fr;
     gap:20px;
     max-width:1200px;
     margin:40px auto;
@@ -138,9 +117,12 @@
     height:200px;
     border:none;
     border-radius:12px;
-    box-shadow:0 6px 18px rgba(0,0,0,0.6);
+    box-shadow:0 6px 18px rgba(255,255,255,0.1);
   }
-  @media(min-width:600px){.video iframe{height:280px;}}
+  @media(min-width:700px){
+    .videos{grid-template-columns:repeat(2,1fr);}
+    .video iframe{height:280px;}
+  }
 </style>
 </head>
 <body>
@@ -159,7 +141,7 @@
     <a href="https://grok.com/" target="_blank">Grok</a>
   </div>
 
-  <!-- Main content -->
+  <!-- Main -->
   <h1 class="dramatic">Under Construction</h1>
   <div class="sub">But you can still vibe with my music, vlogs & roasts 😁</div>
 
@@ -170,8 +152,8 @@
   </div>
 
   <div class="about">
-    <p>Prityaa379 is not just a name, it’s a whole vibe. A journey of music, raw energy, and storytelling that hits different. From wild vlogs to sharp roasts, every upload is a reflection of creativity blended with reality. This is a community for the bold ones who want to feel entertained, inspired, and connected.</p>
-    <p>At its core, prityaa379 is about freedom — the freedom to express, create, and share. It’s a growing digital space where sound, visuals, and words collide to spark emotions. Whether you come for the beats, the laughter, or the real talk, this space will always give you a reason to stay locked in. 🚀</p>
+    <p>Prityaa379 is not just a name, it’s a whole vibe. A journey of music, raw energy, and storytelling that hits different. From wild vlogs to sharp roasts, every upload is a reflection of creativity blended with reality.</p>
+    <p>At its core, prityaa379 is about freedom — the freedom to express, create, and share. Whether you come for the beats, the laughter, or the real talk, this space will always give you a reason to stay locked in. 🚀</p>
   </div>
 
   <div class="videos">
