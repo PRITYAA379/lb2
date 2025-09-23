@@ -1,126 +1,259 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>prityaa379 Portal</title>
-<style>
-  body{margin:0;background:#000;color:#fff;font-family:sans-serif;text-align:center;}
-  /* top strip */
-  .top-strip{
-    background:#fff;color:#000;
-    padding:10px;font-weight:bold;font-size:0.9rem;
-  }
-  /* hamburger */
-  .hamburger{
-    position:fixed;top:15px;right:20px;
-    width:40px;height:30px;cursor:pointer;
-    display:flex;flex-direction:column;justify-content:space-between;
-    z-index:1000;
-  }
-  .hamburger span{
-    display:block;height:5px;width:100%;background:#000;border-radius:3px;
-  }
-  .dramatic{
-    font-size:clamp(2rem,8vw,4rem);
-    font-weight:900;
-    margin:60px 20px 20px;
-    text-transform:uppercase;
-  }
-  .subscribe-btn{
-    display:inline-block;margin:20px auto;
-    padding:16px 36px;background:#ff0000;color:#fff;
-    font-weight:800;text-transform:uppercase;
-    font-size:1.2rem;border-radius:14px;text-decoration:none;
-    box-shadow:0 6px 0 #660000;
-  }
-  .about{
-    background:#222;color:#fff;padding:30px;
-    margin:30px auto;max-width:800px;border-radius:12px;
-  }
-  .about a{
-    display:inline-block;margin-top:15px;
-    background:#fff;color:#000;font-weight:bold;
-    padding:12px 24px;border-radius:8px;
-    text-decoration:none;transition:all .2s;
-  }
-  .about a:hover{background:#ff0;color:#000;}
-  .videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:1200px;margin:0 auto 50px;}
-  .video{position:relative;}
-  .video iframe{width:100%;height:200px;border:none;border-radius:12px;}
-  .overlay{
-    position:absolute;top:0;left:0;width:100%;height:100%;
-    background:rgba(0,0,0,0.85);color:#fff;display:flex;
-    justify-content:center;align-items:center;flex-direction:column;
-    opacity:0;transition:opacity .3s;border-radius:12px;
-  }
-  .overlay.show{opacity:1;}
-  .overlay a{color:#ff0;text-decoration:underline;margin-top:10px;}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pritam Jagtap – Digital Human</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0f0f0f;
+      color: #e5e5e5;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* Flickering Top Tab */
+    .flicker-tab {
+      width: 100%;
+      height: 3in;
+      background: linear-gradient(to right, #5efaff 20%, #0f0f0f 40%, #5efaff 60%);
+      animation: flickerGlow 1s infinite alternate;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      opacity: 0.4;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    @keyframes flickerGlow {
+      0%   { opacity: 0.15; }
+      50%  { opacity: 0.5; }
+      100% { opacity: 0.25; }
+    }
+
+    img.profile {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-top: 1.5in;
+      box-shadow: 0 0 20px #5efaff;
+    }
+
+    img.book {
+      width: 180px;
+      height: auto;
+      border-radius: 12px;
+      margin: 15px 0;
+      box-shadow: 0 0 15px #5efaff;
+      transition: transform 0.3s;
+    }
+    img.book:hover {
+      transform: scale(1.05);
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-top: 20px;
+      color: #5efaff;
+      text-align: center;
+    }
+
+    .typewriter p {
+      font-size: 1rem;
+      text-align: left;
+      max-width: 650px;
+      margin-top: 30px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      overflow: hidden;
+      border-right: 2px solid #5efaff;
+      animation: typing 8s steps(80, end), blink .75s step-end infinite;
+    }
+
+    .underline-flicker {
+      width: 100%;
+      max-width: 650px;
+      height: 2px;
+      background: #5efaff;
+      margin: 10px 0 40px 0;
+      animation: flickerUnderline 1.2s infinite alternate;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: #5efaff; }
+    }
+
+    @keyframes flickerUnderline {
+      0% { opacity: 0.1; }
+      50% { opacity: 0.8; }
+      100% { opacity: 0.4; }
+    }
+
+    .book-section {
+      text-align: center;
+      margin-top: 3.2in;
+      margin-bottom: 30px;
+    }
+
+    .book-section h3 {
+      color: #5efaff;
+      margin: 5px 0 0 0;
+      font-size: 1rem;
+    }
+
+    .book-section p {
+      color: #ccc;
+      font-size: 0.85rem;
+      margin: 2px 0 15px 0;
+    }
+
+    .download-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #5efaff;
+      color: #0f0f0f;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .download-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #5efaff;
+    }
+
+    .links {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .links a {
+      color: #5efaff;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      font-size: 0.95rem;
+    }
+
+    .links img {
+      width: 24px;
+      height: 24px;
+      margin-right: 6px;
+    }
+
+    @media (max-width: 600px) {
+      .typewriter p {
+        font-size: 0.9rem;
+        padding: 0 10px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      .links img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="top-strip">Click the hamburger to see My Force</div>
 
-  <!-- hamburger -->
-  <div class="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
+  <!-- Flickering Strip -->
+  <div class="flicker-tab"></div>
+
+  <!-- Book Section 1 -->
+  <div class="book-section">
+    <a href="https://prityaa379.gumroad.com/l/gucdj" target="_blank">
+      <img class="book" src="https://i.ibb.co/F4WbvTtk/jura-generated-image-1758567317090.png" alt="Book Cover">
+    </a>
+    <h3>Unveiling the Hidden Strength: How Society Dims Women's Superpowers</h3>
+    <p>Language: English</p>
+    <a class="download-btn" href="https://prityaa379.gumroad.com/l/gucdj" target="_blank">⬇ Download PDF Now</a>
   </div>
 
-  <!-- dramatic -->
-  <h1 class="dramatic">Under Construction</h1>
-  <p>But you can still vibe with my music, vlogs & roasts 😁</p>
-
-  <!-- subscribe -->
-  <a class="subscribe-btn" href="https://www.youtube.com/@prityaa379?sub_confirmation=1" target="_blank">
-    Subscribe on YouTube
-  </a>
-
-  <!-- about -->
-  <div class="about">
-    <p><b>About prityaa379:</b> A creative soul dropping music, vlogs, and savage roasts. This portal is just the start of something huge.</p>
-    <p>Stick around for wild vibes, raw energy, and content that’s both entertaining and unfiltered. 🚀</p>
-    <a href="https://meet.google.com/ptx-kfrp-zrt" target="_blank">🎥 See how I shoot content (Join Live)</a>
+  <!-- Book Section 2 -->
+  <div class="book-section">
+    <a href="https://prityaa379.gumroad.com/l/fjgar" target="_blank">
+      <img class="book" src="https://i.ibb.co/1fGYsBnk/download-5.png" alt="Nervous System Reset">
+    </a>
+    <h3>Nervous System Reset – Day 1</h3>
+    <p>Language: English</p>
+    <a class="download-btn" href="https://prityaa379.gumroad.com/l/fjgar" target="_blank">⬇ Download PDF Now</a>
   </div>
 
-  <!-- videos -->
-  <div class="videos">
-    <div class="video">
-      <iframe id="vid1" src="https://www.youtube.com/embed/oE81eYmvhIw?enablejsapi=1" allowfullscreen></iframe>
-      <div class="overlay" id="ov1"><div>⏱ Watch full video on YouTube</div><a href="https://youtu.be/oE81eYmvhIw" target="_blank">Open on YouTube</a></div>
-    </div>
-    <div class="video">
-      <iframe id="vid2" src="https://www.youtube.com/embed/mm5t-5GFAFY?enablejsapi=1" allowfullscreen></iframe>
-      <div class="overlay" id="ov2"><div>⏱ Watch full video on YouTube</div><a href="https://youtu.be/mm5t-5GFAFY" target="_blank">Open on YouTube</a></div>
-    </div>
-    <div class="video">
-      <iframe id="vid3" src="https://www.youtube.com/embed/TAIdOAo3OaU?enablejsapi=1" allowfullscreen></iframe>
-      <div class="overlay" id="ov3"><div>⏱ Watch full video on YouTube</div><a href="https://youtu.be/TAIdOAo3OaU" target="_blank">Open on YouTube</a></div>
-    </div>
-    <div class="video">
-      <iframe id="vid4" src="https://www.youtube.com/embed/4DSYIWhypas?enablejsapi=1" allowfullscreen></iframe>
-      <div class="overlay" id="ov4"><div>⏱ Watch full video on YouTube</div><a href="https://youtu.be/4DSYIWhypas" target="_blank">Open on YouTube</a></div>
-    </div>
+  <!-- Profile Image -->
+  <img class="profile" src="https://i.ibb.co/7NK1nJCG/IMG-1396.jpg" alt="Pritam Jagtap" />
+
+  <!-- Slogan -->
+  <h1>Exploring Human Behaviors with Machine Learning</h1>
+
+  <!-- Typing Paragraph -->
+  <div class="typewriter">
+    <p>
+Hey, I’m Pritam Jagtap — 23 y/o with beyond-the-world dreams.
+    </p>
+    <div class="underline-flicker"></div>
+    
+    <p>
+Since 2017, I’ve been in the digital game. Built my first 10k subscribers on YouTube by just showing up, experimenting, and staying real. (🎥 YouTube link below.) I’ve always believed that the internet is more than just content – it’s where human energy meets digital signals. That’s where I live.
+    </p>
+    <div class="underline-flicker"></div>
+
+    <p>
+Today, I help digital-first coaches build their own AI-powered digital assets. Not theory – real, working tools using 23+ AI models. If you’re building something that speaks your truth, I can build the backend that scales it. I recently started selling services and I’m fully deep-dived into this space.
+    </p>
+    <div class="underline-flicker"></div>
+
+    <p>
+I come from a middle-class Indian family. Didn’t start with much – no fancy network, no investors, no shortcuts. Just one thing: clarity of intent. And the hustle. This isn’t about money anymore – it’s about decoding the system and rewriting it consciously.
+    </p>
+    <div class="underline-flicker"></div>
   </div>
 
-<script src="https://www.youtube.com/iframe_api"></script>
-<script>
-let players={};
-function onYouTubeIframeAPIReady(){
-  ['vid1','vid2','vid3','vid4'].forEach((id,i)=>{
-    players[id]=new YT.Player(id,{
-      events:{
-        'onStateChange':function(e){
-          if(e.data==YT.PlayerState.PLAYING){
-            setTimeout(()=>{
-              e.target.stopVideo();
-              document.getElementById('ov'+(i+1)).classList.add('show');
-            },60000); // 60 seconds
-          }
-        }
-      }
-    });
-  });
-}
-</script>
+  <!-- Contact Icons -->
+  <div class="links">
+    <a href="https://www.instagram.com/prityaa379?igsh=c3B6b2ptejUwMjF4&utm_source=qr" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/87/87390.png" alt="Instagram">Instagram
+    </a>
+    <a href="https://youtube.com/@prityaa379?si=krQ1FA95MQrS76-a" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">YouTube
+    </a>
+    <a href="mailto:jagtappreet73@gmail.com">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">Gmail
+    </a>
+    <a href="tel:+919372035409">
+      <img src="https://cdn-icons-png.flaticon.com/512/483/483947.png" alt="Phone">Call
+    </a>
+    <a href="https://x.com/Prityaa379?t=_oyA6dOBxrm5O7wtdcbZpQ&s=09" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X">X
+    </a>
+    <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">LinkedIn
+    </a>
+    <a href="https://open.spotify.com/artist/09ivobvbWFoOs0J7aUDK7n?si=Rjq7LswURAu6-Ilt5LfPnA" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/174/174872.png" alt="Spotify">Spotify
+    </a>
+  </div>
+
 </body>
 </html>
