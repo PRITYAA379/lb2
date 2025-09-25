@@ -21,7 +21,7 @@
     .flicker-tab {
       width: 100%;
       height: 3in;
-      background: linear-gradient(to right, #5efaff 20%, #0f0f0f 40%, #5efaff 60%);
+      background: linear-gradient(to right, #ff3333 20%, #0f0f0f 40%, #ff3333 60%);
       animation: flickerGlow 1s infinite alternate;
       position: fixed;
       top: 0;
@@ -44,7 +44,7 @@
       border-radius: 50%;
       object-fit: cover;
       margin-top: 1.5in;
-      box-shadow: 0 0 20px #5efaff;
+      box-shadow: 0 0 20px #ff3333;
     }
 
     img.book {
@@ -52,18 +52,19 @@
       height: auto;
       border-radius: 12px;
       margin: 15px 0;
-      box-shadow: 0 0 15px #5efaff;
+      box-shadow: 0 0 15px #ff3333;
       transition: transform 0.3s;
     }
     img.book:hover {
       transform: scale(1.05);
     }
 
-    h1 {
+    h1, h3 {
       font-size: 1.8rem;
       margin-top: 20px;
-      color: #5efaff;
+      color: #ff3333;
       text-align: center;
+      font-weight: bold;
     }
 
     .typewriter p {
@@ -74,15 +75,16 @@
       line-height: 1.6;
       white-space: pre-wrap;
       overflow: hidden;
-      border-right: 2px solid #5efaff;
+      border-right: 2px solid #ff3333;
       animation: typing 8s steps(80, end), blink .75s step-end infinite;
+      font-weight: bold;
     }
 
     .underline-flicker {
       width: 100%;
       max-width: 650px;
       height: 2px;
-      background: #5efaff;
+      background: #ff3333;
       margin: 10px 0 40px 0;
       animation: flickerUnderline 1.2s infinite alternate;
     }
@@ -94,7 +96,7 @@
 
     @keyframes blink {
       from, to { border-color: transparent }
-      50% { border-color: #5efaff; }
+      50% { border-color: #ff3333; }
     }
 
     @keyframes flickerUnderline {
@@ -110,9 +112,10 @@
     }
 
     .book-section h3 {
-      color: #5efaff;
+      color: #ff3333;
       margin: 5px 0 0 0;
       font-size: 1rem;
+      font-weight: bold;
     }
 
     .book-section p {
@@ -125,7 +128,7 @@
       display: inline-block;
       margin-top: 10px;
       padding: 10px 20px;
-      background-color: #5efaff;
+      background-color: #ff3333;
       color: #0f0f0f;
       font-weight: bold;
       border-radius: 8px;
@@ -135,7 +138,7 @@
 
     .download-btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 15px #5efaff;
+      box-shadow: 0 0 15px #ff3333;
     }
 
     .links {
@@ -147,7 +150,7 @@
     }
 
     .links a {
-      color: #5efaff;
+      color: #ff3333;
       text-decoration: none;
       font-weight: bold;
       display: flex;
@@ -181,6 +184,16 @@
   <!-- Flickering Strip -->
   <div class="flicker-tab"></div>
 
+  <!-- Book Section 0 (NEW IMAGE + LINK) -->
+  <div class="book-section">
+    <a href="https://prityaa379.gumroad.com/l/cpotb" target="_blank">
+      <img class="book" src="https://i.ibb.co/dJxPnR91/download-9.png" alt="Situationship Survival Guide">
+    </a>
+    <h3>Situationship Survival Guide</h3>
+    <p>Language: English</p>
+    <a class="download-btn" href="https://prityaa379.gumroad.com/l/cpotb" target="_blank">⬇ Download PDF Now</a>
+  </div>
+
   <!-- Book Section 1 -->
   <div class="book-section">
     <a href="https://prityaa379.gumroad.com/l/gucdj" target="_blank">
@@ -192,68 +205,3 @@
   </div>
 
   <!-- Book Section 2 -->
-  <div class="book-section">
-    <a href="https://prityaa379.gumroad.com/l/fjgar" target="_blank">
-      <img class="book" src="https://i.ibb.co/1fGYsBnk/download-5.png" alt="Nervous System Reset">
-    </a>
-    <h3>Nervous System Reset – Day 1</h3>
-    <p>Language: English</p>
-    <a class="download-btn" href="https://prityaa379.gumroad.com/l/fjgar" target="_blank">⬇ Download PDF Now</a>
-  </div>
-
-  <!-- Profile Image -->
-  <img class="profile" src="https://i.ibb.co/7NK1nJCG/IMG-1396.jpg" alt="Pritam Jagtap" />
-
-  <!-- Slogan -->
-  <h1>Exploring Human Behaviors with Machine Learning</h1>
-
-  <!-- Typing Paragraph -->
-  <div class="typewriter">
-    <p>
-Hey, I’m Pritam Jagtap — 23 y/o with beyond-the-world dreams.
-    </p>
-    <div class="underline-flicker"></div>
-    
-    <p>
-Since 2017, I’ve been in the digital game. Built my first 10k subscribers on YouTube by just showing up, experimenting, and staying real. (🎥 YouTube link below.) I’ve always believed that the internet is more than just content – it’s where human energy meets digital signals. That’s where I live.
-    </p>
-    <div class="underline-flicker"></div>
-
-    <p>
-Today, I help digital-first coaches build their own AI-powered digital assets. Not theory – real, working tools using 23+ AI models. If you’re building something that speaks your truth, I can build the backend that scales it. I recently started selling services and I’m fully deep-dived into this space.
-    </p>
-    <div class="underline-flicker"></div>
-
-    <p>
-I come from a middle-class Indian family. Didn’t start with much – no fancy network, no investors, no shortcuts. Just one thing: clarity of intent. And the hustle. This isn’t about money anymore – it’s about decoding the system and rewriting it consciously.
-    </p>
-    <div class="underline-flicker"></div>
-  </div>
-
-  <!-- Contact Icons -->
-  <div class="links">
-    <a href="https://www.instagram.com/prityaa379?igsh=c3B6b2ptejUwMjF4&utm_source=qr" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/87/87390.png" alt="Instagram">Instagram
-    </a>
-    <a href="https://youtube.com/@prityaa379?si=krQ1FA95MQrS76-a" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">YouTube
-    </a>
-    <a href="mailto:jagtappreet73@gmail.com">
-      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">Gmail
-    </a>
-    <a href="tel:+919372035409">
-      <img src="https://cdn-icons-png.flaticon.com/512/483/483947.png" alt="Phone">Call
-    </a>
-    <a href="https://x.com/Prityaa379?t=_oyA6dOBxrm5O7wtdcbZpQ&s=09" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X">X
-    </a>
-    <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">LinkedIn
-    </a>
-    <a href="https://open.spotify.com/artist/09ivobvbWFoOs0J7aUDK7n?si=Rjq7LswURAu6-Ilt5LfPnA" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/174/174872.png" alt="Spotify">Spotify
-    </a>
-  </div>
-
-</body>
-</html>
