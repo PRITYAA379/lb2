@@ -1,1087 +1,446 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Pritam Jagtap | Digital Visionary</title>
-  <style>
-    :root {
-      --dark-bg: #0a0a12;
-      --darker-bg: #050508;
-      --card-bg: #151520;
-      --accent-blue: #00ccff;
-      --accent-purple: #a3bffa;
-      --text-primary: #ffffff;
-      --text-secondary: #e0e0e0;
-      --glow-color: rgba(0, 204, 255, 0.6);
-      --border-color: #2a2a3a;
-    }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Arial', sans-serif;
-      background: var(--dark-bg);
-      color: var(--text-primary);
-      margin: 0;
-      padding: 20px;
-      min-height: 100vh;
-      overflow-x: hidden;
-      background-image: 
-        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 20%),
-        radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 20%);
-      background-size: 200px 200px;
-    }
-
-    .container {
-      max-width: 500px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    /* Header Section */
-    .header-section {
-      text-align: center;
-      padding: 20px;
-      margin-bottom: 30px;
-    }
-
-    .profile-container {
-      position: relative;
-      width: 150px;
-      height: 150px;
-      margin: 0 auto 15px;
-      border-radius: 50%;
-      background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
-      animation: neonGlow 8s ease infinite;
-      padding: 3px;
-    }
-
-    .profile-img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--card-bg);
-    }
-
-    h1 {
-      text-align: center;
-      margin: 10px 0;
-      font-size: 28px;
-      background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: neonGlowText 8s ease infinite;
-      background-size: 800% 800%;
-    }
-
-    .tagline {
-      text-align: center;
-      font-size: 16px;
-      color: var(--text-secondary);
-    }
-
-    /* Main Content Sections */
-    .section {
-      margin-bottom: 30px;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 24px;
-      color: var(--text-primary);
-      position: relative;
-    }
-
-    .section-title::after {
-      content: '';
-      display: block;
-      width: 50px;
-      height: 3px;
-      background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
-      margin: 8px auto 0;
-      animation: neonGlow 8s ease infinite;
-      background-size: 800% 800%;
-    }
-
-    /* Card Styles */
-    .card {
-      background: var(--card-bg);
-      border-radius: 15px;
-      padding: 20px;
-      margin-bottom: 20px;
-      transition: all 0.4s ease;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(to bottom right,
-          rgba(0, 204, 255, 0) 0%,
-          rgba(0, 204, 255, 0) 45%,
-          rgba(0, 204, 255, 0.1) 50%,
-          rgba(0, 204, 255, 0) 55%,
-          rgba(0, 204, 255, 0) 100%);
-      transform: rotate(30deg);
-      animation: shine 6s infinite;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4), 0 0 15px var(--glow-color);
-      border-color: var(--accent-blue);
-    }
-
-    /* Download Badge */
-    .download-badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: var(--accent-blue);
-      color: var(--dark-bg);
-      padding: 5px 10px;
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    /* Link Styles */
-    .link {
-      display: block;
-      background: var(--card-bg);
-      color: var(--text-primary);
-      padding: 15px 20px;
-      margin: 15px auto;
-      border-radius: 12px;
-      text-decoration: none;
-      text-align: center;
-      font-weight: bold;
-      transition: all 0.4s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      border: 1px solid var(--border-color);
-    }
-
-    .link::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(to bottom right,
-          rgba(0, 204, 255, 0) 0%,
-          rgba(0, 204, 255, 0) 45%,
-          rgba(0, 204, 255, 0.3) 50%,
-          rgba(0, 204, 255, 0) 55%,
-          rgba(0, 204, 255, 0) 100%);
-      transform: rotate(30deg);
-      animation: shine 3s infinite;
-    }
-
-    .link:hover {
-      background: #1a1a2a;
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px var(--glow-color);
-      border-color: var(--accent-blue);
-    }
-
-    /* Special Buttons */
-    .primary-btn {
-      display: block;
-      background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-      color: var(--dark-bg);
-      padding: 18px 20px;
-      margin: 25px auto;
-      border-radius: 8px;
-      text-decoration: none;
-      text-align: center;
-      font-weight: bold;
-      font-size: 18px;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 15px var(--glow-color);
-      position: relative;
-      width: 100%;
-      border: none;
-      cursor: pointer;
-      overflow: hidden;
-    }
-
-    .primary-btn:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4), 0 0 20px var(--glow-color);
-    }
-
-    .primary-btn:active {
-      transform: translateY(2px);
-    }
-
-    .primary-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to right,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 0.2) 50%,
-          rgba(255, 255, 255, 0) 100%);
-      transform: translateX(-100%);
-      transition: all 0.6s ease;
-    }
-
-    .primary-btn:hover::before {
-      transform: translateX(100%);
-    }
-
-    /* Social Links */
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 25px 0;
-    }
-
-    .social-link {
-      color: var(--text-primary);
-      font-size: 24px;
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--card-bg);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--border-color);
-    }
-
-    .social-link::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(to bottom right,
-          rgba(0, 204, 255, 0) 0%,
-          rgba(0, 204, 255, 0) 45%,
-          rgba(0, 204, 255, 0.6) 50%,
-          rgba(0, 204, 255, 0) 55%,
-          rgba(0, 204, 255, 0) 100%);
-      transform: rotate(30deg);
-      animation: shine 3s infinite;
-      animation-delay: calc(var(--i) * 0.2s);
-    }
-
-    .social-link:hover {
-      background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
-      background-size: 800% 800%;
-      animation: neonGlow 8s ease infinite;
-      transform: scale(1.1);
-      box-shadow: 0 0 15px var(--glow-color);
-      border-color: var(--accent-blue);
-    }
-
-    /* Dropdowns */
-    .dropdown {
-      position: relative;
-      display: block;
-      width: 100%;
-      margin: 15px auto;
-    }
-
-    .dropbtn {
-      display: block;
-      background: var(--card-bg);
-      color: var(--text-primary);
-      padding: 15px 20px;
-      border-radius: 12px;
-      text-decoration: none;
-      text-align: center;
-      font-weight: bold;
-      transition: all 0.4s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      border: 1px solid var(--border-color);
-      cursor: pointer;
-    }
-
-    .dropbtn::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(to bottom right,
-          rgba(0, 204, 255, 0) 0%,
-          rgba(0, 204, 255, 0) 45%,
-          rgba(0, 204, 255, 0.3) 50%,
-          rgba(0, 204, 255, 0) 55%,
-          rgba(0, 204, 255, 0) 100%);
-      transform: rotate(30deg);
-      animation: shine 3s infinite;
-    }
-
-    .dropbtn:hover {
-      background: #1a1a2a;
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px var(--glow-color);
-      border-color: var(--accent-blue);
-    }
-
-    .dropdown-content {
-      display: none;
-      position: relative;
-      background: var(--darker-bg);
-      border-radius: 0 0 12px 12px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-      z-index: 1;
-      width: 100%;
-      margin-top: -15px;
-      padding-top: 15px;
-      border: 1px solid var(--accent-blue);
-      border-top: none;
-    }
-
-    .dropdown-content a {
-      color: var(--text-primary);
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-      transition: all 0.3s ease;
-    }
-
-    .dropdown-content a:hover {
-      background-color: rgba(0, 204, 255, 0.15);
-      transform: translateX(5px);
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-    .dropdown:hover .dropbtn {
-      border-radius: 12px 12px 0 0;
-    }
-
-    /* Submenus */
-    .submenu {
-      position: relative;
-    }
-
-    .submenu-btn {
-      width: 100%;
-      text-align: left;
-      background: transparent;
-      border: none;
-      color: var(--text-primary);
-      padding: 12px 16px;
-      font-size: 15px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: all 0.3s ease;
-    }
-
-    .submenu-btn:hover {
-      background-color: rgba(0, 204, 255, 0.1);
-      transform: translateX(5px);
-    }
-
-    .submenu-content {
-      display: none;
-      background: rgba(0, 0, 0, 0.2);
-      padding-left: 20px;
-    }
-
-    .submenu:hover .submenu-content {
-      display: block;
-    }
-
-    .submenu-content a {
-      padding: 10px 16px;
-      font-size: 14px;
-      color: var(--text-primary);
-    }
-
-    .submenu-content a i {
-      margin-right: 8px;
-      width: 18px;
-      text-align: center;
-    }
-
-    /* Video Banner */
-    .video-banner {
-      position: relative;
-      width: 100%;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px var(--glow-color);
-      background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-      animation: neonGlow 8s ease infinite;
-      background-size: 800% 800%;
-      border: 1px solid var(--accent-blue);
-      padding: 10px;
-      margin-bottom: 30px;
-    }
-
-    .video-banner::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(to bottom right,
-          rgba(0, 204, 255, 0) 0%,
-          rgba(0, 204, 255, 0) 45%,
-          rgba(0, 204, 255, 0.4) 50%,
-          rgba(0, 204, 255, 0) 55%,
-          rgba(0, 204, 255, 0) 100%);
-      transform: rotate(30deg);
-      animation: shine 3s infinite;
-    }
-
-    .video-banner iframe {
-      width: 100%;
-      height: 200px;
-      border: none;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    }
-
-    .video-title {
-      text-align: center;
-      padding: 15px 0;
-      font-size: 20px;
-      font-weight: bold;
-      color: var(--dark-bg);
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-    }
-
-    /* Mirror Effects */
-    .mirror-container {
-      position: relative;
-      margin-bottom: 30px;
-    }
-
-    .mirror-reflection {
-      position: absolute;
-      width: 90%;
-      height: 30px;
-      bottom: -25px;
-      left: 5%;
-      transform: scaleY(-1);
-      opacity: 0.2;
-      background: linear-gradient(to bottom, var(--glow-color), rgba(0, 204, 255, 0));
-      -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
-      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
-      border-radius: 0 0 12px 12px;
-      filter: blur(1px);
-    }
-
-    /* Particles Background */
-    .particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .particle {
-      position: absolute;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      animation: floatParticle 15s linear infinite;
-      opacity: 0.4;
-      background: var(--accent-blue);
-    }
-
-    /* Thank You Overlay */
-    .thank-you-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: var(--darker-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      z-index: 1000;
-      color: var(--text-primary);
-      font-size: 30px;
-      display: none;
-      overflow: hidden;
-    }
-
-    .rose {
-      position: absolute;
-      font-size: 24px;
-      animation: floatRose 10s linear infinite;
-      filter: drop-shadow(0 0 5px var(--accent-blue));
-    }
-
-    /* WhatsApp Float */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25D366;
-      color: white;
-      border-radius: 50%;
-      width: 55px;
-      height: 55px;
-      font-size: 26px;
-      text-align: center;
-      line-height: 55px;
-      z-index: 999;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 10px var(--glow-color);
-      transition: all 0.3s ease;
-    }
-
-    .whatsapp-float:hover {
-      transform: scale(1.1) rotate(10deg);
-      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5), 0 0 15px var(--glow-color);
-    }
-
-    /* Hamburger Menu */
-    .hamburger-menu {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 1000;
-      background: var(--card-bg);
-      padding: 10px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      border: 1px solid var(--border-color);
-    }
-
-    .hamburger-menu input {
-      display: none;
-    }
-
-    .hamburger-menu label {
-      font-size: 24px;
-      color: var(--text-primary);
-      cursor: pointer;
-    }
-
-    .hamburger-menu-content {
-      display: none;
-      position: fixed;
-      top: 60px;
-      left: 20px;
-      background: var(--darker-bg);
-      border-radius: 8px;
-      padding: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      border: 1px solid var(--border-color);
-    }
-
-    .hamburger-menu-content a {
-      display: block;
-      color: var(--text-primary);
-      padding: 10px;
-      text-decoration: none;
-      font-size: 16px;
-    }
-
-    .hamburger-menu-content a:hover {
-      background: rgba(0, 204, 255, 0.2);
-    }
-
-    #hamburger-toggle:checked ~ .hamburger-menu-content {
-      display: block;
-    }
-
-    /* Feature List */
-    .feature-list {
-      list-style: none;
-      margin-bottom: 15px;
-    }
-
-    .feature-list li {
-      padding: 5px 0;
-      color: var(--text-secondary);
-      position: relative;
-      padding-left: 25px;
-    }
-
-    .feature-list li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--accent-blue);
-      font-weight: bold;
-    }
-
-    /* Banner Styles */
-    .promo-banner {
-      background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
-      color: white;
-      padding: 15px;
-      border-radius: 12px;
-      text-align: center;
-      margin: 20px 0;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      position: relative;
-      overflow: hidden;
-      border: 1px solid #ff4757;
-    }
-
-    .promo-banner h3 {
-      margin-bottom: 10px;
-      font-size: 18px;
-    }
-
-    .promo-banner p {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-
-    .promo-banner .banner-btn {
-      display: inline-block;
-      background: white;
-      color: #ff6b6b;
-      padding: 8px 15px;
-      border-radius: 20px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-
-    .promo-banner .banner-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Animations */
-    @keyframes neonGlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    @keyframes neonGlowText {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    @keyframes shine {
-      0% { transform: translateX(-100%) rotate(30deg); }
-      100% { transform: translateX(100%) rotate(30deg); }
-    }
-
-    @keyframes floatRose {
-      0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-    }
-
-    @keyframes floatParticle {
-      0% { transform: translateY(0) translateX(0); opacity: 0; }
-      10% { opacity: 0.4; }
-      90% { opacity: 0.4; }
-      100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
-    }
-  </style>
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-</head>
 
+  <style>
+    :root{
+      --dark-bg:#0a0a12;
+      --darker-bg:#050508;
+      --card-bg:#151520;
+      --accent-1:#00ccff;
+      --accent-2:#a3bffa;
+      --text-1:#ffffff;
+      --text-2:#e0e0e0;
+      --muted:#9aa0b4;
+      --glass-border:rgba(255,255,255,0.04);
+      --radius:12px;
+      --max-width:980px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:var(--dark-bg);
+      color:var(--text-1);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:20px;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      min-height:100vh;
+    }
+
+    /* Page shell */
+    .page{
+      width:100%;
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:24px;
+    }
+
+    /* Header */
+    header.header{
+      text-align:center;
+      margin-bottom:22px;
+    }
+    .profile-wrap{
+      width:140px;
+      height:140px;
+      margin:0 auto 12px;
+      border-radius:50%;
+      padding:4px;
+      background:linear-gradient(135deg,var(--accent-2),var(--accent-1));
+      box-shadow:0 8px 30px rgba(0,0,0,0.6);
+    }
+    .profile-wrap img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      border-radius:50%;
+      border:3px solid var(--card-bg);
+    }
+    h1{
+      font-size:22px;
+      margin:8px 0 4px;
+      letter-spacing:0.2px;
+    }
+    .tag{
+      color:var(--muted);
+      font-size:14px;
+      margin-bottom:8px;
+    }
+
+    /* Layout grid */
+    main.grid{
+      display:grid;
+      grid-template-columns:1fr 360px;
+      gap:20px;
+      align-items:start;
+    }
+    @media (max-width:920px){
+      main.grid{grid-template-columns:1fr}
+    }
+
+    /* Card */
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border-radius:var(--radius);
+      border:1px solid var(--glass-border);
+      padding:18px;
+      box-shadow:0 12px 30px rgba(0,0,0,0.45);
+      overflow:hidden;
+    }
+    .card h3{margin:0 0 8px;font-size:16px}
+    .muted{color:var(--muted);font-size:14px}
+
+    /* Video banner */
+    .video-banner{
+      border-radius:10px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.03);
+      background:linear-gradient(135deg,var(--accent-2),var(--accent-1));
+      padding:12px;
+    }
+    .video-banner .title{
+      background:rgba(255,255,255,0.92);
+      color:var(--dark-bg);
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:8px;
+      font-weight:700;
+      margin-bottom:12px;
+      font-size:15px;
+    }
+    .video-frame{
+      width:100%;
+      aspect-ratio:16/9;
+      background:#000;
+      border-radius:8px;
+      overflow:hidden;
+    }
+    .video-frame iframe{width:100%;height:100%;border:0;display:block}
+
+    /* Right column */
+    aside.side{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      align-items:center;
+    }
+    .avatar-card{display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center}
+    .avatar-card .name{font-weight:700}
+    .social-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    .social-row a{
+      width:44px;height:44px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;
+      background:var(--card-bg);border:1px solid var(--glass-border);text-decoration:none;color:var(--text-1);
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .social-row a:active{transform:scale(.98)}
+    .social-row a:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,0.5)}
+
+    /* Promo and Gumroad list */
+    .list{display:flex;flex-direction:column;gap:12px}
+    .cta{
+      display:block;
+      width:100%;
+      background:linear-gradient(90deg,var(--accent-2),var(--accent-1));
+      color:var(--darker-bg);
+      border:none;padding:12px;border-radius:10px;font-weight:700;text-decoration:none;text-align:center;
+      box-shadow:0 10px 24px rgba(0,0,0,0.45);
+    }
+    .cta.secondary{
+      background:transparent;border:1px solid var(--glass-border);color:var(--text-1)
+    }
+
+    /* Dropdown */
+    .dropdown{position:relative}
+    .dropbtn{
+      width:100%;text-align:left;padding:12px;border-radius:10px;background:var(--card-bg);border:1px solid var(--glass-border);
+      color:var(--text-1);cursor:pointer;font-weight:700;
+    }
+    .dropdown-list{display:none;position:relative;margin-top:8px;padding:12px;border-radius:10px;background:var(--darker-bg);border:1px solid var(--glass-border)}
+    .dropdown.open .dropdown-list{display:block}
+    .dropdown-list a{display:block;color:var(--text-1);text-decoration:none;padding:8px 6px;border-radius:8px}
+    .dropdown-list a:hover{background:rgba(255,255,255,0.02)}
+
+    /* Mirror */
+    .mirror{position:relative}
+    .mirror::after{content:'';position:absolute;left:6px;right:6px;bottom:-8px;height:12px;background:linear-gradient(to bottom, rgba(0,0,0,0.12), transparent);filter:blur(2px);border-radius:8px;opacity:.6}
+
+    /* Floating whatsapp */
+    .whatsapp{
+      position:fixed;right:18px;bottom:18px;background:#25d366;border-radius:50%;width:56px;height:56px;display:flex;align-items:center;justify-content:center;
+      color:#fff;font-size:22px;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,0.5);z-index:1200;
+    }
+
+    /* Hamburger */
+    .hamburger{
+      position:fixed;left:18px;top:18px;background:var(--card-bg);border-radius:10px;padding:10px;z-index:1200;border:1px solid var(--glass-border);
+    }
+    .hamburger button{background:transparent;border:0;color:var(--text-1);font-size:18px;cursor:pointer}
+
+    /* Particles */
+    .particles{position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.6}
+    .particle{position:absolute;border-radius:50%;opacity:.35}
+
+    /* Thanks overlay */
+    .thanks{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(4,6,10,0.8);z-index:2000;color:var(--text-1);flex-direction:column}
+    .thanks.show{display:flex}
+    .thanks .msg{font-size:20px;margin-bottom:12px}
+    .roses{position:relative;width:100%;height:120px;overflow:hidden}
+
+    /* small tweaks */
+    a.link{display:inline-block;text-decoration:none;color:var(--text-1)}
+    .badge{position:absolute;right:12px;top:12px;background:var(--accent-1);color:#021;padding:6px 8px;border-radius:999px;font-weight:700}
+    footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
+  </style>
+</head>
 <body>
-  <!-- Particles Background -->
+  <div class="page" id="page">
+    <!-- hamburger -->
+    <div class="hamburger" role="navigation" aria-label="Main menu">
+      <button id="menuBtn" aria-expanded="false" aria-controls="menuPanel"><i class="fas fa-bars"></i></button>
+    </div>
+
+    <header class="header">
+      <div class="profile-wrap" aria-hidden="true">
+        <img src="https://i.ibb.co/BKZv5FzD/IMG-20250613-062802-529.webp" alt="Pritam Jagtap portrait" loading="lazy">
+      </div>
+      <h1>Pritam Jagtap</h1>
+      <div class="tag">Developer · Visionary</div>
+    </header>
+
+    <main class="grid" id="mainGrid">
+      <!-- left column -->
+      <div>
+        <!-- Video -->
+        <section class="card video-banner" aria-labelledby="videoTitle">
+          <div class="title" id="videoTitle">Featured Video</div>
+          <div class="video-frame" role="region" aria-label="YouTube video">
+            <!-- Embedded video: P4c49lFTi74 -->
+            <iframe src="https://www.youtube.com/embed/P4c49lFTi74?si=CBMOCsKKofIBxsSC"
+                    title="Featured Video"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+          </div>
+        </section>
+
+        <!-- Gumroad cards -->
+        <section style="margin-top:16px">
+          <div class="list">
+            <article class="card mirror">
+              <span class="badge">1 Download</span>
+              <h3>What is Gumroad?</h3>
+              <p class="muted">A simple guide to understanding and starting your Gumroad journey.</p>
+              <div style="margin-top:10px">
+                <a class="cta secondary" href="https://prityaa379.gumroad.com/l/uplaw" target="_blank" rel="noopener">Get it free</a>
+              </div>
+            </article>
+
+            <article class="card mirror">
+              <span class="badge">1 Download</span>
+              <h3>Start Gumroad for Free</h3>
+              <p class="muted">Turn your ideas into digital products with this strategic guide.</p>
+              <div style="margin-top:10px">
+                <a class="cta secondary" href="https://prityaa379.gumroad.com/l/pvoryz" target="_blank" rel="noopener">Download now</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Promo -->
+        <section style="margin-top:16px">
+          <div class="card" aria-live="polite">
+            <h3 style="margin-bottom:6px">🎉 Special Offer</h3>
+            <p class="muted">Get 20% off on all Gumroad products this week only.</p>
+            <a class="cta" href="https://gumroad.com/PRITYAA379" target="_blank" rel="noopener">Shop Now</a>
+          </div>
+        </section>
+
+        <!-- Removed Services: section intentionally removed -->
+      </div>
+
+      <!-- right column -->
+      <aside class="side" aria-label="Profile and links">
+        <div class="card avatar-card" style="width:100%">
+          <div style="font-size:15px;font-weight:700">Pritam Jagtap</div>
+          <div class="muted">Developer · Creator</div>
+
+          <div class="social-row" aria-label="Social links">
+            <a title="Instagram" href="https://www.instagram.com/prityaa379" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+            <a title="YouTube" href="https://youtube.com/@prityaa379" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+            <a title="X" href="https://x.com/Prityaa379" target="_blank" rel="noopener"><i class="fab fa-x-twitter"></i></a>
+            <a title="LinkedIn" href="https://www.linkedin.com/in/pritam-jagtap-00010b216" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+            <a title="GitHub" href="https://github.com/PRITYAA379" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+          </div>
+
+          <div style="width:100%;margin-top:12px">
+            <a class="cta" href="https://prityaa379.github.io/theethicalglitchcontent/" target="_blank" rel="noopener"><i class="fas fa-book"></i> View My Upcoming Books</a>
+          </div>
+        </div>
+
+        <div class="card mirror" style="width:100%">
+          <h3>Gumroad Offerings</h3>
+          <div style="margin-top:8px">
+            <div class="dropdown" id="gumroadDropdown">
+              <button class="dropbtn" aria-expanded="false" id="dropBtn"><i class="fas fa-box-open"></i> All Gumroad Products</button>
+              <div class="dropdown-list" aria-hidden="true" id="dropdownList">
+                <strong style="display:block;margin-bottom:8px;color:var(--muted)">Subscriptions</strong>
+                <a href="https://jagtappritam7.gumroad.com/l/npjvdt" target="_blank">Gumroad Subscription</a>
+                <a href="https://gumroad.com/PRITYAA379/membership" target="_blank">Membership</a>
+                <a href="https://gumroad.com/PRITYAA379/newsletter" target="_blank">Newsletter</a>
+
+                <strong style="display:block;margin:12px 0 8px;color:var(--muted)">Products</strong>
+                <a href="https://jagtappritam7.gumroad.com/l/uplaw" target="_blank">What is Gumroad?</a>
+                <a href="https://jagtappritam7.gumroad.com/l/qnsim" target="_blank">Link-in-bio Samples</a>
+                <a href="https://jagtappritam7.gumroad.com/l/qkevcg" target="_blank">Daily Productivity Planner</a>
+                <a href="https://jagtappritam7.gumroad.com/l/tdnocf" target="_blank">Top 10 Digital Assets in India</a>
+                <a href="https://jagtappritam7.gumroad.com/l/pvoryz" target="_blank">Start Gumroad for Free</a>
+
+                <div style="margin-top:10px">
+                  <a class="cta secondary" href="https://gumroad.com/PRITYAA379" target="_blank">Visit My Store</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mirror" style="width:100%">
+          <h3>Contact</h3>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+            <a class="cta secondary" href="mailto:jagtappritam73@gmail.com">Email Me</a>
+            <a class="cta secondary" href="tel:+919372035409">Call Me</a>
+            <a class="cta" href="https://chat.whatsapp.com/B9gRY5oP11VG7jCyOjgsHp" target="_blank">Join My WhatsApp Group</a>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      Built with ❤️ — share the channel & resources. © Pritam Jagtap
+    </footer>
+  </div>
+
+  <!-- floating whatsapp -->
+  <a class="whatsapp" href="https://wa.me/919372035409" target="_blank" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+  <!-- Particles container -->
   <div class="particles" id="particles"></div>
 
-  <!-- Hamburger Menu -->
-  <div class="hamburger-menu">
-    <input type="checkbox" id="hamburger-toggle">
-    <label for="hamburger-toggle"><i class="fas fa-bars"></i></label>
-    <div class="hamburger-menu-content">
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#social">Social Channels</a>
-      <a href="#gumroad">Gumroad</a>
-    </div>
-  </div>
-
-  <!-- Header Section -->
-  <div class="header-section" id="home">
-    <div class="profile-container">
-      <img src="https://i.ibb.co/BKZv5FzD/IMG-20250613-062802-529.webp" class="profile-img" alt="Pritam Jagtap">
-    </div>
-    <h1>Pritam Jagtap</h1>
-    <p class="tagline">Developer | Visionary</p>
-  </div>
-
-  <!-- Video Banner -->
-  <div class="video-banner">
-    <div class="video-title">Latest Video: Digital Transformation Insights</div>
-    <iframe src="https://www.youtube.com/embed/6TUyU7f_394?si=Y1CGa762QIWIanAs" frameborder="0" allowfullscreen></iframe>
-  </div>
-
-  <!-- New Gumroad Products -->
-  <div class="section">
-    <div class="mirror-container">
-      <div class="card">
-        <div class="download-badge">1 Download</div>
-        <h3 class="service-title">
-          <i class="fas fa-question-circle service-icon"></i>
-          What is Gumroad?
-        </h3>
-        <p class="tagline">
-          A simple guide to understanding and starting your Gumroad journey
-        </p>
-        <a href="https://prityaa379.gumroad.com/l/uplaw" class="link" target="_blank">
-          <i class="fas fa-shopping-cart"></i> Get It Free
-        </a>
-      </div>
-      <div class="mirror-reflection"></div>
-    </div>
-
-    <div class="mirror-container">
-      <div class="card">
-        <div class="download-badge">1 Download</div>
-        <h3 class="service-title">
-          <i class="fas fa-download service-icon"></i>
-          Start Gumroad for Free
-        </h3>
-        <p class="tagline">
-          Turn your ideas into digital products with this free strategic guide
-        </p>
-        <a href="https://prityaa379.gumroad.com/l/pvoryz" class="link" target="_blank">
-          <i class="fas fa-shopping-cart"></i> Download Now
-        </a>
-      </div>
-      <div class="mirror-reflection"></div>
-    </div>
-  </div>
-
-  <!-- Promo Banner -->
-  <div class="promo-banner">
-    <h3>🎉 Special Offer! 🎉</h3>
-    <p>Get 20% off on all Gumroad products this week only!</p>
-    <a href="https://gumroad.com/PRITYAA379" class="banner-btn" target="_blank">Shop Now</a>
-  </div>
-
-  <div class="container">
-    <!-- Gumroad Offerings -->
-    <div class="section" id="gumroad">
-      <h2 class="section-title">Gumroad Offerings</h2>
-      <div class="mirror-container">
-        <div class="card">
-          <h3 class="service-title">
-            <i class="fas fa-star service-icon"></i>
-            Premium Bio Links
-          </h3>
-          <p class="tagline">
-            Get your custom-designed bio link page to showcase all your important links
-          </p>
-          <a href="https://prityaa379.gumroad.com/l/unxyn" class="link" target="_blank">
-            <i class="fas fa-shopping-cart"></i> Get Yours Now
-          </a>
-        </div>
-        <div class="mirror-reflection"></div>
-      </div>
-
-      <div class="dropdown">
-        <button class="dropbtn"><i class="fas fa-box-open"></i> All Gumroad Products</button>
-        <div class="dropdown-content">
-          <div class="submenu">
-            <button class="submenu-btn"><i class="fas fa-gem"></i> Subscriptions <i class="fas fa-caret-down"></i></button>
-            <div class="submenu-content">
-              <a href="https://jagtappritam7.gumroad.com/l/npjvdt" target="_blank"><i class="fas fa-gem"></i> Gumroad Subscription</a>
-              <a href="https://gumroad.com/PRITYAA379/membership" target="_blank"><i class="fas fa-crown"></i> Membership</a>
-              <a href="https://gumroad.com/PRITYAA379/newsletter" target="_blank"><i class="fas fa-newspaper"></i> Newsletter</a>
-            </div>
-          </div>
-          <div class="submenu">
-            <button class="submenu-btn"><i class="fas fa-box"></i> Products <i class="fas fa-caret-down"></i></button>
-            <div class="submenu-content">
-              <a href="https://jagtappritam7.gumroad.com/l/uplaw" target="_blank"><i class="fas fa-question-circle"></i> What is Gumroad?</a>
-              <a href="https://jagtappritam7.gumroad.com/l/qnsim" target="_blank"><i class="fas fa-link"></i> LINK IN BIO SAMPLES</a>
-              <a href="https://jagtappritam7.gumroad.com/l/qkevcg" target="_blank"><i class="fas fa-calendar-check"></i> Daily Productivity Planner</a>
-              <a href="https://jagtappritam7.gumroad.com/l/tdnocf" target="_blank"><i class="fas fa-chart-line"></i> Top 10 Digital Assets in India</a>
-              <a href="https://jagtappritam7.gumroad.com/l/pvoryz" target="_blank"><i class="fas fa-download"></i> Start Gumroad for Free</a>
-            </div>
-          </div>
-          <a href="https://gumroad.com/PRITYAA379" target="_blank"><i class="fas fa-store-alt"></i> Visit My Store</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Fatloss Portal -->
-    <div class="section">
-      <div class="mirror-container">
-        <div class="card">
-          <h3 class="service-title">
-            <i class="fas fa-weight service-icon"></i>
-            Fatloss Portal
-          </h3>
-          <p class="tagline">
-            Comprehensive guide to effective fat loss strategies and techniques
-          </p>
-          <a href="https://jagtappritam7.gumroad.com/l/onrle" class="link" target="_blank">
-            <i class="fas fa-shopping-cart"></i> Purchase Now
-          </a>
-        </div>
-        <div class="mirror-reflection"></div>
-      </div>
-    </div>
-
-    <!-- WhatsApp Group -->
-    <div class="section">
-      <div class="mirror-container">
-        <a href="https://chat.whatsapp.com/B9gRY5oP11VG7jCyOjgsHp" class="primary-btn" target="_blank">
-          <i class="fab fa-whatsapp"></i> Join My WhatsApp Group
-        </a>
-        <div class="mirror-reflection"></div>
-      </div>
-    </div>
-
-    <!-- Services Section -->
-    <div class="section" id="services">
-      <h2 class="section-title">My Services</h2>
-      
-      <div class="mirror-container">
-        <div class="card">
-          <h3 class="service-title">
-            <i class="fas fa-bullhorn service-icon"></i>
-            Digital Marketing
-          </h3>
-          <p class="tagline">
-            Boost your online presence with comprehensive digital marketing strategies
-          </p>
-          <ul class="feature-list">
-            <li>Social Media Marketing</li>
-            <li>Search Engine Optimization (SEO)</li>
-            <li>Pay-Per-Click Advertising (PPC)</li>
-            <li>Content Marketing</li>
-          </ul>
-          <a href="https://calendly.com/jagtappritam73/book-your-slot" class="link" target="_blank">
-            <i class="fas fa-calendar-alt"></i> Book Consultation
-          </a>
-        </div>
-        <div class="mirror-reflection"></div>
-      </div>
-
-      <div class="mirror-container">
-        <div class="card">
-          <h3 class="service-title">
-            <i class="fas fa-code service-icon"></i>
-            Web Development
-          </h3>
-          <p class="tagline">
-            Custom, responsive websites that look great on any device
-          </p>
-          <ul class="feature-list">
-            <li>Responsive Web Design</li>
-            <li>Frontend & Backend Development</li>
-            <li>E-commerce Solutions</li>
-            <li>Website Maintenance</li>
-          </ul>
-          <a href="https://calendly.com/jagtappritam73/book-your-slot" class="link" target="_blank">
-            <i class="fas fa-calendar-alt"></i> Book Consultation
-          </a>
-        </div>
-        <div class="mirror-reflection"></div>
-      </div>
-    </div>
-
-    <!-- Contact Links -->
-    <div class="section">
-      <h2 class="section-title">Contact Me</h2>
-      
-      <div class="mirror-container">
-        <a href="mailto:jagtappritam73@gmail.com" class="link">
-          <i class="fas fa-envelope"></i> Email Me
-        </a>
-        <div class="mirror-reflection"></div>
-      </div>
-
-      <div class="mirror-container">
-        <a href="tel:+919372035409" class="link">
-          <i class="fas fa-phone"></i> Call Me
-        </a>
-        <div class="mirror-reflection"></div>
-      </div>
-
-      <div class="mirror-container">
-        <a href="https://wa.me/919372035409" class="link" target="_blank">
-          <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-        </a>
-        <div class="mirror-reflection"></div>
-      </div>
-    </div>
-
-    <!-- Books Section -->
-    <div class="section">
-      <div class="mirror-container">
-        <a href="https://prityaa379.github.io/theethicalglitchcontent/" class="primary-btn" target="_blank">
-          <i class="fas fa-book"></i> View My Upcoming Books
-        </a>
-        <div class="mirror-reflection"></div>
-      </div>
-    </div>
-
-    <!-- Career Guide -->
-    <div class="section">
-      <div class="mirror-container">
-        <a href="https://calendly.com/jagtappritam73/book-your-slot" class="primary-btn" target="_blank">
-          <i class="fas fa-calendar-alt"></i> Free 15-Min Career Guide
-        </a>
-        <div class="mirror-reflection"></div>
-      </div>
-    </div>
-
-    <!-- Social Channels -->
-    <div class="section" id="social">
-      <h2 class="section-title">Social Channels</h2>
-      
-      <div class="social-links">
-        <a href="https://www.instagram.com/prityaa379" class="social-link" style="--i: 0" target="_blank">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://youtube.com/@prityaa379" class="social-link" style="--i: 1" target="_blank">
-          <i class="fab fa-youtube"></i>
-        </a>
-        <a href="https://x.com/Prityaa379" class="social-link" style="--i: 2" target="_blank">
-          <i class="fab fa-x-twitter"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" class="social-link" style="--i: 3" target="_blank">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a href="https://github.com/PRITYAA379" class="social-link" style="--i: 4" target="_blank">
-          <i class="fab fa-github"></i>
-        </a>
-      </div>
-
-      <div class="dropdown">
-        <button class="dropbtn"><i class="fas fa-share-alt"></i> All Social Channels</button>
-        <div class="dropdown-content">
-          <h3 style="padding: 12px 16px; color: var(--text-primary);">Instagram</h3>
-          <a href="https://www.instagram.com/prityaa379" target="_blank"><i class="fab fa-instagram"></i> prityaa379</a>
-          <a href="https://www.instagram.com/digitalconfvisions" target="_blank"><i class="fab fa-instagram"></i> digitalconfvisions</a>
-          <a href="https://www.instagram.com/tri_ptoworld" target="_blank"><i class="fab fa-instagram"></i> triptoworld</a>
-          
-          <h3 style="padding: 12px 16px; color: var(--text-primary);">YouTube</h3>
-          <a href="https://youtube.com/@prityaa379" target="_blank"><i class="fab fa-youtube"></i> prityaa379</a>
-          <a href="https://youtube.com/@preetjagtap" target="_blank"><i class="fab fa-youtube"></i> AI Case Study</a>
-          <a href="https://youtube.com/@dgvjns" target="_blank"><i class="fab fa-youtube"></i> digitalconfvisions</a>
-          
-          <h3 style="padding: 12px 16px; color: var(--text-primary);">Other</h3>
-          <a href="https://www.facebook.com/share/16fmTVSfFx" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
-          <a href="https://x.com/Prityaa379" target="_blank"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- WhatsApp Float -->
-  <a href="https://wa.me/919372035409" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
-  <!-- Thank You Overlay -->
-  <div class="thank-you-overlay" id="thankYouOverlay">
-    <div>🌹 Thank You for Reaching Out 🌹</div>
-    <div id="roses"></div>
+  <!-- Thanks overlay -->
+  <div class="thanks" id="thanks">
+    <div class="msg">🌹 Thank You for Reaching Out 🌹</div>
+    <div class="roses" id="roses"></div>
   </div>
 
   <script>
-    // Create particles
-    const particlesContainer = document.getElementById("particles");
-    const colors = ['#00ccff', '#a3bffa', '#1e3a8a', '#f0f8ff'];
-    
-    for (let i = 0; i < 50; i++) {
-      let particle = document.createElement("div");
-      particle.className = "particle";
-      particle.style.left = Math.random() * 100 + "vw";
-      particle.style.top = Math.random() * 100 + "vh";
-      particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      particle.style.animationDuration = (10 + Math.random() * 10) + "s";
-      particle.style.animationDelay = Math.random() * 5 + "s";
-      particle.style.width = (3 + Math.random() * 5) + "px";
-      particle.style.height = particle.style.width;
-      particlesContainer.appendChild(particle);
-    }
+    // helpers
+    const qs = s => document.querySelector(s);
+    const qsa = s => document.querySelectorAll(s);
 
-    // Create roses for thank you overlay
-    function createRoses() {
-      const roseContainer = document.getElementById("roses");
-      const emojis = ['🌹', '🌸', '🌺', '🌻', '🌷', '💐', '🏵️'];
-      
-      for (let i = 0; i < 20; i++) {
-        let rose = document.createElement("div");
-        rose.className = "rose";
-        rose.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-        rose.style.left = Math.random() * 100 + "vw";
-        rose.style.animationDuration = (5 + Math.random() * 10) + "s";
-        rose.style.animationDelay = Math.random() * 5 + "s";
-        rose.style.fontSize = (20 + Math.random() * 30) + "px";
-        roseContainer.appendChild(rose);
+    // Hamburger toggle (keeps basic functionality)
+    const menuBtn = qs('#menuBtn');
+    let menuOpen = false;
+    menuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      menuBtn.setAttribute('aria-expanded', String(menuOpen));
+      if(menuOpen) window.scrollTo({top:0,behavior:'smooth'});
+    });
+
+    // Gumroad dropdown toggle
+    const gumdrop = qs('#gumroadDropdown');
+    const dropBtn = qs('#dropBtn');
+    const dropList = qs('#dropdownList');
+    dropBtn.addEventListener('click', () => {
+      const open = gumdrop.classList.toggle('open');
+      dropBtn.setAttribute('aria-expanded', String(open));
+      dropList.setAttribute('aria-hidden', String(!open));
+    });
+
+    // Particles lightweight
+    (function createParticles(){
+      const wrap = qs('#particles');
+      const colors = ['#00ccff','#a3bffa','#1e3a8a','#f0f8ff'];
+      const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+      const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+      for(let i=0;i<36;i++){
+        const d = document.createElement('div');
+        d.className = 'particle';
+        const size = 3 + Math.random()*8;
+        d.style.width = d.style.height = size + 'px';
+        d.style.left = Math.random()*100 + 'vw';
+        d.style.top = Math.random()*100 + 'vh';
+        d.style.background = colors[Math.floor(Math.random()*colors.length)];
+        d.style.opacity = 0.15 + Math.random()*0.45;
+        d.style.transform = `translateY(${(20 + Math.random()*80)}px)`;
+        d.style.transition = `transform ${8 + Math.random()*18}s linear`;
+        wrap.appendChild(d);
+        setTimeout(()=> d.style.transform = `translateY(-${vh + 200}px)`, 50 + Math.random()*1000);
+      }
+    })();
+
+    // Thank-you overlay behaviour
+    const thanks = qs('#thanks');
+    const rosesContainer = qs('#roses');
+    function createRoses(){
+      rosesContainer.innerHTML = '';
+      const emojis = ['🌹','🌸','🌺','🌻','🌷','💐','🏵️'];
+      for(let i=0;i<16;i++){
+        const r = document.createElement('div');
+        r.style.position = 'absolute';
+        r.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+        r.style.left = Math.random()*100 + 'vw';
+        r.style.bottom = '-' + (10 + Math.random()*30) + 'px';
+        r.style.fontSize = (16 + Math.random()*28) + 'px';
+        r.style.opacity = 0.9;
+        r.style.transition = 'transform 6s linear, opacity 6s linear';
+        rosesContainer.appendChild(r);
+        setTimeout(()=> { r.style.transform = `translateY(-120vh) rotate(${360*Math.random()}deg)`; r.style.opacity = '0.0'; }, 80 + Math.random()*400);
       }
     }
 
-    // Show thank you overlay when contact links are clicked
-    document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"], .link:not([target="_blank"])').forEach(link => {
-      link.addEventListener('click', function(e) {
-        if (!this.getAttribute('target')) {
-          e.preventDefault();
-          createRoses();
-          document.getElementById("thankYouOverlay").style.display = 'flex';
-          setTimeout(() => {
-            document.getElementById("thankYouOverlay").style.display = 'none';
-            document.getElementById("roses").innerHTML = '';
-            window.location.href = this.href;
-          }, 3000);
-        }
+    // Attach overlay to link clicks for non-blank links or mailto/tel
+    const contactLinks = Array.from(qsa('a[href^="mailto:"], a[href^="tel:"], a.link')).filter(a => {
+      return a.getAttribute('href').startsWith('mailto:') || a.getAttribute('href').startsWith('tel:') || !a.target;
+    });
+
+    contactLinks.forEach(link=>{
+      link.addEventListener('click', function(e){
+        if(this.target === '_blank') return;
+        e.preventDefault();
+        createRoses();
+        thanks.classList.add('show');
+        setTimeout(()=> {
+          thanks.classList.remove('show');
+          const href = this.getAttribute('href');
+          if(href) window.location.href = href;
+        }, 2400);
       });
     });
 
-    // Smooth scroll for menu links
-    document.querySelectorAll('.hamburger-menu-content a').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        document.querySelector(targetId).scrollIntoView({
-          behavior: 'smooth'
-        });
-        document.getElementById('hamburger-toggle').checked = false;
-      });
+    // Close dropdowns on Escape
+    document.addEventListener('keydown', (ev) => {
+      if(ev.key === 'Escape'){
+        if(gumdrop.classList.contains('open')){
+          gumdrop.classList.remove('open');
+          dropBtn.setAttribute('aria-expanded','false');
+          dropList.setAttribute('aria-hidden','true');
+        }
+      }
     });
+
+    // Prevent pointer events on particles to avoid accidental taps
+    qs('#particles').addEventListener('pointerdown', e => e.stopPropagation(), {passive:true});
   </script>
 </body>
 </html>
