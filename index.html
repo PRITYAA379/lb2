@@ -21,6 +21,7 @@
       --glass-border:rgba(255,255,255,0.04);
       --radius:12px;
       --max-width:980px;
+      --highlight:#ffd400;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -161,6 +162,23 @@
       background:transparent;border:1px solid var(--glass-border);color:var(--text-1)
     }
 
+    /* Gumroad quickstart */
+    .gumroad-quick { display:flex;flex-direction:column;gap:12px; }
+    .gumroad-features{display:flex;flex-direction:column;gap:8px}
+    .gumroad-features li{list-style:none;padding-left:20px;position:relative;color:var(--muted)}
+    .gumroad-features li::before{content:'•';position:absolute;left:0;color:var(--accent-1)}
+    .btn-row{display:flex;gap:10px;flex-wrap:wrap}
+    .small-btn{padding:10px 12px;border-radius:8px;text-decoration:none;font-weight:700;border:1px solid var(--glass-border);background:transparent;color:var(--text-1)}
+    .small-btn.primary{background:linear-gradient(90deg,var(--accent-2),var(--accent-1));color:var(--darker-bg);border:none}
+
+    /* Book card */
+    .book-card{display:flex;gap:12px;align-items:center}
+    .book-cover{
+      width:84px;height:120px;border-radius:8px;background:linear-gradient(180deg,#222,#111);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700;border:1px solid var(--glass-border)
+    }
+    .book-meta h4{margin:0 0 6px;font-size:15px}
+    .book-meta p{margin:0;color:var(--muted);font-size:13px}
+
     /* Dropdown */
     .dropdown{position:relative}
     .dropbtn{
@@ -184,7 +202,7 @@
 
     /* Hamburger */
     .hamburger{
-      position:fixed;left:18px;top:18px;background:var(--card-bg);border-radius:10px;padding:10px;z-index:1200;border:1px solid var(--glass-border);
+      position:fixed;left:18px;top:18px;background:var(--card-bg);border-radius:10px;padding:10px;z-index:1000;border:1px solid var(--glass-border);
     }
     .hamburger button{background:transparent;border:0;color:var(--text-1);font-size:18px;cursor:pointer}
 
@@ -235,27 +253,38 @@
           </div>
         </section>
 
-        <!-- Gumroad cards -->
+        <!-- NEW Gumroad Quickstart -->
         <section style="margin-top:16px">
-          <div class="list">
-            <article class="card mirror">
-              <span class="badge">1 Download</span>
-              <h3>What is Gumroad?</h3>
-              <p class="muted">A simple guide to understanding and starting your Gumroad journey.</p>
-              <div style="margin-top:10px">
-                <a class="cta secondary" href="https://prityaa379.gumroad.com/l/uplaw" target="_blank" rel="noopener">Get it free</a>
-              </div>
-            </article>
+          <article class="card mirror gumroad-quick" aria-labelledby="gumroadTitle">
+            <h3 id="gumroadTitle">Gumroad Quickstart — Launch Your First Digital Product</h3>
+            <p class="muted">Short, practical steps to get a product live and start earning without headaches.</p>
 
-            <article class="card mirror">
-              <span class="badge">1 Download</span>
-              <h3>Start Gumroad for Free</h3>
-              <p class="muted">Turn your ideas into digital products with this strategic guide.</p>
-              <div style="margin-top:10px">
-                <a class="cta secondary" href="https://prityaa379.gumroad.com/l/pvoryz" target="_blank" rel="noopener">Download now</a>
-              </div>
-            </article>
-          </div>
+            <ul class="gumroad-features" aria-hidden="false">
+              <li>Pick one small product: guide, template, or planner.</li>
+              <li>Create a simple sales page — no code required.</li>
+              <li>Price it fairly; offer a free sample to build trust.</li>
+              <li>Use built-in Gumroad analytics & email to follow up.</li>
+            </ul>
+
+            <div class="btn-row">
+              <a class="small-btn primary" href="https://prityaa379.gumroad.com/l/uplaw" target="_blank" rel="noopener">
+                <i class="fas fa-file-alt" style="margin-right:8px"></i> Starter Guide
+              </a>
+
+              <a class="small-btn" href="https://prityaa379.gumroad.com/l/pvoryz" target="_blank" rel="noopener">
+                <i class="fas fa-box-open" style="margin-right:8px"></i> Free Starter Pack
+              </a>
+
+              <!-- updated Calendly link -->
+              <a class="small-btn" href="https://calendly.com/jagtappritam73/new-meeting" target="_blank" rel="noopener" title="Need help? Book a slot">
+                <i class="fas fa-calendar-alt" style="margin-right:8px"></i> 1:1 Help (15m)
+              </a>
+            </div>
+
+            <p class="muted" style="margin-top:10px;font-size:13px">
+              Tip: Launch with one product and promote it across your YouTube and WhatsApp groups — small wins compound.
+            </p>
+          </article>
         </section>
 
         <!-- Promo -->
@@ -284,8 +313,22 @@
             <a title="GitHub" href="https://github.com/PRITYAA379" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
           </div>
 
-          <div style="width:100%;margin-top:12px">
-            <a class="cta" href="https://prityaa379.github.io/theethicalglitchcontent/" target="_blank" rel="noopener"><i class="fas fa-book"></i> View My Upcoming Books</a>
+        <div class="card mirror" style="width:100%">
+          <h3>Featured Book</h3>
+          <div class="book-card" style="margin-top:8px">
+            <div class="book-cover" aria-hidden="true">BOOK</div>
+            <div class="book-meta">
+              <h4>Actionable Guide for Digital Marketing Beginners</h4>
+              <p class="muted">by Pritam Jagtap</p>
+              <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+                <a class="small-btn primary" href="https://amzn.in/d/ewJhTIF" target="_blank" rel="noopener">
+                  <i class="fas fa-shopping-cart" style="margin-right:8px"></i> Buy on Amazon
+                </a>
+                <a class="small-btn" href="https://calendly.com/jagtappritam73/new-meeting" target="_blank" rel="noopener">
+                  <i class="fas fa-calendar-alt" style="margin-right:8px"></i> Discuss the Book
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -301,11 +344,11 @@
                 <a href="https://gumroad.com/PRITYAA379/newsletter" target="_blank">Newsletter</a>
 
                 <strong style="display:block;margin:12px 0 8px;color:var(--muted)">Products</strong>
-                <a href="https://jagtappritam7.gumroad.com/l/uplaw" target="_blank">What is Gumroad?</a>
+                <a href="https://jagtappritam7.gumroad.com/l/uplaw" target="_blank">Starter Guide (What is Gumroad?)</a>
                 <a href="https://jagtappritam7.gumroad.com/l/qnsim" target="_blank">Link-in-bio Samples</a>
                 <a href="https://jagtappritam7.gumroad.com/l/qkevcg" target="_blank">Daily Productivity Planner</a>
                 <a href="https://jagtappritam7.gumroad.com/l/tdnocf" target="_blank">Top 10 Digital Assets in India</a>
-                <a href="https://jagtappritam7.gumroad.com/l/pvoryz" target="_blank">Start Gumroad for Free</a>
+                <a href="https://jagtappritam7.gumroad.com/l/pvoryz" target="_blank">Free Starter Pack</a>
 
                 <div style="margin-top:10px">
                   <a class="cta secondary" href="https://gumroad.com/PRITYAA379" target="_blank">Visit My Store</a>
@@ -320,6 +363,7 @@
           <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
             <a class="cta secondary" href="mailto:jagtappritam73@gmail.com">Email Me</a>
             <a class="cta secondary" href="tel:+919372035409">Call Me</a>
+            <a class="cta" href="https://calendly.com/jagtappritam73/new-meeting" target="_blank" rel="noopener"><i class="fas fa-calendar-alt" style="margin-right:8px"></i> Book a New Meeting</a>
             <a class="cta" href="https://chat.whatsapp.com/B9gRY5oP11VG7jCyOjgsHp" target="_blank">Join My WhatsApp Group</a>
           </div>
         </div>
@@ -344,11 +388,11 @@
   </div>
 
   <script>
-    // helpers
+    // ---------- Small helpers ----------
     const qs = s => document.querySelector(s);
     const qsa = s => document.querySelectorAll(s);
 
-    // Hamburger toggle (keeps basic functionality)
+    // Hamburger - simple toggle (accessible)
     const menuBtn = qs('#menuBtn');
     let menuOpen = false;
     menuBtn.addEventListener('click', () => {
@@ -357,7 +401,7 @@
       if(menuOpen) window.scrollTo({top:0,behavior:'smooth'});
     });
 
-    // Gumroad dropdown toggle
+    // Gumroad dropdown toggle (works for touch)
     const gumdrop = qs('#gumroadDropdown');
     const dropBtn = qs('#dropBtn');
     const dropList = qs('#dropdownList');
@@ -367,7 +411,7 @@
       dropList.setAttribute('aria-hidden', String(!open));
     });
 
-    // Particles lightweight
+    // Particles (lightweight)
     (function createParticles(){
       const wrap = qs('#particles');
       const colors = ['#00ccff','#a3bffa','#1e3a8a','#f0f8ff'];
@@ -385,17 +429,18 @@
         d.style.transform = `translateY(${(20 + Math.random()*80)}px)`;
         d.style.transition = `transform ${8 + Math.random()*18}s linear`;
         wrap.appendChild(d);
+        // animate slowly
         setTimeout(()=> d.style.transform = `translateY(-${vh + 200}px)`, 50 + Math.random()*1000);
       }
     })();
 
-    // Thank-you overlay behaviour
+    // Thank you overlay when clicking non-blank contact links
     const thanks = qs('#thanks');
     const rosesContainer = qs('#roses');
     function createRoses(){
       rosesContainer.innerHTML = '';
       const emojis = ['🌹','🌸','🌺','🌻','🌷','💐','🏵️'];
-      for(let i=0;i<16;i++){
+      for (let i=0;i<16;i++){
         const r = document.createElement('div');
         r.style.position = 'absolute';
         r.textContent = emojis[Math.floor(Math.random()*emojis.length)];
@@ -409,26 +454,28 @@
       }
     }
 
-    // Attach overlay to link clicks for non-blank links or mailto/tel
+    // Attach overlay behaviour for in-page links without target or mailto/tel
     const contactLinks = Array.from(qsa('a[href^="mailto:"], a[href^="tel:"], a.link')).filter(a => {
       return a.getAttribute('href').startsWith('mailto:') || a.getAttribute('href').startsWith('tel:') || !a.target;
     });
 
     contactLinks.forEach(link=>{
       link.addEventListener('click', function(e){
+        // For external links (target=_blank) we don't intercept
         if(this.target === '_blank') return;
         e.preventDefault();
         createRoses();
         thanks.classList.add('show');
         setTimeout(()=> {
           thanks.classList.remove('show');
+          // follow the link after animation if href exists
           const href = this.getAttribute('href');
           if(href) window.location.href = href;
         }, 2400);
       });
     });
 
-    // Close dropdowns on Escape
+    // Accessibility: close dropdowns on Escape
     document.addEventListener('keydown', (ev) => {
       if(ev.key === 'Escape'){
         if(gumdrop.classList.contains('open')){
@@ -441,6 +488,7 @@
 
     // Prevent pointer events on particles to avoid accidental taps
     qs('#particles').addEventListener('pointerdown', e => e.stopPropagation(), {passive:true});
+
   </script>
 </body>
 </html>
