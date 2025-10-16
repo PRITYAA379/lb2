@@ -1,1212 +1,647 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pritam Jagtap | Digital Creator & Developer</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DigitalConfVisions — PRITYAA | Digital Growth & Learning</title>
+  <meta name="description" content="DigitalConfVisions — Growth, learning & product-market playbooks for creators and entrepreneurs. Join our Deep Learners WhatsApp group." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
   <style>
+    /* Base variables for Dark Mode (default theme) */
     :root {
-      --primary: #6e45e2;
-      --secondary: #88d3ce;
-      --accent: #ff7e5f;
-      --dark: #1a1a2e;
-      --light: #f9f9f9;
+      --gold: #f1c40f;
+      --bg-1: #050505;
+      --bg-2: #101820;
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(255, 255, 255, 0.06);
+      --text-muted: rgba(255, 255, 255, 0.8);
+      --text-primary: rgba(255, 255, 255, 0.9);
+      --heading-color: var(--gold);
+      --button-text: #000;
+      --ribbon-text: #111;
+      --qr-shadow: rgba(255, 255, 255, 0.06);
+      --body-gradient-start: var(--bg-1);
+      --body-gradient-end: var(--bg-2);
     }
 
-    body {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, var(--dark), #16213e);
-      color: var(--light);
-      margin: 0;
-      padding: 20px;
-      min-height: 100vh;
-      overflow-x: hidden;
+    /* Light Mode adjustments for prefers-color-scheme: light */
+    @media (prefers-color-scheme: light) {
+      :root {
+        --gold: #d4ac0d; /* Slightly darker gold for contrast on light bg */
+        --bg-1: #f0f2f5;
+        --bg-2: #e0e4eb;
+        --card-bg: #ffffff;
+        --card-border: rgba(0, 0, 0, 0.1);
+        --text-muted: rgba(0, 0, 0, 0.7);
+        --text-primary: rgba(0, 0, 0, 0.85);
+        --heading-color: #c09f00; /* Adjusted gold for light bg */
+        --button-text: #fff; /* White button text on gold background */
+        --ribbon-text: #fff; /* White ribbon text on gradient */
+        --qr-shadow: rgba(0, 0, 0, 0.1);
+        --body-gradient-start: var(--bg-2); /* Flipped gradient for light mode */
+        --body-gradient-end: var(--bg-1);
+      }
+      .premium-ribbon .marquee {
+          color: var(--ribbon-text); /* Ensure ribbon text is readable */
+      }
+      .btn {
+          color: var(--button-text); /* Ensure button text is readable */
+      }
+      .hero h1, .lead { /* Adjust hero text for light mode */
+          color: var(--heading-color);
+      }
+      p.lead {
+          color: var(--text-muted);
+      }
+      .card h3 {
+          color: var(--heading-color);
+      }
+      .group p {
+          color: var(--text-muted);
+      }
+      a[style*="color:var(--gold)"] { /* Specific override for mailto link */
+          color: var(--heading-color) !important;
+      }
     }
 
-    .container {
-      max-width: 500px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .profile-img-container {
-      position: relative;
-      width: 120px;
-      height: 120px;
-      margin: 30px auto 15px;
-      border-radius: 50%;
-      background: linear-gradient(45deg,
-          #ff0000, #ff7700, #ffdd00, #00ff00,
-          #0088ff, #0000ff, #9900ff, #ff00ff);
-      background-size: 800% 800%;
-      animation: rainbow 8s ease infinite;
-      padding: 3px;
-    }
-
-    .profile-img {
-      width: 100%;
+    /* General Body Styles */
+    html, body {
       height: 100%;
+    }
+    body {
+      font-family: 'Inter', system-ui, Arial, sans-serif;
+      background: linear-gradient(180deg, var(--body-gradient-start), var(--body-gradient-end));
+      color: var(--text-muted);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Header / Hero Section */
+    .hero {
+      z-index: 11000;
+      position: relative;
+      text-align: center;
+      padding: 48px 20px 24px;
+    }
+    .avatar {
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
+      border: 3px solid var(--gold);
+      box-shadow: 0 0 30px rgba(241, 196, 15, 0.35);
       object-fit: cover;
-      border: 2px solid white;
-      box-sizing: border-box;
+    }
+    .hero h1 {
+      color: var(--heading-color); /* Uses variable for dark/light mode */
+      margin: 12px 0 6px;
+      font-size: 28px; /* Slightly larger for impact */
+    }
+    p.lead {
+      margin: 0;
+      color: var(--text-primary); /* Uses variable for dark/light mode */
+      font-size: 1.1em;
     }
 
-    @keyframes rainbow {
-      0% {
-        background-position: 0% 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
-
-      100% {
-        background-position: 0% 50%;
-      }
+    /* Marquee Ribbon */
+    .premium-ribbon {
+      position: absolute;
+      right: -40px;
+      top: 18px;
+      background: linear-gradient(90deg, #ffb84d, #ffd700);
+      padding: 8px 12px;
+      transform: rotate(45deg);
+      font-weight: 800;
+      border-radius: 6px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+      white-space: nowrap;
+      z-index: 10;
+      color: var(--ribbon-text); /* Ensure contrast */
+    }
+    .premium-ribbon .marquee {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 12s linear infinite;
+      color: var(--ribbon-text); /* Ensure contrast */
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-100%); }
     }
 
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-10px);
-      }
+    /* Main Layout Container */
+    .wrap {
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 20px;
+      position: relative;
+      z-index: 10000;
     }
 
-    .name-title {
-      text-align: center;
-      margin: 10px 0;
+    /* Grid Layout for Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Min width increased slightly */
+      gap: 20px; /* Gap increased slightly */
+      margin-top: 24px;
     }
 
-    .professional-name {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 5px;
-      color: white;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    }
-
-    .tagline {
-      font-size: 16px;
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      text-align: center;
-      margin: 10px 0;
-      font-size: 28px;
-      background: linear-gradient(to right,
-          #ff0000, #ff7700, #ffdd00, #00ff00,
-          #0088ff, #0000ff, #9900ff, #ff00ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      animation: rainbowText 8s ease infinite;
-      background-size: 800% 800%;
-    }
-
-    @keyframes rainbowText {
-      0% {
-        background-position: 0% 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
-
-      100% {
-        background-position: 0% 50%;
-      }
-    }
-
-    p {
-      text-align: center;
-      opacity: 0.9;
-      font-size: 16px;
-      color: white;
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-    }
-
-    .link {
-      display: block;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      color: white;
-      padding: 15px 20px;
-      margin: 15px auto;
+    /* Card Component */
+    .card {
+      background: var(--card-bg);
       border-radius: 12px;
+      padding: 20px; /* Padding increased */
+      border: 1px solid var(--card-border);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+      display: flex; /* Flexbox for consistent layout */
+      flex-direction: column;
+      justify-content: space-between; /* Push button to bottom */
+    }
+    .card h3 {
+      color: var(--heading-color);
+      margin: 0 0 10px; /* Margin adjusted */
+      font-size: 1.25em;
+    }
+    .card ul {
+      padding: 0;
+      margin: 0 0 15px 0; /* Margin adjusted */
+      list-style: none;
+      color: var(--text-primary);
+      font-size: 15px; /* Slightly larger font */
+      flex-grow: 1; /* Allow ul to take available space */
+    }
+    .card ul li::before {
+      content: '✔ ';
+      color: var(--gold);
+      margin-right: 5px;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--button-text); /* Uses variable for dark/light mode */
+      padding: 12px 20px; /* Padding adjusted */
+      border-radius: 10px;
+      font-weight: 800;
       text-decoration: none;
+      box-shadow: 0 8px 30px rgba(241, 196, 15, 0.18);
       text-align: center;
-      font-weight: bold;
-      transition: all 0.4s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      position: relative;
-      width: 90%;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      font-size: 1em;
+      align-self: flex-start; /* Align button to start in flex column */
+    }
+    .btn:hover, .btn:focus {
+        background-color: #ffd700; /* Slightly lighter gold on hover */
+        box-shadow: 0 8px 30px rgba(241, 196, 15, 0.3);
     }
 
-    .link::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(to bottom right,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 0) 45%,
-          rgba(255, 255, 255, 0.5) 50%,
-          rgba(255, 255, 255, 0) 55%,
-          rgba(255, 255, 255, 0) 100%);
-      transform: rotate(30deg);
-      animation: shine 3s infinite;
-    }
-
-    @keyframes shine {
-      0% {
-        transform: translateX(-100%) rotate(30deg);
-      }
-
-      100% {
-        transform: translateX(100%) rotate(30deg);
-      }
-    }
-
-    .link:hover {
-      background: rgba(255, 255, 255, 0.25);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5),
-        0 0 15px rgba(255, 255, 255, 0.4);
-    }
-
-    .social-links {
+    /* Portfolio Grid (CSS only for now) */
+    .portfolio-grid {
       display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
       justify-content: center;
-      gap: 15px;
-      margin: 25px 0;
+    }
+    .portfolio-item {
+      width: 260px;
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 12px;
+      text-align: left;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+    .portfolio-item img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 8px;
     }
 
-    .social-link {
-      color: white;
-      font-size: 24px;
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
+    /* QR Section */
+    .qr {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.1);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
+      gap: 12px; /* Gap adjusted */
+      margin-top: 14px;
+    }
+    .qr img {
+      width: 240px; /* Slightly larger QR */
+      max-width: 80%; /* Ensure responsiveness */
+      border-radius: 12px;
+      box-shadow: 0 0 30px var(--qr-shadow);
+      animation: blink 1.6s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(0.6); }
     }
 
-    .social-link::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(to bottom right,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 0) 45%,
-          rgba(255, 255, 255, 0.8) 50%,
-          rgba(255, 255, 255, 0) 55%,
-          rgba(255, 255, 255, 0) 100%);
-      transform: rotate(30deg);
-      animation: shine 3s infinite;
-      animation-delay: calc(var(--i) * 0.2s);
+    /* WhatsApp Group Section */
+    .group {
+      margin: 40px auto; /* Margin adjusted */
+      text-align: center;
+      padding: 0 20px; /* Add padding for smaller screens */
+    }
+    .group h2 {
+        font-size: 2em;
+        margin-bottom: 15px;
+    }
+    .group p {
+      max-width: 760px;
+      margin: 8px auto 20px; /* Margin adjusted */
+      font-size: 1.1em;
+    }
+    .group p:last-of-type { /* Small text at the bottom */
+        font-size: 0.9em;
+        color: var(--text-muted);
+        margin-top: 15px;
     }
 
-    .social-link:hover {
-      color: white;
-      background: linear-gradient(45deg,
-          #ff0000, #ff7700, #ffdd00, #00ff00,
-          #0088ff, #0000ff, #9900ff, #ff00ff);
-      background-size: 800% 800%;
-      animation: rainbow 8s ease infinite;
-      transform: scale(1.1);
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-    }
 
-    .whatsapp-float {
+    /* Fixed Decorative Elements */
+    #sun {
+      position: fixed;
+      right: 40px;
+      top: 60px;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ffcc33, #ff6600 70%);
+      box-shadow: 0 0 50px 20px rgba(255, 165, 0, 0.5);
+      z-index: 1;
+    }
+    #india-map {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: #25d366;
-      color: white;
-      border-radius: 50%;
-      width: 55px;
-      height: 55px;
-      font-size: 26px;
-      text-align: center;
-      line-height: 55px;
-      z-index: 999;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
-        0 0 15px rgba(37, 211, 102, 0.6);
-      transition: all 0.3s ease;
+      width: 160px;
+      height: 200px;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/7/7d/India_map_outline.svg') no-repeat center;
+      background-size: contain;
+      filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.6));
+      z-index: 1;
     }
 
-    .whatsapp-float:hover {
-      transform: scale(1.1) rotate(10deg);
-      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5),
-        0 0 20px rgba(37, 211, 102, 0.8);
-    }
-
-    /* 3D Career Guide Button */
-    .career-button {
-      display: block;
-      background: linear-gradient(135deg, #6e45e2, #88d3ce);
-      color: white;
-      padding: 18px 20px;
-      margin: 25px auto;
-      border-radius: 12px;
-      text-decoration: none;
-      text-align: center;
-      font-weight: bold;
-      font-size: 18px;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3),
-        0 5px 0 0 rgba(110, 69, 226, 0.5),
-        inset 0 0 10px rgba(255, 255, 255, 0.2);
-      transform-style: preserve-3d;
-      position: relative;
-      width: 90%;
-      border: none;
-      cursor: pointer;
-      overflow: hidden;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .career-button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4),
-        0 7px 0 0 rgba(110, 69, 226, 0.5),
-        inset 0 0 15px rgba(255, 255, 255, 0.3);
-    }
-
-    .career-button:active {
-      transform: translateY(2px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
-        0 2px 0 0 rgba(110, 69, 226, 0.5),
-        inset 0 0 10px rgba(255, 255, 255, 0.2);
-    }
-
-    .career-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to right,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 0.3) 50%,
-          rgba(255, 255, 255, 0) 100%);
-      transform: translateX(-100%);
-      transition: all 0.6s ease;
-    }
-
-    .career-button:hover::before {
-      transform: translateX(100%);
-    }
-
-    /* Services Section */
-    .services-section {
-      margin: 30px 0;
-    }
-
-    .services-title {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 24px;
-      background: linear-gradient(to right,
-          #ff7e5f, #feb47b);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .services-container {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .service-card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 15px;
-      padding: 20px;
-      transition: all 0.4s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(to bottom right,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 0) 45%,
-          rgba(255, 255, 255, 0.1) 50%,
-          rgba(255, 255, 255, 0) 55%,
-          rgba(255, 255, 255, 0) 100%);
-      transform: rotate(30deg);
-      animation: shine 6s infinite;
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3),
-        0 0 15px rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    .service-title {
-      font-size: 20px;
-      margin-bottom: 10px;
-      color: white;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .service-icon {
-      font-size: 24px;
-      background: linear-gradient(45deg, #6e45e2, #88d3ce);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .service-description {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 15px;
-      line-height: 1.5;
-      margin-bottom: 15px;
-    }
-
-    .service-features {
-      list-style-type: none;
-      padding-left: 0;
-      margin-bottom: 15px;
-    }
-
-    .service-features li {
-      padding: 5px 0;
-      color: rgba(255, 255, 255, 0.7);
-      position: relative;
-      padding-left: 25px;
-    }
-
-    .service-features li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: #88d3ce;
-      font-weight: bold;
-    }
-
-    .service-button {
-      display: inline-block;
-      background: linear-gradient(45deg, #ff7e5f, #feb47b);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 14px;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
-    .service-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(255, 126, 95, 0.4);
-    }
-
-    /* Thank You Overlay */
-    .thank-you-overlay {
+    /* White dust + depth threads canvas */
+    #dustCanvas {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: linear-gradient(135deg, #1a1a2e, #0f3460);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      z-index: 1000;
-      color: white;
-      font-size: 30px;
-      display: none;
-      overflow: hidden;
-    }
-
-    .rose {
-      position: absolute;
-      font-size: 24px;
-      animation: floatRose 10s linear infinite;
-      filter: drop-shadow(0 0 5px currentColor);
-    }
-
-    @keyframes floatRose {
-      0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 1;
-      }
-
-      100% {
-        transform: translateY(-10vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    /* Mirror Effect */
-    .mirror-container {
-      position: relative;
-      margin-bottom: 30px;
-    }
-
-    .mirror-reflection {
-      position: absolute;
-      width: 90%;
-      height: 30px;
-      bottom: -25px;
-      left: 5%;
-      transform: scaleY(-1);
-      opacity: 0.3;
-      background: linear-gradient(to bottom,
-          rgba(255, 255, 255, 0.8),
-          rgba(255, 255, 255, 0));
-      -webkit-mask-image: linear-gradient(to bottom,
-          rgba(0, 0, 0, 0.8),
-          transparent);
-      mask-image: linear-gradient(to bottom,
-          rgba(0, 0, 0, 0.8),
-          transparent);
-      border-radius: 0 0 12px 12px;
-      filter: blur(1px);
-    }
-
-    .profile-img-mirror {
-      position: absolute;
-      width: 120px;
-      height: 30px;
-      top: 120px;
-      left: 0;
-      transform: scaleY(-1);
-      opacity: 0.3;
-      background: linear-gradient(to bottom,
-          rgba(255, 255, 255, 0.8),
-          rgba(255, 255, 255, 0));
-      -webkit-mask-image: linear-gradient(to bottom,
-          rgba(0, 0, 0, 0.8),
-          transparent);
-      mask-image: linear-gradient(to bottom,
-          rgba(0, 0, 0, 0.8),
-          transparent);
-      border-radius: 0 0 60px 60px;
-      filter: blur(1px);
-    }
-
-    /* Colorful floating particles */
-    .particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
       z-index: -1;
     }
 
-    .particle {
-      position: absolute;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      animation: floatParticle 15s linear infinite;
-      opacity: 0.6;
+    /* Responsive Tweaks */
+    @media (max-width: 1024px) {
+        .wrap {
+            padding: 15px;
+        }
     }
-
-    @keyframes floatParticle {
-      0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-      }
-
-      10% {
-        opacity: 0.6;
-      }
-
-      90% {
-        opacity: 0.6;
-      }
-
-      100% {
-        transform: translateY(-100vh) translateX(100px);
-        opacity: 0;
-      }
+    @media (max-width: 768px) {
+        .hero {
+            padding: 30px 15px 20px;
+        }
+        .hero h1 {
+            font-size: 24px;
+        }
+        .grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .card {
+            padding: 18px;
+        }
+        #sun {
+            width: 70px;
+            height: 70px;
+            right: 20px;
+            top: 30px;
+        }
+        #india-map {
+            width: 120px;
+            height: 150px;
+            bottom: 15px;
+            right: 15px;
+        }
+        .group h2 {
+            font-size: 1.8em;
+        }
     }
-
-    /* Portfolio Dropdown Styles */
-    .portfolio-dropdown {
-      position: relative;
-      display: inline-block;
-      width: 90%;
-      margin: 15px auto;
-    }
-
-    .portfolio-dropbtn {
-      display: block;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      color: white;
-      padding: 15px 20px;
-      border-radius: 12px;
-      text-decoration: none;
-      text-align: center;
-      font-weight: bold;
-      transition: all 0.4s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      cursor: pointer;
-    }
-
-    .portfolio-dropbtn::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(to bottom right,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 0) 45%,
-          rgba(255, 255, 255, 0.5) 50%,
-          rgba(255, 255, 255, 0) 55%,
-          rgba(255, 255, 255, 0) 100%);
-      transform: rotate(30deg);
-      animation: shine 3s infinite;
-    }
-
-    .portfolio-dropbtn:hover {
-      background: rgba(255, 255, 255, 0.25);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5),
-        0 0 15px rgba(255, 255, 255, 0.4);
-    }
-
-    .portfolio-dropdown-content {
-      display: none;
-      position: relative;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 0 0 12px 12px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-      width: 100%;
-      margin-top: -15px;
-      padding-top: 15px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-top: none;
-    }
-
-    .portfolio-dropdown-content a {
-      color: white;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-      transition: all 0.3s ease;
-    }
-
-    .portfolio-dropdown-content a:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-      transform: translateX(5px);
-    }
-
-    .portfolio-dropdown:hover .portfolio-dropdown-content {
-      display: block;
-    }
-
-    .portfolio-dropdown:hover .portfolio-dropbtn {
-      border-radius: 12px 12px 0 0;
-    }
-
-    /* Portfolio Submenu Styles */
-    .portfolio-submenu {
-      position: relative;
-    }
-
-    .portfolio-submenu-btn {
-      width: 100%;
-      text-align: left;
-      background: transparent;
-      border: none;
-      color: white;
-      padding: 12px 16px;
-      font-size: 15px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: all 0.3s ease;
-    }
-
-    .portfolio-submenu-btn:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      transform: translateX(5px);
-    }
-
-    .portfolio-submenu-content {
-      display: none;
-      background: rgba(0, 0, 0, 0.2);
-      padding-left: 20px;
-    }
-
-    .portfolio-submenu:hover .portfolio-submenu-content {
-      display: block;
-    }
-
-    .portfolio-submenu-content a {
-      padding: 10px 16px;
-      font-size: 14px;
-    }
-
-    .portfolio-submenu-content a i {
-      margin-right: 8px;
-      width: 18px;
-      text-align: center;
-    }
-
-    /* GitHub Dropdown Styles */
-    .github-dropdown {
-      position: relative;
-      display: inline-block;
-      width: 90%;
-      margin: 15px auto;
-    }
-
-    .github-dropbtn {
-      display: block;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      color: white;
-      padding: 15px 20px;
-      border-radius: 12px;
-      text-decoration: none;
-      text-align: center;
-      font-weight: bold;
-      transition: all 0.4s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      cursor: pointer;
-    }
-
-    .github-dropbtn::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(to bottom right,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 0) 45%,
-          rgba(255, 255, 255, 0.5) 50%,
-          rgba(255, 255, 255, 0) 55%,
-          rgba(255, 255, 255, 0) 100%);
-      transform: rotate(30deg);
-      animation: shine 3s infinite;
-    }
-
-    .github-dropbtn:hover {
-      background: rgba(255, 255, 255, 0.25);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5),
-        0 0 15px rgba(255, 255, 255, 0.4);
-    }
-
-    .github-dropdown-content {
-      display: none;
-      position: relative;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 0 0 12px 12px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-      width: 100%;
-      margin-top: -15px;
-      padding-top: 15px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-top: none;
-    }
-
-    .github-dropdown-content a {
-      color: white;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-      transition: all 0.3s ease;
-    }
-
-    .github-dropdown-content a:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-      transform: translateX(5px);
-    }
-
-    .github-dropdown:hover .github-dropdown-content {
-      display: block;
-    }
-
-    .github-dropdown:hover .github-dropbtn {
-      border-radius: 12px 12px 0 0;
-    }
-
-    /* Gumroad Submenu Styles */
-    .gumroad-submenu {
-      position: relative;
-    }
-
-    .gumroad-submenu-btn {
-      width: 100%;
-      text-align: left;
-      background: transparent;
-      border: none;
-      color: white;
-      padding: 12px 16px;
-      font-size: 15px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: all 0.3s ease;
-    }
-
-    .gumroad-submenu-btn:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      transform: translateX(5px);
-    }
-
-    .gumroad-submenu-content {
-      display: none;
-      background: rgba(0, 0, 0, 0.2);
-      padding-left: 20px;
-    }
-
-    .gumroad-submenu:hover .gumroad-submenu-content {
-      display: block;
-    }
-
-    .gumroad-submenu-content a {
-      padding: 10px 16px;
-      font-size: 14px;
-    }
-
-    .gumroad-submenu-content a i {
-      margin-right: 8px;
-      width: 18px;
-      text-align: center;
-    }
-    
-    /* SaaS Ideas Section */
-    .saas-section {
-      margin: 30px 0;
-    }
-    
-    .saas-title {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 24px;
-      background: linear-gradient(to right, #6e45e2, #88d3ce);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
-    
-    .saas-card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 15px;
-      padding: 20px;
-      margin-bottom: 20px;
-      transition: all 0.4s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .saas-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3),
-        0 0 15px rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.15);
-    }
-    
-    .saas-card-title {
-      font-size: 18px;
-      margin-bottom: 10px;
-      color: white;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .saas-card-icon {
-      font-size: 20px;
-      background: linear-gradient(45deg, #ff7e5f, #feb47b);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .saas-card-description {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 14px;
-      line-height: 1.5;
-      margin-bottom: 15px;
-    }
-    
-    .saas-link {
-      display: inline-block;
-      color: white;
-      text-decoration: none;
-      font-size: 14px;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    
-    .saas-link:hover {
-      color: #88d3ce;
-      transform: translateX(5px);
-    }
-    
-    .linkedin-connect {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.7);
-    }
-    
-    .linkedin-connect a {
-      color: #88d3ce;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    
-    .linkedin-connect a:hover {
-      color: #6e45e2;
-      text-decoration: underline;
+    @media (max-width: 480px) {
+        .wrap {
+            padding: 10px;
+        }
+        .hero {
+            padding: 20px 10px 15px;
+        }
+        .hero h1 {
+            font-size: 22px;
+        }
+        p.lead {
+            font-size: 1em;
+        }
+        .grid {
+            grid-template-columns: 1fr; /* Single column on very small screens */
+            gap: 12px;
+        }
+        .card {
+            padding: 15px;
+        }
+        .card h3 {
+            font-size: 1.1em;
+        }
+        .card ul {
+            font-size: 0.95em;
+        }
+        .btn {
+            padding: 10px 15px;
+            font-size: 0.9em;
+            width: 100%; /* Full width buttons on small screens */
+            box-sizing: border-box;
+        }
+        .premium-ribbon {
+            right: -60px; /* Push further off-screen to avoid overlap */
+            top: 10px;
+            font-size: 0.9em;
+            padding: 6px 10px;
+        }
+        #sun, #india-map {
+            display: none; /* Hide decorative elements on very small screens */
+        }
+        .qr img {
+            width: 180px;
+        }
+        .group h2 {
+            font-size: 1.5em;
+        }
+        .group p {
+            font-size: 0.95em;
+        }
     }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
-
 <body>
-  <div class="particles" id="particles"></div>
-  <div class="container" id="main-container">
-    <div class="profile-img-container">
-      <img src="https://i.ibb.co/BKZv5FzD/IMG-20250613-062802-529.webp" class="profile-img" alt="Pritam Jagtap">
-      <div class="profile-img-mirror"></div>
-    </div>
-    
-    <div class="name-title">
-      <div class="professional-name">PRITYAA | Pritam Jagtap</div>
-      <div class="tagline">Digital Creator & Full Stack Developer</div>
-    </div>
-    
-    <p>Building digital experiences that inspire and transform</p>
 
-    <div class="mirror-container">
-      <a href="https://yourwebsite.com" class="link"><i class="fas fa-globe"></i> Visit My Website</a>
-      <div class="mirror-reflection"></div>
-    </div>
+  <!-- sun (decorative element) -->
+  <div id="sun" aria-hidden="true"></div>
 
-    <!-- Portfolio Dropdown -->
-    <div class="mirror-container">
-      <div class="portfolio-dropdown">
-        <button class="portfolio-dropbtn"><i class="fas fa-briefcase"></i> Portfolio</button>
-        <div class="portfolio-dropdown-content">
-          <div class="portfolio-submenu">
-            <button class="portfolio-submenu-btn"><i class="fas fa-dumbbell"></i> Landing Pages for Fitness Coaches <i class="fas fa-caret-down"></i></button>
-            <div class="portfolio-submenu-content">
-              <a href="https://prityaa379.github.io/rahulfc/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 1</a>
-              <a href="https://prityaa379.github.io/rahulfc1/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 2</a>
-              <a href="https://prityaa379.github.io/rahulfc2/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 3</a>
-              <a href="https://prityaa379.github.io/rahulfc3/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 4</a>
-              <a href="https://prityaa379.github.io/rahulfc4/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 5</a>
-              <a href="https://prityaa379.github.io/rahulfc5/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 6</a>
-              <a href="https://prityaa379.github.io/rahulfc6/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 7</a>
-              <a href="https://prityaa379.github.io/rahulfc7/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 8</a>
-              <a href="https://prityaa379.github.io/rahulfc8/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 9</a>
-              <a href="https://prityaa379.github.io/rahulfc9/" target="_blank"><i class="fas fa-link"></i> Fitness Coach 10</a>
-            </div>
-          </div>
-          <a href="#"><i class="fas fa-laptop-code"></i> Web Development Projects</a>
-          <a href="#"><i class="fas fa-mobile-alt"></i> Mobile Apps</a>
-        </div>
-        <div class="mirror-reflection"></div>
-      </div>
-    </div>
+  <!-- Premium Ribbon with Marquee Text -->
+  <div class="premium-ribbon">
+    <div class="marquee" aria-live="off">do you wann learn everything i do follow digitalconfvision</div>
+  </div>
 
-    <!-- GitHub Dropdown -->
-    <div class="mirror-container">
-      <div class="github-dropdown">
-        <button class="github-dropbtn"><i class="fab fa-github"></i> GitHub</button>
-        <div class="github-dropdown-content">
-          <a href="https://github.com/PRITYAA379" target="_blank"><i class="fas fa-code-branch"></i> My Repositories</a>
-          <a href="https://github.com/PRITYAA379?tab=repositories" target="_blank"><i class="fas fa-box-open"></i> My Products</a>
-          <a href="https://github.com/sponsors/PRITYAA379" target="_blank"><i class="fas fa-heart"></i> Sponsor Me</a>
-          <a href="https://github.com/PRITYAA379?tab=subscriptions" target="_blank"><i class="fas fa-bell"></i> Subscribe</a>
-        </div>
-        <div class="mirror-reflection"></div>
-      </div>
-    </div>
-
-    <!-- Gumroad Dropdown Section -->
-    <div class="mirror-container">
-      <div class="github-dropdown">
-        <button class="github-dropbtn"><i class="fas fa-store"></i> Gumroad</button>
-        <div class="github-dropdown-content">
-          <div class="gumroad-submenu">
-            <button class="gumroad-submenu-btn"><i class="fas fa-star"></i> Subscriptions <i class="fas fa-caret-down"></i></button>
-            <div class="gumroad-submenu-content">
-              <a href="https://jagtappritam7.gumroad.com/l/npjvdt" target="_blank"><i class="fas fa-gem"></i> Gumroad Subscription</a>
-              <a href="https://gumroad.com/PRITYAA379/membership" target="_blank"><i class="fas fa-crown"></i> Membership</a>
-              <a href="https://gumroad.com/PRITYAA379/newsletter" target="_blank"><i class="fas fa-newspaper"></i> Newsletter</a>
-            </div>
-          </div>
-          <div class="gumroad-submenu">
-            <button class="gumroad-submenu-btn"><i class="fas fa-box-open"></i> Products <i class="fas fa-caret-down"></i></button>
-            <div class="gumroad-submenu-content">
-              <a href="https://jagtappritam7.gumroad.com/l/uplaw" target="_blank"><i class="fas fa-question-circle"></i> What is Gumroad?</a>
-              <a href="https://jagtappritam7.gumroad.com/l/qnsim" target="_blank"><i class="fas fa-link"></i> LINK IN BIO SAMPLES</a>
-              <a href="https://jagtappritam7.gumroad.com/l/qkevcg" target="_blank"><i class="fas fa-calendar-check"></i> Daily Productivity Planner</a>
-              <a href="https://jagtappritam7.gumroad.com/l/tdnocf" target="_blank"><i class="fas fa-chart-line"></i> Top 10 Digital Assets in India</a>
-              <a href="https://jagtappritam7.gumroad.com/l/pvoryz" target="_blank"><i class="fas fa-download"></i> Start Gumroad for Free</a>
-            </div>
-          </div>
-          <a href="https://gumroad.com/PRITYAA379" target="_blank"><i class="fas fa-store-alt"></i> Visit My Store</a>
-        </div>
-        <div class="mirror-reflection"></div>
-      </div>
-    </div>
-
-    <!-- SaaS Ideas Section -->
-    <div class="saas-section">
-      <h2 class="saas-title">SaaS Ideas for Quick Start</h2>
-      
-      <div class="saas-card">
-        <h3 class="saas-card-title">
-          <i class="fas fa-microphone-alt saas-card-icon"></i>
-          Podcast Hosting Platform
-        </h3>
-        <p class="saas-card-description">
-          A simple, affordable platform for creators to host, distribute, and monetize their podcasts with built-in analytics.
-        </p>
-        <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" class="saas-link" target="_blank">
-          <i class="fas fa-lightbulb"></i> Want to discuss this idea?
+  <!-- Hero Section -->
+  <header class="hero">
+    <img class="avatar" src="https://i.ibb.co/BKZv5FzD/IMG-20250613-062802-529.webp" alt="Pritam Jagtap, founder of DigitalConfVisions">
+    <h1>PRITYAA | Pritam Jagtap</h1>
+    <p class="lead">Full‑Stack Digital Marketer & Growth Strategist — Founder, DigitalConfVisions</p>
+    <p style="margin-top:8px">
+        <a href="mailto:jagtappritam73@gmail.com" style="color:var(--gold);text-decoration:none;font-weight:700" aria-label="Email Pritam Jagtap at jagtappritam73@gmail.com">
+            ✉️ jagtappritam73@gmail.com
         </a>
-      </div>
-      
-      <div class="saas-card">
-        <h3 class="saas-card-title">
-          <i class="fas fa-calendar-check saas-card-icon"></i>
-          Appointment Scheduling System
-        </h3>
-        <p class="saas-card-description">
-          A smart scheduling tool for service businesses with automated reminders, payment integration, and calendar sync.
-        </p>
-        <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" class="saas-link" target="_blank">
-          <i class="fas fa-lightbulb"></i> Let's build this together
-        </a>
-      </div>
-      
-      <div class="saas-card">
-        <h3 class="saas-card-title">
-          <i class="fas fa-chart-line saas-card-icon"></i>
-          Social Media Analytics Dashboard
-        </h3>
-        <p class="saas-card-description">
-          Comprehensive analytics for all social platforms in one place with actionable insights and competitor benchmarking.
-        </p>
-        <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" class="saas-link" target="_blank">
-          <i class="fas fa-lightbulb"></i> Connect to explore
-        </a>
-      </div>
-      
-      <div class="linkedin-connect">
-        Connect with me on <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" target="_blank">LinkedIn</a> to stay updated with more SaaS ideas and collaborations
-      </div>
-    </div>
+    </p>
+  </header>
 
-    <div class="mirror-container">
-      <a href="mailto:jagtappritam73@gmail.com" class="link"><i class="fas fa-envelope"></i> Email Me</a>
-      <div class="mirror-reflection"></div>
-    </div>
-
-    <div class="mirror-container">
-      <a href="tel:+919372035409" class="link"><i class="fas fa-phone"></i> Call Me</a>
-      <div class="mirror-reflection"></div>
-    </div>
-
-    <div class="mirror-container">
-      <a href="https://wa.me/919372035409?text=Hi%20Pritam%2C%20I%20saw%20your%204D%20Webpage%20and%20I'm%20interested%20in%20your%20services!" class="link" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
-      <div class="mirror-reflection"></div>
-    </div>
-
-    <div class="mirror-container">
-      <a href="https://prityaa379.github.io/theethicalglitchcontent/" class="link" target="_blank"><i class="fas fa-book"></i> Upcoming Books</a>
-      <div class="mirror-reflection"></div>
-    </div>
-
-    <!-- 3D Career Guide Button -->
-    <button class="career-button" onclick="window.open('https://calendly.com/jagtappritam73/book-your-slot', '_blank')">
-      <i class="fas fa-calendar-alt"></i> Schedule 15-Min Free Career Guide
-    </button>
+  <main class="wrap" role="main">
 
     <!-- Services Section -->
-    <div class="services-section">
-      <h2 class="services-title">My Services</h2>
-      <div class="services-container">
-        <!-- Digital Marketing Service -->
-        <div class="service-card">
-          <h3 class="service-title">
-            <i class="fas fa-bullhorn service-icon"></i>
-            Digital Marketing
-          </h3>
-          <p class="service-description">
-            Boost your online presence with comprehensive digital marketing strategies tailored to your business needs.
-          </p>
-          <ul class="service-features">
-            <li>Social Media Marketing</li>
-            <li>Search Engine Optimization (SEO)</li>
-            <li>Pay-Per-Click Advertising (PPC)</li>
-            <li>Content Marketing</li>
-            <li>Email Marketing Campaigns</li>
-          </ul>
-          <button class="service-button" onclick="window.open('https://calendly.com/jagtappritam73/book-your-slot', '_blank')">
-            Get Started
-          </button>
-        </div>
+    <section aria-labelledby="services-heading">
+      <h2 id="services-heading" style="text-align:center;color:var(--heading-color);">Digital Marketing — Request Service</h2>
+      <div class="grid">
 
-        <!-- Web Development Service -->
-        <div class="service-card">
-          <h3 class="service-title">
-            <i class="fas fa-code service-icon"></i>
-            Web Development
-          </h3>
-          <p class="service-description">
-            Custom, responsive websites that look great on any device and deliver exceptional user experiences.
-          </p>
-          <ul class="service-features">
-            <li>Responsive Web Design</li>
-            <li>Frontend & Backend Development</li>
-            <li>E-commerce Solutions</li>
-            <li>Website Maintenance</li>
-            <li>Performance Optimization</li>
+        <article class="card">
+          <h3>Answer Engine Optimization (AEO) & Voice Search</h3>
+          <ul>
+            <li>Optimize content for featured snippets, schema, and conversational queries.</li>
+            <li>Voice‑friendly pages and FAQ flows to capture voice assistant traffic.</li>
           </ul>
-          <button class="service-button" onclick="window.open('https://calendly.com/jagtappritam73/book-your-slot', '_blank')">
-            Get Started
-          </button>
-        </div>
+          <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I'm%20interested%20in%20AEO%20%26%20Voice%20Search.%0A1.%20Do%20I%20understand%20search%20intent%3F%0A2.%20Am%20I%20optimizing%20for%20voice%3F%0A3.%20Can%20my%20site%20answer%20instantly%3F" target="_blank" rel="noopener noreferrer" aria-label="Request Answer Engine Optimization and Voice Search service via WhatsApp">💬 Request AEO</a>
+        </article>
+
+        <article class="card">
+          <h3>Geo‑Targeting & Local Growth (GEO)</h3>
+          <ul>
+            <li>Hyper‑local campaigns, store-level creatives, and GEO‑segmented offers.</li>
+            <li>Local SEO, Google Business Profile optimization and PIN‑level targeting.</li>
+          </ul>
+          <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I'm%20interested%20in%20GEO%20Targeting.%0A1.%20Am%20I%20visible%20to%20local%20customers%3F%0A2.%20Do%20I%20use%20GBP%3F%0A3.%20Is%20my%20content%20localized%3F" target="_blank" rel="noopener noreferrer" aria-label="Request Geo-Targeting and Local Growth service via WhatsApp">📍 Request GEO</a>
+        </article>
+
+        <article class="card">
+          <h3>Conversational AI & WhatsApp Funnels</h3>
+          <ul>
+            <li>Chatbots, WhatsApp automation, and messenger flows that close deals.</li>
+            <li>AI agents for qualification, booking, and micro‑conversions.</li>
+          </ul>
+          <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20Let's%20build%20WhatsApp%20Funnels.%0A1.%20Do%20I%20automate%20follow-ups%3F%0A2.%20Are%20leads%20qualified%3F%0A3.%20Can%20we%20book%20calls%20automatically%3F" target="_blank" rel="noopener noreferrer" aria-label="Build WhatsApp Funnels service via WhatsApp">💬 Build Funnels</a>
+        </article>
+
+        <article class="card">
+          <h3>Creator Commerce & Influencer Partnerships</h3>
+          <ul>
+            <li>Performance-driven creator campaigns, affiliate funnels, and UGC libraries.</li>
+            <li>Micro‑influencer cohorts for niche credibility + scale.</li>
+          </ul>
+          <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I'm%20interested%20in%20Creator%20Commerce.%0A1.%20Do%20I%20use%20UGC%3F%0A2.%20Am%20I%20running%20strategic%20collabs%3F%0A3.%20Can%20we%20monetize%20creators%3F" target="_blank" rel="noopener noreferrer" aria-label="Request Creator Commerce and Influencer Partnerships service via WhatsApp">🤝 Request Creator</a>
+        </article>
+
+        <article class="card">
+          <h3>Data, Privacy‑First Analytics & CRO</h3>
+          <ul>
+            <li>First‑party data strategies, consented tracking, and event modelling.</li>
+            <li>Conversion rate optimisation — landing experiments and heatmaps.</li>
+          </ul>
+          <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I%20want%20a%20CRO%20audit.%0A1.%20Do%20I%20own%20my%20data%3F%0A2.%20Do%20I%20test%20regularly%3F%0A3.%20Do%20I%20use%20heatmaps%3F" target="_blank" rel="noopener noreferrer" aria-label="Request Data, Privacy-First Analytics and CRO audit via WhatsApp">📊 Request CRO</a>
+        </article>
+
+        <article class="card">
+          <h3>Programmatic & Paid Social (Meta / X / Instagram / Snapchat)</h3>
+          <ul>
+            <li>Audience modelling, lookalikes, interest layering, and budget scaling.</li>
+            <li>Programmatic GEO buys for efficient local reach.</li>
+          </ul>
+          <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20Let's%20scale%20Paid%20Social.%0A1.%20Am%20I%20tracking%20ROAS%3F%0A2.%20Is%20budget%20allocated%3F%0A3.%20Do%20I%20A-B%20test%3F" target="_blank" rel="noopener noreferrer" aria-label="Request Programmatic and Paid Social service via WhatsApp">🚀 Request Paid Social</a>
+        </article>
+
+        <article class="card">
+          <h3>SEO & Visual Search</h3>
+          <ul>
+            <li>Technical SEO, content clusters, and image/visual-search optimisation.</li>
+            <li>Structured data and long‑form authority content for evergreen traffic.</li>
+          </ul>
+          <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20Let's%20audit%20SEO.%0A1.%20Are%20pages%20indexed%3F%0A2.%20Do%20I%20optimize%20images%3F%0A3.%20Do%20I%20have%20content%20clusters%3F" target="_blank" rel="noopener noreferrer" aria-label="Request SEO and Visual Search audit via WhatsApp">🔍 Request SEO</a>
+        </article>
+
+        <article class="card">
+          <h3>Email Automation & Lifecycle Marketing</h3>
+          <ul>
+            <li>Onboarding flows, cart recovery, VIP journeys, and retention loops.</li>
+            <li>SMS + Email mix tuned for Indian audiences and payment behaviours.</li>
+          </ul>
+          <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I%20need%20email%20automation.%0A1.%20Do%20I%20nurture%20leads%3F%0A2.%20Do%20I%20segment%3F%0A3.%20Am%20I%20recovering%20carts%3F" target="_blank" rel="noopener noreferrer" aria-label="Request Email Automation and Lifecycle Marketing service via WhatsApp">📧 Request Email</a>
+        </article>
+
+        <article class="card">
+          <h3>Live Commerce & Community Growth</h3>
+          <ul>
+            <li>Shop‑live events, cohort launches, and community‑first retention plays.</li>
+            <li>Monetize communities with funnels designed for trust and conversion.</li>
+          </ul>
+          <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I%20want%20Live%20Commerce.%0A1.%20Do%20I%20have%20an%20engaged%20community%3F%0A2.%20Do%20I%20run%20live%20sessions%3F%0A3.%20Is%20community%20monetized%3F" target="_blank" rel="noopener noreferrer" aria-label="Request Live Commerce and Community Growth service via WhatsApp">🎥 Request Community</a>
+        </article>
+
       </div>
-    </div>
+    </section>
 
-    <div class="social-links">
-      <a href="https://www.instagram.com/" class="social-link" style="--i: 0"><i class="fab fa-instagram"></i></a>
-      <a href="https://x.com/Prityaa379?t=1wZ0UV_K_9DzXa_-y3_qSw&s=09" class="social-link" style="--i: 1"><i class="fab fa-x-twitter"></i></a>
-      <a href="https://www.linkedin.com/in/pritam-jagtap-00010b216" class="social-link" style="--i: 2"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/PRITYAA379" class="social-link" style="--i: 3"><i class="fab fa-github"></i></a>
-    </div>
-  </div>
+    <!-- Request quick CTA -->
+    <section style="text-align:center;margin-top:28px">
+      <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I'm%20interested%20in%20performance%20marketing.%0A1.%20Do%20I%20understand%20my%20customer's%20journey%3F%0A2.%20Am%20I%20tracking%20profit-driving%20metrics%3F%0A3.%20Is%20my%20system%20ready%20to%20scale%3F" target="_blank" rel="noopener noreferrer" aria-label="Quick Performance Check via WhatsApp">💬 Quick Performance Check</a>
+    </section>
 
-  <a href="https://wa.me/919372035409?text=Hi%20Pritam%2C%20I%20saw%20your%204D%20Webpage%20and%20I'm%20interested%20in%20your%20services!" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-  </a>
+    <!-- QR / Instagram Section -->
+    <section aria-labelledby="instagram-heading" style="margin-top:36px;text-align:center">
+      <h2 id="instagram-heading" style="color:var(--heading-color)">Follow DigitalConfVisions on Instagram</h2>
+      <div class="qr">
+        <img src="https://i.ibb.co/yB00SvFG/Whats-App-Image-2025-10-16-at-19-46-58-43d14160.jpg" alt="QR code to DigitalConfVisions Instagram profile">
+        <a class="btn" href="https://www.instagram.com/digitalconfvisions?igsh=MXF6Y2xxeDluMm1wZA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Visit DigitalConfVisions Instagram profile">📸 Visit @digitalconfvisions</a>
+      </div>
+    </section>
 
-  <!-- Thank You Overlay -->
-  <div class="thank-you-overlay" id="thankYouOverlay">
-    <div>🌹 Thank You for Reaching Out 🌹</div>
-    <div id="roses"></div>
-  </div>
+    <!-- WhatsApp group invite section -->
+    <section class="group" aria-labelledby="whatsapp-group-heading">
+      <h2 id="whatsapp-group-heading" style="color:var(--heading-color)">Join Our Deep Learners WhatsApp Group</h2>
+      <p>Get premium insights, growth hacks, and community support directly from DigitalConfVisions. Free for Indian entrepreneurs.</p>
+      <a class="btn" href="https://chat.whatsapp.com/B9gRY5oP11VG7jCyOjgsHp" target="_blank" rel="noopener noreferrer" aria-label="Join the 'I WILL NOT ONLY teach you how to sell digital products BUT ALSO GIVE YOU UNLIMITED SUPPORT' WhatsApp group">🔥 Join 'I WILL NOT ONLY teach you how to sell digital products BUT ALSO GIVE YOU UNLIMITED SUPPORT'</a>
+      <p style="font-size:13px;color:var(--text-muted);">Free access to premium-quality learning data — join and start scaling smarter.</p>
+    </section>
+
+  </main>
+
+  <!-- India map (decorative element) -->
+  <div id="india-map" aria-hidden="true"></div>
+
+  <!-- White dust + depth threads canvas -->
+  <canvas id="dustCanvas" aria-hidden="true"></canvas>
 
   <script>
-    const overlay = document.getElementById("thankYouOverlay");
-    const roseContainer = document.getElementById("roses");
-    const particlesContainer = document.getElementById("particles");
-    // Create colorful particles  
-    const colors = ['#ff0000', '#ff7700', '#ffdd00', '#00ff00', '#0088ff', '#0000ff', '#9900ff', '#ff00ff'];
-    for (let i = 0; i < 50; i++) {
-      let particle = document.createElement("div");
-      particle.className = "particle";
-      particle.style.left = Math.random() * 100 + "vw";
-      particle.style.top = Math.random() * 100 + "vh";
-      particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      particle.style.animationDuration = (10 + Math.random() * 10) + "s";
-      particle.style.animationDelay = Math.random() * 5 + "s";
-      particle.style.width = (3 + Math.random() * 5) + "px";
-      particle.style.height = particle.style.width;
-      particlesContainer.appendChild(particle);
+    /* ---------- dust + depth-thread canvas ---------- */
+    // Get canvas element and its 2D rendering context
+    const cvs = document.getElementById('dustCanvas');
+    const g = cvs.getContext('2d');
+    let parts = []; // Array to hold particle objects
+    const N = 140; // Number of particles
+
+    // Function to resize canvas to fit window dimensions
+    function fit() {
+      cvs.width = innerWidth;
+      cvs.height = innerHeight;
     }
-    // Create roses for thank you overlay  
-    function createRoses() {
-      const emojis = ['🌹', '🌸', '🌺', '🌻', '🌷', '💐', '🏵️'];
-      for (let i = 0; i < 20; i++) {
-        let rose = document.createElement("div");
-        rose.className = "rose";
-        rose.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-        rose.style.left = Math.random() * 100 + "vw";
-        rose.style.animationDuration = (5 + Math.random() * 10) + "s";
-        rose.style.animationDelay = Math.random() * 5 + "s";
-        rose.style.fontSize = (20 + Math.random() * 30) + "px";
-        roseContainer.appendChild(rose);
+    // Add event listener for window resize
+    addEventListener('resize', fit);
+    // Initial call to fit canvas
+    fit();
+
+    // Function to reset particle positions and properties
+    function reset() {
+      parts = [];
+      for (let i = 0; i < N; i++) {
+        const z = Math.random(); // Depth factor for particles
+        parts.push({
+          x: Math.random() * cvs.width,
+          y: Math.random() * cvs.height,
+          z: z,
+          size: (0.6 + z * 1.8) * (Math.random() * 1.2 + 0.5), // Size based on depth and randomness
+          vx: (Math.random() - 0.5) * (0.3 + z * 0.8), // Horizontal velocity based on depth
+          vy: -(0.2 + z * 0.9) * (0.2 + Math.random() * 0.8), // Vertical velocity (upwards) based on depth
+          alpha: 0.25 + z * 0.7 // Opacity based on depth
+        });
       }
     }
-    // Show thank you overlay when links are clicked  
-    document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"], .link, .social-link').forEach(link => {
-      link.addEventListener('click', function(e) {
-        if (this.getAttribute('target') !== '_blank') {
-          e.preventDefault();
-          createRoses();
-          overlay.style.display = 'flex';
-          setTimeout(() => {
-            overlay.style.display = 'none';
-            roseContainer.innerHTML = '';
-            window.location.href = this.href;
-          }, 3000);
+    reset(); // Initialize particles
+
+    // Main render loop for animation
+    let animationFrameId; // To store the requestAnimationFrame ID
+
+    function render() {
+      g.clearRect(0, 0, cvs.width, cvs.height);
+
+      // Draw threads between particles (if close and moving upwards)
+      for (let i = 0; i < parts.length; i++) {
+        const a = parts[i];
+        for (let j = i + 1; j < parts.length; j++) {
+          const b = parts[j];
+          const dy = b.y - a.y;
+          const dx = b.x - a.x;
+          const d = Math.hypot(dx, dy); // Distance between particles
+
+          // Only draw threads if 'b' is above 'a' and they are close
+          if (dy < 0 && d < 160) {
+            const depth = (a.z + b.z) / 2; // Average depth for thread
+            const t = (1 - d / 160) * 0.12 * depth; // Transparency based on distance and depth
+            if (t > 0.01) {
+              g.beginPath();
+              g.moveTo(a.x, a.y);
+              const cx = a.x + dx * 0.4;
+              const cy = a.y + dy * 0.2 - (depth * 12); // Quadratic curve control point
+              g.quadraticCurveTo(cx, cy, b.x, b.y);
+              g.strokeStyle = `rgba(255,255,255,${t})`;
+              g.lineWidth = Math.max(0.3, depth * 1.6);
+              g.lineCap = 'round';
+              g.stroke();
+            }
+          }
         }
-      });
+      }
+
+      // Draw particles
+      for (const p of parts) {
+        g.beginPath();
+        g.globalAlpha = p.alpha;
+        g.fillStyle = 'rgba(255,255,255,1)';
+        g.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        g.fill();
+      }
+      g.globalAlpha = 1; // Reset globalAlpha for other canvas operations
+
+      // Move particles and reset if they go off-screen
+      for (const p of parts) {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Wrap around horizontally
+        if (p.x < -20) p.x = cvs.width + 20;
+        if (p.x > cvs.width + 20) p.x = -20;
+
+        // Reset if goes off top of screen
+        if (p.y < -20) {
+          p.y = cvs.height + Math.random() * 40; // Reappear at bottom with random y-offset
+          p.x = Math.random() * cvs.width; // Random x position
+          p.vx = (Math.random() - 0.5) * (0.3 + p.z * 0.8);
+          p.vy = -(0.2 + p.z * 0.9) * (0.2 + Math.random() * 0.8);
+        }
+      }
+      animationFrameId = requestAnimationFrame(render); // Request next frame
+    }
+
+    render(); // Start the animation
+
+    // Pause animation when tab is hidden to save resources
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        cancelAnimationFrame(animationFrameId); // Cancel ongoing animation frame
+      } else {
+        render(); // Restart animation when tab becomes visible
+      }
     });
   </script>
 </body>
-
 </html>
