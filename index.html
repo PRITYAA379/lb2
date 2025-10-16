@@ -24,6 +24,14 @@
       --qr-shadow: rgba(255, 255, 255, 0.06);
       --body-gradient-start: var(--bg-1);
       --body-gradient-end: var(--bg-2);
+      --text-bg-highlight: rgba(255, 255, 255, 0.08); /* Added for text backgrounds */
+      /* --- Added 6 Colors for general use --- */
+      --color-one: #3498db;   /* Vibrant Blue */
+      --color-two: #2ecc71;   /* Emerald Green */
+      --color-three: #e74c3c; /* Alizarin Red */
+      --color-four: #9b59b6;  /* Amethyst Purple */
+      --color-five: #e67e22;  /* Carrot Orange */
+      --color-six: #1abc9c;   /* Turquoise Teal */
     }
 
     /* Light Mode adjustments for prefers-color-scheme: light */
@@ -42,6 +50,14 @@
         --qr-shadow: rgba(0, 0, 0, 0.1);
         --body-gradient-start: var(--bg-2); /* Flipped gradient for light mode */
         --body-gradient-end: var(--bg-1);
+        --text-bg-highlight: rgba(0, 0, 0, 0.05); /* Light mode: subtle dark background */
+        /* --- Added 6 Colors for general use (Light Mode) --- */
+        --color-one: #2980b9;
+        --color-two: #27ae60;
+        --color-three: #c0392b;
+        --color-four: #8e44ad;
+        --color-five: #d35400;
+        --color-six: #16a085;
       }
       .premium-ribbon .marquee {
           color: var(--ribbon-text); /* Ensure ribbon text is readable */
@@ -101,11 +117,33 @@
       color: var(--heading-color); /* Uses variable for dark/light mode */
       margin: 12px 0 6px;
       font-size: 28px; /* Slightly larger for impact */
+      /* Added background for text */
+      background-color: var(--text-bg-highlight);
+      padding: 8px 15px;
+      border-radius: 10px;
+      display: inline-block; /* allows it to wrap content and center with parent's text-align */
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     p.lead {
       margin: 0;
       color: var(--text-primary); /* Uses variable for dark/light mode */
       font-size: 1.1em;
+      /* Added background for text */
+      background-color: var(--text-bg-highlight);
+      padding: 6px 12px;
+      border-radius: 8px;
+      display: inline-block;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-top: 6px; /* give some space after h1 */
+    }
+    .hero p[style*="margin-top:8px"] { /* Targeting the mailto link's parent p */
+        /* Added background for text */
+        background-color: var(--text-bg-highlight);
+        padding: 6px 12px;
+        border-radius: 8px;
+        display: inline-block;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        margin-top: 8px; /* keep original margin, now with background */
     }
 
     /* Marquee Ribbon */
@@ -143,6 +181,16 @@
       position: relative;
       z-index: 10000;
     }
+    /* Heading within wrap */
+    .wrap h2#services-heading {
+        background-color: var(--text-bg-highlight);
+        padding: 8px 15px;
+        border-radius: 10px;
+        display: inline-block;
+        margin: 0 auto 20px; /* Adjust margin to center and add space below */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        text-align: center; /* Original was centered, this keeps it. */
+    }
 
     /* Grid Layout for Cards */
     .grid {
@@ -167,19 +215,40 @@
       color: var(--heading-color);
       margin: 0 0 10px; /* Margin adjusted */
       font-size: 1.25em;
+      /* Added background for card headings */
+      background-color: var(--text-bg-highlight);
+      padding: 4px 8px;
+      border-radius: 6px;
+      display: inline-block;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     }
     .card ul {
       padding: 0;
       margin: 0 0 15px 0; /* Margin adjusted */
-      list-style: none;
+      list-style: none; /* Remove default list style */
       color: var(--text-primary);
       font-size: 15px; /* Slightly larger font */
       flex-grow: 1; /* Allow ul to take available space */
     }
+    .card ul li {
+        background-color: var(--text-bg-highlight); /* Add background to list items */
+        padding: 6px 12px 6px 30px; /* Adjusted padding for bullet */
+        border-radius: 8px;
+        margin-bottom: 8px; /* Space between list items */
+        position: relative;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .card ul li:last-child {
+        margin-bottom: 0; /* No margin for last item */
+    }
     .card ul li::before {
       content: '✔ ';
       color: var(--gold);
-      margin-right: 5px;
+      margin-right: 5px; /* Keep original margin for content */
+      position: absolute; /* Position bullet */
+      left: 10px; /* Position bullet */
+      top: 50%;
+      transform: translateY(-50%);
     }
     .btn {
       display: inline-block;
@@ -224,26 +293,6 @@
       margin-bottom: 8px;
     }
 
-    /* QR Section */
-    .qr {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px; /* Gap adjusted */
-      margin-top: 14px;
-    }
-    .qr img {
-      width: 240px; /* Slightly larger QR */
-      max-width: 80%; /* Ensure responsiveness */
-      border-radius: 12px;
-      box-shadow: 0 0 30px var(--qr-shadow);
-      animation: blink 1.6s infinite;
-    }
-    @keyframes blink {
-      0%, 100% { filter: brightness(1); }
-      50% { filter: brightness(0.6); }
-    }
-
     /* WhatsApp Group Section */
     .group {
       margin: 40px auto; /* Margin adjusted */
@@ -253,16 +302,34 @@
     .group h2 {
         font-size: 2em;
         margin-bottom: 15px;
+        /* Added background for h2 in group section */
+        background-color: var(--text-bg-highlight);
+        padding: 8px 15px;
+        border-radius: 10px;
+        display: inline-block;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     .group p {
       max-width: 760px;
       margin: 8px auto 20px; /* Margin adjusted */
       font-size: 1.1em;
+      /* Added background for paragraphs in group section */
+      background-color: var(--text-bg-highlight);
+      padding: 6px 12px;
+      border-radius: 8px;
+      display: inline-block;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     .group p:last-of-type { /* Small text at the bottom */
         font-size: 0.9em;
         color: var(--text-muted);
         margin-top: 15px;
+        /* Also add background to this subtle text */
+        background-color: var(--text-bg-highlight);
+        padding: 4px 10px;
+        border-radius: 6px;
+        display: inline-block;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
 
 
@@ -312,6 +379,10 @@
         }
         .hero h1 {
             font-size: 24px;
+            padding: 6px 12px; /* Adjusted padding */
+        }
+        p.lead, .hero p[style*="margin-top:8px"] {
+            padding: 4px 10px; /* Adjusted padding */
         }
         .grid {
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -319,6 +390,15 @@
         }
         .card {
             padding: 18px;
+        }
+        .card h3 {
+            padding: 3px 6px; /* Adjusted padding */
+        }
+        .card ul li {
+            padding: 5px 10px 5px 25px; /* Adjusted padding */
+        }
+        .card ul li::before {
+            left: 8px; /* Adjusted position */
         }
         #sun {
             width: 70px;
@@ -334,6 +414,16 @@
         }
         .group h2 {
             font-size: 1.8em;
+            padding: 6px 12px; /* Adjusted padding */
+        }
+        .group p {
+            padding: 4px 10px; /* Adjusted padding */
+        }
+        .group p:last-of-type {
+            padding: 3px 8px; /* Adjusted padding */
+        }
+        .wrap h2#services-heading {
+            padding: 6px 12px; /* Adjusted padding */
         }
     }
     @media (max-width: 480px) {
@@ -345,9 +435,14 @@
         }
         .hero h1 {
             font-size: 22px;
+            padding: 5px 10px;
         }
         p.lead {
             font-size: 1em;
+            padding: 3px 8px;
+        }
+        .hero p[style*="margin-top:8px"] {
+            padding: 3px 8px;
         }
         .grid {
             grid-template-columns: 1fr; /* Single column on very small screens */
@@ -358,9 +453,17 @@
         }
         .card h3 {
             font-size: 1.1em;
+            padding: 2px 5px;
         }
         .card ul {
             font-size: 0.95em;
+        }
+        .card ul li {
+            padding: 4px 8px 4px 20px; /* Adjusted padding for bullet */
+            border-radius: 6px;
+        }
+        .card ul li::before {
+            left: 6px;
         }
         .btn {
             padding: 10px 15px;
@@ -377,14 +480,19 @@
         #sun, #india-map {
             display: none; /* Hide decorative elements on very small screens */
         }
-        .qr img {
-            width: 180px;
-        }
         .group h2 {
             font-size: 1.5em;
+            padding: 5px 10px;
         }
         .group p {
             font-size: 0.95em;
+            padding: 3px 8px;
+        }
+        .group p:last-of-type {
+            padding: 2px 6px;
+        }
+        .wrap h2#services-heading {
+            padding: 5px 10px;
         }
     }
   </style>
@@ -505,15 +613,6 @@
     <!-- Request quick CTA -->
     <section style="text-align:center;margin-top:28px">
       <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I'm%20interested%20in%20performance%20marketing.%0A1.%20Do%20I%20understand%20my%20customer's%20journey%3F%0A2.%20Am%20I%20tracking%20profit-driving%20metrics%3F%0A3.%20Is%20my%20system%20ready%20to%20scale%3F" target="_blank" rel="noopener noreferrer" aria-label="Quick Performance Check via WhatsApp">💬 Quick Performance Check</a>
-    </section>
-
-    <!-- QR / Instagram Section -->
-    <section aria-labelledby="instagram-heading" style="margin-top:36px;text-align:center">
-      <h2 id="instagram-heading" style="color:var(--heading-color)">Follow DigitalConfVisions on Instagram</h2>
-      <div class="qr">
-        <img src="https://i.ibb.co/yB00SvFG/Whats-App-Image-2025-10-16-at-19-46-58-43d14160.jpg" alt="QR code to DigitalConfVisions Instagram profile">
-        <a class="btn" href="https://www.instagram.com/digitalconfvisions?igsh=MXF6Y2xxeDluMm1wZA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Visit DigitalConfVisions Instagram profile">📸 Visit @digitalconfvisions</a>
-      </div>
     </section>
 
     <!-- WhatsApp group invite section -->
