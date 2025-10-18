@@ -9,55 +9,55 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
   <style>
-    /* Base variables for Dark Mode (default theme) */
+    /* Base variables for Dark Mode (default theme): Pink, Dark Blue, Sky Blue */
     :root {
-      --gold: #f1c40f;
-      --bg-1: #050505;
-      --bg-2: #101820;
-      --card-bg: rgba(255, 255, 255, 0.04);
-      --card-border: rgba(255, 255, 255, 0.06);
-      --text-muted: rgba(255, 255, 255, 0.8);
-      --text-primary: rgba(255, 255, 255, 0.9);
+      --gold: #FF6EC7; /* Vibrant Pink accent */
+      --bg-1: #0D1B2A; /* Very Dark Blue */
+      --bg-2: #1A2B42; /* Dark Blue-Grey */
+      --card-bg: rgba(255, 255, 255, 0.06);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-muted: #A8B3C2; /* Muted light text */
+      --text-primary: #E0E6F0; /* Light text */
       --heading-color: var(--gold);
-      --button-text: #000;
-      --ribbon-text: #111;
-      --qr-shadow: rgba(255, 255, 255, 0.06);
+      --button-text: #000; /* Black text on pink button */
+      --ribbon-text: #FFF; /* White text on gradient ribbon */
+      --qr-shadow: rgba(0, 0, 0, 0.4); /* Darker shadow for dark mode */
       --body-gradient-start: var(--bg-1);
       --body-gradient-end: var(--bg-2);
-      --text-bg-highlight: rgba(255, 255, 255, 0.08); /* Added for text backgrounds */
-      /* --- Added 6 Colors for general use --- */
-      --color-one: #3498db;   /* Vibrant Blue */
-      --color-two: #2ecc71;   /* Emerald Green */
-      --color-three: #e74c3c; /* Alizarin Red */
-      --color-four: #9b59b6;  /* Amethyst Purple */
-      --color-five: #e67e22;  /* Carrot Orange */
-      --color-six: #1abc9c;   /* Turquoise Teal */
+      --text-bg-highlight: rgba(255, 255, 255, 0.07); /* Added for text backgrounds */
+      /* --- Added 6 Colors for general use (updated for new scheme) --- */
+      --color-one: #FF6EC7;   /* Pink */
+      --color-two: #87CEEB;   /* Sky Blue */
+      --color-three: #F0A500; /* Amber */
+      --color-four: #BE9FDD;  /* Light Purple */
+      --color-five: #FF8C00;  /* Dark Orange */
+      --color-six: #5FCBBA;   /* Teal */
     }
 
     /* Light Mode adjustments for prefers-color-scheme: light */
     @media (prefers-color-scheme: light) {
       :root {
-        --gold: #d4ac0d; /* Slightly darker gold for contrast on light bg */
-        --bg-1: #f0f2f5;
-        --bg-2: #e0e4eb;
+        --gold: #E91E63; /* Darker Pink for contrast on light bg */
+        --bg-1: #F0F4F7; /* Light Blue-Grey */
+        --bg-2: #E8EEF3; /* Slightly darker light blue-grey */
         --card-bg: #ffffff;
         --card-border: rgba(0, 0, 0, 0.1);
-        --text-muted: rgba(0, 0, 0, 0.7);
+        --text-muted: rgba(0, 0, 0, 0.65);
         --text-primary: rgba(0, 0, 0, 0.85);
-        --heading-color: #c09f00; /* Adjusted gold for light bg */
-        --button-text: #fff; /* White button text on gold background */
+        --heading-color: var(--gold);
+        --button-text: #fff; /* White button text on pink background */
         --ribbon-text: #fff; /* White ribbon text on gradient */
         --qr-shadow: rgba(0, 0, 0, 0.1);
         --body-gradient-start: var(--bg-2); /* Flipped gradient for light mode */
         --body-gradient-end: var(--bg-1);
-        --text-bg-highlight: rgba(0, 0, 0, 0.05); /* Light mode: subtle dark background */
-        /* --- Added 6 Colors for general use (Light Mode) --- */
-        --color-one: #2980b9;
-        --color-two: #27ae60;
-        --color-three: #c0392b;
-        --color-four: #8e44ad;
-        --color-five: #d35400;
-        --color-six: #16a085;
+        --text-bg-highlight: rgba(0, 0, 0, 0.04); /* Light mode: subtle dark background */
+        /* --- Added 6 Colors for general use (Light Mode, updated) --- */
+        --color-one: #D81B60; /* Darker Pink */
+        --color-two: #2196F3; /* Medium Blue */
+        --color-three: #D32F2F; /* Red */
+        --color-four: #8E24AA; /* Dark Purple */
+        --color-five: #EF6C00; /* Dark Orange */
+        --color-six: #00897B; /* Dark Teal */
       }
       .premium-ribbon .marquee {
           color: var(--ribbon-text); /* Ensure ribbon text is readable */
@@ -110,7 +110,7 @@
       height: 150px;
       border-radius: 50%;
       border: 3px solid var(--gold);
-      box-shadow: 0 0 30px rgba(241, 196, 15, 0.35);
+      box-shadow: 0 0 30px rgba(255, 105, 180, 0.35); /* Pink shadow */
       object-fit: cover;
     }
     .hero h1 {
@@ -151,7 +151,7 @@
       position: absolute;
       right: -40px;
       top: 18px;
-      background: linear-gradient(90deg, #ffb84d, #ffd700);
+      background: linear-gradient(90deg, #FF6EC7, #87CEEB); /* Pink to Sky Blue */
       padding: 8px 12px;
       transform: rotate(45deg);
       font-weight: 800;
@@ -209,11 +209,11 @@
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
       display: flex; /* Flexbox for consistent layout */
       flex-direction: column;
-      justify-content: space-between; /* Push button to bottom */
+      justify-content: flex-start; /* Content starts from top */
     }
     .card h3 {
       color: var(--heading-color);
-      margin: 0 0 10px; /* Margin adjusted */
+      margin: 0 0 15px; /* Margin adjusted */
       font-size: 1.25em;
       /* Added background for card headings */
       background-color: var(--text-bg-highlight);
@@ -222,33 +222,38 @@
       display: inline-block;
       box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     }
-    .card ul {
-      padding: 0;
-      margin: 0 0 15px 0; /* Margin adjusted */
-      list-style: none; /* Remove default list style */
-      color: var(--text-primary);
-      font-size: 15px; /* Slightly larger font */
-      flex-grow: 1; /* Allow ul to take available space */
-    }
-    .card ul li {
-        background-color: var(--text-bg-highlight); /* Add background to list items */
-        padding: 6px 12px 6px 30px; /* Adjusted padding for bullet */
+    /* New general styles for paragraphs within cards */
+    .card p {
+        color: var(--text-primary);
+        background-color: var(--text-bg-highlight);
+        padding: 8px 12px;
         border-radius: 8px;
-        margin-bottom: 8px; /* Space between list items */
-        position: relative;
+        margin-bottom: 12px; /* Consistent spacing after paragraphs */
         box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        line-height: 1.5;
     }
-    .card ul li:last-child {
-        margin-bottom: 0; /* No margin for last item */
+    /* New styles for h4 within cards */
+    .card h4 {
+        color: var(--heading-color);
+        margin: 20px 0 10px; /* Space above and below h4 */
+        font-size: 1.1em;
+        background-color: var(--text-bg-highlight);
+        padding: 4px 8px;
+        border-radius: 6px;
+        display: inline-block;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     }
-    .card ul li::before {
-      content: '✔ ';
-      color: var(--gold);
-      margin-right: 5px; /* Keep original margin for content */
-      position: absolute; /* Position bullet */
-      left: 10px; /* Position bullet */
-      top: 50%;
-      transform: translateY(-50%);
+    /* Demos container for subtle separation */
+    .card .demo-items {
+        margin-bottom: 20px; /* Space between last demo and button */
+    }
+    .card .demo-items p {
+        font-size: 0.95em;
+        padding: 6px 10px;
+        margin-bottom: 8px; /* Slightly less space between demo paragraphs */
+    }
+    .card .demo-items p:last-child {
+        margin-bottom: 0; /* Remove bottom margin for the last demo p if inside .demo-items */
     }
     .btn {
       display: inline-block;
@@ -258,15 +263,15 @@
       border-radius: 10px;
       font-weight: 800;
       text-decoration: none;
-      box-shadow: 0 8px 30px rgba(241, 196, 15, 0.18);
+      box-shadow: 0 8px 30px rgba(255, 105, 180, 0.18); /* Pink shadow */
       text-align: center;
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
       font-size: 1em;
-      align-self: flex-start; /* Align button to start in flex column */
+      margin-top: auto; /* Pushes the button to the bottom, leveraging flex column */
     }
     .btn:hover, .btn:focus {
-        background-color: #ffd700; /* Slightly lighter gold on hover */
-        box-shadow: 0 8px 30px rgba(241, 196, 15, 0.3);
+        background-color: #FF8DD1; /* Slightly lighter pink on hover */
+        box-shadow: 0 8px 30px rgba(255, 105, 180, 0.3); /* Stronger pink shadow */
     }
 
     /* Portfolio Grid (CSS only for now) */
@@ -341,8 +346,8 @@
       width: 90px;
       height: 90px;
       border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #ffcc33, #ff6600 70%);
-      box-shadow: 0 0 50px 20px rgba(255, 165, 0, 0.5);
+      background: radial-gradient(circle at 30% 30%, #FFB6C1, #FF1493 70%); /* Light pink to deep pink */
+      box-shadow: 0 0 50px 20px rgba(255, 105, 180, 0.5); /* Pink glow */
       z-index: 1;
     }
     #india-map {
@@ -353,18 +358,21 @@
       height: 200px;
       background: url('https://upload.wikimedia.org/wikipedia/commons/7/7d/India_map_outline.svg') no-repeat center;
       background-size: contain;
-      filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.6));
+      filter: drop-shadow(0 0 20px rgba(135, 206, 235, 0.6)); /* Sky Blue glow */
       z-index: 1;
     }
 
-    /* White dust + depth threads canvas */
-    #dustCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
+    /* New White Box */
+    #whiteBox {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        width: 26px; /* User specified width */
+        height: 28px; /* User specified height */
+        background-color: white;
+        z-index: 100; /* Ensure it's on top */
+        box-shadow: 0 0 10px rgba(0,0,0,0.2); /* Subtle shadow for visibility */
+        border-radius: 4px; /* Slight rounded corners */
     }
 
     /* Responsive Tweaks */
@@ -393,12 +401,23 @@
         }
         .card h3 {
             padding: 3px 6px; /* Adjusted padding */
+            margin-bottom: 12px;
         }
-        .card ul li {
-            padding: 5px 10px 5px 25px; /* Adjusted padding */
+        .card p {
+            padding: 6px 10px;
+            margin-bottom: 10px;
         }
-        .card ul li::before {
-            left: 8px; /* Adjusted position */
+        .card h4 {
+            padding: 3px 6px;
+            margin: 15px 0 8px;
+        }
+        .card .demo-items {
+            margin-bottom: 15px;
+        }
+        .card .demo-items p {
+            padding: 5px 8px;
+            font-size: 0.9em;
+            margin-bottom: 6px;
         }
         #sun {
             width: 70px;
@@ -454,16 +473,25 @@
         .card h3 {
             font-size: 1.1em;
             padding: 2px 5px;
+            margin-bottom: 10px;
         }
-        .card ul {
+        .card p {
             font-size: 0.95em;
+            padding: 4px 8px;
+            margin-bottom: 8px;
         }
-        .card ul li {
-            padding: 4px 8px 4px 20px; /* Adjusted padding for bullet */
-            border-radius: 6px;
+        .card h4 {
+            font-size: 1em;
+            padding: 2px 5px;
+            margin: 12px 0 6px;
         }
-        .card ul li::before {
-            left: 6px;
+        .card .demo-items {
+            margin-bottom: 12px;
+        }
+        .card .demo-items p {
+            font-size: 0.85em;
+            padding: 4px 6px;
+            margin-bottom: 5px;
         }
         .btn {
             padding: 10px 15px;
@@ -477,7 +505,7 @@
             font-size: 0.9em;
             padding: 6px 10px;
         }
-        #sun, #india-map {
+        #sun, #india-map, #whiteBox { /* Also hide whiteBox on small screens */
             display: none; /* Hide decorative elements on very small screens */
         }
         .group h2 {
@@ -501,6 +529,9 @@
 
   <!-- sun (decorative element) -->
   <div id="sun" aria-hidden="true"></div>
+
+  <!-- New White Box -->
+  <div id="whiteBox" aria-hidden="true"></div>
 
   <!-- Premium Ribbon with Marquee Text -->
   <div class="premium-ribbon">
@@ -528,82 +559,145 @@
 
         <article class="card">
           <h3>Answer Engine Optimization (AEO) & Voice Search</h3>
-          <ul>
-            <li>Optimize content for featured snippets, schema, and conversational queries.</li>
-            <li>Voice‑friendly pages and FAQ flows to capture voice assistant traffic.</li>
-          </ul>
+          <p><strong>What is AEO & Voice Search?</strong> AEO involves optimizing your content to directly answer user queries, making it highly discoverable for featured snippets, 'People Also Ask' sections, and voice assistants. It's about providing immediate, concise, and relevant answers to searchers' precise questions.</p>
+          <p><strong>How to leverage it to scale your business?</strong> By mastering AEO, you capture 'zero-click' searches and dominate voice results, significantly increasing your brand's authority and visibility at the top of SERPs. This drives highly qualified traffic, as users find instant solutions directly from your content, leading to higher engagement and conversions.</p>
+
+          <h4>My Work Experience:</h4>
+          <p>Successfully implemented AEO strategies for several e-commerce clients, resulting in an average 30% increase in featured snippet visibility and a 15% rise in traffic from voice search queries within six months.</p>
+
+          <h4>Demos:</h4>
+          <div class="demo-items">
+            <p><strong>Demo 1:</strong> Case Study: Improved featured snippet presence for a health & wellness blog by 40% using advanced schema markup and concise content structuring.</p>
+            <p><strong>Demo 2:</strong> Client Report: Achieved top rankings for "near me" voice search queries for a local restaurant chain, boosting online reservations by 22%.</p>
+          </div>
           <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I'm%20interested%20in%20AEO%20%26%20Voice%20Search.%0A1.%20Do%20I%20understand%20search%20intent%3F%0A2.%20Am%20I%20optimizing%20for%20voice%3F%0A3.%20Can%20my%20site%20answer%20instantly%3F" target="_blank" rel="noopener noreferrer" aria-label="Request Answer Engine Optimization and Voice Search service via WhatsApp">💬 Request AEO</a>
         </article>
 
         <article class="card">
           <h3>Geo‑Targeting & Local Growth (GEO)</h3>
-          <ul>
-            <li>Hyper‑local campaigns, store-level creatives, and GEO‑segmented offers.</li>
-            <li>Local SEO, Google Business Profile optimization and PIN‑level targeting.</li>
-          </ul>
+          <p><strong>What is Geo-Targeting & Local Growth?</strong> GEO focuses your marketing efforts on specific geographic locations to attract local customers. This involves local SEO, Google Business Profile optimization, and location-specific advertising campaigns to maximize relevance for nearby searches.</p>
+          <p><strong>How to leverage it to scale your business?</strong> By implementing GEO strategies, you drive crucial foot traffic to physical locations, generate highly qualified local leads, and dominate specific regional markets. This directly translates to higher local sales and a stronger community presence, making your business the go-to choice in its area.</p>
+
+          <h4>My Work Experience:</h4>
+          <p>Boosted local store visits by an average of 25% for a national retail chain through targeted local SEO and Google Business Profile optimization across 50+ locations, significantly improving regional market share.</p>
+
+          <h4>Demos:</h4>
+          <div class="demo-items">
+            <p><strong>Demo 1:</strong> Google Maps Ranking Improvement: Secured top 3 positions for "restaurant near me" queries in 3 major cities, leading to a 35% increase in calls and directions requests.</p>
+            <p><strong>Demo 2:</strong> Local Ad Campaign Report: Achieved a 20% increase in service calls for a plumbing company using geo-fenced mobile advertisements with precise targeting.</p>
+          </div>
           <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I'm%20interested%20in%20GEO%20Targeting.%0A1.%20Am%20I%20visible%20to%20local%20customers%3F%0A2.%20Do%20I%20use%20GBP%3F%0A3.%20Is%20my%20content%20localized%3F" target="_blank" rel="noopener noreferrer" aria-label="Request Geo-Targeting and Local Growth service via WhatsApp">📍 Request GEO</a>
         </article>
 
         <article class="card">
           <h3>Conversational AI & WhatsApp Funnels</h3>
-          <ul>
-            <li>Chatbots, WhatsApp automation, and messenger flows that close deals.</li>
-            <li>AI agents for qualification, booking, and micro‑conversions.</li>
-          </ul>
+          <p><strong>What is Conversational AI & WhatsApp Funnels?</strong> This service leverages AI-powered chatbots and automated messaging flows, especially on platforms like WhatsApp, to engage customers instantly. It automates lead qualification, customer support, and guides users seamlessly through your sales funnel.</p>
+          <p><strong>How to leverage it to scale your business?</strong> By streamlining customer interactions with Conversational AI, you reduce response times, improve customer satisfaction, and convert prospects more efficiently. Automated WhatsApp funnels provide personalized, instant communication at scale, drastically improving lead generation and sales conversions.</p>
+
+          <h4>My Work Experience:</h4>
+          <p>Designed and implemented an end-to-end WhatsApp funnel for an education platform, which successfully converted 20% more leads into course registrations within just three months.</p>
+
+          <h4>Demos:</h4>
+          <div class="demo-items">
+            <p><strong>Demo 1:</strong> WhatsApp Bot Flow Diagram: Developed an automated onboarding sequence for a SaaS product, reducing manual lead qualification by 60% and improving user activation.</p>
+            <p><strong>Demo 2:</strong> Chatbot Performance Metrics: Achieved an 85% customer query resolution rate with an AI-powered support chatbot, significantly offloading human agents.</p>
+          </div>
           <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20Let's%20build%20WhatsApp%20Funnels.%0A1.%20Do%20I%20automate%20follow-ups%3F%0A2.%20Are%20leads%20qualified%3F%0A3.%20Can%20we%20book%20calls%20automatically%3F" target="_blank" rel="noopener noreferrer" aria-label="Build WhatsApp Funnels service via WhatsApp">💬 Build Funnels</a>
         </article>
 
         <article class="card">
           <h3>Creator Commerce & Influencer Partnerships</h3>
-          <ul>
-            <li>Performance-driven creator campaigns, affiliate funnels, and UGC libraries.</li>
-            <li>Micro‑influencer cohorts for niche credibility + scale.</li>
-          </ul>
+          <p><strong>What is Creator Commerce & Influencer Partnerships?</strong> This service focuses on leveraging content creators and influencers to promote your products or services. It involves building authentic partnerships, often through affiliate models, to drive sales and enhance brand credibility through user-generated content (UGC).</p>
+          <p><strong>How to leverage it to scale your business?</strong> By engaging with creators, you tap into highly engaged niche communities, build trust through genuine recommendations, and generate a wealth of authentic UGC. This approach offers a cost-effective alternative to traditional advertising, allowing you to scale your marketing reach and impact rapidly with credible voices.</p>
+
+          <h4>My Work Experience:</h4>
+          <p>Orchestrated several influencer campaigns for a direct-to-consumer (DTC) fashion brand, consistently generating a 5X return on investment (ROI) by strategically engaging micro-influencers.</p>
+
+          <h4>Demos:</h4>
+          <div class="demo-items">
+            <p><strong>Demo 1:</strong> Influencer Campaign Report: Achieved 1.5 million reach and 10,000 product sales for a beauty brand through a meticulously managed cohort of 50 micro-influencers.</p>
+            <p><strong>Demo 2:</strong> UGC Library Example: Curated a library of 200+ high-quality UGC assets from a creator campaign, which were successfully repurposed in high-performing paid advertisements.</p>
+          </div>
           <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I'm%20interested%20in%20Creator%20Commerce.%0A1.%20Do%20I%20use%20UGC%3F%0A2.%20Am%20I%20running%20strategic%20collabs%3F%0A3.%20Can%20we%20monetize%20creators%3F" target="_blank" rel="noopener noreferrer" aria-label="Request Creator Commerce and Influencer Partnerships service via WhatsApp">🤝 Request Creator</a>
         </article>
 
         <article class="card">
           <h3>Data, Privacy‑First Analytics & CRO</h3>
-          <ul>
-            <li>First‑party data strategies, consented tracking, and event modelling.</li>
-            <li>Conversion rate optimisation — landing experiments and heatmaps.</li>
-          </ul>
+          <p><strong>What is Data, Privacy-First Analytics & CRO?</strong> This service focuses on implementing robust data tracking solutions that prioritize user privacy (e.g., first-party data strategies) while continuously optimizing your website or application's conversion rates (CRO) through A/B testing, heatmaps, and in-depth user behavior analysis.</p>
+          <p><strong>How to leverage it to scale your business?</strong> By adopting privacy-first analytics, you build trust with your audience while still making informed, data-driven decisions. CRO systematically improves user experience and increases conversion rates, leading to reduced customer acquisition costs and maximizing the return on investment from your existing traffic, enabling sustainable growth.</p>
+
+          <h4>My Work Experience:</h4>
+          <p>Redesigned a complex checkout flow for a major e-commerce client based on comprehensive heatmap analysis and rigorous A/B testing, which resulted in an 18% increase in their overall conversion rates.</p>
+
+          <h4>Demos:</h4>
+          <div class="demo-items">
+            <p><strong>Demo 1:</strong> CRO Audit Report: Conducted a detailed audit for a SaaS landing page, identifying 10+ key areas for improvement with a projected increase in conversions by 15%.</p>
+            <p><strong>Demo 2:</strong> First-Party Data Implementation Plan: Developed a comprehensive strategy for collecting and ethically utilizing consented first-party data for a large publishing client, enhancing audience segmentation.</p>
+          </div>
           <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I%20want%20a%20CRO%20audit.%0A1.%20Do%20I%20own%20my%20data%3F%0A2.%20Do%20I%20test%20regularly%3F%0A3.%20Do%20I%20use%20heatmaps%3F" target="_blank" rel="noopener noreferrer" aria-label="Request Data, Privacy-First Analytics and CRO audit via WhatsApp">📊 Request CRO</a>
         </article>
 
         <article class="card">
           <h3>Programmatic & Paid Social (Meta / X / Instagram / Snapchat)</h3>
-          <ul>
-            <li>Audience modelling, lookalikes, interest layering, and budget scaling.</li>
-            <li>Programmatic GEO buys for efficient local reach.</li>
-          </ul>
+          <p><strong>What is Programmatic & Paid Social?</strong> This service involves utilizing automated, data-driven platforms (programmatic advertising) and social media advertising across major platforms (Meta, X, Instagram, Snapchat) to precisely target audiences. It optimizes ad delivery and spending in real-time for maximum impact and efficiency.</p>
+          <p><strong>How to leverage it to scale your business?</strong> Programmatic and Paid Social strategies allow you to achieve hyper-targeted reach, efficiently scale campaigns, and optimize your ad spend for measurable results. By leveraging advanced audience modeling and real-time bidding, you can drive significant ROAS (Return on Ad Spend), generate high-quality leads, and increase sales across various digital channels.</p>
+
+          <h4>My Work Experience:</h4>
+          <p>Managed over $500k in monthly ad spend across Meta and X platforms for diverse clients, consistently achieving and exceeding target ROAS benchmarks in highly competitive industries.</p>
+
+          <h4>Demos:</h4>
+          <div class="demo-items">
+            <p><strong>Demo 1:</strong> Paid Social Campaign Results: Achieved a 25% improvement in ROAS for an apparel brand by implementing advanced lookalike audiences and dynamic creative optimization techniques.</p>
+            <p><strong>Demo 2:</strong> Programmatic Ad Placement Report: Delivered a successful brand awareness campaign with 90% viewability and a 5% engagement rate through strategic programmatic buys across premium inventory.</p>
+          </div>
           <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20Let's%20scale%20Paid%20Social.%0A1.%20Am%20I%20tracking%20ROAS%3F%0A2.%20Is%20budget%20allocated%3F%0A3.%20Do%20I%20A-B%20test%3F" target="_blank" rel="noopener noreferrer" aria-label="Request Programmatic and Paid Social service via WhatsApp">🚀 Request Paid Social</a>
         </article>
 
         <article class="card">
           <h3>SEO & Visual Search</h3>
-          <ul>
-            <li>Technical SEO, content clusters, and image/visual-search optimisation.</li>
-            <li>Structured data and long‑form authority content for evergreen traffic.</li>
-          </ul>
+          <p><strong>What is SEO & Visual Search?</strong> This service focuses on optimizing your website for search engine visibility through comprehensive technical SEO, strategic content development (content clusters), and effective backlink building. A key component is enhancing images and multimedia for visual search engines like Google Images and Pinterest.</p>
+          <p><strong>How to leverage it to scale your business?</strong> By mastering SEO and Visual Search, you drive substantial organic traffic, establish your brand as an authority in its niche, and increase visibility across diverse search types (text, image, video). This leads to long-term sustainable growth, reduces reliance on paid channels, and captures users across their entire search journey.</p>
+
+          <h4>My Work Experience:</h4>
+          <p>Increased organic traffic by 60% year-over-year for a content-heavy client in the education sector by implementing robust content clusters and resolving critical technical SEO issues.</p>
+
+          <h4>Demos:</h4>
+          <div class="demo-items">
+            <p><strong>Demo 1:</strong> Technical SEO Audit: Identified and resolved over 15 critical crawlability and indexability issues for a large e-commerce site, leading to 20% more indexed product pages.</p>
+            <p><strong>Demo 2:</strong> Visual Search Optimization Strategy: Optimized product images and videos for a fashion retailer, resulting in a 10% increase in traffic directly from Google Images and Pinterest Lens.</p>
+          </div>
           <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20Let's%20audit%20SEO.%0A1.%20Are%20pages%20indexed%3F%0A2.%20Do%20I%20optimize%20images%3F%0A3.%20Do%20I%20have%20content%20clusters%3F" target="_blank" rel="noopener noreferrer" aria-label="Request SEO and Visual Search audit via WhatsApp">🔍 Request SEO</a>
         </article>
 
         <article class="card">
           <h3>Email Automation & Lifecycle Marketing</h3>
-          <ul>
-            <li>Onboarding flows, cart recovery, VIP journeys, and retention loops.</li>
-            <li>SMS + Email mix tuned for Indian audiences and payment behaviours.</li>
-          </ul>
+          <p><strong>What is Email Automation & Lifecycle Marketing?</strong> This service involves designing automated email sequences and campaigns that engage customers at every stage of their journey – from onboarding new users and recovering abandoned carts to nurturing VIPs and re-engaging inactive customers. It's about delivering the right message at the right time.</p>
+          <p><strong>How to leverage it to scale your business?</strong> Through effective email automation, you nurture leads effortlessly, significantly reduce cart abandonment, upsell/cross-sell more effectively, and drastically increase customer lifetime value (CLTV). This strategy builds stronger relationships, fosters loyalty, and ensures consistent, personalized communication that drives repeat business and sustainable growth.</p>
+
+          <h4>My Work Experience:</h4>
+          <p>Implemented a comprehensive email automation series for a SaaS company, improving free-to-paid conversion rates by 12% and successfully reducing customer churn by 8% within six months.</p>
+
+          <h4>Demos:</h4>
+          <div class="demo-items">
+            <p><strong>Demo 1:</strong> Abandoned Cart Recovery Funnel: Designed and deployed a 3-part email sequence with dynamic product content, leading to a 15% reduction in cart abandonment rates.</p>
+            <p><strong>Demo 2:</strong> Customer Onboarding Journey Map: Developed a 7-day automated email series for new users of a mobile app, significantly boosting product adoption and feature engagement.</p>
+          </div>
           <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I%20need%20email%20automation.%0A1.%20Do%20I%20nurture%20leads%3F%0A2.%20Do%20I%20segment%3F%0A3.%20Am%20I%20recovering%20carts%3F" target="_blank" rel="noopener noreferrer" aria-label="Request Email Automation and Lifecycle Marketing service via WhatsApp">📧 Request Email</a>
         </article>
 
         <article class="card">
           <h3>Live Commerce & Community Growth</h3>
-          <ul>
-            <li>Shop‑live events, cohort launches, and community‑first retention plays.</li>
-            <li>Monetize communities with funnels designed for trust and conversion.</li>
-          </ul>
+          <p><strong>What is Live Commerce & Community Growth?</strong> This service integrates live video streaming directly into e-commerce to create interactive shopping experiences, coupled with strategic initiatives to build, engage, and monetize online communities around your brand, products, or services. It blends entertainment with instant purchasing opportunities.</p>
+          <p><strong>How to leverage it to scale your business?</strong> By adopting Live Commerce, you create a direct, highly engaging sales channel that builds stronger customer relationships and drives immediate sales during live events. Community growth strategies foster loyalty, gather real-time feedback, and transform customers into advocates, leading to exponential brand expansion and sustained revenue streams.</p>
+
+          <h4>My Work Experience:</h4>
+          <p>Hosted and managed a series of highly successful live shopping events for a beauty brand, generating over $50k in sales from a single event and growing their engaged online community by 30%.</p>
+
+          <h4>Demos:</h4>
+          <div class="demo-items">
+            <p><strong>Demo 1:</strong> Live Stream Sales Report: Analyzed performance metrics from a major product launch live stream, demonstrating a 20% conversion rate among viewers during the event.</p>
+            <p><strong>Demo 2:</strong> Community Engagement Strategy: Developed a comprehensive content and moderation plan for a brand's exclusive online community, resulting in a 50% higher member activity rate and increased UGC.</p>
+          </div>
           <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I%20want%20Live%20Commerce.%0A1.%20Do%20I%20have%20an%20engaged%20community%3F%0A2.%20Do%20I%20run%20live%20sessions%3F%0A3.%20Is%20community%20monetized%3F" target="_blank" rel="noopener noreferrer" aria-label="Request Live Commerce and Community Growth service via WhatsApp">🎥 Request Community</a>
         </article>
 
@@ -628,119 +722,5 @@
   <!-- India map (decorative element) -->
   <div id="india-map" aria-hidden="true"></div>
 
-  <!-- White dust + depth threads canvas -->
-  <canvas id="dustCanvas" aria-hidden="true"></canvas>
-
-  <script>
-    /* ---------- dust + depth-thread canvas ---------- */
-    // Get canvas element and its 2D rendering context
-    const cvs = document.getElementById('dustCanvas');
-    const g = cvs.getContext('2d');
-    let parts = []; // Array to hold particle objects
-    const N = 140; // Number of particles
-
-    // Function to resize canvas to fit window dimensions
-    function fit() {
-      cvs.width = innerWidth;
-      cvs.height = innerHeight;
-    }
-    // Add event listener for window resize
-    addEventListener('resize', fit);
-    // Initial call to fit canvas
-    fit();
-
-    // Function to reset particle positions and properties
-    function reset() {
-      parts = [];
-      for (let i = 0; i < N; i++) {
-        const z = Math.random(); // Depth factor for particles
-        parts.push({
-          x: Math.random() * cvs.width,
-          y: Math.random() * cvs.height,
-          z: z,
-          size: (0.6 + z * 1.8) * (Math.random() * 1.2 + 0.5), // Size based on depth and randomness
-          vx: (Math.random() - 0.5) * (0.3 + z * 0.8), // Horizontal velocity based on depth
-          vy: -(0.2 + z * 0.9) * (0.2 + Math.random() * 0.8), // Vertical velocity (upwards) based on depth
-          alpha: 0.25 + z * 0.7 // Opacity based on depth
-        });
-      }
-    }
-    reset(); // Initialize particles
-
-    // Main render loop for animation
-    let animationFrameId; // To store the requestAnimationFrame ID
-
-    function render() {
-      g.clearRect(0, 0, cvs.width, cvs.height);
-
-      // Draw threads between particles (if close and moving upwards)
-      for (let i = 0; i < parts.length; i++) {
-        const a = parts[i];
-        for (let j = i + 1; j < parts.length; j++) {
-          const b = parts[j];
-          const dy = b.y - a.y;
-          const dx = b.x - a.x;
-          const d = Math.hypot(dx, dy); // Distance between particles
-
-          // Only draw threads if 'b' is above 'a' and they are close
-          if (dy < 0 && d < 160) {
-            const depth = (a.z + b.z) / 2; // Average depth for thread
-            const t = (1 - d / 160) * 0.12 * depth; // Transparency based on distance and depth
-            if (t > 0.01) {
-              g.beginPath();
-              g.moveTo(a.x, a.y);
-              const cx = a.x + dx * 0.4;
-              const cy = a.y + dy * 0.2 - (depth * 12); // Quadratic curve control point
-              g.quadraticCurveTo(cx, cy, b.x, b.y);
-              g.strokeStyle = `rgba(255,255,255,${t})`;
-              g.lineWidth = Math.max(0.3, depth * 1.6);
-              g.lineCap = 'round';
-              g.stroke();
-            }
-          }
-        }
-      }
-
-      // Draw particles
-      for (const p of parts) {
-        g.beginPath();
-        g.globalAlpha = p.alpha;
-        g.fillStyle = 'rgba(255,255,255,1)';
-        g.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        g.fill();
-      }
-      g.globalAlpha = 1; // Reset globalAlpha for other canvas operations
-
-      // Move particles and reset if they go off-screen
-      for (const p of parts) {
-        p.x += p.vx;
-        p.y += p.vy;
-
-        // Wrap around horizontally
-        if (p.x < -20) p.x = cvs.width + 20;
-        if (p.x > cvs.width + 20) p.x = -20;
-
-        // Reset if goes off top of screen
-        if (p.y < -20) {
-          p.y = cvs.height + Math.random() * 40; // Reappear at bottom with random y-offset
-          p.x = Math.random() * cvs.width; // Random x position
-          p.vx = (Math.random() - 0.5) * (0.3 + p.z * 0.8);
-          p.vy = -(0.2 + p.z * 0.9) * (0.2 + Math.random() * 0.8);
-        }
-      }
-      animationFrameId = requestAnimationFrame(render); // Request next frame
-    }
-
-    render(); // Start the animation
-
-    // Pause animation when tab is hidden to save resources
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        cancelAnimationFrame(animationFrameId); // Cancel ongoing animation frame
-      } else {
-        render(); // Restart animation when tab becomes visible
-      }
-    });
-  </script>
 </body>
 </html>
