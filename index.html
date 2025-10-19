@@ -1,745 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DigitalConfVisions — PRITYAA | Digital Growth & Learning</title>
-  <meta name="description" content="DigitalConfVisions — Growth, learning & product-market playbooks for creators and entrepreneurs. Join our Deep Learners WhatsApp group." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
-  <style>
-    /* Base variables for Dark Mode (default theme): Pink, Dark Blue, Sky Blue */
-    :root {
-      --gold: #FF6EC7; /* Vibrant Pink accent */
-      --bg-1: #0D1B2A; /* Very Dark Blue */
-      --bg-2: #1A2B42; /* Dark Blue-Grey */
-      --card-bg: rgba(255, 255, 255, 0.06);
-      --card-border: rgba(255, 255, 255, 0.1);
-      --text-muted: #A8B3C2; /* Muted light text */
-      --text-primary: #E0E6F0; /* Light text */
-      --heading-color: var(--gold);
-      --button-text: #000; /* Black text on pink button */
-      --ribbon-text: #FFF; /* White text on gradient ribbon */
-      --qr-shadow: rgba(0, 0, 0, 0.4); /* Darker shadow for dark mode */
-      --body-gradient-start: var(--bg-1);
-      --body-gradient-end: var(--bg-2);
-      --text-bg-highlight: rgba(255, 255, 255, 0.07); /* Added for text backgrounds */
-      /* --- Added 6 Colors for general use (updated for new scheme) --- */
-      --color-one: #FF6EC7;   /* Pink */
-      --color-two: #87CEEB;   /* Sky Blue */
-      --color-three: #F0A500; /* Amber */
-      --color-four: #BE9FDD;  /* Light Purple */
-      --color-five: #FF8C00;  /* Dark Orange */
-      --color-six: #5FCBBA;   /* Teal */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Frequency Strip</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center; /* Centers the child element horizontally if it fits */
+            align-items: center; /* Centers the child element vertically */
+            min-height: 100vh; /* Ensures body takes at least full viewport height */
+            background: #0a0a0d; /* Dark background for a modern look */
+            color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: auto; /* Allows horizontal scrolling for the extremely wide element */
+            overflow-y: hidden; /* Prevents vertical scrolling */
+            position: relative;
+        }
 
-    /* Light Mode adjustments for prefers-color-scheme: light */
-    @media (prefers-color-scheme: light) {
-      :root {
-        --gold: #E91E63; /* Darker Pink for contrast on light bg */
-        --bg-1: #F0F4F7; /* Light Blue-Grey */
-        --bg-2: #E8EEF3; /* Slightly darker light blue-grey */
-        --card-bg: #ffffff;
-        --card-border: rgba(0, 0, 0, 0.1);
-        --text-muted: rgba(0, 0, 0, 0.65);
-        --text-primary: rgba(0, 0, 0, 0.85);
-        --heading-color: var(--gold);
-        --button-text: #fff; /* White button text on pink background */
-        --ribbon-text: #fff; /* White ribbon text on gradient */
-        --qr-shadow: rgba(0, 0, 0, 0.1);
-        --body-gradient-start: var(--bg-2); /* Flipped gradient for light mode */
-        --body-gradient-end: var(--bg-1);
-        --text-bg-highlight: rgba(0, 0, 0, 0.04); /* Light mode: subtle dark background */
-        /* --- Added 6 Colors for general use (Light Mode, updated) --- */
-        --color-one: #D81B60; /* Darker Pink */
-        --color-two: #2196F3; /* Medium Blue */
-        --color-three: #D32F2F; /* Red */
-        --color-four: #8E24AA; /* Dark Purple */
-        --color-five: #EF6C00; /* Dark Orange */
-        --color-six: #00897B; /* Dark Teal */
-      }
-      .premium-ribbon .marquee {
-          color: var(--ribbon-text); /* Ensure ribbon text is readable */
-      }
-      .btn {
-          color: var(--button-text); /* Ensure button text is readable */
-      }
-      .hero h1, .lead { /* Adjust hero text for light mode */
-          color: var(--heading-color);
-      }
-      p.lead {
-          color: var(--text-muted);
-      }
-      .card h3 {
-          color: var(--heading-color);
-      }
-      .group p {
-          color: var(--text-muted);
-      }
-      a[style*="color:var(--gold)"] { /* Specific override for mailto link */
-          color: var(--heading-color) !important;
-      }
-      .mini-ribbon-btn {
-        background-color: var(--button-text); /* White */
-        color: var(--gold); /* Pink */
-      }
-      .mini-ribbon-btn:hover {
-        background-color: #E0E6F0; /* Light grey hover for white button */
-        color: var(--gold);
-      }
-    }
+        /* The critical top-level component with exact dimensions */
+        #frequencyStrip {
+            width: 100000px; /* Exactly 100000px as requested */
+            height: 10px; /* Exactly 10px as requested */
+            background-color: #1a1a2e; /* Base color for the strip */
+            position: relative; /* Essential for positioning children absolutely within it */
+            display: flex; /* Helps in aligning content vertically if needed */
+            align-items: center; /* Vertically centers any direct children */
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2); /* Subtle edge highlight */
+        }
 
-    /* General Body Styles */
-    html, body {
-      height: 100%;
-    }
-    body {
-      font-family: 'Inter', system-ui, Arial, sans-serif;
-      background: linear-gradient(180deg, var(--body-gradient-start), var(--body-gradient-end));
-      color: var(--text-muted);
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+        #brandName {
+            position: absolute;
+            top: 0; /* Aligns brand name to the top of the 10px strip */
+            left: 50%; /* Starts at the horizontal center of the 100000px strip */
+            transform: translateX(-50%); /* Adjusts to truly center the brand name horizontally */
+            white-space: nowrap; /* Ensures brand name stays on a single line */
+            font-size: 8px; /* Small font size to fit within the 10px height */
+            line-height: 10px; /* Vertically centers text within the 10px height */
+            color: #f0f0f0; /* Light text color */
+            padding: 0 5px; /* Small horizontal padding */
+            background: #2c2c4d; /* Background for brand name for better visibility */
+            z-index: 2; /* Ensures brand name is above waves */
+            border-radius: 2px;
+            box-shadow: 0 0 5px rgba(0, 255, 255, 0.5); /* Subtle glowing effect */
+        }
 
-    /* Header / Hero Section */
-    .hero {
-      z-index: 11000;
-      position: relative;
-      text-align: center;
-      padding: 48px 20px 24px;
-    }
-    .avatar {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 3px solid var(--gold);
-      box-shadow: 0 0 30px rgba(255, 105, 180, 0.35); /* Pink shadow */
-      object-fit: cover;
-    }
-    .hero h1 {
-      color: var(--heading-color); /* Uses variable for dark/light mode */
-      margin: 12px 0 6px;
-      font-size: 28px; /* Slightly larger for impact */
-      /* Added background for text */
-      background-color: var(--text-bg-highlight);
-      padding: 8px 15px;
-      border-radius: 10px;
-      display: inline-block; /* allows it to wrap content and center with parent's text-align */
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    p.lead {
-      margin: 0;
-      color: var(--text-primary); /* Uses variable for dark/light mode */
-      font-size: 1.1em;
-      /* Added background for text */
-      background-color: var(--text-bg-highlight);
-      padding: 6px 12px;
-      border-radius: 8px;
-      display: inline-block;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      margin-top: 6px; /* give some space after h1 */
-    }
-    .hero p[style*="margin-top:8px"] { /* Targeting the mailto link's parent p */
-        /* Added background for text */
-        background-color: var(--text-bg-highlight);
-        padding: 6px 12px;
-        border-radius: 8px;
-        display: inline-block;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        margin-top: 8px; /* keep original margin, now with background */
-    }
+        #wavesContainer {
+            position: absolute;
+            top: 0;
+            left: 50%; /* Position at the horizontal center of the 100000px strip */
+            transform: translateX(-50%); /* Adjusts to truly center the waves container horizontally */
+            width: 200px; /* Defines the visible width of the wave effect */
+            height: 100%; /* Takes the full 10px height of the parent strip */
+            display: flex;
+            justify-content: space-between; /* Distributes wave bars evenly */
+            align-items: flex-end; /* Wave bars grow upwards from the bottom */
+            overflow: hidden; /* Ensures wave bars stay within container boundaries */
+            z-index: 1; /* Places waves below the brand name */
+            border-left: 1px solid rgba(0, 255, 255, 0.3);
+            border-right: 1px solid rgba(0, 255, 255, 0.3);
+        }
 
-    /* Marquee Ribbon */
-    .premium-ribbon {
-      position: absolute;
-      right: -40px;
-      top: 18px;
-      background: linear-gradient(90deg, var(--color-one), var(--color-two)); /* Pink to Sky Blue */
-      padding: 8px 12px;
-      transform: rotate(45deg);
-      font-weight: 800;
-      border-radius: 6px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
-      z-index: 10;
-      color: var(--ribbon-text);
-      display: flex; /* Make it a flex container */
-      align-items: center; /* Vertically align items */
-      box-sizing: border-box; /* Include padding in width */
-    }
-    .premium-ribbon .marquee-content { /* New wrapper for scrolling text */
-      flex-grow: 1; /* Allow content to take up available space */
-      overflow: hidden; /* This will clip the scrolling text */
-      white-space: nowrap; /* Keep text on one line for the marquee */
-      margin-right: 8px; /* Space between marquee and button */
-      line-height: 1; /* Ensure consistent line height */
-    }
-    .premium-ribbon .marquee {
-      display: inline-block;
-      padding-left: 100%;
-      animation: marquee 12s linear infinite;
-      color: var(--ribbon-text);
-      font-size: 0.9em; /* Make text a bit smaller */
-    }
-    @keyframes marquee {
-      0% { transform: translateX(0%); }
-      100% { transform: translateX(-100%); }
-    }
+        .wave-bar {
+            width: 2px; /* Thin bars for frequency visualization */
+            height: 1px; /* Minimal initial height */
+            background-color: #00e0ff; /* Bright blue color for waves */
+            opacity: 0.8;
+            transition: height 0.05s ease-out, background-color 0.05s ease-out, opacity 0.05s ease-out; /* Smooth animation for height and color changes */
+            border-radius: 1px;
+        }
 
-    /* New mini button styles */
-    .mini-ribbon-btn {
-      background-color: var(--button-text); /* White in dark mode, white in light mode */
-      color: var(--gold); /* Pink accent color */
-      border: none;
-      padding: 4px 10px;
-      border-radius: 5px;
-      font-weight: 700;
-      font-size: 0.7em; /* Even smaller font */
-      cursor: pointer;
-      transition: background-color 0.2s ease, color 0.2s ease;
-      flex-shrink: 0; /* Prevent button from shrinking */
-      line-height: 1; /* Tighter text */
-      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-    }
-    .mini-ribbon-btn:hover {
-      background-color: var(--text-primary); /* Slightly change on hover */
-      color: var(--gold);
-    }
-
-    /* Main Layout Container */
-    .wrap {
-      max-width: 1100px;
-      margin: 20px auto;
-      padding: 20px;
-      position: relative;
-      z-index: 10000;
-    }
-    /* Heading within wrap */
-    .wrap h2#services-heading {
-        background-color: var(--text-bg-highlight);
-        padding: 8px 15px;
-        border-radius: 10px;
-        display: inline-block;
-        margin: 0 auto 20px; /* Adjust margin to center and add space below */
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        text-align: center; /* Original was centered, this keeps it. */
-    }
-
-    /* Grid Layout for Cards */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Min width increased slightly */
-      gap: 20px; /* Gap increased slightly */
-      margin-top: 24px;
-    }
-
-    /* Card Component */
-    .card {
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 20px; /* Padding increased */
-      border: 1px solid var(--card-border);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-      display: flex; /* Flexbox for consistent layout */
-      flex-direction: column;
-      justify-content: flex-start; /* Content starts from top */
-    }
-    .card h3 {
-      color: var(--heading-color);
-      margin: 0 0 15px; /* Margin adjusted */
-      font-size: 1.25em;
-      /* Added background for card headings */
-      background-color: var(--text-bg-highlight);
-      padding: 4px 8px;
-      border-radius: 6px;
-      display: inline-block;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    }
-    /* New general styles for paragraphs within cards */
-    .card p {
-        color: var(--text-primary);
-        background-color: var(--text-bg-highlight);
-        padding: 8px 12px;
-        border-radius: 8px;
-        margin-bottom: 12px; /* Consistent spacing after paragraphs */
-        box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-        line-height: 1.5;
-    }
-    /* New styles for h4 within cards */
-    .card h4 {
-        color: var(--heading-color);
-        margin: 20px 0 10px; /* Space above and below h4 */
-        font-size: 1.1em;
-        background-color: var(--text-bg-highlight);
-        padding: 4px 8px;
-        border-radius: 6px;
-        display: inline-block;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    }
-    /* Removed .card .demo-items CSS as these elements are being removed */
-    .btn {
-      display: inline-block;
-      background: var(--gold);
-      color: var(--button-text); /* Uses variable for dark/light mode */
-      padding: 12px 20px; /* Padding adjusted */
-      border-radius: 10px;
-      font-weight: 800;
-      text-decoration: none;
-      box-shadow: 0 8px 30px rgba(255, 105, 180, 0.18); /* Pink shadow */
-      text-align: center;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      font-size: 1em;
-      margin-top: auto; /* Pushes the button to the bottom, leveraging flex column */
-    }
-    .btn:hover, .btn:focus {
-        background-color: #FF8DD1; /* Slightly lighter pink on hover */
-        box-shadow: 0 8px 30px rgba(255, 105, 180, 0.3); /* Stronger pink shadow */
-    }
-
-    /* Portfolio Grid (CSS only for now) */
-    .portfolio-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      justify-content: center;
-    }
-    .portfolio-item {
-      width: 260px;
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 12px;
-      text-align: left;
-      border: 1px solid var(--card-border);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    }
-    .portfolio-item img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 8px;
-    }
-
-    /* WhatsApp Group Section */
-    .group {
-      margin: 40px auto; /* Margin adjusted */
-      text-align: center;
-      padding: 0 20px; /* Add padding for smaller screens */
-    }
-    .group h2 {
-        font-size: 2em;
-        margin-bottom: 15px;
-        /* Added background for h2 in group section */
-        background-color: var(--text-bg-highlight);
-        padding: 8px 15px;
-        border-radius: 10px;
-        display: inline-block;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .group p {
-      max-width: 760px;
-      margin: 8px auto 20px; /* Margin adjusted */
-      font-size: 1.1em;
-      /* Added background for paragraphs in group section */
-      background-color: var(--text-bg-highlight);
-      padding: 6px 12px;
-      border-radius: 8px;
-      display: inline-block;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .group p:last-of-type { /* Small text at the bottom */
-        font-size: 0.9em;
-        color: var(--text-muted);
-        margin-top: 15px;
-        /* Also add background to this subtle text */
-        background-color: var(--text-bg-highlight);
-        padding: 4px 10px;
-        border-radius: 6px;
-        display: inline-block;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    }
-
-
-    /* Fixed Decorative Elements */
-    #sun {
-      position: fixed;
-      right: 40px;
-      top: 60px;
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #FFB6C1, #FF1493 70%); /* Light pink to deep pink */
-      box-shadow: 0 0 50px 20px rgba(255, 105, 180, 0.5); /* Pink glow */
-      z-index: 1;
-    }
-    #india-map {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 160px;
-      height: 200px;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/7/7d/India_map_outline.svg') no-repeat center;
-      background-size: contain;
-      filter: drop-shadow(0 0 20px rgba(135, 206, 235, 0.6)); /* Sky Blue glow */
-      z-index: 1;
-    }
-
-    /* New White Box */
-    #whiteBox {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        width: 26px; /* User specified width */
-        height: 28px; /* User specified height */
-        background-color: white;
-        z-index: 100; /* Ensure it's on top */
-        box-shadow: 0 0 10px rgba(0,0,0,0.2); /* Subtle shadow for visibility */
-        border-radius: 4px; /* Slight rounded corners */
-    }
-
-    /* Big Head Wave Meditation Experience */
-    #meditationWave {
-        position: fixed;
-        width: 600px;
-        height: 600px;
-        background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--color-two) 30%, transparent), transparent 70%);
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(1);
-        border-radius: 40% 60% 70% 30% / 30% 50% 50% 70%; /* Initial blob shape */
-        animation: meditateWave 18s ease-in-out infinite alternate,
-                   breatheScale 20s ease-in-out infinite alternate;
-        z-index: 0; /* Keep it in the background */
-        filter: blur(80px); /* Soft glow effect */
-        pointer-events: none; /* Ensure it doesn't interfere with clicks */
-    }
-
-    @keyframes meditateWave {
-        0% { border-radius: 40% 60% 70% 30% / 30% 50% 50% 70%; }
-        25% { border-radius: 60% 40% 30% 70% / 70% 30% 60% 40%; }
-        50% { border-radius: 70% 30% 40% 60% / 40% 60% 30% 70%; }
-        75% { border-radius: 30% 70% 60% 40% / 60% 40% 70% 30%; }
-        100% { border-radius: 40% 60% 70% 30% / 30% 50% 50% 70%; }
-    }
-
-    @keyframes breatheScale {
-        0% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
-        50% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.9; }
-        100% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
-    }
-
-    /* Responsive Tweaks */
-    @media (max-width: 1024px) {
-        .wrap {
-            padding: 15px;
+        /* Mobile responsiveness: The primary mechanism is `overflow-x: auto` on the `body`.
+           The fixed `100000px` width cannot be shrunken responsively for the component itself.
+           The content (brand name, waves) is already designed to be very small to fit 10px height.
+           The critical part is ensuring the user can scroll horizontally and the initial view is centered.
+        */
+        @media (max-width: 768px) {
+            /* No specific CSS changes are needed for `#frequencyStrip` due to its fixed width.
+               The JavaScript `window.scrollTo` ensures the active part is centered on initial load and resize. */
         }
-        #meditationWave {
-            width: 500px;
-            height: 500px;
-            filter: blur(60px);
-        }
-    }
-    @media (max-width: 768px) {
-        .hero {
-            padding: 30px 15px 20px;
-        }
-        .hero h1 {
-            font-size: 24px;
-            padding: 6px 12px; /* Adjusted padding */
-        }
-        p.lead, .hero p[style*="margin-top:8px"] {
-            padding: 4px 10px; /* Adjusted padding */
-        }
-        .grid {
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-        .card {
-            padding: 18px;
-        }
-        .card h3 {
-            padding: 3px 6px; /* Adjusted padding */
-            margin-bottom: 12px;
-        }
-        .card p {
-            padding: 6px 10px;
-            margin-bottom: 10px;
-        }
-        .card h4 {
-            padding: 3px 6px;
-            margin: 15px 0 8px;
-        }
-        #sun {
-            width: 70px;
-            height: 70px;
-            right: 20px;
-            top: 30px;
-        }
-        #india-map {
-            width: 120px;
-            height: 150px;
-            bottom: 15px;
-            right: 15px;
-        }
-        .group h2 {
-            font-size: 1.8em;
-            padding: 6px 12px; /* Adjusted padding */
-        }
-        .group p {
-            padding: 4px 10px; /* Adjusted padding */
-        }
-        .group p:last-of-type {
-            padding: 3px 8px; /* Adjusted padding */
-        }
-        .wrap h2#services-heading {
-            padding: 6px 12px; /* Adjusted padding */
-        }
-        #meditationWave {
-            width: 400px;
-            height: 400px;
-            filter: blur(50px);
-        }
-    }
-    @media (max-width: 480px) {
-        .wrap {
-            padding: 10px;
-        }
-        .hero {
-            padding: 20px 10px 15px;
-        }
-        .hero h1 {
-            font-size: 22px;
-            padding: 5px 10px;
-        }
-        p.lead {
-            font-size: 1em;
-            padding: 3px 8px;
-        }
-        .hero p[style*="margin-top:8px"] {
-            padding: 3px 8px;
-        }
-        .grid {
-            grid-template-columns: 1fr; /* Single column on very small screens */
-            gap: 12px;
-        }
-        .card {
-            padding: 15px;
-        }
-        .card h3 {
-            font-size: 1.1em;
-            padding: 2px 5px;
-            margin-bottom: 10px;
-        }
-        .card p {
-            font-size: 0.95em;
-            padding: 4px 8px;
-            margin-bottom: 8px;
-        }
-        .card h4 {
-            font-size: 1em;
-            padding: 2px 5px;
-            margin: 12px 0 6px;
-        }
-        .btn {
-            padding: 10px 15px;
-            font-size: 0.9em;
-            width: 100%; /* Full width buttons on small screens */
-            box-sizing: border-box;
-        }
-        .premium-ribbon {
-            right: -60px; /* Push further off-screen to avoid overlap */
-            top: 10px;
-            font-size: 0.9em;
-            padding: 6px 10px;
-        }
-        #sun, #india-map, #whiteBox, #meditationWave { /* Also hide whiteBox and meditationWave on small screens */
-            display: none; /* Hide decorative elements on very small screens */
-        }
-        .group h2 {
-            font-size: 1.5em;
-            padding: 5px 10px;
-        }
-        .group p {
-            font-size: 0.95em;
-            padding: 3px 8px;
-        }
-        .group p:last-of-type {
-            padding: 2px 6px;
-        }
-        .wrap h2#services-heading {
-            padding: 5px 10px;
-        }
-    }
-  </style>
+    </style>
 </head>
 <body>
-
-  <!-- sun (decorative element) -->
-  <div id="sun" aria-hidden="true"></div>
-
-  <!-- New White Box -->
-  <div id="whiteBox" aria-hidden="true"></div>
-
-  <!-- Big Head Wave Meditation Experience (added) -->
-  <div id="meditationWave" aria-hidden="true"></div>
-
-  <!-- Premium Ribbon with Marquee Text and Button -->
-  <div class="premium-ribbon">
-    <div class="marquee-content">
-      <div class="marquee" aria-live="off">Elevate Your Energy, Elevate Your Impact!</div>
+    <div id="frequencyStrip">
+        <div id="wavesContainer">
+            <!-- Wave bars will be dynamically generated here by JavaScript -->
+        </div>
+        <div id="brandName">prityaa379</div>
     </div>
-    <button class="mini-ribbon-btn">read next</button>
-  </div>
 
-  <!-- Hero Section -->
-  <header class="hero">
-    <img class="avatar" src="https://i.ibb.co/BKZv5FzD/IMG-20250613-062802-529.webp" alt="Pritam Jagtap, founder of DigitalConfVisions">
-    <h1>PRITYAA | Pritam Jagtap</h1>
-    <p class="lead">Full‑Stack Digital Marketer & Growth Strategist — Founder, DigitalConfVisions</p>
-    <p style="margin-top:8px">
-        <a href="mailto:jagtappritam73@gmail.com" style="color:var(--gold);text-decoration:none;font-weight:700" aria-label="Email Pritam Jagtap at jagtappritam73@gmail.com">
-            ✉️ jagtappritam73@gmail.com
-        </a>
-    </p>
-  </header>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const frequencyStrip = document.getElementById('frequencyStrip');
+            const wavesContainer = document.getElementById('wavesContainer');
+            const numWaveBars = 50; // Number of wave bars for the visual effect
+            const maxWaveHeight = 10; // Max height for bars, matching the strip's height
 
-  <main class="wrap" role="main">
+            // Generate wave bars and append them to the wavesContainer
+            for (let i = 0; i < numWaveBars; i++) {
+                const bar = document.createElement('div');
+                bar.classList.add('wave-bar');
+                wavesContainer.appendChild(bar);
+            }
 
-    <!-- Services Section -->
-    <section aria-labelledby="services-heading">
-      <h2 id="services-heading" style="text-align:center;color:var(--heading-color);">Digital Marketing — Request Service</h2>
-      <div class="grid">
+            const waveBars = document.querySelectorAll('.wave-bar');
 
-        <!-- New Product Card: Viral Reel Ideas -->
-        <article class="card">
-          <h3>Viral Reel Ideas: Why My Instagram Followers Not Growing?</h3>
-          <img src="https://i.ibb.co/bgpmQWsj/box-image-1.jpg" alt="Viral Reel Ideas Product" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
-          <p>Unlock the secrets to Instagram growth with this comprehensive guide. Learn how to generate viral reel ideas and overcome common hurdles preventing your follower count from soaring. Get actionable strategies, creative prompts, and proven tactics to boost your reach and engagement.</p>
-          <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I'm%20interested%20in%20the%20'Viral%20Reel%20Ideas'%20product." target="_blank" rel="noopener noreferrer" aria-label="Request information about 'Viral Reel Ideas' product via WhatsApp">🚀 Get Viral Reel Ideas</a>
-        </article>
+            // Animation variables
+            let phase = 0; // For smooth wave movement
+            let frequencySeed = 0; // To introduce subtle variation
 
-        <article class="card">
-          <h3>Answer Engine Optimization (AEO) & Voice Search</h3>
-          <p><strong>What is AEO & Voice Search?</strong> AEO involves optimizing your content to directly answer user queries, making it highly discoverable for featured snippets, 'People Also Ask' sections, and voice assistants. It's about providing immediate, concise, and relevant answers to searchers' precise questions.</p>
-          <p><strong>How to leverage it to scale your business?</strong> By mastering AEO, you capture 'zero-click' searches and dominate voice results, significantly increasing your brand's authority and visibility at the top of SERPs. This drives highly qualified traffic, as users find instant solutions directly from your content, leading to higher engagement and conversions.</p>
+            // Function to animate waves for a "live frequency" effect
+            function animateWaves() {
+                phase += 0.08; // Controls the speed of wave motion
+                frequencySeed += 0.01; // Slowly changes the overall wave pattern
 
-          <h4>My Work Experience:</h4>
-          <p>Successfully implemented AEO strategies for several e-commerce clients, resulting in an average 30% increase in featured snippet visibility and a 15% rise in traffic from voice search queries within six months.</p>
-          <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I'm%20interested%20in%20AEO%20%26%20Voice%20Search.%0A1.%20Do%20I%20understand%20search%20intent%3F%0A2.%20Am%20I%20optimizing%20for%20voice%3F%0A3.%20Can%20my%20site%20answer%20instantly%3F" target="_blank" rel="noopener noreferrer" aria-label="Request Answer Engine Optimization and Voice Search service via WhatsApp">💬 Request AEO</a>
-        </article>
+                waveBars.forEach((bar, index) => {
+                    // Calculate height using a sine wave function for smooth, oscillating motion
+                    // Added randomness and frequencySeed for a more organic, "live" feel
+                    const baseHeight = Math.abs(Math.sin((index / numWaveBars) * Math.PI * 2 + phase + Math.sin(frequencySeed * 0.5))) * maxWaveHeight;
+                    // Introduce a little extra randomness and ensure a minimum height of 1px
+                    const height = Math.max(1, baseHeight * (0.5 + Math.random() * 0.5));
+                    bar.style.height = `${height}px`;
 
-        <article class="card">
-          <h3>Geo‑Targeting & Local Growth (GEO)</h3>
-          <p><strong>What is Geo-Targeting & Local Growth?</strong> GEO focuses your marketing efforts on specific geographic locations to attract local customers. This involves local SEO, Google Business Profile optimization, and location-specific advertising campaigns to maximize relevance for nearby searches.</p>
-          <p><strong>How to leverage it to scale your business?</strong> By implementing GEO strategies, you drive crucial foot traffic to physical locations, generate highly qualified local leads, and dominate specific regional markets. This directly translates to higher local sales and a stronger community presence, making your business the go-to choice in its area.</p>
+                    // Subtle color and opacity changes based on height/intensity
+                    const intensity = height / maxWaveHeight;
+                    const green = Math.floor(0 + intensity * 200); /* Range from 0 to 200 */
+                    const blue = Math.floor(255 - intensity * 100); /* Range from 255 to 155 */
+                    bar.style.backgroundColor = `rgb(0, ${green}, ${blue})`;
+                    bar.style.opacity = `${0.6 + intensity * 0.4}`; /* Opacity from 0.6 to 1.0 */
+                });
 
-          <h4>My Work Experience:</h4>
-          <p>Boosted local store visits by an average of 25% for a national retail chain through targeted local SEO and Google Business Profile optimization across 50+ locations, significantly improving regional market share.</p>
-          <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I'm%20interested%20in%20GEO%20Targeting.%0A1.%20Am%20I%20visible%20to%20local%20customers%3F%0A2.%20Do%20I%20use%20GBP%3F%0A3.%20Is%20my%20content%20localized%3F" target="_blank" rel="noopener noreferrer" aria-label="Request Geo-Targeting and Local Growth service via WhatsApp">📍 Request GEO</a>
-        </article>
+                requestAnimationFrame(animateWaves); // Loop the animation
+            }
 
-        <article class="card">
-          <h3>Conversational AI & WhatsApp Funnels</h3>
-          <p><strong>What is Conversational AI & WhatsApp Funnels?</strong> This service leverages AI-powered chatbots and automated messaging flows, especially on platforms like WhatsApp, to engage customers instantly. It automates lead qualification, customer support, and guides users seamlessly through your sales funnel.</p>
-          <p><strong>How to leverage it to scale your business?</strong> By streamlining customer interactions with Conversational AI, you reduce response times, improve customer satisfaction, and convert prospects more efficiently. Automated WhatsApp funnels provide personalized, instant communication at scale, drastically improving lead generation and sales conversions.</p>
+            // Start the wave animation when the script runs
+            animateWaves();
 
-          <h4>My Work Experience:</h4>
-          <p>Designed and implemented an-end-to-end WhatsApp funnel for an education platform, which successfully converted 20% more leads into course registrations within just three months.</p>
-          <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20Let's%20build%20WhatsApp%20Funnels.%0A1.%20Do%20I%20automate%20follow-ups%3F%0A2.%20Are%20leads%20qualified%3F%0A3.%20Can%20we%20book%20calls%20automatically%3F" target="_blank" rel="noopener noreferrer" aria-label="Build WhatsApp Funnels service via WhatsApp">💬 Build Funnels</a>
-        </article>
+            // Function to center the "active" visual part of the strip in the viewport
+            function centerStripContent() {
+                // The middle of the 100000px strip
+                const stripMiddle = frequencyStrip.offsetWidth / 2; // 50000px
+                // Half the current viewport width
+                const viewportHalfWidth = window.innerWidth / 2;
+                // Calculate the scroll position needed to center the strip's middle
+                const scrollTarget = stripMiddle - viewportHalfWidth;
 
-        <article class="card">
-          <h3>Creator Commerce & Influencer Partnerships</h3>
-          <p><strong>What is Creator Commerce & Influencer Partnerships?</strong> This service focuses on leveraging content creators and influencers to promote your products or services. It involves building authentic partnerships, often through affiliate models, to drive sales and enhance brand credibility through user-generated content (UGC).</p>
-          <p><strong>How to leverage it to scale your business?</strong> By engaging with creators, you tap into highly engaged niche communities, build trust through genuine recommendations, and generate a wealth of authentic UGC. This approach offers a cost-effective alternative to traditional advertising, allowing you to scale your marketing reach and impact rapidly with credible voices.</p>
+                // Scroll the window smoothly to the calculated position
+                window.scrollTo({
+                    left: scrollTarget,
+                    behavior: 'smooth'
+                });
+            }
 
-          <h4>My Work Experience:</h4>
-          <p>Orchestrated several influencer campaigns for a direct-to-consumer (DTC) fashion brand, consistently generating a 5X return on investment (ROI) by strategically engaging micro-influencers.</p>
-          <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I'm%20interested%20in%20Creator%20Commerce.%0A1.%20Do%20I%20use%20UGC%3F%0A2.%20Am%20I%20running%20strategic%20collabs%3F%0A3.%20Can%20we%20monetize%20creators%3F" target="_blank" rel="noopener noreferrer" aria-label="Request Creator Commerce and Influencer Partnerships service via WhatsApp">🤝 Request Creator</a>
-        </article>
+            // Call the centering function once on initial load
+            centerStripContent();
 
-        <article class="card">
-          <h3>Data, Privacy‑First Analytics & CRO</h3>
-          <p><strong>What is Data, Privacy-First Analytics & CRO?</strong> This service focuses on implementing robust data tracking solutions that prioritize user privacy (e.g., first-party data strategies) while continuously optimizing your website or application's conversion rates (CRO) through A/B testing, heatmaps, and in-depth user behavior analysis.</p>
-          <p><strong>How to leverage it to scale your business?</strong> By adopting privacy-first analytics, you build trust with your audience while still making informed, data-driven decisions. CRO systematically improves user experience and increases conversion rates, leading to reduced customer acquisition costs and maximizing the return on investment from your existing traffic, enabling sustainable growth.</p>
-
-          <h4>My Work Experience:</h4>
-          <p>Redesigned a complex checkout flow for a major e-commerce client based on comprehensive heatmap analysis and rigorous A/B testing, which resulted in an 18% increase in their overall conversion rates.</p>
-          <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I%20want%20a%20CRO%20audit.%0A1.%20Do%20I%20own%20my%20data%3F%0A2.%20Do%20I%20test%20regularly%3F%0A3.%20Do%20I%20use%20heatmaps%3F" target="_blank" rel="noopener noreferrer" aria-label="Request Data, Privacy-First Analytics and CRO audit via WhatsApp">📊 Request CRO</a>
-        </article>
-
-        <article class="card">
-          <h3>Programmatic & Paid Social (Meta / X / Instagram / Snapchat)</h3>
-          <p><strong>What is Programmatic & Paid Social?</strong> This service involves utilizing automated, data-driven platforms (programmatic advertising) and social media advertising across major platforms (Meta, X, Instagram, Snapchat) to precisely target audiences. It optimizes ad delivery and spending in real-time for maximum impact and efficiency.</p>
-          <p><strong>How to leverage it to scale your business?</strong> Programmatic and Paid Social strategies allow you to achieve hyper-targeted reach, efficiently scale campaigns, and optimize your ad spend for measurable results. By leveraging advanced audience modeling and real-time bidding, you can drive significant ROAS (Return on Ad Spend), generate high-quality leads, and increase sales across various digital channels.</p>
-
-          <h4>My Work Experience:</h4>
-          <p>Managed over $500k in monthly ad spend across Meta and X platforms for diverse clients, consistently achieving and exceeding target ROAS benchmarks in highly competitive industries.</p>
-          <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20Let's%20scale%20Paid%20Social.%0A1.%20Am%20I%20tracking%20ROAS%3F%0A2.%20Is%20budget%20allocated%3F%0A3.%20Do%20I%20A-B%20test%3F" target="_blank" rel="noopener noreferrer" aria-label="Request Programmatic and Paid Social service via WhatsApp">🚀 Request Paid Social</a>
-        </article>
-
-        <article class="card">
-          <h3>SEO & Visual Search</h3>
-          <p><strong>What is SEO & Visual Search?</strong> This service focuses on optimizing your website for search engine visibility through comprehensive technical SEO, strategic content development (content clusters), and effective backlink building. A key component is enhancing images and multimedia for visual search engines like Google Images and Pinterest.</p>
-          <p><strong>How to leverage it to scale your business?</strong> By mastering SEO and Visual Search, you drive substantial organic traffic, establish your brand as an authority in its niche, and increase visibility across diverse search types (text, image, video). This leads to long-term sustainable growth, reduces reliance on paid channels, and captures users across their entire search journey.</p>
-
-          <h4>My Work Experience:</h4>
-          <p>Increased organic traffic by 60% year-over-year for a content-heavy client in the education sector by implementing robust content clusters and resolving critical technical SEO issues.</p>
-          <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20Let's%20audit%20SEO.%0A1.%20Are%20pages%20indexed%3F%0A2.%20Do%20I%20optimize%20images%3F%0A3.%20Do%20I%20have%20content%20clusters%3F" target="_blank" rel="noopener noreferrer" aria-label="Request SEO and Visual Search audit via WhatsApp">🔍 Request SEO</a>
-        </article>
-
-        <article class="card">
-          <h3>Email Automation & Lifecycle Marketing</h3>
-          <p><strong>What is Email Automation & Lifecycle Marketing?</strong> This service involves designing automated email sequences and campaigns that engage customers at every stage of their journey – from onboarding new users and recovering abandoned carts to nurturing VIPs and re-engaging inactive customers. It's about delivering the right message at the right time.</p>
-          <p><strong>How to leverage it to scale your business?</strong> Through effective email automation, you nurture leads effortlessly, significantly reduce cart abandonment, upsell/cross-sell more effectively, and drastically increase customer lifetime value (CLTV). This strategy builds stronger relationships, fosters loyalty, and ensures consistent, personalized communication that drives repeat business and sustainable growth.</p>
-
-          <h4>My Work Experience:</h4>
-          <p>Implemented a comprehensive email automation series for a SaaS company, improving free-to-paid conversion rates by 12% and successfully reducing customer churn by 8% within six months.</p>
-          <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I%20need%20email%20automation.%0A1.%20Do%20I%20nurture%20leads%3F%0A2.%20Do%20I%20segment%3F%0A3.%20Am%20I%20recovering%20carts%3F" target="_blank" rel="noopener noreferrer" aria-label="Request Email Automation and Lifecycle Marketing service via WhatsApp">📧 Request Email</a>
-        </article>
-
-        <article class="card">
-          <h3>Live Commerce & Community Growth</h3>
-          <p><strong>What is Live Commerce & Community Growth?</strong> This service integrates live video streaming directly into e-commerce to create interactive shopping experiences, coupled with strategic initiatives to build, engage, and monetize online communities around your brand, products, or services. It blends entertainment with instant purchasing opportunities.</p>
-          <p><strong>How to leverage it to scale your business?</strong> By adopting Live Commerce, you create a direct, highly engaging sales channel that builds stronger customer relationships and drives immediate sales during live events. Community growth strategies foster loyalty, gather real-time feedback, and transform customers into advocates, leading to exponential brand expansion and sustained revenue streams.</p>
-
-          <h4>My Work Experience:</h4>
-          <p>Hosted and managed a series of highly successful live shopping events for a beauty brand, generating over $50k in sales from a single event and growing their engaged online community by 30% deep learners.</p>
-          <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I%20want%20Live%20Commerce.%0A1.%20Do%20I%20have%20an%20engaged%20community%3F%0A2.%20Do%20I%20run%20live%20sessions%3F%0A3.%20Is%20community%20monetized%3F" target="_blank" rel="noopener noreferrer" aria-label="Request Live Commerce and Community Growth service via WhatsApp">🎥 Request Community</a>
-        </article>
-
-        <!-- New Product Card: Guayru -->
-        <article class="card">
-          <h3>Guayru: Exclusive Digital Product</h3>
-          <img src="https://i.ibb.co/bgpmQWsj/box-image-1.jpg" alt="Guayru Digital Product" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
-          <p>Discover 'Guayru', an exclusive digital product designed to accelerate your growth. This comprehensive guide provides actionable insights and strategies to help you achieve your goals faster. Don't miss out on this opportunity to elevate your journey.</p>
-          <a class="btn" href="https://prityaa379.gumroad.com/l/guayru" target="_blank" rel="noopener noreferrer" aria-label="Buy Guayru digital product for 80 rupees">💰 Buy in 80 rupees</a>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- Request quick CTA -->
-    <section style="text-align:center;margin-top:28px">
-      <a class="btn" href="https://wa.me/919372035409?text=Hi%20Pritam!%20I'm%20interested%20in%20performance%20marketing.%0A1.%20Do%20I%20understand%20my%20customer's%20journey%3F%0A2.%20Am%20I%20tracking%20profit-driving%20metrics%3F%0A3.%20Is%20my%20system%20ready%20to%20scale%3F" target="_blank" rel="noopener noreferrer" aria-label="Quick Performance Check via WhatsApp">💬 Quick Performance Check</a>
-    </section>
-
-    <!-- WhatsApp group invite section -->
-    <section class="group" aria-labelledby="whatsapp-group-heading">
-      <h2 id="whatsapp-group-heading" style="color:var(--heading-color)">Join Our Deep Learners WhatsApp Group</h2>
-      <p>Get premium insights, growth hacks, and community support directly from DigitalConfVisions. Free for Indian entrepreneurs.</p>
-      <a class="btn" href="https://chat.whatsapp.com/B9gRY5oP11VG7jCyOjgsHp" target="_blank" rel="noopener noreferrer" aria-label="Join the 'I WILL NOT ONLY teach you how to sell digital products BUT ALSO GIVE YOU UNLIMITED SUPPORT' WhatsApp group">🔥 Join 'I WILL NOT ONLY teach you how to sell digital products BUT ALSO GIVE YOU UNLIMITED SUPPORT'</a>
-      <p style="font-size:13px;color:var(--text-muted);">Free access to premium-quality learning data — join and start scaling smarter.</p>
-    </section>
-
-  </main>
-
-  <!-- India map (decorative element) -->
-  <div id="india-map" aria-hidden="true"></div>
-
+            // Re-center the strip content whenever the window is resized
+            window.addEventListener('resize', centerStripContent);
+        });
+    </script>
 </body>
 </html>
