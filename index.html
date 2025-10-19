@@ -21,8 +21,8 @@
 
         /* The critical top-level component with exact dimensions */
         #frequencyStrip {
-            width: 100000px; /* Exactly 100000px as requested */
-            height: 10px; /* Exactly 10px as requested */
+            width: 100000px; /* Made extremely wide */
+            height: 100px; /* Made much taller */
             background-color: #1a1a2e; /* Base color for the strip */
             position: relative; /* Essential for positioning children absolutely within it */
             display: flex; /* Helps in aligning content vertically if needed */
@@ -32,18 +32,18 @@
 
         #brandName {
             position: absolute;
-            top: 0; /* Aligns brand name to the top of the 10px strip */
+            top: 0; /* Aligns brand name to the top of the strip */
             left: 50%; /* Starts at the horizontal center of the 100000px strip */
             transform: translateX(-50%); /* Adjusts to truly center the brand name horizontally */
             white-space: nowrap; /* Ensures brand name stays on a single line */
-            font-size: 8px; /* Small font size to fit within the 10px height */
-            line-height: 10px; /* Vertically centers text within the 10px height */
+            font-size: 24px; /* Scaled up font size */
+            line-height: 100px; /* Vertically centers text within the new 100px height */
             color: #f0f0f0; /* Light text color */
-            padding: 0 5px; /* Small horizontal padding */
+            padding: 0 15px; /* Increased horizontal padding */
             background: #2c2c4d; /* Background for brand name for better visibility */
             z-index: 2; /* Ensures brand name is above waves */
             border-radius: 2px;
-            box-shadow: 0 0 5px rgba(0, 255, 255, 0.5); /* Subtle glowing effect */
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.7); /* More prominent glowing effect */
         }
 
         #wavesContainer {
@@ -51,24 +51,24 @@
             top: 0;
             left: 50%; /* Position at the horizontal center of the 100000px strip */
             transform: translateX(-50%); /* Adjusts to truly center the waves container horizontally */
-            width: 200px; /* Defines the visible width of the wave effect */
-            height: 100%; /* Takes the full 10px height of the parent strip */
+            width: 800px; /* Defines the visible width of the wave effect, scaled up */
+            height: 100%; /* Takes the full 100px height of the parent strip */
             display: flex;
             justify-content: space-between; /* Distributes wave bars evenly */
             align-items: flex-end; /* Wave bars grow upwards from the bottom */
             overflow: hidden; /* Ensures wave bars stay within container boundaries */
             z-index: 1; /* Places waves below the brand name */
-            border-left: 1px solid rgba(0, 255, 255, 0.3);
-            border-right: 1px solid rgba(0, 255, 255, 0.3);
+            border-left: 2px solid rgba(0, 255, 255, 0.5); /* Thicker border */
+            border-right: 2px solid rgba(0, 255, 255, 0.5); /* Thicker border */
         }
 
         .wave-bar {
-            width: 2px; /* Thin bars for frequency visualization */
+            width: 4px; /* Thicker bars for frequency visualization */
             height: 1px; /* Minimal initial height */
             background-color: #00e0ff; /* Bright blue color for waves */
             opacity: 0.8;
             transition: height 0.05s ease-out, background-color 0.05s ease-out, opacity 0.05s ease-out; /* Smooth animation for height and color changes */
-            border-radius: 1px;
+            border-radius: 2px; /* Adjusted border radius */
         }
 
         /* Mobile responsiveness: The primary mechanism is `overflow-x: auto` on the `body`.
@@ -94,8 +94,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             const frequencyStrip = document.getElementById('frequencyStrip');
             const wavesContainer = document.getElementById('wavesContainer');
-            const numWaveBars = 50; // Number of wave bars for the visual effect
-            const maxWaveHeight = 10; // Max height for bars, matching the strip's height
+            const numWaveBars = 200; // Increased number of wave bars for the larger visual effect
+            const maxWaveHeight = 100; // Max height for bars, matching the strip's new height
 
             // Generate wave bars and append them to the wavesContainer
             for (let i = 0; i < numWaveBars; i++) {
@@ -134,30 +134,27 @@
                 requestAnimationFrame(animateWaves); // Loop the animation
             }
 
+            // Function to center the view on the active part of the extremely wide strip
+            function centerStripView() {
+                const stripWidth = frequencyStrip.offsetWidth;
+                const viewportWidth = window.innerWidth;
+                const scrollLeftPosition = (stripWidth / 2) - (viewportWidth / 2); // Center of the strip minus half viewport width
+
+                // Only scroll if the viewport width is less than the strip width
+                if (viewportWidth < stripWidth) {
+                    window.scrollTo({
+                        left: scrollLeftPosition,
+                        behavior: 'smooth' // Smooth scroll for better user experience
+                    });
+                }
+            }
+
             // Start the wave animation when the script runs
             animateWaves();
 
-            // Function to center the "active" visual part of the strip in the viewport
-            function centerStripContent() {
-                // The middle of the 100000px strip
-                const stripMiddle = frequencyStrip.offsetWidth / 2; // 50000px
-                // Half the current viewport width
-                const viewportHalfWidth = window.innerWidth / 2;
-                // Calculate the scroll position needed to center the strip's middle
-                const scrollTarget = stripMiddle - viewportHalfWidth;
-
-                // Scroll the window smoothly to the calculated position
-                window.scrollTo({
-                    left: scrollTarget,
-                    behavior: 'smooth'
-                });
-            }
-
-            // Call the centering function once on initial load
-            centerStripContent();
-
-            // Re-center the strip content whenever the window is resized
-            window.addEventListener('resize', centerStripContent);
+            // Call on load and resize to keep the active part centered for the huge strip
+            centerStripView();
+            window.addEventListener('resize', centerStripView);
         });
     </script>
 </body>
