@@ -3,159 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Frequency Strip</title>
+    <title>The Interconnected Prism</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
+            background-color: #0A192F; /* Deep blue background */
+            color: #E5E7EB; /* Light grey for general text, silver-like */
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             margin: 0;
-            display: flex;
-            justify-content: center; /* Centers the child element horizontally if it fits */
-            align-items: center; /* Centers the child element vertically */
-            min-height: 100vh; /* Ensures body takes at least full viewport height */
-            background: #0a0a0d; /* Dark background for a modern look */
-            color: #f0f0f0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow-x: auto; /* Allows horizontal scrolling for the extremely wide element */
-            overflow-y: hidden; /* Prevents vertical scrolling */
+            overflow: hidden; /* Prevent scrollbars from animations */
+            perspective: 1200px; /* Establishes a 3D viewing context for the whole scene */
+        }
+
+        .container {
             position: relative;
+            transform-style: preserve-3d;
+            /* No direct transformations here, just acts as a container */
         }
 
-        /* The critical top-level component with exact dimensions */
-        #frequencyStrip {
-            width: 100000px; /* Made extremely wide */
-            height: 100px; /* Made much taller */
-            background-color: #1a1a2e; /* Base color for the strip */
-            position: relative; /* Essential for positioning children absolutely within it */
-            display: flex; /* Helps in aligning content vertically if needed */
-            align-items: center; /* Vertically centers any direct children */
-            border-bottom: 1px solid rgba(0, 255, 255, 0.2); /* Subtle edge highlight */
+        .prism-wrapper {
+            position: relative;
+            width: 300px; /* Base width of the component */
+            height: 300px; /* Base height of the component */
+            transform-style: preserve-3d;
+            animation: float 8s ease-in-out infinite; /* Overall floating effect */
         }
 
-        #brandName {
+        .prism {
             position: absolute;
-            top: 0; /* Aligns brand name to the top of the strip */
-            left: 50%; /* Starts at the horizontal center of the 100000px strip */
-            transform: translateX(-50%); /* Adjusts to truly center the brand name horizontally */
-            white-space: nowrap; /* Ensures brand name stays on a single line */
-            font-size: 24px; /* Scaled up font size */
-            line-height: 100px; /* Vertically centers text within the new 100px height */
-            color: #f0f0f0; /* Light text color */
-            padding: 0 15px; /* Increased horizontal padding */
-            background: #2c2c4d; /* Background for brand name for better visibility */
-            z-index: 2; /* Ensures brand name is above waves */
-            border-radius: 2px;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.7); /* More prominent glowing effect */
-        }
-
-        #wavesContainer {
-            position: absolute;
+            width: 100%;
+            height: 100%;
             top: 0;
-            left: 50%; /* Position at the horizontal center of the 100000px strip */
-            transform: translateX(-50%); /* Adjusts to truly center the waves container horizontally */
-            width: 800px; /* Defines the visible width of the wave effect, scaled up */
-            height: 100%; /* Takes the full 100px height of the parent strip */
+            left: 0;
+            transform-style: preserve-3d; /* Allows children to be positioned in 3D */
             display: flex;
-            justify-content: space-between; /* Distributes wave bars evenly */
-            align-items: flex-end; /* Wave bars grow upwards from the bottom */
-            overflow: hidden; /* Ensures wave bars stay within container boundaries */
-            z-index: 1; /* Places waves below the brand name */
-            border-left: 2px solid rgba(0, 255, 255, 0.5); /* Thicker border */
-            border-right: 2px solid rgba(0, 255, 255, 0.5); /* Thicker border */
+            justify-content: center;
+            align-items: center;
+            animation: rotateAround 20s linear infinite; /* Overall subtle rotation for the prism itself */
         }
 
-        .wave-bar {
-            width: 4px; /* Thicker bars for frequency visualization */
-            height: 1px; /* Minimal initial height */
-            background-color: #00e0ff; /* Bright blue color for waves */
-            opacity: 0.8;
-            transition: height 0.05s ease-out, background-color 0.05s ease-out, opacity 0.05s ease-out; /* Smooth animation for height and color changes */
-            border-radius: 2px; /* Adjusted border radius */
+        .prism-core {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, #00FFFF 0%, #67E8F9 50%, rgba(0,255,255,0) 70%); /* Bright white/cyan glow */
+            filter: blur(20px); /* Soft blur for the glow */
+            opacity: 0.7;
+            animation: coreGlow 3s ease-in-out infinite alternate;
+            z-index: 10; /* Ensures it's above some layers */
         }
 
-        /* Mobile responsiveness: The primary mechanism is `overflow-x: auto` on the `body`.
-           The fixed `100000px` width cannot be shrunken responsively for the component itself.
-           The content (brand name, waves) is already designed to be very small to fit 10px height.
-           The critical part is ensuring the user can scroll horizontally and the initial view is centered.
-        */
-        @media (max-width: 768px) {
-            /* No specific CSS changes are needed for `#frequencyStrip` due to its fixed width.
-               The JavaScript `window.scrollTo` ensures the active part is centered on initial load and resize. */
+        .prism-layer {
+            position: absolute;
+            width: 200px; /* Base size for the facet layers */
+            height: 200px;
+            background: rgba(30, 58, 138, 0.1); /* Deep blue, very transparent */
+            border: 1px solid rgba(147, 51, 234, 0.3); /* Vibrant purple edge */
+            box-shadow: 0 0 15px rgba(103, 232, 249, 0.4), inset 0 0 10px rgba(147, 51, 234, 0.2); /* Cyan outer glow, purple inner glow */
+            backface-visibility: hidden; /* Prevents flickering/rendering issues on back of 3D transformed elements */
+            z-index: 5; /* Layers are below the core */
+            transform-origin: 50% 50% 0; /* Center transform origin */
+        }
+
+        .layer-1 {
+            transform: rotateY(30deg) rotateX(15deg) translateZ(20px) scale(1);
+            background: rgba(30, 58, 138, 0.2); /* Slightly more opaque blue */
+            border-color: rgba(147, 51, 234, 0.4); /* Stronger purple edge */
+            animation: layerRotate1 18s linear infinite alternate; /* Individual layer rotation */
+        }
+
+        .layer-2 {
+            transform: rotateY(-30deg) rotateX(-15deg) translateZ(-20px) scale(1.1);
+            background: rgba(107, 33, 168, 0.15); /* Vibrant purple layer */
+            border-color: rgba(0, 255, 0, 0.3); /* Electric green edge */
+            box-shadow: 0 0 18px rgba(0, 255, 0, 0.5), inset 0 0 12px rgba(147, 51, 234, 0.3); /* Green outer, purple inner */
+            animation: layerRotate2 16s linear infinite alternate-reverse;
+        }
+
+        .layer-3 {
+            transform: rotateY(90deg) rotateX(45deg) translateZ(0px) scale(0.9);
+            background: rgba(52, 211, 153, 0.1); /* Electric green layer */
+            border-color: rgba(147, 51, 234, 0.2); /* Lighter purple edge */
+            box-shadow: 0 0 12px rgba(103, 232, 249, 0.3), inset 0 0 8px rgba(0, 255, 0, 0.2); /* Cyan outer, green inner */
+            animation: layerRotate3 14s linear infinite alternate;
+        }
+
+        .prism-text {
+            position: absolute;
+            font-size: 1.5em;
+            font-weight: 700; /* Montserrat bold weight */
+            color: #E5E7EB; /* Silver-like text color */
+            text-shadow: 0 0 10px #67E8F9, 0 0 20px #67E8F9, 0 0 30px #00FFFF; /* Glowing effect */
+            z-index: 15; /* Ensures text is visible above the prism */
+            top: calc(100% + 50px); /* Position 50px below the prism-wrapper */
+            left: 50%;
+            transform: translateX(-50%) translateZ(0px); /* Center horizontally, keep Z at 0 for now */
+            letter-spacing: 0.05em;
+            white-space: nowrap; /* Prevent text from wrapping */
+            opacity: 0;
+            animation: textFadeIn 2s ease-out 1s forwards; /* Fade in after a delay */
+        }
+
+        .prism-shadow {
+            position: absolute;
+            width: 250px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.7); /* Dark semi-transparent shadow */
+            border-radius: 50%;
+            filter: blur(25px); /* Soft blur for a natural shadow */
+            bottom: -150px; /* Position below the floating prism */
+            left: 50%;
+            transform: translateX(-50%) scaleY(0.7) rotateX(90deg); /* Flattened and rotated for ground effect */
+            opacity: 0.6;
+            animation: shadowPulse 8s ease-in-out infinite; /* Subtle shadow pulsing */
+            z-index: 1; /* Below the prism and text */
+        }
+
+        .data-point {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #00FFFF; /* Cyan data point color */
+            border-radius: 50%;
+            box-shadow: 0 0 8px #00FFFF, 0 0 15px #00FFFF; /* Glowing effect */
+            opacity: 0; /* Start hidden */
+            animation: dataPointFlow 15s linear infinite; /* Animation for data point movement */
+            z-index: 12; /* Above prism layers */
+            transform-style: preserve-3d; /* Needed for --z-offset */
+        }
+        /* Individual data point positioning and animation delays */
+        .point-1 { top: 10%; left: 20%; --z-offset: 30px; animation-delay: 0s; }
+        .point-2 { top: 30%; right: 15%; --z-offset: -10px; animation-delay: 1.5s; }
+        .point-3 { bottom: 20%; left: 25%; --z-offset: 40px; animation-delay: 3s; }
+        .point-4 { top: 50%; left: 5%; --z-offset: 0px; animation-delay: 4.5s; }
+        .point-5 { bottom: 10%; right: 30%; --z-offset: 20px; animation-delay: 6s; }
+        .point-6 { top: 15%; right: 40%; --z-offset: 10px; animation-delay: 7.5s; }
+        .point-7 { bottom: 40%; left: 45%; --z-offset: -20px; animation-delay: 9s; }
+        .point-8 { top: 60%; right: 5%; --z-offset: 50px; animation-delay: 10.5s; }
+
+
+        /* Keyframe Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); } /* Floats up and down */
+        }
+
+        @keyframes rotateAround {
+            0% { transform: rotateY(0deg) rotateX(0deg); }
+            100% { transform: rotateY(360deg) rotateX(360deg); } /* Continuous subtle rotation */
+        }
+
+        @keyframes layerRotate1 {
+            0% { transform: rotateY(30deg) rotateX(15deg) translateZ(20px) scale(1); }
+            50% { transform: rotateY(60deg) rotateX(30deg) translateZ(25px) scale(1.05); }
+            100% { transform: rotateY(30deg) rotateX(15deg) translateZ(20px) scale(1); }
+        }
+        @keyframes layerRotate2 {
+            0% { transform: rotateY(-30deg) rotateX(-15deg) translateZ(-20px) scale(1.1); }
+            50% { transform: rotateY(-60deg) rotateX(-30deg) translateZ(-25px) scale(1.05); }
+            100% { transform: rotateY(-30deg) rotateX(-15deg) translateZ(-20px) scale(1.1); }
+        }
+        @keyframes layerRotate3 {
+            0% { transform: rotateY(90deg) rotateX(45deg) translateZ(0px) scale(0.9); }
+            50% { transform: rotateY(120deg) rotateX(60deg) translateZ(5px) scale(0.95); }
+            100% { transform: rotateY(90deg) rotateX(45deg) translateZ(0px) scale(0.9); }
+        }
+
+        @keyframes coreGlow {
+            0%, 100% { opacity: 0.7; filter: blur(20px); }
+            50% { opacity: 0.9; filter: blur(25px); } /* Core light intensity pulse */
+        }
+
+        @keyframes shadowPulse {
+            0%, 100% { transform: translateX(-50%) scale(1) rotateX(90deg); opacity: 0.6; }
+            50% { transform: translateX(-50%) scale(1.1) rotateX(90deg); opacity: 0.7; } /* Shadow size and opacity pulse */
+        }
+
+        @keyframes dataPointFlow {
+            0% { transform: translate(-10px, -10px) scale(0.8) translateZ(var(--z-offset)); opacity: 0; box-shadow: 0 0 5px #00FFFF; }
+            25% { opacity: 1; box-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF; }
+            50% { transform: translate(10px, 10px) scale(1.2) translateZ(var(--z-offset)); opacity: 0.8; box-shadow: 0 0 15px #00FFFF, 0 0 30px #00FFFF; }
+            75% { opacity: 1; box-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF; }
+            100% { transform: translate(-10px, -10px) scale(0.8) translateZ(var(--z-offset)); opacity: 0; box-shadow: 0 0 5px #00FFFF; }
+        }
+
+        @keyframes textFadeIn {
+            to { opacity: 1; }
         }
     </style>
 </head>
 <body>
-    <div id="frequencyStrip">
-        <div id="wavesContainer">
-            <!-- Wave bars will be dynamically generated here by JavaScript -->
+    <div class="container">
+        <div class="prism-wrapper">
+            <div class="prism">
+                <div class="prism-core"></div>
+                <div class="prism-layer layer-1"></div>
+                <div class="prism-layer layer-2"></div>
+                <div class="prism-layer layer-3"></div>
+                
+                <!-- Small, glowing "data points" or nodes -->
+                <span class="data-point point-1"></span>
+                <span class="data-point point-2"></span>
+                <span class="data-point point-3"></span>
+                <span class="data-point point-4"></span>
+                <span class="data-point point-5"></span>
+                <span class="data-point point-6"></span>
+                <span class="data-point point-7"></span>
+                <span class="data-point point-8"></span>
+            </div>
+            <div class="prism-shadow"></div>
+            <!-- Text "DigitalConfVisions" -->
+            <div class="prism-text">DigitalConfVisions</div>
         </div>
-        <div id="brandName">prityaa379</div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const frequencyStrip = document.getElementById('frequencyStrip');
-            const wavesContainer = document.getElementById('wavesContainer');
-            const numWaveBars = 200; // Increased number of wave bars for the larger visual effect
-            const maxWaveHeight = 100; // Max height for bars, matching the strip's new height
-
-            // Generate wave bars and append them to the wavesContainer
-            for (let i = 0; i < numWaveBars; i++) {
-                const bar = document.createElement('div');
-                bar.classList.add('wave-bar');
-                wavesContainer.appendChild(bar);
-            }
-
-            const waveBars = document.querySelectorAll('.wave-bar');
-
-            // Animation variables
-            let phase = 0; // For smooth wave movement
-            let frequencySeed = 0; // To introduce subtle variation
-
-            // Function to animate waves for a "live frequency" effect
-            function animateWaves() {
-                phase += 0.08; // Controls the speed of wave motion
-                frequencySeed += 0.01; // Slowly changes the overall wave pattern
-
-                waveBars.forEach((bar, index) => {
-                    // Calculate height using a sine wave function for smooth, oscillating motion
-                    // Added randomness and frequencySeed for a more organic, "live" feel
-                    const baseHeight = Math.abs(Math.sin((index / numWaveBars) * Math.PI * 2 + phase + Math.sin(frequencySeed * 0.5))) * maxWaveHeight;
-                    // Introduce a little extra randomness and ensure a minimum height of 1px
-                    const height = Math.max(1, baseHeight * (0.5 + Math.random() * 0.5));
-                    bar.style.height = `${height}px`;
-
-                    // Subtle color and opacity changes based on height/intensity
-                    const intensity = height / maxWaveHeight;
-                    const green = Math.floor(0 + intensity * 200); /* Range from 0 to 200 */
-                    const blue = Math.floor(255 - intensity * 100); /* Range from 255 to 155 */
-                    bar.style.backgroundColor = `rgb(0, ${green}, ${blue})`;
-                    bar.style.opacity = `${0.6 + intensity * 0.4}`; /* Opacity from 0.6 to 1.0 */
-                });
-
-                requestAnimationFrame(animateWaves); // Loop the animation
-            }
-
-            // Function to center the view on the active part of the extremely wide strip
-            function centerStripView() {
-                const stripWidth = frequencyStrip.offsetWidth;
-                const viewportWidth = window.innerWidth;
-                const scrollLeftPosition = (stripWidth / 2) - (viewportWidth / 2); // Center of the strip minus half viewport width
-
-                // Only scroll if the viewport width is less than the strip width
-                if (viewportWidth < stripWidth) {
-                    window.scrollTo({
-                        left: scrollLeftPosition,
-                        behavior: 'smooth' // Smooth scroll for better user experience
-                    });
-                }
-            }
-
-            // Start the wave animation when the script runs
-            animateWaves();
-
-            // Call on load and resize to keep the active part centered for the huge strip
-            centerStripView();
-            window.addEventListener('resize', centerStripView);
-        });
-    </script>
 </body>
 </html>
