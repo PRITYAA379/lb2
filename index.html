@@ -1,65 +1,204 @@
-<div class="min-h-screen bg-gray-950 text-gray-100 flex flex-col items-center justify-center p-4">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pritam Jagtap - Bio Link</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-indigo-950 to-purple-950 text-gray-100 font-sans antialiased flex flex-col min-h-screen">
 
-    <!-- Profile section -->
-    <div class="flex flex-col items-center mb-8">
-        <img src="https://picsum.photos/180/180" alt="Pritam Jagtap Profile" class="rounded-full w-40 h-40 object-cover border-4 border-purple-600 shadow-xl mb-4 transform hover:scale-105 transition-transform duration-300">
-        <h1 class="text-5xl font-extrabold text-white tracking-tight mb-2 text-center leading-tight">Pritam Jagtap</h1>
-        <p class="text-xl text-purple-300 font-semibold mb-4 text-center">@prityaa379</p>
-        <p class="text-lg text-gray-300 max-w-xl text-center px-4">
-            Writer, Music Producer, Content Creator, Roaster, Youtuber, Rapper & Digital Entrepreneur.
-            Generating real digital money, one cosmic step at a time.
-        </p>
+    <!-- Main Content Wrapper -->
+    <div class="container mx-auto px-4 py-8 flex-grow flex items-center justify-center">
+        <div class="max-w-xl mx-auto bg-gray-800 rounded-3xl shadow-2xl p-6 md:p-10 text-center relative overflow-hidden border border-purple-700">
+            <!-- Subtle background texture/gradient for depth -->
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-900 via-gray-900 to-purple-900 opacity-20 rounded-3xl z-0"></div>
+
+            <div class="relative z-10">
+                <!-- Profile Image -->
+                <img src="https://picsum.photos/seed/pritamjagtap/200/200" alt="Pritam Jagtap" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-indigo-500 shadow-lg object-cover">
+                <p class="text-sm text-gray-400 mb-6 px-4">
+                    <span class="inline-block bg-purple-600 rounded-full px-3 py-1 text-xs font-semibold text-white mr-2">Note:</span>
+                    Profile image is a placeholder from `picsum.photos`. Please replace `https://picsum.photos/seed/pritamjagtap/200/200` with your actual image URL.
+                </p>
+
+                <!-- Name & Username -->
+                <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-2 leading-tight">Pritam Jagtap</h1>
+                <p class="text-indigo-400 text-lg md:text-xl font-medium mb-8">@prityaa379</p>
+
+                <!-- Bio/Roles -->
+                <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-md mx-auto">
+                    I am a multi-talented individual with a passion for creation and innovation:
+                    <span class="font-semibold text-indigo-300">Writer, Music Producer, Content Creator, Roaster, Youtuber, Rapper, Digital Assets and Land Seller</span> – generating real digital money and exploring new frontiers.
+                </p>
+
+                <!-- Link Buttons -->
+                <div class="grid grid-cols-1 gap-4 mb-10">
+                    <a href="https://docs.google.com/document/d/1P3a50gunDDIfoOPk_ix5sNR9TbW-LzIt/edit?usp=drivesdk&ouid=110732801664783457291&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer"
+                       class="block w-full py-4 px-6 rounded-xl bg-purple-700 hover:bg-purple-600 text-white text-xl font-bold transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-purple-500 focus:ring-opacity-50">
+                        My Writing & Portfolio
+                    </a>
+                    <button id="moonLandBtn"
+                            class="block w-full py-4 px-6 rounded-xl bg-indigo-700 hover:bg-indigo-600 text-white text-xl font-bold transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50">
+                        🚀 Experience Moon Land
+                    </button>
+                    <!-- Additional placeholder links for other platforms -->
+                    <a href="#" target="_blank" rel="noopener noreferrer"
+                       class="block w-full py-3 px-6 rounded-xl bg-gray-700 hover:bg-gray-600 text-white text-lg font-semibold transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg opacity-70 cursor-not-allowed">
+                        Instagram (Coming Soon)
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"
+                       class="block w-full py-3 px-6 rounded-xl bg-gray-700 hover:bg-gray-600 text-white text-lg font-semibold transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg opacity-70 cursor-not-allowed">
+                        YouTube (Coming Soon)
+                    </a>
+                </div>
+
+                <!-- Footer -->
+                <p class="text-gray-500 text-sm mt-8">
+                    &copy; 2023 Pritam Jagtap. All rights reserved.
+                </p>
+            </div>
+        </div>
     </div>
 
-    <!-- Links section -->
-    <div class="w-full max-w-md space-y-4">
+    <!-- Moon Land Experience Modal/Section -->
+    <div id="moonLandModal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center p-4 z-50 hidden opacity-0 transition-opacity duration-300">
+        <div class="relative bg-gray-900 rounded-3xl p-6 md:p-8 max-w-3xl w-full mx-auto shadow-2xl border-2 border-indigo-700 transform scale-95 transition-transform duration-300">
+            <button id="closeMoonLand" class="absolute top-4 right-4 text-gray-400 hover:text-white text-3xl font-bold leading-none focus:outline-none">&times;</button>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4 text-center">Journey to the Moon</h2>
+            <p class="text-gray-400 text-lg mb-6 text-center max-w-lg mx-auto">
+                Discover the vast, silent landscapes of Earth's closest celestial neighbor. Imagine the future, where digital assets redefine frontiers.
+            </p>
 
-        <!-- My Writings & Portfolio -->
-        <a href="https://docs.google.com/document/d/1P3a50gunDDIfoOPk_ix5sNR9TbW-LzIt/edit?usp=drivesdk&ouid=110732801664783457291&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer"
-           class="block bg-purple-700 hover:bg-purple-600 text-white font-bold py-4 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 text-center text-lg focus:outline-none focus:ring-4 focus:ring-purple-500 focus:ring-opacity-50">
-            📖 My Writings & Portfolio
-        </a>
+            <div class="relative w-full aspect-video rounded-xl overflow-hidden mb-6 border border-gray-700">
+                <img id="moonImage" src="https://picsum.photos/seed/moon1/800/450?grayscale&blur=1" alt="Moon Landscape" class="w-full h-full object-cover transition-opacity duration-500 ease-in-out">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-50"></div>
+                <div class="absolute bottom-4 left-4 right-4 text-white text-center text-sm md:text-base">
+                    <p id="moonImageCaption">A glimpse into the lunar expanse, silent and awe-inspiring.</p>
+                </div>
+            </div>
 
-        <!-- Experience Moon Land & Digital Money -->
-        <a href="#" class="block bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-500 hover:to-indigo-600 text-white font-bold py-4 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 text-center text-lg focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50">
-            🚀 Experience Moon Land & Digital Money
-        </a>
-
-        <!-- Other key areas -->
-        <a href="#" class="block bg-gray-800 hover:bg-gray-700 text-gray-200 font-bold py-4 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 text-center text-lg focus:outline-none focus:ring-4 focus:ring-gray-600 focus:ring-opacity-50">
-            🎶 Music Production
-        </a>
-
-        <a href="#" class="block bg-gray-800 hover:bg-gray-700 text-gray-200 font-bold py-4 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 text-center text-lg focus:outline-none focus:ring-4 focus:ring-gray-600 focus:ring-opacity-50">
-            🎬 Content Creation & YouTube
-        </a>
-
-        <a href="#" class="block bg-gray-800 hover:bg-gray-700 text-gray-200 font-bold py-4 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 text-center text-lg focus:outline-none focus:ring-4 focus:ring-gray-600 focus:ring-opacity-50">
-            🎤 Roasting & Rapping
-        </a>
-
-        <a href="#" class="block bg-gray-800 hover:bg-gray-700 text-gray-200 font-bold py-4 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 text-center text-lg focus:outline-none focus:ring-4 focus:ring-gray-600 focus:ring-opacity-50">
-            💰 Digital Assets & Land Sales
-        </a>
-
+            <div class="flex justify-between items-center mt-6">
+                <button id="prevMoon" class="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-full text-lg font-semibold transition duration-300 ease-in-out flex items-center focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    Previous
+                </button>
+                <span id="moonImageCounter" class="text-gray-500 text-sm md:text-base">1/4</span>
+                <button id="nextMoon" class="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-full text-lg font-semibold transition duration-300 ease-in-out flex items-center focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50">
+                    Next
+                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+            </div>
+        </div>
     </div>
 
-    <!-- Social Media Icons -->
-    <div class="mt-8 flex space-x-6">
-        <a href="https://instagram.com/prityaa379" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition duration-300">
-            <!-- Instagram Icon (SVG) -->
-            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.71.01 3.66.05c.95.04 1.58.21 2.07.41c.5.21.91.54 1.31.95c.4.4.74.81.95 1.31c.2.49.37 1.12.41 2.07c.04.95.05 1.24.05 3.66c0 2.43-.01 2.71-.05 3.66c-.04.95-.21 1.58-.41 2.07c-.21.5-.54.91-.95 1.31c-.4.4-.81.74-1.31.95c-.49.2-.58.37-2.07.41c-.95.04-1.24.05-3.66.05c-2.43 0-2.71-.01-3.66-.05c-.95-.04-1.58-.21-2.07-.41c-.5-.21-.91-.54-1.31-.95c-.4-.4-.74-.81-.95-1.31c-.2-.49-.37-1.12-.41-2.07c-.04-.95-.05-1.24-.05-3.66c0-2.43.01-2.71.05-3.66c.04-.95.21-1.58.41-2.07c.21-.5.54-.91.95-1.31c.4-.4.81-.74 1.31-.95c.49-.2.58-.37 2.07-.41c.95-.04 1.24-.05 3.66-.05Zm0-2c-2.82 0-3.17.01-4.27.05c-1.1.04-1.84.21-2.35.42c-.51.21-.95.53-1.37.95c-.42.42-.73.86-.95 1.37c-.21.51-.38 1.25-.42 2.35c-.04 1.1-.05 1.45-.05 4.27s.01 3.17.05 4.27c.04 1.1.21 1.84.42 2.35c.21.51.53.95.95 1.37c.42.42.86.73 1.37.95c.51.21 1.25.38 2.35.42c1.1.04 1.45.05 4.27.05s3.17-.01 4.27-.05c1.1-.04 1.84-.21 2.35-.42c.51-.21.95-.53 1.37-.95c.42-.42.73-.86.95-1.37c.21-.51.38-1.25.42-2.35c.04-1.1.05-1.45.05-4.27s-.01-3.17-.05-4.27c-.04-1.1-.21-1.84-.42-2.35c-.21-.51-.53-.95-.95-1.37c-.42-.42-.86-.73-1.37-.95c-.51-.21-1.25-.38-2.35-.42c-1.1-.04-1.45-.05-4.27-.05Zm0 6.6a4.6 4.6 0 1 0 0 9.2a4.6 4.6 0 0 0 0-9.2Zm0 7.2a2.6 2.6 0 1 1 0-5.2a2.6 2.6 0 0 1 0 5.2Zm6.5-7.7A1.3 1.3 0 1 0 17 6.2a1.3 1.3 0 0 0-1.3 1.3Z" clip-rule="evenodd"></path></svg>
-        </a>
-        <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition duration-300">
-             <!-- YouTube Icon (SVG) -->
-            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.615 2.105a2.583 2.583 0 0 0-1.826-.745C17.05 1.29 12 1.29 12 1.29s-5.05 0-5.789.07c-.66.084-1.18.36-1.826.745A2.585 2.585 0 0 0 2.45 4.909C2 6.544 2 12 2 12s0 5.455.45 7.091c.18.675.58 1.22 1.155 1.636.575.416 1.26.65 1.826.745C6.95 22.71 12 22.71 12 22.71s5.05 0 5.789-.07c.66-.084 1.18-.36 1.826-.745.575-.416.975-.961 1.155-1.636.45-1.636.45-7.091.45-7.091s0-5.456-.45-7.091ZM10 16.5l6-4.5-6-4.5v9Z"></path></svg>
-        </a>
-        <!-- Add more social icons here, e.g., Spotify, Twitter, LinkedIn etc. -->
-    </div>
+    <!-- JavaScript for Interactivity -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get DOM elements for the Moon Land experience
+            const moonLandBtn = document.getElementById('moonLandBtn');
+            const moonLandModal = document.getElementById('moonLandModal');
+            const closeMoonLandBtn = document.getElementById('closeMoonLand');
+            const moonImage = document.getElementById('moonImage');
+            const prevMoonBtn = document.getElementById('prevMoon');
+            const nextMoonBtn = document.getElementById('nextMoon');
+            const moonImageCounter = document.getElementById('moonImageCounter');
+            const moonImageCaption = document.getElementById('moonImageCaption');
 
-    <!-- Footer -->
-    <div class="mt-12 text-gray-500 text-sm">
-        <p>&copy; 2023 Pritam Jagtap. All rights reserved.</p>
-    </div>
+            // Array of moon images and their captions
+            const moonImages = [
+                {
+                    src: 'https://picsum.photos/seed/moon1/800/450?grayscale&blur=1',
+                    caption: 'A vast, cratered plain under the distant Earthlight. Imagine claiming your digital land here!'
+                },
+                {
+                    src: 'https://picsum.photos/seed/moon2/800/450?grayscale&blur=0',
+                    caption: 'Sunrise over a lunar mountain range, casting long shadows. New beginnings in digital real estate.'
+                },
+                {
+                    src: 'https://picsum.photos/seed/moon3/800/450?grayscale&blur=2',
+                    caption: 'Ancient volcanic rilles stretching across the lunar surface. History meets futuristic assets.'
+                },
+                {
+                    src: 'https://picsum.photos/seed/moon4/800/450?grayscale&blur=1',
+                    caption: 'The stark beauty of the lunar regolith, untouched by atmosphere. Explore the potential of digital ownership.'
+                }
+            ];
+            let currentMoonImageIndex = 0;
 
-</div>
+            /**
+             * Updates the displayed moon image and its caption in the modal.
+             */
+            function updateMoonImage() {
+                const image = moonImages[currentMoonImageIndex];
+                moonImage.src = image.src;
+                moonImageCaption.textContent = image.caption;
+                moonImageCounter.textContent = `${currentMoonImageIndex + 1}/${moonImages.length}`;
+            }
+
+            /**
+             * Shows the moon land experience modal with a transition effect.
+             */
+            function showMoonLandModal() {
+                moonLandModal.classList.remove('hidden');
+                // Force reflow to ensure transition plays correctly
+                void moonLandModal.offsetWidth;
+                moonLandModal.classList.add('opacity-100');
+                moonLandModal.querySelector('.relative').classList.remove('scale-95');
+                moonLandModal.querySelector('.relative').classList.add('scale-100');
+                updateMoonImage(); // Initialize with the first image
+            }
+
+            /**
+             * Hides the moon land experience modal with a transition effect.
+             */
+            function hideMoonLandModal() {
+                moonLandModal.classList.remove('opacity-100');
+                moonLandModal.querySelector('.relative').classList.remove('scale-100');
+                moonLandModal.querySelector('.relative').classList.add('scale-95');
+                // Use a timeout to add 'hidden' class after the transition completes
+                setTimeout(() => {
+                    moonLandModal.classList.add('hidden');
+                }, 300); // Matches the transition duration in CSS
+            }
+
+            // Event Listeners for the Moon Land experience
+            moonLandBtn.addEventListener('click', showMoonLandModal);
+            closeMoonLandBtn.addEventListener('click', hideMoonLandModal);
+
+            // Close modal when clicking on the overlay background
+            moonLandModal.addEventListener('click', (e) => {
+                if (e.target === moonLandModal) {
+                    hideMoonLandModal();
+                }
+            });
+
+            // Navigate through moon images
+            prevMoonBtn.addEventListener('click', () => {
+                currentMoonImageIndex = (currentMoonImageIndex - 1 + moonImages.length) % moonImages.length;
+                updateMoonImage();
+            });
+
+            nextMoonBtn.addEventListener('click', () => {
+                currentMoonImageIndex = (currentMoonImageIndex + 1) % moonImages.length;
+                updateMoonImage();
+            });
+
+            // Keyboard navigation for enhanced accessibility
+            document.addEventListener('keydown', (e) => {
+                // Only respond if the moon land modal is currently visible
+                if (!moonLandModal.classList.contains('hidden')) {
+                    if (e.key === 'ArrowLeft') {
+                        prevMoonBtn.click(); // Simulate click on previous button
+                    } else if (e.key === 'ArrowRight') {
+                        nextMoonBtn.click(); // Simulate click on next button
+                    } else if (e.key === 'Escape') {
+                        hideMoonLandModal(); // Close modal on Escape key
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
