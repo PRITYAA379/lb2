@@ -1,0 +1,175 @@
+.header-section {
+    position: relative;
+    padding: 4rem 1rem;
+    text-align: center;
+    background: #0d1326;
+}
+
+.brand-box {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.brand-logo {
+    height: 48px;
+    width: 48px;
+    border-radius: 9999px;
+    margin-right: 8px;
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.header-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #d4af37;
+}
+
+.header-sub {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    background: #d4af37;
+    color: black;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    margin-top: 1.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cta-btn:hover {
+    background: #f5d673;
+    transform: translateY(-4px);
+}
+
+.section-box {
+    padding: 3rem 1rem;
+}
+
+.inner-box {
+    max-width: 800px;
+    margin: auto;
+    background: #11182f;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px black;
+}
+
+.section-title {
+    color: #d4af37;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.section-text {
+    opacity: 0.9;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.icon-center {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.icon-img {
+    width: 130px;
+    height: 130px;
+    border-radius: 1rem;
+}
+
+.content-flex {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.content-flex-rev {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+}
+
+.section-list li {
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.section-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 1rem;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+}
+
+.step-card {
+    background: #0d1326;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    text-align: center;
+}
+
+.step-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 0.5rem;
+}
+
+.step-num {
+    font-size: 2.2rem;
+    font-weight: 800;
+}
+
+.minimal-box {
+    padding: 2.5rem 1rem;
+    border: 2px solid #d4af37;
+    max-width: 650px;
+    margin: auto;
+    margin-bottom: 2rem;
+    border-radius: 1rem;
+}
+
+.minimal-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #d4af37;
+}
+
+.minimal-text {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+}
+
+.footer-box {
+    text-align: center;
+    padding: 1.5rem;
+    background: #0d1326;
+}
+
+.footer-disclaimer {
+    font-size: 0.7rem;
+    color: #dc3545;
+}
